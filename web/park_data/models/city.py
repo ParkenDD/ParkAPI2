@@ -15,6 +15,7 @@ class City(OSMBase):
         to="park_data.Country",
         on_delete=models.CASCADE,
         related_name="cities",  # Manager available at `Country.cities`
+        null=True, blank=True,
         db_index=True,
     )
 
@@ -23,6 +24,6 @@ class City(OSMBase):
         to="park_data.State",
         on_delete=models.CASCADE,
         related_name="cities",  # Manager available at `State.cities`
-        null=True,
+        null=True, blank=True,
         db_index=True,
     )

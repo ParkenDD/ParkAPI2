@@ -38,8 +38,9 @@ def store_location_data(data: dict) -> List[ParkingLot]:
                         "osm_id": int,                  # ( ) OpenStreetMap ID if available
                         "city_osm_id": int,             # (R) OSM ID of city
                         "state_osm_id": int,            # ( ) OSM ID of (federal) state
-                        "country_osm_id": int,          # (R) OSM ID of country
-                        "country_code": str (2),        # (R) two-letter ISO 3166 country code (will be lower-cased)
+                        "country_osm_id": int,          # ( ) OSM ID of country
+                        "country_code": str (2),        # ( ) two-letter ISO 3166 country code (will be lower-cased)
+                                                        #   required if 'county_osm_id' is new
 
                         "name": str (64),               # name of parking lot
                         "address": str (1024),          # free text address
@@ -72,15 +73,14 @@ def store_location_data(data: dict) -> List[ParkingLot]:
                 raise SchemaError(f"Required attribute 'lots.{i}.id' missing")
             if not lot.get("city_osm_id"):
                 raise SchemaError(f"Required attribute 'lots.{i}.city_osm_id' missing")
-            if not lot.get("country_osm_id"):
-                raise SchemaError(f"Required attribute 'lots.{i}.country_osm_id' missing")
-            if not lot.get("country_code"):
-                raise SchemaError(f"Required attribute 'lots.{i}.country_code' missing")
 
-            if lot["country_osm_id"] not in country_mapping:
+            if lot.get("country_osm_id") and lot["country_osm_id"] not in country_mapping:
                 try:
                     country = Country.objects.get(osm_id=lot["country_osm_id"])
                 except Country.DoesNotExist:
+                    if not lot.get("country_code"):
+                        raise SchemaError(f"Required attribute 'lots.{i}.country_code' missing")
+
                     country = Country.objects.create(
                         osm_id=lot["country_osm_id"],
                         iso_code=lot["country_code"].lower(),
@@ -103,7 +103,7 @@ def store_location_data(data: dict) -> List[ParkingLot]:
                 except City.DoesNotExist:
                     city = City.objects.create(
                         osm_id=lot["city_osm_id"],
-                        country=country_mapping[lot["country_osm_id"]],
+                        country=country_mapping.get(lot.get("country_osm_id")),
                         state=state_mapping[lot["state_osm_id"]] if lot.get("state_osm_id") else None,
                     )
                 city_mapping[lot["city_osm_id"]] = city

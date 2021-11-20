@@ -4,9 +4,7 @@
       "id": "jena_busbahnhof",
       "name": "Jena Busbahnhof",
       "city_osm_id": "R62693",
-      "state_osm_id": "R62366",
-      "country_osm_id": "R51477",
-      "country_code": "de",
+
       "lot_type": "street",
       "address": "Busbahnhof, 07743 Jena",
       "public_url": "https://mobilitaet.jena.de/de/busbahnhof"

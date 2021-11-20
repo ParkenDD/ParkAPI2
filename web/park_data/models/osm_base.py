@@ -1,8 +1,11 @@
 import json
+from typing import Optional
 
 from django.utils.translation import gettext_lazy as _
 from django.contrib.gis.db import models
-from django.contrib.gis.geos import GEOSGeometry
+from django.contrib.gis import geos
+
+from ..nominatim import NominatimApi
 
 
 class OSMBase(models.Model):
@@ -34,16 +37,26 @@ class OSMBase(models.Model):
     geo_point = models.PointField(
         verbose_name=_("Geographic center"),
         null=True,
+        blank=True,
         db_index=True,
     )
 
     geo_polygon = models.MultiPolygonField(
         verbose_name=_("Geographic outline"),
         null=True,
+        blank=True,
         db_index=True,
     )
 
+    def __str__(self):
+        return f"{self.__class__.__name__}('{self.name}', '{self.osm_id}')"
+
     def update_from_nominatim_geojson(self, data: dict):
+        """
+        Update the model fields from geojson data retrieved from nominatim api
+
+        :param data: a single nominatim geojson entry
+        """
         osm_id = None
 
         for i, feature in enumerate(data["features"]):
@@ -60,12 +73,14 @@ class OSMBase(models.Model):
                     self.name = props["display_name"][:32]
 
                 if "geometry" in feature:
-                    geom = GEOSGeometry(json.dumps(feature["geometry"]))
+                    geom = geos.GEOSGeometry(json.dumps(feature["geometry"]))
 
                     if geom.geom_type == "Point":
                         self.geo_point = geom
-                    elif geom.geom_type in ("Polygon", "MultiPolygon"):
+                    elif geom.geom_type == "MultiPolygon":
                         self.geo_polygon = geom
+                    elif geom.geom_type == "Polygon":
+                        self.geo_polygon = geos.MultiPolygon(geom)
 
                 return
 
@@ -73,3 +88,31 @@ class OSMBase(models.Model):
             raise ValueError(f"No features in geojson")
 
         raise ValueError(f"osm_id '{osm_id}' does not fit model's '{self.osm_id}")
+
+    def update_from_nominatim_api(self, api: Optional[NominatimApi] = None):
+        """
+        Update the model fields from geojson data from nominatim api.
+
+        The API is queried unless there is a cache file present
+        """
+        if api is None:
+            api = NominatimApi()
+
+        if not self.geo_point:
+            data = api.lookup(
+                osm_ids=[self.osm_id],
+                extratags=1,
+                addressdetails=1,
+                polygon_geojson=0,
+            )
+            self.update_from_nominatim_geojson(data)
+
+        if not self.geo_polygon:
+            data = api.lookup(
+                osm_ids=[self.osm_id],
+                extratags=0,
+                addressdetails=0,
+                polygon_geojson=1,
+            )
+            self.update_from_nominatim_geojson(data)
+

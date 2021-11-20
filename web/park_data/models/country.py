@@ -18,5 +18,5 @@ class Country(OSMBase):
         db_index=True,
     )
 
-    def clean_iso_code(self):
+    def clean_fields(self, exclude=None):
         self.iso_code = self.iso_code.lower()

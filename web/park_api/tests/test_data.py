@@ -1,4 +1,4 @@
-from .test_base import *
+from .base import *
 
 
 class TestData(TestBase):

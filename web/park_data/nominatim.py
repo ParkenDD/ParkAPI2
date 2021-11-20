@@ -20,13 +20,14 @@ class NominatimApi:
     BASE_URL = "https://nominatim.openstreetmap.org"
     CACHE_DIR = Path(__file__).resolve().parent.parent / "cache" / "nominatim"
 
+    _last_request_time = 0
+
     def __init__(self):
         self.session = requests.Session()
         self.session.headers = {
             "User-Agent": "github.com/defgsus/ParkAPI2",
             "Accept": "application/json",
         }
-        self.last_request_time = 0
 
     def lookup(
             self,
@@ -37,7 +38,7 @@ class NominatimApi:
             polygon_geojson: int = 0,
             caching: Union[bool, str] = True,
             **kwargs,
-    ) -> List[dict]:
+    ) -> Union[dict, List[dict]]:
 
         status, data = self.request(
             path="lookup",
@@ -87,7 +88,7 @@ class NominatimApi:
 
         # -- throttle requests --
 
-        passed_time = time.time() - self.last_request_time
+        passed_time = time.time() - self._last_request_time
         if passed_time < self.REQUEST_PER_SECOND:
             time.sleep(self.REQUEST_PER_SECOND - passed_time)
 
