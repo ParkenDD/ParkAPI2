@@ -3,5 +3,6 @@ __pycache__/
 *.pyc
 env/
 venv/
+cache/
 settings_local.py
 *credentials*
