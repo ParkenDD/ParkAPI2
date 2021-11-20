@@ -1,28 +1,14 @@
 from django.utils.translation import gettext_lazy as _
-# from django.db import models
-from django.contrib.postgres.fields import JSONField
 from django.contrib.gis.db import models
 
+from .osm_base import OSMBase
 
-class City(models.Model):
+
+class City(OSMBase):
 
     class Meta:
         verbose_name = _("City")
         verbose_name_plural = _("Cities")
-
-    created_at = models.DateTimeField(
-        verbose_name=_("Date of creation"),
-        auto_now_add=True,
-        db_index=True,
-        editable=False,
-    )
-
-    name = models.CharField(
-        verbose_name=_("Name of city"),
-        max_length=64,
-        db_index=True,
-        unique=True,
-    )
 
     country = models.ForeignKey(
         verbose_name=_("Country"),
@@ -40,16 +26,3 @@ class City(models.Model):
         null=True,
         db_index=True,
     )
-
-    geo_point = models.PointField(
-        verbose_name=_("Geographic center of city"),
-        null=True,
-        db_index=True,
-    )
-
-    geo_polygon = models.PolygonField(
-        verbose_name=_("Outline of city"),
-        null=True,
-        db_index=True,
-    )
-

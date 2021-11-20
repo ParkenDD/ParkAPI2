@@ -1,44 +1,37 @@
+from pathlib import Path
+import json
+import glob
+from typing import Tuple, List
+
 from django.test import TestCase
 
 from park_data.models import *
 
 
-DATA1 = {
-    "timestamp": "2000-01-01T00:00:00Z",
-    "city": {
-        "name": "Some City",
-    },
-    "state": {
-        "name": "Some State"
-    },
-    "country": {
-        "code": "DE",
-        "name": "Germany",
-    },
-    "lots": [
-        {
-            "id": "some-city-1",
-            "status": ParkingLotState.OPEN,
-            "name": "Parkplatz 1",
-            "address": "some street 42\nSome City",
-            "num_free": 10,
-            "num_total": 30,
-        },
-        {
-            "id": "some-city-2",
-            "status": ParkingLotState.CLOSED,
-            "name": "Parkplatz 2",
-            "address": "some other street 23\nSome City",
-            "num_free": 0,
-            "num_total": None,
-        }
-    ]
-}
+DATA_PATH = Path(__file__).resolve().parent / "data"
 
 
 class TestData(TestCase):
 
-    def test_store(self):
-        lots = store_lot_data(DATA1)
-        print(lots)
+    def load_data(self, key: str) -> Tuple[dict, List[dict]]:
+        locations = json.loads((DATA_PATH / key / f"locations.json").read_text())
+        snapshots = []
+        for filename in sorted(glob.glob(str(DATA_PATH / key / "lots-*.json"))):
+            snapshots.append(json.loads(Path(filename).read_text()))
+        return locations, snapshots
 
+    def test_store(self):
+        locations, snapshots = self.load_data("jena")
+
+        # create locations
+        lot_models = store_location_data(locations)
+
+        # store snapshots
+        for snapshot in snapshots:
+            lot_models = store_lot_data(snapshot)
+
+        # check the max_num_total counter
+        self.assertEqual(
+            28,
+            ParkingLot.objects.get(lot_id="jena_busbahnhof").max_num_total,
+        )

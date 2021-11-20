@@ -1,0 +1,17 @@
+{
+  "timestamp": "2000-01-01T08:00:00Z",
+  "lots": [
+    {
+      "id": "jena_busbahnhof",
+      "status": "open",
+      "num_free": 42,
+      "num_total": 27
+    },
+    {
+      "id": "jena_eichplatz",
+      "status": "open",
+      "num_free": 23,
+      "num_total": 290
+    }
+  ]
+}

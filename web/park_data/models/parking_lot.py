@@ -24,6 +24,23 @@ class ParkingLot(models.Model):
         editable=False,
     )
 
+    osm_id = models.BigIntegerField(
+        verbose_name=_("OpenStreetMap ID"),
+        null=True,
+    )
+
+    geo_coords = models.PointField(
+        verbose_name=_("Location of parking lot"),
+        null=True,
+        db_index=True,
+    )
+
+    geo_polygon = models.PolygonField(
+        verbose_name=_("Outline of parking lot"),
+        null=True,
+        db_index=True,
+    )
+
     city = models.ForeignKey(
         verbose_name=_("City"),
         to="park_data.City",
@@ -59,14 +76,8 @@ class ParkingLot(models.Model):
         db_index=True,
     )
 
-    geo_coords = models.PointField(
-        verbose_name=_("Location of parking lot"),
+    public_url = models.URLField(
+        verbose_name=_("Public website"),
+        max_length=4096,
         null=True,
-        db_index=True,
-    )
-
-    geo_polygon = models.PolygonField(
-        verbose_name=_("Outline of parking lot"),
-        null=True,
-        db_index=True,
     )

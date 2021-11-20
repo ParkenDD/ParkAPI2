@@ -4,6 +4,18 @@ This is an attempt to rewrite the [ParkAPI](https://github.com/offenesdresden/Pa
 using [GeoDjango](https://docs.djangoproject.com/en/3.2/ref/contrib/gis/) and
 the [django rest framework](https://www.django-rest-framework.org/).
 
+## Data 
+
+Parking lots are identified by a unique string ID. Cities, states and countries 
+are identified by the 
+[OpenStreetMap ID](https://wiki.openstreetmap.org/wiki/Persistent_Place_Identifier#Element.27s_OSM_ID) 
+(`osm_id`) which can be retrieved via the
+[Nominatim search API](https://nominatim.org/release-docs/develop/api/Search/).
+
+Please check the documentation in 
+[web/park_data/models/_store.py](web/park_data/models/_store.py) for the 
+layout of the data that needs to be supplied by a scraper.
+
 
 ## Setup for development
 

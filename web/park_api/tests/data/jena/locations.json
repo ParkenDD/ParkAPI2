@@ -1,0 +1,26 @@
+{
+  "lots": [
+    {
+      "id": "jena_busbahnhof",
+      "name": "Jena Busbahnhof",
+      "city_osm_id": 62693,
+      "state_osm_id": 62366,
+      "country_osm_id": 51477,
+      "country_code": "de",
+      "lot_type": "street",
+      "address": "Busbahnhof, 07743 Jena",
+      "public_url": "https://mobilitaet.jena.de/de/busbahnhof"
+    },
+    {
+      "id": "jena_eichplatz",
+      "name": "Jena Eichplatz",
+      "city_osm_id": 62693,
+      "state_osm_id": 62366,
+      "country_osm_id": 51477,
+      "country_code": "de",
+      "lot_type": "street",
+      "address": "Eichplatz, Kollegiengasse, 07743 Jena",
+      "public_url": "https://mobilitaet.jena.de/de/eichplatz"
+    }
+  ]
+}
