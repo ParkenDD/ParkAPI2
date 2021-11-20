@@ -10,18 +10,18 @@ class ParkingLot(models.Model):
         verbose_name = _("Parking lot")
         verbose_name_plural = _("Parking lots")
 
+    lot_id = models.CharField(
+        verbose_name=_("ID of parking lot"),
+        help_text=_("This ID uniquely identifies a single parking lot through all history"),
+        max_length=64,
+        primary_key=True,
+    )
+
     created_at = models.DateTimeField(
         verbose_name=_("Date of creation"),
         auto_now_add=True,
         db_index=True,
         editable=False,
-    )
-
-    lot_id = models.CharField(
-        verbose_name=_("ID of parking lot"),
-        help_text=_("This ID uniquely identifies a single parking lot through all history"),
-        max_length=64,
-        primary=True,
     )
 
     city = models.ForeignKey(

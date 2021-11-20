@@ -21,6 +21,7 @@ class State(models.Model):
         verbose_name=_("Name of state"),
         max_length=64,
         db_index=True,
+        unique=True,
     )
 
     country = models.ForeignKey(

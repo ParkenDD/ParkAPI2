@@ -1,3 +1,7 @@
+from typing import List
+
+from django.db import transaction
+
 from .city import City
 from .country import Country
 from .parking_data import ParkingData, ParkingLotState
@@ -9,7 +13,7 @@ class SchemaError(Exception):
     pass
 
 
-def store_lot_data(data: dict):
+def store_lot_data(data: dict) -> List[ParkingData]:
     """
 
     :param data:
@@ -59,30 +63,98 @@ def store_lot_data(data: dict):
     if "lots" not in data:
         raise SchemaError("Required attribute 'lots' missing")
 
-    try:
-        city = City.objects.filter(name=data["city"]["name"])
-    except City.DoesNotExist:
-        city = City.objects.create(
-            name=data["city"]["name"],
-        )
+    # put everything into a transaction so that further validation
+    #    errors leave the database unchanged
+    with transaction.atomic():
 
-    try:
-        country = Country.objects.filter(code=data["country"]["code"])
-    except Country.DoesNotExist:
-        if not data["country"].get("name"):
-            raise SchemaError("Required attribute 'country.name' missing")
-        country = Country.objects.create(
-            code=data["country"]["code"],
-            name=data["country"].get("name"),
-        )
-
-    state = None
-    if data.get("state") and data["state"].get("name"):
         try:
-            state = State.objects.filter(name=data["state"]["name"])
-        except State.DoesNotExist:
-            state = State.objects.create(
-                name=data["state"]["name"],
+            country = Country.objects.get(iso_code=data["country"]["code"])
+        except Country.DoesNotExist:
+            if not data["country"].get("name"):
+                raise SchemaError("Required attribute 'country.name' missing")
+            country = Country.objects.create(
+                iso_code=data["country"]["code"],
+                name=data["country"].get("name"),
             )
 
-        
+        state = None
+        if data.get("state") and data["state"].get("name"):
+            try:
+                state = State.objects.get(name=data["state"]["name"])
+            except State.DoesNotExist:
+                state = State.objects.create(
+                    name=data["state"]["name"],
+                    country=country,
+                )
+
+        try:
+            city = City.objects.get(name=data["city"]["name"])
+        except City.DoesNotExist:
+            city = City.objects.create(
+                name=data["city"]["name"],
+                state=state,
+                country=country,
+            )
+
+        # --- get all ParkingLot instances ---
+
+        lot_mapping = dict()
+
+        for i, lot_data in enumerate(data["lots"]):
+            if not lot_data.get("id"):
+                raise SchemaError(f"Required attribute 'lots.{i}.id' missing")
+            if not lot_data.get("status"):
+                raise SchemaError(f"Required attribute 'lots.{i}.status' missing")
+
+            if lot_data["id"] in lot_mapping:
+                continue
+
+            try:
+                lot_model = ParkingLot.objects.get(lot_id=lot_data["id"])
+            except ParkingLot.DoesNotExist:
+                if not lot_data.get("name"):
+                    raise SchemaError(f"Required attribute 'lots.{i}.name' missing")
+                lot_model = ParkingLot.objects.create(
+                    lot_id=lot_data["id"],
+                    name=lot_data["name"],
+                    address=lot_data.get("address"),
+                    city=city,
+                )
+
+            lot_mapping[lot_data["id"]] = lot_model
+
+        # --- store ParkingData instances ---
+
+        parking_data_models = []
+
+        for i, lot_data in enumerate(data["lots"]):
+            num_free = lot_data.get("num_free")
+            num_total = lot_data.get("num_total")
+            num_occupied = lot_data.get("num_occupied")
+            percent_free = None
+
+            if num_free is not None:
+                if num_total is not None:
+                    if num_occupied is None:
+                        num_occupied = num_total - num_free
+                    else:
+                        if num_occupied != num_total - num_free:
+                            raise SchemaError(
+                                f"Invalid 'lots.{i}.num_occuppied', "
+                                f"got free={num_free}, total={num_total}, occupied={num_occupied}"
+                            )
+                    percent_free = num_free * 100 / num_total
+
+            parking_data_models.append(
+                ParkingData(
+                    timestamp=data["timestamp"],
+                    lot=lot_mapping[lot_data["id"]],
+                    status=lot_data["status"],
+                    num_free=num_free,
+                    num_total=num_total,
+                    num_occupied=num_occupied,
+                    percent_free=percent_free,
+                )
+            )
+
+        return ParkingData.objects.bulk_create(parking_data_models)

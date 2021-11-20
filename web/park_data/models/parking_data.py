@@ -15,7 +15,7 @@ class ParkingData(models.Model):
     class Meta:
         verbose_name = _("Parking data")
         verbose_name_plural = _("Parking data")
-        unique_together = ("timestamp", "place_id")
+        unique_together = ("timestamp", "lot")
 
     timestamp = models.DateTimeField(
         verbose_name=_("Date of snapshot"),
@@ -59,3 +59,12 @@ class ParkingData(models.Model):
         null=True,
         db_index=True,
     )
+
+    percent_free = models.FloatField(
+        verbose_name=_("Free spaces in percent"),
+        null=True,
+        db_index=True,
+    )
+
+    def __str__(self):
+        return f"ParkingData('{self.lot.lot_id}', {self.timestamp})"

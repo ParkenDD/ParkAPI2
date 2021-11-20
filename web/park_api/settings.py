@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.gis',
 
     'park_api',  # include the project itself as app
     'park_data.apps.ParkDataConfig',
@@ -78,14 +79,14 @@ WSGI_APPLICATION = 'park_api.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.contrib.gis.backends.postgis',
-        'NAME': 'park_api2',
+        'ENGINE': 'django.contrib.gis.db.backends.postgis',
+        'NAME': 'parkapi2',
         'USER': 'park_api',
         'PASSWORD': 'park_api',
         'HOST': '127.0.0.1',
         'PORT': '5432',
         'TEST': {
-            'NAME': 'park_api2_test',
+            'NAME': 'parkapi2_test',
         },
     },
 }

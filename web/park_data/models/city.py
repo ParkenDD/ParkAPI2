@@ -21,6 +21,7 @@ class City(models.Model):
         verbose_name=_("Name of city"),
         max_length=64,
         db_index=True,
+        unique=True,
     )
 
     country = models.ForeignKey(
