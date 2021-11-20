@@ -1,0 +1,3 @@
+# exclude localhost related files
+web/BotGard/settings_local.py
+*.sqlite3
