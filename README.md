@@ -26,9 +26,9 @@ and
 
 To find the `osm_id` for a specific place you can use the 
 [Nominatim search API](https://nominatim.org/release-docs/develop/api/Search/)
-or use the [web interface](https://nominatim.openstreetmap.org/ui/search.html).
-To view the details of an ID use 
-[the detail page](https://nominatim.openstreetmap.org/ui/details.html).
+or use the [web interface](https://nominatim.openstreetmap.org/ui/search.html)
+to search and the [detail page](https://nominatim.openstreetmap.org/ui/details.html)
+to view or validate IDs.
 
 
 ## Setup for development
@@ -70,11 +70,28 @@ ALTER USER "park_api" SUPERUSER;
 
 Then in the `web/` directory call:
 
-````
+```
 # run unittests
 ./manage.py test
 
-# or start the server
+# init the main database
+./manage.py migrate
 ./manage.py createsuperuser
+
+# start the server
 ./manage.py runserver
 ```
+
+By default, the admin interface is available at 
+[localhost:8000/admin/](localhost:8000/admin/). 
+
+Right now, the only thing one can do is creating Cities, States and Countries
+and tie them together. E.g.
+
+- create a new city
+- type `R191645` into the OSM ID field
+- press "Save and continue"
+- press "Query nominatim"
+
+It should populate the name and geo fields. 
+

@@ -8,7 +8,7 @@ class Country(OSMBase):
 
     class Meta:
         verbose_name = _("Country")
-        verbose_name_plural = _("Country")
+        verbose_name_plural = _("Countries")
 
     iso_code = models.CharField(
         verbose_name=_("country code"),

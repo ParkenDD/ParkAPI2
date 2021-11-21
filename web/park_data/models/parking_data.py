@@ -44,25 +44,25 @@ class ParkingData(models.Model):
 
     num_free = models.IntegerField(
         verbose_name=_("Number of free spaces"),
-        null=True,
+        null=True, blank=True,
         db_index=True,
     )
 
     num_total = models.IntegerField(
         verbose_name=_("Number of total available spaces"),
-        null=True,
+        null=True, blank=True,
         db_index=True,
     )
 
     num_occupied = models.IntegerField(
         verbose_name=_("Number of occupied spaces"),
-        null=True,
+        null=True, blank=True,
         db_index=True,
     )
 
     percent_free = models.FloatField(
         verbose_name=_("Free spaces in percent"),
-        null=True,
+        null=True, blank=True,
         db_index=True,
     )
 

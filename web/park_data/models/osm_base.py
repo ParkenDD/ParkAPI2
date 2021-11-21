@@ -16,35 +16,33 @@ class OSMBase(models.Model):
     osm_id = models.CharField(
         verbose_name=_("OpenStreetMap ID"),
         help_text=_("The ID must be prefixed with N, W or R (for Node, Way or Relation)"),
-        primary_key=True,
         max_length=32,
+        unique=True,
+        db_index=True,
     )
 
     created_at = models.DateTimeField(
         verbose_name=_("Date of creation"),
-        auto_now_add=True,
+        auto_now_add=True, editable=False,
         db_index=True,
-        editable=False,
     )
 
     name = models.CharField(
         verbose_name=_("Name"),
         max_length=64,
-        null=True,
+        null=True, blank=True,
         db_index=True,
     )
 
     geo_point = models.PointField(
         verbose_name=_("Geographic center"),
-        null=True,
-        blank=True,
+        null=True, blank=True,
         db_index=True,
     )
 
     geo_polygon = models.MultiPolygonField(
         verbose_name=_("Geographic outline"),
-        null=True,
-        blank=True,
+        null=True, blank=True,
         db_index=True,
     )
 
