@@ -65,7 +65,7 @@ class NominatimApi:
         """
         Generic request against API.
 
-        Will throttle all requests to the REQUEST_PER_SECOND value.
+        Will throttle all requests to the REQUESTS_PER_SECOND value.
 
         :param path: str, the specific endpoint
         :param caching: bool|str, enable file-caching, can be True, False, "read" or "write"
@@ -91,6 +91,7 @@ class NominatimApi:
         passed_time = time.time() - self._last_request_time
         if passed_time < 1. / self.REQUESTS_PER_SECOND:
             time.sleep(1. / self.REQUESTS_PER_SECOND - passed_time)
+        self._last_request_time = time.time()
 
         response = self.session.request(
             method="GET",

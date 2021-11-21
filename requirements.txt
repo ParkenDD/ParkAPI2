@@ -1,3 +1,4 @@
+beautifulsoup4==4.10.0
 Django==3.2.9
 django-filter==21.1
 djangorestframework==3.12.4

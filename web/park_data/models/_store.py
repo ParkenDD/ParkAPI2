@@ -42,11 +42,10 @@ def store_location_data(data: dict) -> List[ParkingLot]:
                         "country_code": str (2),        # ( ) two-letter ISO 3166 country code (will be lower-cased)
                                                         #   required if 'county_osm_id' is new
 
-                        "name": str (64),               # name of parking lot
-                        "address": str (1024),          # free text address
-                        "lot_type": str (64),           # type (no naming convention yet but probably burns down to:
-                                                        #       street, garage, underground
-                        "public_url": str (4096),       # an informational website
+                        "address": str (1024),          # ( ) free text address
+                        "lot_type": str (64),           # ( ) type (no naming convention yet but probably burns down to:
+                                                        #       street, garage, underground)
+                        "public_url": str (4096),       # ( ) an informational website
                     }
                 ]
             }
