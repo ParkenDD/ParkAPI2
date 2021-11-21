@@ -16,7 +16,7 @@ class NominatimApi:
 
     """
 
-    REQUEST_PER_SECOND = .8
+    REQUESTS_PER_SECOND = .8
     BASE_URL = "https://nominatim.openstreetmap.org"
     CACHE_DIR = Path(__file__).resolve().parent.parent / "cache" / "nominatim"
 
@@ -89,8 +89,8 @@ class NominatimApi:
         # -- throttle requests --
 
         passed_time = time.time() - self._last_request_time
-        if passed_time < self.REQUEST_PER_SECOND:
-            time.sleep(self.REQUEST_PER_SECOND - passed_time)
+        if passed_time < 1. / self.REQUESTS_PER_SECOND:
+            time.sleep(1. / self.REQUESTS_PER_SECOND - passed_time)
 
         response = self.session.request(
             method="GET",
