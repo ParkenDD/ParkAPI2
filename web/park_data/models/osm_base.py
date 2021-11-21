@@ -53,6 +53,27 @@ class OSMBase(models.Model):
         return s
         # return f"{self.__class__.__name__}('{self.name}', '{self.osm_id}')"
 
+    def update_from_nominatim_geojson_feature(self, feature: dict):
+        """
+        Update the model filed from a geojson feature.
+
+        Can be overridden by subclasses which should call the super() method
+        """
+        props = feature["properties"]
+
+        if not self.name:
+            self.name = props["display_name"][:64]
+
+        if "geometry" in feature:
+            geom = geos.GEOSGeometry(json.dumps(feature["geometry"]))
+
+            if geom.geom_type == "Point":
+                self.geo_point = geom
+            elif geom.geom_type == "MultiPolygon":
+                self.geo_polygon = geom
+            elif geom.geom_type == "Polygon":
+                self.geo_polygon = geos.MultiPolygon(geom)
+
     def update_from_nominatim_geojson(self, data: dict):
         """
         Update the model fields from geojson data retrieved from nominatim api
@@ -71,18 +92,7 @@ class OSMBase(models.Model):
             osm_id = props["osm_type"][0].upper() + str(props["osm_id"])
             if self.osm_id == osm_id:
 
-                if not self.name:
-                    self.name = props["display_name"][:32]
-
-                if "geometry" in feature:
-                    geom = geos.GEOSGeometry(json.dumps(feature["geometry"]))
-
-                    if geom.geom_type == "Point":
-                        self.geo_point = geom
-                    elif geom.geom_type == "MultiPolygon":
-                        self.geo_polygon = geom
-                    elif geom.geom_type == "Polygon":
-                        self.geo_polygon = geos.MultiPolygon(geom)
+                self.update_from_nominatim_geojson_feature(feature)
 
                 return
 
@@ -100,7 +110,7 @@ class OSMBase(models.Model):
         if api is None:
             api = NominatimApi()
 
-        if not self.geo_point:
+        if not self.geo_point or not self.name:
             data = api.lookup(
                 osm_ids=[self.osm_id],
                 extratags=1,

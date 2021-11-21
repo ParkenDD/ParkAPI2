@@ -1,7 +1,8 @@
-from django.contrib import admin
+from django.contrib import admin, messages
 from django.contrib.admin.decorators import register
 from django.contrib.gis.admin import OSMGeoAdmin
 from .models import *
+
 
 
 class OSMModelAdmin(OSMGeoAdmin):
@@ -23,9 +24,16 @@ class OSMModelAdmin(OSMGeoAdmin):
         response = super().change_view(request, object_id, form_url, extra_context)
 
         if object_id and query_nominatim:
-            model = self.model.objects.get(id=object_id)
-            model.update_from_nominatim_api()
-            model.save()
+            try:
+                model = self.model.objects.get(id=object_id)
+                model.update_from_nominatim_api()
+                model.save()
+            except Exception as e:
+                self.message_user(
+                    request,
+                    f"Could not read nominatim data: {type(e).__name__}: {e}",
+                    level=messages.ERROR,
+                )
 
         return response
 

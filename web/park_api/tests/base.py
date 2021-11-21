@@ -17,7 +17,5 @@ class TestBase(TestCase):
 
     def load_snapshot_data(self, path: str) -> Tuple[dict, List[dict]]:
         locations = self.load_data(str(Path(path) / f"locations.json"))
-        snapshots = []
-        for filename in sorted(glob.glob(str(self.DATA_PATH / path / "lots-*.json"))):
-            snapshots.append(json.loads(Path(filename).read_text()))
+        snapshots = self.load_data(str(Path(path) / f"snapshots.json"))
         return locations, snapshots

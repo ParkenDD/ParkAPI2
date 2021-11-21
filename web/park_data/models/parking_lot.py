@@ -66,3 +66,20 @@ class ParkingLot(OSMBase):
         max_length=4096,
         null=True, blank=True,
     )
+
+    def __str__(self):
+        s = self.lot_id
+        if self.name:
+            s = f"{s}/{self.name}"
+        return s
+
+    def update_from_nominatim_geojson_feature(self, feature: dict):
+        super().update_from_nominatim_geojson_feature(feature)
+        address = feature["properties"].get("address")
+
+        if address and not self.address:
+            if isinstance(address, str):
+                self.address = address
+
+            elif isinstance(address, dict):
+                self.address = "\n".join(address.values())
