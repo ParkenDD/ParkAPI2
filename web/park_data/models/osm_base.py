@@ -49,7 +49,11 @@ class OSMBase(models.Model):
     )
 
     def __str__(self):
-        return f"{self.__class__.__name__}('{self.name}', '{self.osm_id}')"
+        s = self.osm_id
+        if self.name:
+            s = f"{s}/{self.name}"
+        return s
+        # return f"{self.__class__.__name__}('{self.name}', '{self.osm_id}')"
 
     def update_from_nominatim_geojson(self, data: dict):
         """

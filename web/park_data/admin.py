@@ -1,10 +1,10 @@
 from django.contrib import admin
 from django.contrib.admin.decorators import register
-
+from django.contrib.gis.admin import OSMGeoAdmin
 from .models import *
 
 
-class OSMModelAdmin(admin.ModelAdmin):
+class OSMModelAdmin(OSMGeoAdmin):
     save_on_top = True
 
     def change_view(self, request, object_id, form_url='', extra_context=None):
