@@ -4,5 +4,6 @@ __pycache__/
 env/
 venv/
 cache/
+web/static/
 settings_local.py
 *credentials*

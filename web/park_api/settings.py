@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/3.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
-
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -19,13 +19,35 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-yie%!e(ilt&y4x57g+6_66%9xv3rd1xdynr^op=dk(n=yea#b^'
+
+# --- CI variables --
+
+POSTGRES_DATABASE = os.environ.get('POSTGRES_DATABASE', 'parkapi2')
+POSTGRES_TEST_DATABASE = os.environ.get('POSTGRES_DATABASE', 'parkapi2_test')
+POSTGRES_HOST = os.environ.get('POSTGRES_HOST', 'localhost')
+POSTGRES_PORT = os.environ.get('POSTGRES_PORT', '5432')
+POSTGRES_USER = os.environ.get('POSTGRES_USER', 'park_api')
+POSTGRES_PASSWORD = os.environ.get('POSTGRES_PASSWORD', 'park_api')
+
+SECRET_KEY = os.environ.get(
+    'DJANGO_SECRET_KEY',
+    'SECURITY WARNING: keep the secret key used in production secret!'
+)
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = True if os.environ.get("DJANGO_DEBUG") == "True" else False
 
-ALLOWED_HOSTS = []
+if os.environ.get('DJANGO_ALLOWED_HOSTS'):
+    ALLOWED_HOSTS = os.environ['DJANGO_ALLOWED_HOSTS'].split()
+else:
+    ALLOWED_HOSTS = ['*']
+
+if os.environ.get("DJANGO_CSRF_TRUSTED_ORIGINS"):
+    CSRF_TRUSTED_ORIGINS = os.environ["DJANGO_CSRF_TRUSTED_ORIGINS"].split()
+
+STATIC_ROOT = os.environ.get("DJANGO_STATIC_PATH", BASE_DIR / "static")
+
+STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesStorage'
 
 
 # Application definition
@@ -80,13 +102,13 @@ WSGI_APPLICATION = 'park_api.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.contrib.gis.db.backends.postgis',
-        'NAME': 'parkapi2',
-        'USER': 'park_api',
-        'PASSWORD': 'park_api',
-        'HOST': '127.0.0.1',
-        'PORT': '5432',
+        'NAME': POSTGRES_DATABASE,
+        'USER': POSTGRES_USER,
+        'PASSWORD': POSTGRES_PASSWORD,
+        'HOST': POSTGRES_HOST,
+        'PORT': POSTGRES_PORT,
         'TEST': {
-            'NAME': 'parkapi2_test',
+            'NAME': POSTGRES_TEST_DATABASE,
         },
     },
 }

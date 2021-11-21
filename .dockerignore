@@ -1,3 +1,4 @@
 # exclude localhost related files
-web/BotGard/settings_local.py
+web/park_api/settings_local.py
+web/static/
 *.sqlite3

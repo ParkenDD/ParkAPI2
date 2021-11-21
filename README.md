@@ -56,6 +56,13 @@ Follow the
 [instructions](https://docs.djangoproject.com/en/3.2/ref/contrib/gis/install/postgis/) 
 for installing postgres and the `postgis` extension.
 
+Alternatively, you can run the 
+[postgis docker image](https://github.com/postgis/docker-postgis):
+```
+docker run --name some-postgis -e POSTGRES_PASSWORD=pass -d postgis/postgis
+```
+
+
 Then 
 ```
 # start psql
@@ -85,6 +92,8 @@ Then in the `web/` directory call:
 
 # start the server
 ./manage.py runserver
+# or in debug mode
+DJANGO_DEBUG=True ./manage.py runserver
 ```
 
 By default, the admin interface is available at 
@@ -100,3 +109,32 @@ and tie them together. E.g.
 
 It should populate the name and geo fields. 
 
+
+## Docker and CI
+
+The [Dockerfile](Dockerfile) is an Ubuntu based image. It's probably possible
+to switch to Alpine but the postgis libraries are currently not working in 
+my attempts.
+
+```shell script
+docker build --tag parkapi-dev .
+```
+
+#### run unittests in docker container
+
+```shell script
+docker run -ti --env PARKAPI_RUN_TESTS=1 --net host parkapi-dev
+```
+
+Running the container with `--net host` will attach to the postgres at localhost. Please
+check the example in the [postgis docker README](https://github.com/postgis/docker-postgis)
+how to connect to a different host. 
+
+#### running the server in docker container
+
+```shell script
+docker run -ti --env DJANGO_DEBUG=True --net host parkapi-dev
+```
+
+Running in non-DEBUG mode will not deliver static files as this
+requires a webserver like nginx or apache.
