@@ -8,6 +8,7 @@ The idea is to fork the scraper repo which would only contain:
     
     README.md
     LICENSE.md
+    requirements.txt
     schema.json
     scraper.py
     example.py 
@@ -43,5 +44,4 @@ The `scraper.py` has a version number and if the schema changes people need to m
 the original scraper repo at some point.
 
 The `validate` command could actually validate the scraped data against the live API.
-
 
