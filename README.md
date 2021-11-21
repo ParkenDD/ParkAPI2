@@ -31,6 +31,11 @@ to search and the [detail page](https://nominatim.openstreetmap.org/ui/details.h
 to view or validate IDs.
 
 
+## Scraping
+
+A prototype is developed in [web/scrapers/builtin/](web/scrapers/builtin/).
+
+
 ## Setup for development
 
 ### Clone repo and setup python environment
