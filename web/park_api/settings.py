@@ -62,6 +62,7 @@ INSTALLED_APPS = [
     'django.contrib.gis',
 
     'park_api',  # include the project itself as app
+    'osm_locations.apps.OSMLocationsConfig',
     'park_data.apps.ParkDataConfig',
 ]
 
