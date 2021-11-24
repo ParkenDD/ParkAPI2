@@ -77,9 +77,12 @@ class SnapshotMaker:
             ret_data["features"].append(feature)
         return ret_data
 
-    def get_snapshot(self) -> List[dict]:
+    def get_snapshot(self) -> dict:
+        snapshot = {
+            "pool": vars(self.scraper.POOL),
+            "lots": [],
+        }
         info_map = self.scraper.get_lot_info_map()
-        lots = []
         for lot_data in self.scraper.get_lot_data():
             if lot_data.id in info_map:
                 merged_lot = vars(info_map[lot_data.id])
@@ -92,8 +95,10 @@ class SnapshotMaker:
 
             if "timestamp" in merged_lot:
                 merged_lot["timestamp"] = merged_lot["timestamp"].isoformat()
-            lots.append(merged_lot)
-        return lots
+
+            snapshot["lots"].append(merged_lot)
+
+        return snapshot
 
 
 def get_scrapers(

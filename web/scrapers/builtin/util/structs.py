@@ -10,14 +10,14 @@ class PoolInfo:
             self,
             id: str,
             name: str,
-            web_url: str,
+            public_url: str,
             timezone: str = "Europe/Berlin",
             source_url: Optional[str] = None,
             license: Optional[str] = None,
     ):
         self.id = name_to_id(id)
         self.name = name
-        self.web_url = web_url
+        self.public_url = public_url
         self.timezone = timezone
         self.source_url = source_url or None
         self.license = license or None
@@ -30,7 +30,7 @@ class LotInfo:
             id: str,
             name: str,
             type: Optional[str] = None,
-            web_url: Optional[str] = None,
+            public_url: Optional[str] = None,
             source_url: Optional[str] = None,
             address: Optional[str] = None,
             capacity: Optional[int] = None,
@@ -41,7 +41,7 @@ class LotInfo:
         self.id = name_to_id(id)
         self.name = name
         self.type = type
-        self.web_url = web_url or None
+        self.public_url = public_url or None
         self.source_url = source_url or None
         self.address = address or None
         self.capacity = capacity

@@ -8,7 +8,7 @@ class Dresden(ScraperBase):
     POOL = PoolInfo(
         id="dresden",
         name="Dresden",
-        web_url="https://www.dresden.de/parken",
+        public_url="https://www.dresden.de/parken",
         source_url="https://www.dresden.de/apps_ext/ParkplatzApp/",
     )
 

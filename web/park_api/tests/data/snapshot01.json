@@ -1,0 +1,46 @@
+{
+  "pool": {
+    "id": "apag",
+    "name": "Aachener Parkhaus GmbH",
+    "timezone": "Europe/Berlin",
+    "public_url": "https://www.apag.de",
+    "source_url": null,
+    "license": null
+  },
+  "lots": [
+    {
+      "id": "datteln-parkdeck-stadtgalerie",
+      "name": "Parkdeck StadtGalerie",
+      "type": "level",
+      "public_url": "https://www.apag.de/parkobjekte/parkdeck-stadtgalerie",
+      "source_url": "https://www.apag.de/parken-in-datteln",
+      "address": "Kolpingstraße\n45711\nDatteln",
+      "capacity": 207,
+      "has_live_capacity": false,
+      "latitude": 51.652461,
+      "longitude": 7.341648,
+      "timestamp": "2021-11-24T22:54:45",
+      "status": "open",
+      "num_free": 197,
+      "num_occupied": null,
+      "lot_timestamp": null
+    },
+    {
+      "id": "datteln-parkhaus-stadtgalerie",
+      "name": "Parkhaus StadtGalerie",
+      "type": "garage",
+      "public_url": "https://www.apag.de/parkobjekte/parkhaus-stadtgalerie",
+      "source_url": "https://www.apag.de/parken-in-datteln",
+      "address": "Martin-Luther-Straße\n45711\nDatteln",
+      "capacity": 76,
+      "has_live_capacity": false,
+      "latitude": 51.651775,
+      "longitude": 7.341156,
+      "timestamp": "2021-11-24T22:54:45",
+      "status": "open",
+      "num_free": 63,
+      "num_occupied": null,
+      "lot_timestamp": null
+    }
+  ]
+}

@@ -14,8 +14,3 @@ class TestBase(TestCase):
 
     def load_data(self, filename: str) -> Union[dict, list]:
         return json.loads((self.DATA_PATH / filename).read_text())
-
-    def load_snapshot_data(self, path: str) -> Tuple[dict, List[dict]]:
-        locations = self.load_data(str(Path(path) / f"locations.json"))
-        snapshots = self.load_data(str(Path(path) / f"snapshots.json"))
-        return locations, snapshots

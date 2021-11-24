@@ -1,14 +1,21 @@
 from django.utils.translation import gettext_lazy as _
 from django.contrib.gis.db import models
 
-from .osm_base import OSMBase
+from .timestamped import TimestampedMixin
 
 
-class ParkingLot(OSMBase):
+class ParkingLot(TimestampedMixin, models.Model):
 
     class Meta:
         verbose_name = _("Parking lot")
         verbose_name_plural = _("Parking lots")
+
+    pool = models.ForeignKey(
+        verbose_name=_("Pool"),
+        to="park_data.ParkingPool",
+        on_delete=models.CASCADE,
+        db_index=True,
+    )
 
     lot_id = models.CharField(
         verbose_name=_("ID of parking lot"),
@@ -17,27 +24,10 @@ class ParkingLot(OSMBase):
         unique=True,
     )
 
-    # override to make nullable and non-unique
-    osm_id = models.CharField(
-        verbose_name=_("OpenStreetMap ID"),
-        help_text=_("The ID must be prefixed with N, W or R (for Node, Way or Relation)"),
-        max_length=32,
-        null=True, blank=True,
+    name = models.CharField(
+        verbose_name=_("Name"),
+        max_length=128,
         db_index=True,
-    )
-
-    created_at = models.DateTimeField(
-        verbose_name=_("Date of creation"),
-        auto_now_add=True, editable=False,
-        db_index=True,
-    )
-
-    city = models.ForeignKey(
-        verbose_name=_("City"),
-        to="park_data.City",
-        on_delete=models.CASCADE,
-        db_index=True,
-        related_name="parking_lots",  # Manager available at `City.parking_lots`
     )
 
     address = models.TextField(
@@ -46,7 +36,7 @@ class ParkingLot(OSMBase):
         null=True, blank=True,
     )
 
-    lot_type = models.CharField(
+    type = models.CharField(
         verbose_name=_("Type of lot"),
         help_text=_("Let's see what base types we can crystalize"),
         max_length=64,
@@ -54,10 +44,15 @@ class ParkingLot(OSMBase):
         db_index=True,
     )
 
-    max_num_total = models.IntegerField(
+    max_capacity = models.IntegerField(
         verbose_name=_("Maximum total spaces"),
         help_text=_("The number of maximum total spaces that have been encountered"),
         null=True, blank=True,
+        db_index=True,
+    )
+
+    has_live_capacity = models.BooleanField(
+        verbose_name=_("Has live capacity?"),
         db_index=True,
     )
 
@@ -67,19 +62,20 @@ class ParkingLot(OSMBase):
         null=True, blank=True,
     )
 
+    source_url = models.URLField(
+        verbose_name=_("Data website"),
+        max_length=4096,
+        null=True, blank=True,
+    )
+
+    geo_point = models.PointField(
+        verbose_name=_("Geo point"),
+        null=True, blank=True,
+        db_index=True,
+    )
+
     def __str__(self):
         s = self.lot_id
         if self.name:
             s = f"{s}/{self.name}"
         return s
-
-    def update_from_nominatim_geojson_feature(self, feature: dict):
-        super().update_from_nominatim_geojson_feature(feature)
-        address = feature["properties"].get("address")
-
-        if address and not self.address:
-            if isinstance(address, str):
-                self.address = address
-
-            elif isinstance(address, dict):
-                self.address = "\n".join(address.values())
