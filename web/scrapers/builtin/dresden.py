@@ -1,7 +1,6 @@
-try:
-    from scraper import *
-except ImportError:
-    from .scraper import *
+from typing import List
+
+from util import *
 
 
 class Dresden(ScraperBase):
@@ -57,7 +56,7 @@ class Dresden(ScraperBase):
                     LotData(
                         timestamp=now,
                         lot_timestamp=last_updated,
-                        id=self.name_to_id(name),
+                        id=name_to_id(name),
                         status=state,
                         num_free=free,
                     )

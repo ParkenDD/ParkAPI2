@@ -1,9 +1,6 @@
 from typing import List
 
-try:
-    from scraper import *
-except ImportError:
-    from .scraper import *
+from util import *
 
 
 class Apag(ScraperBase):
@@ -88,9 +85,9 @@ class Apag(ScraperBase):
                             name=parking_name,
                             web_url=url,
                             address="\n".join(l.strip() for l in elem_address.text.splitlines() if l.strip()),
-                            capacity=self.int_or_none(elem_total.text.split()[-1]) if elem_total else None,
-                            latitude=self.float_or_none(elem_lat.get("content")),
-                            longitude=self.float_or_none(elem_lon.get("content"))
+                            capacity=int_or_none(elem_total.text.split()[-1]) if elem_total else None,
+                            latitude=float_or_none(elem_lat.get("content")),
+                            longitude=float_or_none(elem_lon.get("content"))
                         )
                     )
 
