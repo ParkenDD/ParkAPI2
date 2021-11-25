@@ -107,6 +107,6 @@ class ParkingData(models.Model):
                         )
 
             if self.num_free is not None and self.capacity:
-                self.percent_free = self.num_free * 100. / self.capacity
+                self.percent_free = round(self.num_free * 100. / self.capacity, 2)
 
         super().save(**kwargs)

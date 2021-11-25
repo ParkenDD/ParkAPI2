@@ -153,12 +153,15 @@ def main(
 
     elif command == "scrape":
 
+        print("[")
         for pool_id in pool_ids:
             log(f"scraping pool '{pool_id}'")
             scraper = scrapers[pool_id](caching=cache)
             snapshot = SnapshotMaker(scraper)
             data = snapshot.get_snapshot()
-            print(json.dumps(data, indent=2, ensure_ascii=False))
+            comma = "," if pool_id != pool_ids[-1] else ""
+            print(json.dumps(data, indent=2, ensure_ascii=False) + comma)
+        print("]")
 
     elif command == "store-geojson":
 

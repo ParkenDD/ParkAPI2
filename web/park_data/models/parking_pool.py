@@ -42,6 +42,6 @@ class ParkingPool(TimestampedMixin, models.Model):
 
     def __str__(self):
         s = self.pool_id
-        if self.name:
-            s = f"{s}/{self.name}"
+        #if self.name:
+        #    s = f"{s}/{self.name}"
         return s

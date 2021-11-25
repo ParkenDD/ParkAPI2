@@ -56,7 +56,7 @@ class Dresden(ScraperBase):
                     LotData(
                         timestamp=now,
                         lot_timestamp=last_updated,
-                        id=name_to_id(name),
+                        id=name_to_id(f"dresden-{name}"),
                         status=state,
                         num_free=free,
                     )

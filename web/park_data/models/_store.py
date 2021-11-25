@@ -33,8 +33,9 @@ def store_snapshot(snapshot: dict) -> List[ParkingData]:
             kwargs = {key: value for key, value in lot.items() if hasattr(ParkingLot, key)}
             kwargs["lot_id"] = kwargs.pop("id")
             kwargs["pool"] = pool_model
-            kwargs["max_capacity"] = lot["capacity"]
-            if not (lot["latitude"] is None or lot["longitude"] is None):
+            kwargs["max_capacity"] = lot.get("capacity")
+            kwargs["has_live_capacity"] = lot.get("has_live_capacity") or False
+            if not (lot.get("latitude") is None or lot.get("longitude") is None):
                 kwargs["geo_point"] = Point(lot["longitude"], lot["latitude"])
             lot_model = ParkingLot.objects.create(**kwargs)
 
