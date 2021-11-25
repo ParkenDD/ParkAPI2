@@ -55,6 +55,9 @@ class ParkingLotAdmin(OSMGeoAdmin):
         "name",
         "type",
         "max_capacity",
+        "latest_timestamp",
+        "latest_status",
+        "latest_num_free",
         "public_url_decorator",
         "source_url_decorator",
         "date_created",
@@ -78,6 +81,27 @@ class ParkingLotAdmin(OSMGeoAdmin):
         ))
     public_url_decorator.short_description = _("Data website")
     public_url_decorator.admin_order_field = "source_url"
+
+    def latest_timestamp(self, model: ParkingLot):
+        if not model.latest_data:
+            return "-"
+        return model.latest_data.timestamp
+    latest_timestamp.short_description = _("Latest timestamp")
+    latest_timestamp.admin_order_field = "latest_data__timestamp"
+
+    def latest_status(self, model: ParkingLot):
+        if not model.latest_data:
+            return "-"
+        return model.latest_data.status
+    latest_status.short_description = _("Latest status")
+    latest_status.admin_order_field = "latest_data__status"
+
+    def latest_num_free(self, model: ParkingLot):
+        if not model.latest_data:
+            return "-"
+        return model.latest_data.num_free
+    latest_num_free.short_description = _("Latest num_free")
+    latest_num_free.admin_order_field = "latest_data__num_free"
 
 
 @register(ParkingData)

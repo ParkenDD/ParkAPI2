@@ -10,19 +10,10 @@ class ParkingLotState:
     ERROR = "error"         # a scraper or server error occurred
 
 
-class ParkingData(models.Model):
+class ParkingDataBase(models.Model):
 
     class Meta:
-        verbose_name = _("Parking data")
-        verbose_name_plural = _("Parking data")
-        unique_together = ("timestamp", "lot")
-
-    lot = models.ForeignKey(
-        verbose_name=_("Parking lot"),
-        to="park_data.ParkingLot",
-        on_delete=models.CASCADE,
-        db_index=True,
-    )
+        abstract = True
 
     timestamp = models.DateTimeField(
         verbose_name=_("Timestamp"),
@@ -110,3 +101,24 @@ class ParkingData(models.Model):
                 self.percent_free = round(self.num_free * 100. / self.capacity, 2)
 
         super().save(**kwargs)
+
+
+class ParkingData(ParkingDataBase):
+
+    class Meta:
+        verbose_name = _("Parking data")
+        verbose_name_plural = _("Parking data")
+        unique_together = ("timestamp", "lot")
+
+    lot = models.ForeignKey(
+        verbose_name=_("Parking lot"),
+        to="park_data.ParkingLot",
+        on_delete=models.CASCADE,
+        db_index=True,
+    )
+
+
+class LatestParkingData(ParkingDataBase):
+    class Meta:
+        verbose_name = _("Latest parking data")
+        verbose_name_plural = _("Latest parking data")

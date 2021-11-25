@@ -74,6 +74,14 @@ class ParkingLot(TimestampedGeoModel):
         db_index=True,
     )
 
+    latest_data = models.OneToOneField(
+        verbose_name=_("Latest data"),
+        to="park_data.LatestParkingData",
+        on_delete=models.SET_NULL,
+        null=True, blank=True,
+        db_index=True,
+    )
+
     def __str__(self):
         s = self.lot_id
         if self.name:

@@ -12,6 +12,6 @@ class TestData(TestBase):
 
         self.assertEqual(207, data_models[0].capacity)
         self.assertEqual(197, data_models[0].num_free)
-        self.assertEqual(197 / 207 * 100., data_models[0].percent_free)
+        self.assertAlmostEqual(197 / 207 * 100., data_models[0].percent_free, places=2)
 
         self.assertEqual((7.341648, 51.652461), data_models[0].lot.geo_point.tuple)

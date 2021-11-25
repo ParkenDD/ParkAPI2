@@ -13,6 +13,14 @@ class LotField(serializers.RelatedField):
         return value.lot_id
 
 
+class CoordField(serializers.Field):
+    def to_representation(self, value):
+        return value.tuple
+
+
+# ----
+
+
 class ParkingPoolSerializer(serializers.ModelSerializer):
     class Meta:
         model = ParkingPool
@@ -22,6 +30,7 @@ class ParkingPoolSerializer(serializers.ModelSerializer):
 class ParkingPoolViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = ParkingPool.objects.all()
     serializer_class = ParkingPoolSerializer
+    lookup_field = "pool_id"
 
 
 # ----
@@ -30,15 +39,17 @@ class ParkingPoolViewSet(viewsets.ReadOnlyModelViewSet):
 class ParkingLotSerializer(serializers.ModelSerializer):
     class Meta:
         model = ParkingLot
-        exclude = ["id", "pool"]
+        exclude = ["id", "pool", "geo_point"]
+        depth = 2
 
     pool_id = PoolField(source="pool", read_only=True)
+    coordinates = CoordField(source="geo_point", read_only=True)
 
 
 class ParkingLotViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = ParkingLot.objects.all()
     serializer_class = ParkingLotSerializer
-
+    lookup_field = "lot_id"
 
 # ----
 
@@ -46,7 +57,7 @@ class ParkingLotViewSet(viewsets.ReadOnlyModelViewSet):
 class ParkingDataSerializer(serializers.ModelSerializer):
     class Meta:
         model = ParkingData
-        exclude = ["id", "lot"]
+        exclude = ["lot"]
 
     lot_id = LotField(source="lot", read_only=True)
 
