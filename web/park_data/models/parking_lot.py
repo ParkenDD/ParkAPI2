@@ -78,7 +78,7 @@ class ParkingLot(TimestampedGeoModel):
         verbose_name=_("Latest data"),
         to="park_data.LatestParkingData",
         on_delete=models.SET_NULL,
-        null=True, blank=True,
+        null=True, editable=False,
         db_index=True,
     )
 

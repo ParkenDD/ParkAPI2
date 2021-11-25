@@ -70,9 +70,6 @@ class ParkingDataBase(models.Model):
         db_index=True,
     )
 
-    def __str__(self):
-        return f"{self.lot.lot_id}@{self.timestamp}"
-
     def save(self, **kwargs):
         if self.capacity is not None:
             if self.num_free is not None:
@@ -116,6 +113,9 @@ class ParkingData(ParkingDataBase):
         on_delete=models.CASCADE,
         db_index=True,
     )
+
+    def __str__(self):
+        return f"{self.lot.lot_id}@{self.timestamp}"
 
 
 class LatestParkingData(ParkingDataBase):

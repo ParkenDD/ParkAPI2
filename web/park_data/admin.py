@@ -64,6 +64,8 @@ class ParkingLotAdmin(OSMGeoAdmin):
         "date_updated",
     )
 
+    search_fields = ["lot_id", "name", "address"]
+
     def public_url_decorator(self, model: ParkingLot):
         if not model.public_url:
             return "-"
@@ -79,8 +81,8 @@ class ParkingLotAdmin(OSMGeoAdmin):
         return mark_safe(format_html(
             """<a href="{}">{}</a>""", model.source_url, short_link(model.source_url)
         ))
-    public_url_decorator.short_description = _("Data website")
-    public_url_decorator.admin_order_field = "source_url"
+    source_url_decorator.short_description = _("Data website")
+    source_url_decorator.admin_order_field = "source_url"
 
     def latest_timestamp(self, model: ParkingLot):
         if not model.latest_data:
