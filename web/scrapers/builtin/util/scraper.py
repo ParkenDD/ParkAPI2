@@ -40,9 +40,6 @@ class ScraperBase:
     # A PoolInfo object must be specified for each derived scraper
     POOL: PoolInfo = None
 
-    # Will contain the geojson data if present
-    GEOJSON: Optional[dict] = None
-
     # ---- internals ----
 
     __last_request_time = 0
@@ -79,9 +76,14 @@ class ScraperBase:
     # ------------------- LotInfo data ------------------------
 
     def get_lot_infos(self) -> List[LotInfo]:
-        infos = []
-        if self.GEOJSON:
-            for feature in self.GEOJSON["features"]:
+        raise NotImplementedError
+
+    def get_lot_infos_from_geojson(self) -> Optional[List[LotInfo]]:
+        filename = Path(inspect.getfile(self.__class__)[:-3] + ".geojson")
+        if filename.exists():
+            geojson = json.loads(filename.read_text())
+            infos = []
+            for feature in geojson["features"]:
                 lot_info = feature["properties"].copy()
 
                 if feature.get("geometry"):
@@ -89,14 +91,26 @@ class ScraperBase:
                         raise ValueError(
                             f"""geometry type '{feature["geometry"]["type"]}' for lot '{lot_info["id"]}' not supported"""
                         )
-                    lot_info["latitude"] = feature["geometry"][1]
-                    lot_info["longitude"] = feature["geometry"][0]
+                    lot_info["latitude"] = feature["geometry"]["coordinates"][1]
+                    lot_info["longitude"] = feature["geometry"]["coordinates"][0]
 
                 infos.append(LotInfo.from_dict(lot_info))
-        return infos
+            return infos
 
-    def get_lot_info_map(self) -> Dict[str, LotInfo]:
-        lot_infos = self.get_lot_infos()
+    def get_lot_info_map(self, required: bool = True) -> Dict[str, LotInfo]:
+        lot_infos = self.get_lot_infos_from_geojson()
+        if not lot_infos:
+            try:
+                lot_infos = self.get_lot_infos()
+            except NotImplementedError:
+                if required:
+                    raise NotImplementedError(
+                        f"You need to either implement {self.__class__.__name__}.get_lot_infos()"
+                        f" or create a {Path(inspect.getfile(self.__class__)).name[:-3]}.geojson file"
+                    )
+                else:
+                    return dict()
+
         lot_ids = set()
         for info in lot_infos:
             if info.id in lot_ids:

@@ -57,7 +57,7 @@ class SnapshotMaker:
         self.scraper = scraper
 
     def info_map_to_geojson(self, include_unknown: bool = False) -> dict:
-        info_map = self.scraper.get_lot_info_map()
+        info_map = self.scraper.get_lot_info_map(required=not include_unknown)
 
         if include_unknown:
             for lot in self.scraper.get_lot_data():
@@ -86,16 +86,21 @@ class SnapshotMaker:
             ret_data["features"].append(feature)
         return ret_data
 
-    def get_snapshot(self) -> dict:
+    def get_snapshot(self, required_infos: bool = True) -> dict:
         snapshot = {
             "pool": vars(self.scraper.POOL),
             "lots": [],
         }
-        info_map = self.scraper.get_lot_info_map()
+        info_map = self.scraper.get_lot_info_map(required=True)
+
         for lot_data in self.scraper.get_lot_data():
             if lot_data.id in info_map:
                 merged_lot = vars(info_map[lot_data.id])
             else:
+                if required_infos:
+                    raise ValueError(
+                        f"Lot {lot_data.id} is not in lot_infos"
+                    )
                 merged_lot = dict()
 
             for key, value in vars(lot_data).items():
@@ -133,10 +138,6 @@ def get_scrapers(
 
             if pool_filter and value.POOL.id not in pool_filter:
                 continue
-
-            geojson_file = Path(filename[:-3] + ".geojson")
-            if geojson_file.exists():
-                value.GEOJSON = json.loads(geojson_file.read_text())
 
             scrapers[value.POOL.id] = value
 
@@ -177,11 +178,14 @@ def main(
         for pool_id in pool_ids:
             log(f"scraping pool '{pool_id}'")
             scraper = scrapers[pool_id](caching=cache)
-            data = scraper.get_lot_infos()
             snapshot = SnapshotMaker(scraper)
             data = snapshot.info_map_to_geojson()
-
-            print(json.dumps(data, indent=2, ensure_ascii=False))
+            if command == "write-geojson":
+                filename = Path(inspect.getfile(scraper.__class__)[:-3] + ".geojson")
+                log("writing", filename)
+                filename.write_text(json.dumps(data, indent=2, ensure_ascii=False))
+            else:
+                print(json.dumps(data, indent=2, ensure_ascii=False))
 
 
 if __name__ == "__main__":

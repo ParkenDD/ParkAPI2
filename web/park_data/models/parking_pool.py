@@ -1,10 +1,10 @@
 from django.utils.translation import gettext_lazy as _
 from django.db import models
 
-from .timestamped import TimestampedMixin
+from .timestamped import TimestampedModel
 
 
-class ParkingPool(TimestampedMixin, models.Model):
+class ParkingPool(TimestampedModel):
 
     class Meta:
         verbose_name = _("Pool")

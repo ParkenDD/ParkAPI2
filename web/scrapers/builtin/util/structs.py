@@ -65,13 +65,11 @@ class LotInfo:
 
     @classmethod
     def from_dict(cls, data: dict) -> "LotInfo":
+        dummy = cls("id", "name", "type")
+        keys = list(vars(dummy))
         kwargs = {
             key: data[key]
-            for key in [
-                "id", "name", "type", "web_url", "source_url", "address",
-                "capacity", "has_live_capacity",
-                "latitude", "longitude",
-            ]
+            for key in keys
             if key in data
         }
         return cls(**kwargs)

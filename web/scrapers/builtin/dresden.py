@@ -57,7 +57,7 @@ class Dresden(ScraperBase):
                     LotData(
                         timestamp=now,
                         lot_timestamp=last_updated,
-                        id=name_to_id(f"dresden-{name}"),
+                        id=f"dresden-{name}",
                         status=state,
                         num_free=free,
                         capacity=total,
@@ -78,18 +78,17 @@ class Dresden(ScraperBase):
             region = table.find("thead").find("tr").find_all("th")[1].find("div").text
 
             for tr in table.find("tbody").find_all("tr"):
-                #td = tr.find_all("td")
                 lot_url = urllib.parse.urljoin(self.POOL.source_url, tr.find("a").attrs["href"])
 
                 try:
-                    lots.append(self.get_dd_lot_info(lot_url))
+                    lots.append(self.get_lot_info_from_page(lot_url))
                 except:
                     print("IN URL", lot_url)
                     raise
 
         return lots
 
-    def get_dd_lot_info(self, url: str) -> LotInfo:
+    def get_lot_info_from_page(self, url: str) -> LotInfo:
         soup = self.request_soup(url)
 
         name = soup.find("h1").text.strip()
@@ -114,10 +113,11 @@ class Dresden(ScraperBase):
         type = guess_lot_type(name)
         if name.endswith("Bus"):
             type = LotInfo.Types.bus
+        short_name = " ".join(name.split()[1:])
 
         return LotInfo(
-            id=f"dresden-{name}",
-            name=" ".join(name.split()[1:]),
+            id=f"dresden-{short_name}",
+            name=short_name,
             type=type,
             capacity=capacity,
             has_live_capacity=True,

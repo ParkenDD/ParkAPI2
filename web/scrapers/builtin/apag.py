@@ -79,10 +79,14 @@ class Apag(ScraperBase):
                     elem_lat = lot_soup.find("meta", {"itemprop": "latitude"})
                     elem_lon = lot_soup.find("meta", {"itemprop": "longitude"})
 
+                    type = guess_lot_type(parking_name)
+                    name = " ".join(parking_name.split()[1:])
+
                     lots.append(
                         LotInfo(
                             id=f"{id_prefix}-{parking_name}",
-                            name=parking_name,
+                            name=name,
+                            type=type,
                             public_url=lot_url,
                             source_url=url,
                             address="\n".join(l.strip() for l in elem_address.text.splitlines() if l.strip()),

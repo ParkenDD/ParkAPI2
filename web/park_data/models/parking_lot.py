@@ -1,10 +1,10 @@
 from django.utils.translation import gettext_lazy as _
 from django.contrib.gis.db import models
 
-from .timestamped import TimestampedMixin
+from .timestamped import TimestampedGeoModel
 
 
-class ParkingLot(TimestampedMixin, models.Model):
+class ParkingLot(TimestampedGeoModel):
 
     class Meta:
         verbose_name = _("Parking lot")
