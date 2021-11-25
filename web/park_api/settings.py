@@ -62,6 +62,7 @@ INSTALLED_APPS = [
     'django.contrib.gis',
 
     'rest_framework',
+    'drf_yasg',
 
     'park_api',  # include the project itself as app
     'park_data.apps.ParkDataConfig',
@@ -72,7 +73,7 @@ INSTALLED_APPS = [
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
-    ]
+    ],
 }
 
 MIDDLEWARE = [

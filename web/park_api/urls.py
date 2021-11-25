@@ -20,8 +20,7 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("api/auth/", include('rest_framework.urls')),
-    path("api/v2/", include("api_v2.urls")),
+    path("api/", include('park_api.api_urls')),
 ]
 
 if settings.DEBUG is True:
