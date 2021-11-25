@@ -73,7 +73,7 @@ class Apag(ScraperBase):
                     lot_url = self.POOL.public_url.rstrip("/") + one_lot.find("a").attrs["href"]
                     lot_soup = self.request_soup(lot_url)
 
-                    elem_total = lot_soup.find("span", {"class": "total"})
+                    elem_total = lot_soup.find_all("span", {"class": "total"})
                     elem_address = lot_soup.find("div", {"class": "address"})
 
                     elem_lat = lot_soup.find("meta", {"itemprop": "latitude"})
@@ -81,6 +81,15 @@ class Apag(ScraperBase):
 
                     type = guess_lot_type(parking_name)
                     name = " ".join(parking_name.split()[1:])
+
+                    capacity = None
+                    for elem in elem_total:
+                        c = int_or_none(elem.text.split()[-1])
+                        if c is not None:
+                            if capacity is None:
+                                capacity = c
+                            else:
+                                capacity += c
 
                     lots.append(
                         LotInfo(
@@ -90,7 +99,7 @@ class Apag(ScraperBase):
                             public_url=lot_url,
                             source_url=url,
                             address="\n".join(l.strip() for l in elem_address.text.splitlines() if l.strip()),
-                            capacity=int_or_none(elem_total.text.split()[-1]) if elem_total else None,
+                            capacity=capacity,
                             latitude=float_or_none(elem_lat.get("content")),
                             longitude=float_or_none(elem_lon.get("content"))
                         )
