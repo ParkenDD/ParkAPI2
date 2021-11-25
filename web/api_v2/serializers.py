@@ -13,6 +13,20 @@ class LotField(serializers.RelatedField):
         return value.lot_id
 
 
+class ParkingPoolSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ParkingPool
+        exclude = ["id"]
+
+
+class ParkingPoolViewSet(viewsets.ReadOnlyModelViewSet):
+    queryset = ParkingPool.objects.all()
+    serializer_class = ParkingPoolSerializer
+
+
+# ----
+
+
 class ParkingLotSerializer(serializers.ModelSerializer):
     class Meta:
         model = ParkingLot
