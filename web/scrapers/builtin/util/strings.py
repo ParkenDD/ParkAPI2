@@ -6,6 +6,18 @@ from typing import Union, Optional, Tuple, List, Type, Dict
 RE_MULTI_MINUS = re.compile(r"--+")
 
 
+def guess_lot_type(name: str) -> Optional[str]:
+    name = name.lower()
+    if "parkplatz" in name:
+        return "lot"
+    elif "parkhaus" in name:
+        return "garage"
+    elif "tiefgarage" in name:
+        return "underground"
+    elif "parkdeck" in name:
+        return "level"
+
+
 def remove_special_chars(name: str) -> str:
     """
     Remove any umlauts, spaces and punctuation from a string.

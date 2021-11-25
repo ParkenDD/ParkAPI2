@@ -8,7 +8,7 @@ import sys
 import inspect
 from typing import Union, Optional, Tuple, List, Type, Dict
 
-from util import ScraperBase
+from util import ScraperBase, LotInfo
 
 MODULE_DIR: Path = Path(__file__).resolve().parent
 
@@ -30,7 +30,7 @@ def parse_args() -> dict:
 
     parser.add_argument(
         "command", type=str,
-        choices=["list", "scrape", "store-geojson"],
+        choices=["list", "scrape", "show-geojson", "write-geojson"],
         help="The command to execute",
     )
     parser.add_argument(
@@ -56,8 +56,17 @@ class SnapshotMaker:
     def __init__(self, scraper: ScraperBase):
         self.scraper = scraper
 
-    def info_map_to_geojson(self) -> dict:
+    def info_map_to_geojson(self, include_unknown: bool = False) -> dict:
         info_map = self.scraper.get_lot_info_map()
+
+        if include_unknown:
+            for lot in self.scraper.get_lot_data():
+                if lot.id not in info_map:
+                    # create a minimal lot info
+                    info_map[lot.id] = LotInfo(
+                        id=lot.id, name=lot.id, type=LotInfo.Types.lot,
+                    )
+
         ret_data = {
             "type": "FeatureCollection",
             "features": []
@@ -163,11 +172,12 @@ def main(
             print(json.dumps(data, indent=2, ensure_ascii=False) + comma)
         print("]")
 
-    elif command == "store-geojson":
+    elif command in ("show-geojson", "write-geojson"):
 
         for pool_id in pool_ids:
             log(f"scraping pool '{pool_id}'")
             scraper = scrapers[pool_id](caching=cache)
+            data = scraper.get_lot_infos()
             snapshot = SnapshotMaker(scraper)
             data = snapshot.info_map_to_geojson()
 

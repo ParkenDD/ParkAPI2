@@ -1,7 +1,7 @@
 import datetime
 from typing import Union, Optional, Tuple, List, Type, Dict
 
-from .strings import name_to_id
+from .strings import name_to_id, guess_lot_type
 
 
 class PoolInfo:
@@ -24,6 +24,13 @@ class PoolInfo:
 
 
 class LotInfo:
+
+    class Types:
+        lot = "lot"
+        garage = "garage"
+        level = "level"
+        underground = "underground"
+        bus = "bus"
 
     def __init__(
             self,
@@ -50,16 +57,8 @@ class LotInfo:
         self.longitude = longitude
 
         if self.type is None:
-            name = self.name.lower()
-            if "parkplatz" in name:
-                self.type = "lot"
-            elif "parkhaus" in name:
-                self.type = "garage"
-            elif "tiefgarage" in name:
-                self.type = "underground"
-            elif "parkdeck" in name:
-                self.type = "level"
-            else:
+            self.type = guess_lot_type(self.name)
+            if self.type is None:
                 raise ValueError(
                     f"Can not guess the type of lot '{self.name}', please specify with 'type'"
                 )
