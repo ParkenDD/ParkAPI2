@@ -102,6 +102,10 @@ class LotData:
         self.capacity = capacity
         self.lot_timestamp = lot_timestamp
 
+        validate_timestamp(self.timestamp, f"data {self.id}")
+        if self.lot_timestamp is not None:
+            validate_timestamp(self.lot_timestamp, f"data {self.id}")
+
         if self.status.startswith("_") or status not in vars(self.Status):
             raise ValueError(
                 f"Lot '{self.id}' status must be one of %s" % (
@@ -132,3 +136,17 @@ class LotData:
                             f", expected {self.capacity - self.num_occupied}"
                             f" (occupied={self.num_occupied}, capacity={self.capacity})"
                         )
+
+
+def validate_timestamp(timestamp: datetime.datetime, parent: str):
+
+    if not isinstance(timestamp, datetime.datetime):
+        raise ValueError(
+            f"'{parent}'.timestamp must datetime, got '{type(timestamp).__name__}'"
+        )
+
+    if timestamp.tzinfo:
+        raise ValueError(
+            f"'{parent}'.timestamp must be UTC and not contain a tzinfo"
+            f", got '{timestamp}'"
+        )

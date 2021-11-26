@@ -224,9 +224,9 @@ class ScraperBase:
             date_string: str,
             date_format: Optional[str] = None,
             timezone: Optional[str] = None
-    ) -> str:
+    ) -> datetime.datetime:
         """
-        Convert a date string into a ISO formatted UTC date string.
+        Convert a date string into a UTC datetime.
 
         Will always raise ValueError if parsing fails.
 
@@ -237,6 +237,6 @@ class ScraperBase:
 
         :param timezone: str|None, the timezone of the parsed date, defaults to UTC
 
-        :return: iso-formatted string without timezone
+        :return: datetime, in UTC but without tzinfo
         """
-        return to_utc_datetime(date_string, date_format=date_format, timezone=timezone).isoformat()
+        return to_utc_datetime(date_string, date_format=date_format, timezone=timezone)
