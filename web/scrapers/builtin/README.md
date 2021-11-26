@@ -18,15 +18,17 @@ The idea is to fork the scraper repo which would only contain:
 Then people can create one or more *pools* by copying and implementing `example.py` 
 
 ```python
+from typing import List
 from util import *
 
 class MyCity(ScraperBase):
     
     POOL = PoolInfo(
         id="my-city",
-        name="My own City",
-        public_url="https://www.mycity.de/parken",
-        source_url="https://www.mycity.de/api/parking/",
+        name="My City",
+        public_url="https://www.mycity.de/parken/",
+        source_url="https://www.mycity.de/parken/auslastung/",
+        license="...",
     )
 
     def get_lot_data(self) -> List[LotData]:
@@ -42,6 +44,44 @@ python scraper.py list
 python scraper.py scrape [--cache]
 python scraper.py validate [--cache]
 ```
+
+The optional `--cache` parameter simply caches all web requests which is a fair thing to do
+during scraper development. If you have old cache files and want to create new ones
+then run with `--cache write` to fire new web requests and write the new files and then
+use `--cache` afterwards.
+
+> Note: `validate` is not available yet.
+
+### Scraping live data
+
+The `get_lot_data` method must provide a list of `LotData` objects which 
+are defined in [util/struct.py](util/struct.py). It's really basic and does not contain
+any further information about the parking lot, only the status, free spaces and capacity.
+
+### Scraping meta information
+
+Additional lot information is taken from a [geojson](https://geojson.org/) which 
+should have the same name as the scraper file, e.g. `example.geojson`. If the file
+exists, it will be used and it's `properties` must fit the `util/structs/LotInfo` object.
+If it's not existing, the method `get_lot_infos` on your scraper will be called which
+should return all the required information. 
+
+*Some* websites do provide most of the required information and it might be easier to
+scrape it from the web pages instead of writing the geojson file by hand. However, it
+would not be good practice to scrape this info every other minute. To generate a 
+geojson file from the lot_info data:
+
+```shell script
+# delete the old file if it exists
+rm example.geojson  
+# run `get_lot_infos` and write to geojson 
+#   (and filter for the `example` pool) 
+python scraper.py write-geojson -p example
+``` 
+
+The command `show-geojson` will write the contents to stdout for inspection.
+
+### Publishing
 
 Once it's ready it can be *git submoduled* into the ParkAPI repo at `web/scrapers/`
 and the main project will import the scrapers from all modules.
