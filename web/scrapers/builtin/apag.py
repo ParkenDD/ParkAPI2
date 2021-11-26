@@ -40,16 +40,16 @@ class Apag(ScraperBase):
                 if parking_name not in parking_name_set:
                     parking_name_set.add(parking_name)
 
-                    parking_state = 'open'
+                    parking_state = LotData.Status.open
                     parking_free = None
                     try:
                         text = one_lot.find('span', class_='free-text').text.split()[0]
-                        if text != "voll":
-                            parking_free = int(text)
-                        else:
+                        if text == "voll":
                             parking_free = 0
+                        else:
+                            parking_free = int(text)
                     except:
-                        parking_state = 'nodata'
+                        parking_state = LotData.Status.nodata
 
                     lots.append(
                         LotData(

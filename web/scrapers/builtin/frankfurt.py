@@ -28,13 +28,11 @@ class Frankfurt(ScraperBase):
             lot_total = int(facility.find("totalparkingcapacityshorttermoverride").text)
             lot_occupied = int(facility.find("totalnumberofoccupiedparkingspaces").text)
 
-            # please be careful about the state only being allowed to contain either open, closed or nodata
-            # should the page list other states, please map these into the three listed possibilities
             state = facility.find("parkingfacilitystatus")
-            if state and state.text in ["open", "closed"]:
+            if state and state.text in [LotData.Status.open, LotData.Status.closed]:
                 state = state.text
             else:
-                state = "nodata"
+                state = LotData.Status.nodata
 
             lots.append(
                 LotData(

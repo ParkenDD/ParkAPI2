@@ -50,11 +50,11 @@ class Dresden(ScraperBase):
                     valid_free = False
                     free = None
                 if "park-closed" in td[0]["class"]:
-                    state = "closed"
+                    state = LotData.Status.closed
                 elif "blue" in td[0]["class"] and not valid_free:
-                    state = "nodata"
+                    state = LotData.Status.nodata
                 else:
-                    state = "open"
+                    state = LotData.Status.open
 
                 lots.append(
                     LotData(
