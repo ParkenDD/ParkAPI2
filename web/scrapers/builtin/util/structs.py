@@ -54,8 +54,8 @@ class LotInfo(Struct):
             address: Optional[str] = None,
             capacity: Optional[int] = None,
             has_live_capacity: bool = False,
-            latitude: Optional[float] = None,
-            longitude: Optional[float] = None,
+            latitude: Optional[Union[str, float]] = None,
+            longitude: Optional[Union[str, float]] = None,
     ):
         self.id = name_to_id(id)
         self.name = name
@@ -84,6 +84,21 @@ class LotInfo(Struct):
                         f"Lot type '{self.type}' is invalid, please use one of %s" % (
                             ", ".join(filter(lambda n: not n.startswith("_"), vars(LotInfo.Types)))
                         )
+                    )
+
+        for key in ("latitude", "longitude"):
+            value = getattr(self, key)
+            if value is not None:
+                try:
+                    value = float(value)
+                except (ValueError, TypeError) as e:
+                    raise ValueError(
+                        f"LotInfo '{self.name}' got invalid {key} '{value}'"
+                    )
+                setattr(self, key, value)
+                if not (-180 <= value <= 180):
+                    raise ValueError(
+                        f"LotInfo '{self.name}', {key} '{value}' out of bounds"
                     )
 
     @classmethod
