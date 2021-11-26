@@ -1,0 +1,772 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "ffh-24276",
+        "name": "Turmcenter",
+        "type": "unknown",
+        "public_url": "https://www.ffh.de/verkehr/parkhaeuser/parkhaus-info-frankfurt.html",
+        "source_url": null,
+        "address": null,
+        "capacity": 200,
+        "has_live_capacity": true
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "ffh-18944",
+        "name": "Alte Oper",
+        "type": "unknown",
+        "public_url": "https://www.ffh.de/verkehr/parkhaeuser/parkhaus-info-frankfurt.html",
+        "source_url": null,
+        "address": null,
+        "capacity": 407,
+        "has_live_capacity": true
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "ffh-24281",
+        "name": "Hauptbahnhof Süd",
+        "type": "unknown",
+        "public_url": "https://www.ffh.de/verkehr/parkhaeuser/parkhaus-info-frankfurt.html",
+        "source_url": null,
+        "address": null,
+        "capacity": 364,
+        "has_live_capacity": true
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "ffh-105479",
+        "name": "Baseler Platz",
+        "type": "unknown",
+        "public_url": "https://www.ffh.de/verkehr/parkhaeuser/parkhaus-info-frankfurt.html",
+        "source_url": null,
+        "address": null,
+        "capacity": 384,
+        "has_live_capacity": true
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "ffh-24279",
+        "name": "Konstabler",
+        "type": "unknown",
+        "public_url": "https://www.ffh.de/verkehr/parkhaeuser/parkhaus-info-frankfurt.html",
+        "source_url": null,
+        "address": null,
+        "capacity": 809,
+        "has_live_capacity": true
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "ffh-18497",
+        "name": "Hauptwache",
+        "type": "unknown",
+        "public_url": "https://www.ffh.de/verkehr/parkhaeuser/parkhaus-info-frankfurt.html",
+        "source_url": null,
+        "address": null,
+        "capacity": 426,
+        "has_live_capacity": true
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "ffh-18495",
+        "name": "Am Gericht",
+        "type": "unknown",
+        "public_url": "https://www.ffh.de/verkehr/parkhaeuser/parkhaus-info-frankfurt.html",
+        "source_url": null,
+        "address": null,
+        "capacity": 680,
+        "has_live_capacity": true
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "ffh-109240",
+        "name": "MyZeil",
+        "type": "unknown",
+        "public_url": "https://www.ffh.de/verkehr/parkhaeuser/parkhaus-info-frankfurt.html",
+        "source_url": null,
+        "address": null,
+        "capacity": 866,
+        "has_live_capacity": true
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "ffh-18494",
+        "name": "Konrad-Adenauer-Straße",
+        "type": "unknown",
+        "public_url": "https://www.ffh.de/verkehr/parkhaeuser/parkhaus-info-frankfurt.html",
+        "source_url": null,
+        "address": null,
+        "capacity": 634,
+        "has_live_capacity": true
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "ffh-ph02",
+        "name": "Luisenplatz",
+        "type": "unknown",
+        "public_url": "https://www.ffh.de/verkehr/parkhaeuser/parkhaus-info-wiesbaden.html",
+        "source_url": null,
+        "address": null,
+        "capacity": 292,
+        "has_live_capacity": true
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "ffh-ph03",
+        "name": "Luisenforum",
+        "type": "unknown",
+        "public_url": "https://www.ffh.de/verkehr/parkhaeuser/parkhaus-info-wiesbaden.html",
+        "source_url": null,
+        "address": null,
+        "capacity": 800,
+        "has_live_capacity": true
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "ffh-ph07",
+        "name": "Mauritius",
+        "type": "unknown",
+        "public_url": "https://www.ffh.de/verkehr/parkhaeuser/parkhaus-info-wiesbaden.html",
+        "source_url": null,
+        "address": null,
+        "capacity": 412,
+        "has_live_capacity": true
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "ffh-ph08",
+        "name": "Coulinstr.",
+        "type": "unknown",
+        "public_url": "https://www.ffh.de/verkehr/parkhaeuser/parkhaus-info-wiesbaden.html",
+        "source_url": null,
+        "address": null,
+        "capacity": 607,
+        "has_live_capacity": true
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "ffh-ph09",
+        "name": "Karstadt",
+        "type": "unknown",
+        "public_url": "https://www.ffh.de/verkehr/parkhaeuser/parkhaus-info-wiesbaden.html",
+        "source_url": null,
+        "address": null,
+        "capacity": 355,
+        "has_live_capacity": true
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "ffh-ph10",
+        "name": "Markt",
+        "type": "unknown",
+        "public_url": "https://www.ffh.de/verkehr/parkhaeuser/parkhaus-info-wiesbaden.html",
+        "source_url": null,
+        "address": null,
+        "capacity": 540,
+        "has_live_capacity": true
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "ffh-ph11",
+        "name": "Theater",
+        "type": "unknown",
+        "public_url": "https://www.ffh.de/verkehr/parkhaeuser/parkhaus-info-wiesbaden.html",
+        "source_url": null,
+        "address": null,
+        "capacity": 320,
+        "has_live_capacity": true
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "ffh-ph12",
+        "name": "Kurhaus / Casino",
+        "type": "unknown",
+        "public_url": "https://www.ffh.de/verkehr/parkhaeuser/parkhaus-info-wiesbaden.html",
+        "source_url": null,
+        "address": null,
+        "capacity": 416,
+        "has_live_capacity": true
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "ffh-ph13",
+        "name": "TG Liliencarre",
+        "type": "unknown",
+        "public_url": "https://www.ffh.de/verkehr/parkhaeuser/parkhaus-info-wiesbaden.html",
+        "source_url": null,
+        "address": null,
+        "capacity": 150,
+        "has_live_capacity": true
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "ffh-ph14",
+        "name": "PH Liliencarre",
+        "type": "unknown",
+        "public_url": "https://www.ffh.de/verkehr/parkhaeuser/parkhaus-info-wiesbaden.html",
+        "source_url": null,
+        "address": null,
+        "capacity": 370,
+        "has_live_capacity": true
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "ffh-cc",
+        "name": "Collini Center",
+        "type": "unknown",
+        "public_url": "https://www.ffh.de/verkehr/parkhaeuser/parkhaus-info-mannheim.html",
+        "source_url": null,
+        "address": null,
+        "capacity": null,
+        "has_live_capacity": true
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "ffh-mucc",
+        "name": "Mulde Collini Center",
+        "type": "unknown",
+        "public_url": "https://www.ffh.de/verkehr/parkhaeuser/parkhaus-info-mannheim.html",
+        "source_url": null,
+        "address": null,
+        "capacity": null,
+        "has_live_capacity": true
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "ffh-u2",
+        "name": "U2",
+        "type": "unknown",
+        "public_url": "https://www.ffh.de/verkehr/parkhaeuser/parkhaus-info-mannheim.html",
+        "source_url": null,
+        "address": null,
+        "capacity": null,
+        "has_live_capacity": true
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "ffh-h6",
+        "name": "H6",
+        "type": "unknown",
+        "public_url": "https://www.ffh.de/verkehr/parkhaeuser/parkhaus-info-mannheim.html",
+        "source_url": null,
+        "address": null,
+        "capacity": null,
+        "has_live_capacity": true
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "ffh-g1",
+        "name": "G1 Marktplatz",
+        "type": "unknown",
+        "public_url": "https://www.ffh.de/verkehr/parkhaeuser/parkhaus-info-mannheim.html",
+        "source_url": null,
+        "address": null,
+        "capacity": null,
+        "has_live_capacity": true
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "ffh-d5",
+        "name": "D5, Reiß-Museum",
+        "type": "unknown",
+        "public_url": "https://www.ffh.de/verkehr/parkhaeuser/parkhaus-info-mannheim.html",
+        "source_url": null,
+        "address": null,
+        "capacity": null,
+        "has_live_capacity": true
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "ffh-d3",
+        "name": "D3",
+        "type": "unknown",
+        "public_url": "https://www.ffh.de/verkehr/parkhaeuser/parkhaus-info-mannheim.html",
+        "source_url": null,
+        "address": null,
+        "capacity": null,
+        "has_live_capacity": true
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "ffh-c1",
+        "name": "C1",
+        "type": "unknown",
+        "public_url": "https://www.ffh.de/verkehr/parkhaeuser/parkhaus-info-mannheim.html",
+        "source_url": null,
+        "address": null,
+        "capacity": null,
+        "has_live_capacity": true
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "ffh-n1",
+        "name": "N1 Stadthaus",
+        "type": "unknown",
+        "public_url": "https://www.ffh.de/verkehr/parkhaeuser/parkhaus-info-mannheim.html",
+        "source_url": null,
+        "address": null,
+        "capacity": null,
+        "has_live_capacity": true
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "ffh-n2",
+        "name": "N2 Stadthaus",
+        "type": "unknown",
+        "public_url": "https://www.ffh.de/verkehr/parkhaeuser/parkhaus-info-mannheim.html",
+        "source_url": null,
+        "address": null,
+        "capacity": null,
+        "has_live_capacity": true
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "ffh-m4a",
+        "name": "Parkplatz M4a",
+        "type": "lot",
+        "public_url": "https://www.ffh.de/verkehr/parkhaeuser/parkhaus-info-mannheim.html",
+        "source_url": null,
+        "address": null,
+        "capacity": null,
+        "has_live_capacity": true
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "ffh-n6",
+        "name": "N6 Standard, Holiday Inn",
+        "type": "unknown",
+        "public_url": "https://www.ffh.de/verkehr/parkhaeuser/parkhaus-info-mannheim.html",
+        "source_url": null,
+        "address": null,
+        "capacity": null,
+        "has_live_capacity": true
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "ffh-n6-a",
+        "name": "N6 Komfort",
+        "type": "unknown",
+        "public_url": "https://www.ffh.de/verkehr/parkhaeuser/parkhaus-info-mannheim.html",
+        "source_url": null,
+        "address": null,
+        "capacity": null,
+        "has_live_capacity": true
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "ffh-hbf1",
+        "name": "Hbf P1",
+        "type": "unknown",
+        "public_url": "https://www.ffh.de/verkehr/parkhaeuser/parkhaus-info-mannheim.html",
+        "source_url": null,
+        "address": null,
+        "capacity": null,
+        "has_live_capacity": true
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "ffh-hbf2",
+        "name": "Hbf P2",
+        "type": "unknown",
+        "public_url": "https://www.ffh.de/verkehr/parkhaeuser/parkhaus-info-mannheim.html",
+        "source_url": null,
+        "address": null,
+        "capacity": null,
+        "has_live_capacity": true
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "ffh-hbfp3",
+        "name": "Hbf P3",
+        "type": "unknown",
+        "public_url": "https://www.ffh.de/verkehr/parkhaeuser/parkhaus-info-mannheim.html",
+        "source_url": null,
+        "address": null,
+        "capacity": null,
+        "has_live_capacity": true
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "ffh-klin",
+        "name": "Klinikum",
+        "type": "unknown",
+        "public_url": "https://www.ffh.de/verkehr/parkhaeuser/parkhaus-info-mannheim.html",
+        "source_url": null,
+        "address": null,
+        "capacity": null,
+        "has_live_capacity": true
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "ffh-messe",
+        "name": "Messe P6-P8",
+        "type": "unknown",
+        "public_url": "https://www.ffh.de/verkehr/parkhaeuser/parkhaus-info-mannheim.html",
+        "source_url": null,
+        "address": null,
+        "capacity": null,
+        "has_live_capacity": true
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "ffh-sap1",
+        "name": "SAP-Arena P1",
+        "type": "unknown",
+        "public_url": "https://www.ffh.de/verkehr/parkhaeuser/parkhaus-info-mannheim.html",
+        "source_url": null,
+        "address": null,
+        "capacity": null,
+        "has_live_capacity": true
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "ffh-sap2",
+        "name": "SAP-Arena P2",
+        "type": "unknown",
+        "public_url": "https://www.ffh.de/verkehr/parkhaeuser/parkhaus-info-mannheim.html",
+        "source_url": null,
+        "address": null,
+        "capacity": null,
+        "has_live_capacity": true
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "ffh-sap3",
+        "name": "SAP-Arena P3",
+        "type": "unknown",
+        "public_url": "https://www.ffh.de/verkehr/parkhaeuser/parkhaus-info-mannheim.html",
+        "source_url": null,
+        "address": null,
+        "capacity": null,
+        "has_live_capacity": true
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "ffh-7",
+        "name": "City Point",
+        "type": "unknown",
+        "public_url": "https://www.ffh.de/verkehr/parkhaeuser/parkhaus-info-kassel.html",
+        "source_url": null,
+        "address": null,
+        "capacity": 220,
+        "has_live_capacity": true
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "ffh-1",
+        "name": "Friedrichsplatz",
+        "type": "unknown",
+        "public_url": "https://www.ffh.de/verkehr/parkhaeuser/parkhaus-info-kassel.html",
+        "source_url": null,
+        "address": null,
+        "capacity": 980,
+        "has_live_capacity": true
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "ffh-4",
+        "name": "Wilhelmsstraße",
+        "type": "unknown",
+        "public_url": "https://www.ffh.de/verkehr/parkhaeuser/parkhaus-info-kassel.html",
+        "source_url": null,
+        "address": null,
+        "capacity": 322,
+        "has_live_capacity": true
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "ffh-2",
+        "name": "Kurfürsten Galerie",
+        "type": "unknown",
+        "public_url": "https://www.ffh.de/verkehr/parkhaeuser/parkhaus-info-kassel.html",
+        "source_url": null,
+        "address": null,
+        "capacity": 620,
+        "has_live_capacity": true
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "ffh-5",
+        "name": "Rathaus",
+        "type": "unknown",
+        "public_url": "https://www.ffh.de/verkehr/parkhaeuser/parkhaus-info-kassel.html",
+        "source_url": null,
+        "address": null,
+        "capacity": 298,
+        "has_live_capacity": true
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "ffh-10",
+        "name": "Galeria Kaufhof",
+        "type": "unknown",
+        "public_url": "https://www.ffh.de/verkehr/parkhaeuser/parkhaus-info-kassel.html",
+        "source_url": null,
+        "address": null,
+        "capacity": 10,
+        "has_live_capacity": true
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "ffh-9",
+        "name": "Martinskirche",
+        "type": "unknown",
+        "public_url": "https://www.ffh.de/verkehr/parkhaeuser/parkhaus-info-kassel.html",
+        "source_url": null,
+        "address": null,
+        "capacity": 113,
+        "has_live_capacity": true
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "ffh-3",
+        "name": "Garde-du-Corps",
+        "type": "unknown",
+        "public_url": "https://www.ffh.de/verkehr/parkhaeuser/parkhaus-info-kassel.html",
+        "source_url": null,
+        "address": null,
+        "capacity": 360,
+        "has_live_capacity": true
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "ffh-11",
+        "name": "Schloss Wilhelmshöhe",
+        "type": "unknown",
+        "public_url": "https://www.ffh.de/verkehr/parkhaeuser/parkhaus-info-kassel.html",
+        "source_url": null,
+        "address": null,
+        "capacity": 420,
+        "has_live_capacity": true
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "ffh-12",
+        "name": "Herkules Besucherzentrum",
+        "type": "unknown",
+        "public_url": "https://www.ffh.de/verkehr/parkhaeuser/parkhaus-info-kassel.html",
+        "source_url": null,
+        "address": null,
+        "capacity": 340,
+        "has_live_capacity": true
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "ffh-8",
+        "name": "Atrium",
+        "type": "unknown",
+        "public_url": "https://www.ffh.de/verkehr/parkhaeuser/parkhaus-info-kassel.html",
+        "source_url": null,
+        "address": null,
+        "capacity": 150,
+        "has_live_capacity": true
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "ffh-p4",
+        "name": "Louisen Arkaden",
+        "type": "unknown",
+        "public_url": "https://www.ffh.de/verkehr/parkhaeuser/parkhaus-info-bad-homburg.html",
+        "source_url": null,
+        "address": "Louisenstr. 72 – 82, Einfahrt über die Kisseleffstraße",
+        "capacity": 230,
+        "has_live_capacity": true
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "ffh-p1",
+        "name": "Parkgarage Schloss",
+        "type": "garage",
+        "public_url": "https://www.ffh.de/verkehr/parkhaeuser/parkhaus-info-bad-homburg.html",
+        "source_url": null,
+        "address": "Herrngasse 1, Einfahrt über die Ritter-von-Marx-Brücke",
+        "capacity": 263,
+        "has_live_capacity": true
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "ffh-p3",
+        "name": "Parkgarage Kurhaus",
+        "type": "garage",
+        "public_url": "https://www.ffh.de/verkehr/parkhaeuser/parkhaus-info-bad-homburg.html",
+        "source_url": null,
+        "address": "Schwedenpfad 1, Einfahrt über den Schwedenpfad oder die Ludwigstraße",
+        "capacity": 251,
+        "has_live_capacity": true
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "ffh-p7",
+        "name": "Parkhaus La Vie",
+        "type": "garage",
+        "public_url": "https://www.ffh.de/verkehr/parkhaeuser/parkhaus-info-bad-homburg.html",
+        "source_url": null,
+        "address": "Kisseleffstraße",
+        "capacity": 100,
+        "has_live_capacity": true
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "ffh-p2",
+        "name": "Parkhaus am Markt",
+        "type": "garage",
+        "public_url": "https://www.ffh.de/verkehr/parkhaeuser/parkhaus-info-bad-homburg.html",
+        "source_url": null,
+        "address": "Einfahrt über die Haingasse",
+        "capacity": 67,
+        "has_live_capacity": true
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "ffh-p5",
+        "name": "Parkgarage Karstadt",
+        "type": "garage",
+        "public_url": "https://www.ffh.de/verkehr/parkhaeuser/parkhaus-info-bad-homburg.html",
+        "source_url": null,
+        "address": "Louisenstraße 91-95, Einfahrt über die Schöne Aussicht",
+        "capacity": 395,
+        "has_live_capacity": true
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "ffh-p8",
+        "name": "Am Bahnhof",
+        "type": "unknown",
+        "public_url": "https://www.ffh.de/verkehr/parkhaeuser/parkhaus-info-bad-homburg.html",
+        "source_url": null,
+        "address": null,
+        "capacity": 298,
+        "has_live_capacity": true
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "ffh-p6",
+        "name": "Parkgarage Rathaus",
+        "type": "garage",
+        "public_url": "https://www.ffh.de/verkehr/parkhaeuser/parkhaus-info-bad-homburg.html",
+        "source_url": null,
+        "address": "Rathausplatz 2, Einfahrt über die Louisenstraße",
+        "capacity": 200,
+        "has_live_capacity": true
+      }
+    }
+  ]
+}
