@@ -107,8 +107,9 @@ class SnapshotMaker:
                 if key not in merged_lot or value is not None:
                     merged_lot[key] = value
 
-            if "timestamp" in merged_lot:
-                merged_lot["timestamp"] = merged_lot["timestamp"].isoformat()
+            for key, value in merged_lot.items():
+                if isinstance(value, datetime.datetime):
+                    merged_lot[key] = value.isoformat()
 
             snapshot["lots"].append(merged_lot)
 
@@ -179,7 +180,7 @@ def main(
             log(f"scraping pool '{pool_id}'")
             scraper = scrapers[pool_id](caching=cache)
             snapshot = SnapshotMaker(scraper)
-            data = snapshot.info_map_to_geojson()
+            data = snapshot.info_map_to_geojson(include_unknown=True)
             if command == "write-geojson":
                 filename = Path(inspect.getfile(scraper.__class__)[:-3] + ".geojson")
                 log("writing", filename)

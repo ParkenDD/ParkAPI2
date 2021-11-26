@@ -1,3 +1,6 @@
+"""
+Original code by Kliemann
+"""
 import urllib.parse
 from typing import List
 

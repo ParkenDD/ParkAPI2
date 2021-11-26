@@ -1,3 +1,6 @@
+"""
+Original code by Quint, Berke
+"""
 from typing import List
 
 from util import *

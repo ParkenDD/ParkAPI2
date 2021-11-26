@@ -4,7 +4,17 @@ from typing import Union, Optional, Tuple, List, Type, Dict
 from .strings import name_to_id, guess_lot_type
 
 
-class PoolInfo:
+class Struct:
+    def __repr__(self):
+        return f"{self.__class__.__name__}(%s)" % (
+            ", ".join(
+                f"{key}={repr(value)}"
+                for key, value in vars(self).items()
+            )
+        )
+
+
+class PoolInfo(Struct):
 
     def __init__(
             self,
@@ -23,7 +33,7 @@ class PoolInfo:
         self.license = license or None
 
 
-class LotInfo:
+class LotInfo(Struct):
 
     class Types:
         lot = "lot"
@@ -75,7 +85,7 @@ class LotInfo:
         return cls(**kwargs)
 
 
-class LotData:
+class LotData(Struct):
 
     class Status:
         open = "open"           # it's listed as open
