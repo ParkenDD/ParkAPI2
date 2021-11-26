@@ -136,7 +136,7 @@ swagger api documentation is at
 To get data into the database call:
 
 ```shell script
-./manage.py pa_scrape
+./manage.py pa_scrape scrape
 ```
 
 

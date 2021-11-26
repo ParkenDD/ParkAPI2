@@ -5,6 +5,7 @@ import argparse
 import glob
 import importlib
 import sys
+import traceback
 import inspect
 from typing import Union, Optional, Tuple, List, Type, Dict
 
@@ -115,35 +116,41 @@ class SnapshotMaker:
             "pool": vars(self.scraper.POOL),
             "lots": [],
         }
-        info_map = self.scraper.get_lot_info_map(required=infos_required)
+        try:
+            info_map = self.scraper.get_lot_info_map(required=infos_required)
 
-        lot_id_set = set()
-        for lot_data in self.scraper.get_lot_data():
-            if lot_data.id in lot_id_set:
-                raise ValueError(
-                    f"Duplicate LotData id '{lot_data.id}' in {lot_data}"
-                )
-            lot_id_set.add(lot_data.id)
-
-            if lot_data.id in info_map:
-                merged_lot = vars(info_map[lot_data.id])
-            else:
-                if infos_required:
+            lot_id_set = set()
+            for lot_data in self.scraper.get_lot_data():
+                if lot_data.id in lot_id_set:
                     raise ValueError(
-                        f"Lot {lot_data.id} is not in lot_infos"
+                        f"Duplicate LotData id '{lot_data.id}' in {lot_data}"
                     )
-                merged_lot = dict()
+                lot_id_set.add(lot_data.id)
 
-            for key, value in vars(lot_data).items():
-                if key not in merged_lot or value is not None:
-                    merged_lot[key] = value
+                if lot_data.id in info_map:
+                    merged_lot = vars(info_map[lot_data.id])
+                else:
+                    if infos_required:
+                        raise ValueError(
+                            f"Lot {lot_data.id} is not in lot_infos"
+                        )
+                    merged_lot = dict()
 
-            for key, value in merged_lot.items():
-                if isinstance(value, datetime.datetime):
-                    merged_lot[key] = value.isoformat()
+                for key, value in vars(lot_data).items():
+                    if key not in merged_lot or value is not None:
+                        merged_lot[key] = value
 
-            snapshot["lots"].append(merged_lot)
+                for key, value in merged_lot.items():
+                    if isinstance(value, datetime.datetime):
+                        merged_lot[key] = value.isoformat()
 
+                snapshot["lots"].append(merged_lot)
+
+        except Exception as e:
+            snapshot["error"] = {
+                "text": f"{type(e).__name__}: {e}",
+                "stacktrace": traceback.format_exc()
+            }
         return snapshot
 
 
@@ -185,13 +192,7 @@ def main(
     pool_ids = sorted(scrapers)
 
     if command == "list":
-        if not pool_ids:
-            print("No scrapers found")
-            return
-
-        max_length = max(len(i) for i in pool_ids)
-        for pool_id in pool_ids:
-            print(f"{pool_id:{max_length}}: class {scrapers[pool_id].__name__}")
+        print(json.dumps(pool_ids, indent=2))
 
     elif command == "scrape":
 
