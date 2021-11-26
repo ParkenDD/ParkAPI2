@@ -17,6 +17,3 @@ class GeoParkingLotViewSet(viewsets.ReadOnlyModelViewSet):
     filter_backends = [SpatialFilter, filters.OrderingFilter, DjangoFilterBackend]
     ordering_fields = ["lot_id", "pool_id", "max_capacity"]
     lookup_field = "lot_id"
-
-    def get_serializer_context(self):
-        super().get_serializer_context()

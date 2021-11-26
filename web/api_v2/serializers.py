@@ -18,6 +18,12 @@ class CoordField(serializers.Field):
         return value.tuple
 
 
+class LatestParkingDataSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = LatestParkingData
+        exclude = ["id"]
+
+
 # ----
 
 
@@ -44,6 +50,7 @@ class ParkingLotSerializer(serializers.ModelSerializer):
 
     pool_id = PoolField(source="pool", read_only=True)
     coordinates = CoordField(source="geo_point", read_only=True)
+    latest_data = LatestParkingDataSerializer()
 
 
 class ParkingLotViewSet(viewsets.ReadOnlyModelViewSet):
@@ -65,5 +72,4 @@ class ParkingDataSerializer(serializers.ModelSerializer):
 class ParkingDataViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = ParkingData.objects.all()
     serializer_class = ParkingDataSerializer
-
 

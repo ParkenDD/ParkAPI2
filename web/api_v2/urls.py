@@ -12,9 +12,9 @@ from . import views
 
 
 router = routers.DefaultRouter()
-router.register(r'all-pools', ParkingPoolViewSet)
-router.register(r'all-lots', ParkingLotViewSet)
-router.register(r'all-data', ParkingDataViewSet)
+router.register(r'pools', ParkingPoolViewSet)
+#router.register(r'all-lots', ParkingLotViewSet)
+#router.register(r'all-data', ParkingDataViewSet)
 router.register(r'lots', views.GeoParkingLotViewSet)
 #router.register(r'q', ParkingDataQueryView, basename="query")
 
