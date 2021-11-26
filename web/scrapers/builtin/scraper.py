@@ -56,16 +56,40 @@ class SnapshotMaker:
     def __init__(self, scraper: ScraperBase):
         self.scraper = scraper
 
-    def info_map_to_geojson(self, include_unknown: bool = False) -> dict:
+    def info_map_to_geojson(
+            self,
+            include_unknown: bool = False,
+            include_all_infos: bool = False,
+    ) -> dict:
+        """
+        Convert the Scraper.get_lot_infos() result to geojson.
+
+        :param include_unknown:
+            if True, id's that are in get_lot_data but not in
+            get_lot_infos will be initialized with default values
+
+        :param include_all_infos:
+            if True, all lots from get_lot_infos will be converted
+            to geojson, even if they are not in get_lot_data
+
+        :return: geojson dict
+        """
         info_map = self.scraper.get_lot_info_map(required=not include_unknown)
 
+        if include_unknown or not include_all_infos:
+            lot_data_list = self.scraper.get_lot_data()
+            lot_data_map = {lot_data.id: lot_data for lot_data in lot_data_list}
+
         if include_unknown:
-            for lot in self.scraper.get_lot_data():
+            for lot in lot_data_list:
                 if lot.id not in info_map:
                     # create a minimal lot info
                     info_map[lot.id] = LotInfo(
                         id=lot.id, name=lot.id, type=LotInfo.Types.lot,
                     )
+
+        if not include_all_infos:
+            info_map = {key: value for key, value in info_map.items() if key in lot_data_map}
 
         ret_data = {
             "type": "FeatureCollection",

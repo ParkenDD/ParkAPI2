@@ -36,11 +36,12 @@ class PoolInfo(Struct):
 class LotInfo(Struct):
 
     class Types:
-        lot = "lot"
+        bus = "bus"
         garage = "garage"
         level = "level"
+        lot = "lot"                     # default type if nothing else fits
+        street = "street"
         underground = "underground"
-        bus = "bus"
 
     def __init__(
             self,
@@ -72,10 +73,21 @@ class LotInfo(Struct):
                 raise ValueError(
                     f"Can not guess the type of lot '{self.name}', please specify with 'type'"
                 )
+        else:
+            if self.type not in vars(LotInfo.Types):
+                guessed_type = guess_lot_type(self.type)
+                if guessed_type:
+                    self.type = guessed_type
+                else:
+                    raise ValueError(
+                        f"Lot type '{self.type}' is invalid, please use one of %s" % (
+                            ", ".join(filter(lambda n: not n.startswith("_"), vars(LotInfo.Types)))
+                        )
+                    )
 
     @classmethod
     def from_dict(cls, data: dict) -> "LotInfo":
-        dummy = cls("id", "name", "type")
+        dummy = cls("id", "name", "lot")
         keys = list(vars(dummy))
         kwargs = {
             key: data[key]

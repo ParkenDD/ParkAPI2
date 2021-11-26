@@ -7,15 +7,20 @@ RE_MULTI_MINUS = re.compile(r"--+")
 
 
 def guess_lot_type(name: str) -> Optional[str]:
+    from .structs import LotInfo
+
+    NAME_TO_LOT_TYPE_MAPPING = {
+        "parkplatz": LotInfo.Types.lot,
+        "parkhaus": LotInfo.Types.garage,
+        "tiefgarage": LotInfo.Types.underground,
+        "parkdeck": LotInfo.Types.level,
+        "parklevel": LotInfo.Types.level,
+    }
+
     name = name.lower()
-    if "parkplatz" in name:
-        return "lot"
-    elif "parkhaus" in name:
-        return "garage"
-    elif "tiefgarage" in name:
-        return "underground"
-    elif "parkdeck" in name:
-        return "level"
+    for key, type in NAME_TO_LOT_TYPE_MAPPING.items():
+        if key in name:
+            return type
 
 
 def remove_special_chars(name: str) -> str:

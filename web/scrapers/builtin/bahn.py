@@ -17,7 +17,7 @@ else:
             id="bahn",
             name="Deutsche Bahn Parkplätze API",
             public_url="https://data.deutschebahn.com/dataset/api-parkplatz.html",
-            source_url="https://api.deutschebahn.com/bahnpark/v1/spaces/occupancies",
+            source_url="https://api.deutschebahn.com/bahnpark/v1/spaces",
             license="Creative Commons Attribution 4.0 International (CC BY 4.0)",
             timezone="Europe/Berlin",  # i guess
         )
@@ -38,10 +38,8 @@ else:
         def get_lot_data(self) -> List[LotData]:
             now = self.now()
             data = self.request_json(
-                self.POOL.source_url,
+                self.POOL.source_url + "/occupancies",
             )
-            import json
-            print(json.dumps(data, indent=2))
 
             lots = []
             for alloc in data["allocations"]:
@@ -83,21 +81,38 @@ else:
 
             return lots
 
-        def XX_get_lot_infos(self) -> List[LotInfo]:
-            soup = self.request_soup(url)
+        def get_lot_infos(self) -> List[LotInfo]:
+            spaces = []
+
+            offset = 0
+            while True:
+                data = self.request_json(
+                    self.POOL.source_url,
+                    params={"offset": offset, "limit": 100}
+                )
+                spaces += data["items"]
+                if len(spaces) >= data["totalCount"]:
+                    break
+                offset += len(data["items"])
 
             lots = []
-            for facility in soup.find_all("parkingfacility"):
+            for space in spaces:
+                # import json
+                # print(json.dumps(space, indent=2)); exit()
+
                 lots.append(
                     LotInfo(
-                        id=f"fam-{facility['id']}",
-                        name=facility.find("parkingfacilitydescription").text,
-                        type="lot",  # there's no data
-                        source_url=self.POOL.source_url,
-                        latitude=float(facility.find("pointcoordinates").find("latitude").text),
-                        longitude=float(facility.find("pointcoordinates").find("longitude").text),
-                        capacity=int(facility.find("totalparkingcapacity").text),
+                        id="db-%s" % space["id"],
+                        name=space["name"],
+                        # either street or auto-mapping
+                        type=LotInfo.Types.street if space["spaceType"] == "Straße" else space["spaceType"],
+                        public_url=space["url"],
+                        source_url=self.POOL.source_url + "/occupancies",
+                        address="\n".join(space["address"].values()),
+                        capacity=int(space["numberParkingPlaces"]),
                         has_live_capacity=True,
+                        latitude=space["geoLocation"]["latitude"],
+                        longitude=space["geoLocation"]["longitude"],
                     )
                 )
 

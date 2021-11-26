@@ -180,7 +180,10 @@ class ScraperBase:
             time.sleep(1. / self.REQUESTS_PER_SECOND - passed_time)
         self.__last_request_time = time.time()
 
-        log(f"requesting {method} {url} {kwargs}")
+        display_kwargs = kwargs.copy()
+        display_kwargs.pop("headers", None)
+        log(f"requesting {method} {url} {display_kwargs or ''}")
+
         response = self.session.request(
             method=method,
             url=url,
