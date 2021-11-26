@@ -40,7 +40,11 @@ class Apag(ScraperBase):
                     parking_state = 'open'
                     parking_free = None
                     try:
-                        parking_free = int(one_lot.find('span', class_='free-text').text.split()[0])
+                        text = one_lot.find('span', class_='free-text').text.split()[0]
+                        if text != "voll":
+                            parking_free = int(text)
+                        else:
+                            parking_free = 0
                     except:
                         parking_state = 'nodata'
 
