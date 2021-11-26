@@ -26,7 +26,13 @@ class Frankfurt(ScraperBase):
         for facility in soup.select("parkingfacilitytablestatuspublication > parkingfacilitystatus"):
             lot_id = facility.find("parkingfacilityreference")["id"]
             lot_total = int(facility.find("totalparkingcapacityshorttermoverride").text)
-            lot_occupied = int(facility.find("totalnumberofoccupiedparkingspaces").text)
+            # TODO: Need not find out difference between
+            #   totalNumberOfOccupiedParkingSpaces and totalNumberOfVacantParkingSpaces
+            #   e.g. first goes to zero oro might disappear when closed while second remains
+            try:
+                lot_occupied = int(facility.find("totalnumberofoccupiedparkingspaces").text)
+            except:
+                lot_occupied = None
 
             state = facility.find("parkingfacilitystatus")
             if state and state.text in [LotData.Status.open, LotData.Status.closed]:
