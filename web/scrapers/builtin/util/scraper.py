@@ -16,10 +16,12 @@ import inspect
 import unicodedata
 from typing import Union, Optional, Tuple, List, Type, Dict
 
+import dateutil.parser
 import requests
 from bs4 import BeautifulSoup
 
 from .structs import PoolInfo, LotInfo, LotData
+from .dt import to_utc_datetime
 
 
 VERSION = (0, 0, 1)
@@ -220,24 +222,21 @@ class ScraperBase:
     def convert_date(
             cls,
             date_string: str,
-            date_format: str,
+            date_format: Optional[str] = None,
             timezone: Optional[str] = None
     ) -> str:
         """
-        Convert a date into a ISO formatted UTC date string.
-        Timezone defaults to Europe/Berlin.
+        Convert a date string into a ISO formatted UTC date string.
 
-        :param date_string: str, the date string
-        :param date_format: str, the format for parsing the date string
-        :param timezone: str|None, the timezone of the parsed date
-        :return: str, iso-formatted string
+        Will always raise ValueError if parsing fails.
+
+        :param date_string: str, The date string
+        :param date_format: str|None
+            Optional format for parsing the date string.
+            defaults to Scraper.POOL.timezone.
+
+        :param timezone: str|None, the timezone of the parsed date, defaults to UTC
+
+        :return: iso-formatted string without timezone
         """
-        if timezone is None:
-            timezone = cls.POOL.timezone
-
-        last_updated = datetime.datetime.strptime(date_string, date_format)
-        local_timezone = pytz.timezone(timezone)
-        last_updated = local_timezone.localize(last_updated, is_dst=None)
-        last_updated = last_updated.astimezone(pytz.utc).replace(tzinfo=None)
-
-        return last_updated.replace(microsecond=0).isoformat()
+        return to_utc_datetime(date_string, date_format=date_format, timezone=timezone).isoformat()

@@ -1,3 +1,4 @@
+from .dt import to_utc_datetime
 from .strings import (
     guess_lot_type,
     remove_special_chars,
