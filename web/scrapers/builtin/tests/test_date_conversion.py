@@ -53,10 +53,8 @@ class TestDateConversion(unittest.TestCase):
             to_utc_datetime("2000-01-01T00:00:00+0100").isoformat()
         )
 
-        # with explicit timezone
-        # TODO: This currently does never work
-        with self.assertRaises(ValueError):
-            self.assertEqual(
-                "1999-12-31T23:00:00",
-                to_utc_datetime("2000-01-01T00:00:00+0100", timezone="Europe/Berlin").isoformat()
-            )
+        # with explicit timezone (it will be overridden by date string)
+        self.assertEqual(
+            "1999-12-31T23:00:00",
+            to_utc_datetime("2000-01-01T00:00:00+0100", timezone="US/Pacific").isoformat()
+        )

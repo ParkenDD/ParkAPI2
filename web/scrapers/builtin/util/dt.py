@@ -33,8 +33,7 @@ def to_utc_datetime(
         local_timezone = pytz.timezone(timezone)
 
         if dt.tzinfo:
-            if dt.tzinfo != local_timezone:
-                raise ValueError(f"Expected timezone '{local_timezone}' in date '{date_string}', got '{dt.tzinfo}'")
+            pass  # we just convert from that timezone to UTC
         else:
             dt = local_timezone.localize(dt, is_dst=None)
 
