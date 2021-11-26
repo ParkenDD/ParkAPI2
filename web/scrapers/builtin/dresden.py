@@ -23,7 +23,7 @@ class Dresden(ScraperBase):
         last_updated = None
         for h3 in soup.find_all("h3"):
             if h3.text == "Letzte Aktualisierung":
-                last_updated = self.convert_date(h3.find_next_sibling("div").text, "%d.%m.%Y %H:%M:%S")
+                last_updated = self.to_utc_datetime(h3.find_next_sibling("div").text, "%d.%m.%Y %H:%M:%S")
 
         lots = []
         for table in soup.find_all("table"):

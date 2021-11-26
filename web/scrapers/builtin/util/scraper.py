@@ -249,7 +249,7 @@ class ScraperBase:
         return datetime.datetime.utcnow().replace(microsecond=0)
 
     @classmethod
-    def convert_date(
+    def to_utc_datetime(
             cls,
             date_string: str,
             date_format: Optional[str] = None,

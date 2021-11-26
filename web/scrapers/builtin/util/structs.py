@@ -42,6 +42,7 @@ class LotInfo(Struct):
         lot = "lot"                     # default type if nothing else fits
         street = "street"
         underground = "underground"
+        unknown = "unknown"             # A bad type, but better than saying something that might be wrong
 
     def __init__(
             self,

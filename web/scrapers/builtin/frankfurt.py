@@ -19,7 +19,7 @@ class Frankfurt(ScraperBase):
         now = self.now()
         soup = self.request_soup(self.POOL.source_url)
 
-        last_updated = self.convert_date(soup.find("publicationtime").text)
+        last_updated = self.to_utc_datetime(soup.find("publicationtime").text)
 
         lots = []
 

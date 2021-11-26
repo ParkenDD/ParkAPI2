@@ -49,7 +49,7 @@ else:
 
                 lot_timestamp = alloc.get("timeSegment")
                 if lot_timestamp:
-                    lot_timestamp = self.convert_date(lot_timestamp)
+                    lot_timestamp = self.to_utc_datetime(lot_timestamp)
 
                 # --- status ---
 
