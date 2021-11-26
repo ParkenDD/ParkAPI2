@@ -37,7 +37,10 @@ class ScraperBase:
 
     CACHE_DIR = Path(tempfile.gettempdir()) / "parkapi-scraper"
     REQUESTS_PER_SECOND = 2.
+    # The user agent that is used in web requests
     USER_AGENT = "github.com/defgsus/ParkAPI2"
+    # extra headers that should be added to all request
+    HEADERS = {}
 
     # A PoolInfo object must be specified for each derived scraper
     POOL: PoolInfo = None
@@ -117,7 +120,7 @@ class ScraperBase:
         for info in lot_infos:
             if info.id in lot_ids:
                 raise ValueError(
-                    f"Duplicate lot id '{info.id}' in '{self.POOL.id}' lot infos"
+                    f"Duplicate LotInfo id '{info.id}' in pool '{self.POOL.id}'"
                 )
             lot_ids.add(info.id)
 
@@ -149,6 +152,14 @@ class ScraperBase:
 
         :return: requests.Response instance
         """
+        # -- put headers together --
+
+        headers = self.HEADERS.copy()
+        if kwargs.get("headers"):
+            headers.update(kwargs["headers"])
+        if headers:
+            kwargs["headers"] = headers
+
         # -- check file cache --
 
         cache_name = None
@@ -194,6 +205,22 @@ class ScraperBase:
 
         return response
 
+    def request_json(
+            self,
+            url: str,
+            method: str = "GET",
+            expected_status: int = 200,
+            caching: Optional[Union[bool, str]] = None,
+            **kwargs,
+    ) -> Union[dict, list]:
+        return self.request(
+            url=url, method=method,
+            expected_status=expected_status,
+            caching=caching,
+            headers={"Accept": "application/json"},
+            **kwargs,
+        ).json()
+
     def request_soup(
             self,
             url: str,
@@ -235,8 +262,14 @@ class ScraperBase:
             Optional format for parsing the date string.
             defaults to Scraper.POOL.timezone.
 
-        :param timezone: str|None, the timezone of the parsed date, defaults to UTC
+        :param timezone: str|None
+            The timezone of the parsed date,
+            defaults to Scraper.POOL.timezone
 
         :return: datetime, in UTC but without tzinfo
         """
-        return to_utc_datetime(date_string, date_format=date_format, timezone=timezone)
+        return to_utc_datetime(
+            date_string,
+            date_format=date_format,
+            timezone=cls.POOL.timezone if timezone is None else timezone,
+        )

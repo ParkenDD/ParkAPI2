@@ -86,18 +86,25 @@ class SnapshotMaker:
             ret_data["features"].append(feature)
         return ret_data
 
-    def get_snapshot(self, required_infos: bool = True) -> dict:
+    def get_snapshot(self, infos_required: bool = True) -> dict:
         snapshot = {
             "pool": vars(self.scraper.POOL),
             "lots": [],
         }
-        info_map = self.scraper.get_lot_info_map(required=True)
+        info_map = self.scraper.get_lot_info_map(required=infos_required)
 
+        lot_id_set = set()
         for lot_data in self.scraper.get_lot_data():
+            if lot_data.id in lot_id_set:
+                raise ValueError(
+                    f"Duplicate LotData id '{lot_data.id}' in {lot_data}"
+                )
+            lot_id_set.add(lot_data.id)
+
             if lot_data.id in info_map:
                 merged_lot = vars(info_map[lot_data.id])
             else:
-                if required_infos:
+                if infos_required:
                     raise ValueError(
                         f"Lot {lot_data.id} is not in lot_infos"
                     )
@@ -169,7 +176,8 @@ def main(
             log(f"scraping pool '{pool_id}'")
             scraper = scrapers[pool_id](caching=cache)
             snapshot = SnapshotMaker(scraper)
-            data = snapshot.get_snapshot()
+            data = snapshot.get_snapshot(infos_required=False)
+
             comma = "," if pool_id != pool_ids[-1] else ""
             print(json.dumps(data, indent=2, ensure_ascii=False) + comma)
         print("]")
