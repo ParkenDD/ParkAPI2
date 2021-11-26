@@ -1,30 +1,7 @@
 from rest_framework import serializers, viewsets
 
 from park_data.models import *
-
-
-class PoolField(serializers.RelatedField):
-    def to_representation(self, value):
-        return value.pool_id
-
-
-class LotField(serializers.RelatedField):
-    def to_representation(self, value):
-        return value.lot_id
-
-
-class CoordField(serializers.Field):
-    def to_representation(self, value):
-        return value.tuple
-
-
-class LatestParkingDataSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = LatestParkingData
-        exclude = ["id"]
-
-
-# ----
+from .fields import *
 
 
 class ParkingPoolSerializer(serializers.ModelSerializer):
@@ -32,33 +9,17 @@ class ParkingPoolSerializer(serializers.ModelSerializer):
         model = ParkingPool
         exclude = ["id"]
 
-
-class ParkingPoolViewSet(viewsets.ReadOnlyModelViewSet):
-    queryset = ParkingPool.objects.all()
-    serializer_class = ParkingPoolSerializer
-    lookup_field = "pool_id"
+    date_created = DateTimeField()
+    date_updated = DateTimeField()
 
 
-# ----
-
-
-class ParkingLotSerializer(serializers.ModelSerializer):
+class LatestParkingDataSerializer(serializers.ModelSerializer):
     class Meta:
-        model = ParkingLot
-        exclude = ["id", "pool", "geo_point"]
-        depth = 2
+        model = LatestParkingData
+        exclude = ["id"]
 
-    pool_id = PoolField(source="pool", read_only=True)
-    coordinates = CoordField(source="geo_point", read_only=True)
-    latest_data = LatestParkingDataSerializer()
-
-
-class ParkingLotViewSet(viewsets.ReadOnlyModelViewSet):
-    queryset = ParkingLot.objects.all()
-    serializer_class = ParkingLotSerializer
-    lookup_field = "lot_id"
-
-# ----
+    timestamp = DateTimeField()
+    lot_timestamp = DateTimeField()
 
 
 class ParkingDataSerializer(serializers.ModelSerializer):
@@ -67,9 +28,20 @@ class ParkingDataSerializer(serializers.ModelSerializer):
         exclude = ["lot"]
 
     lot_id = LotField(source="lot", read_only=True)
+    timestamp = DateTimeField()
+    lot_timestamp = DateTimeField()
 
 
-class ParkingDataViewSet(viewsets.ReadOnlyModelViewSet):
-    queryset = ParkingData.objects.all()
-    serializer_class = ParkingDataSerializer
+class ParkingLotSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ParkingLot
+        exclude = ["id", "pool", "geo_point"]
+        depth = 2  # include latest_data
+
+    pool_id = PoolField(source="pool", read_only=True)
+    coordinates = CoordField(source="geo_point", read_only=True)
+    distance = DistanceField()
+    latest_data = LatestParkingDataSerializer()
+    date_created = DateTimeField()
+    date_updated = DateTimeField()
 

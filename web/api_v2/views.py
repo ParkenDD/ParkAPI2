@@ -1,14 +1,8 @@
-from django.utils.encoding import force_str
-from django.utils.translation import gettext_lazy as _
-from django.contrib.gis.geos import Point
-from django.contrib.gis.measure import Distance
-from rest_framework import serializers, viewsets, filters
-from rest_framework.compat import coreapi, coreschema, distinct
 from django_filters.rest_framework import DjangoFilterBackend
 
 from park_data.models import *
-from .serializers import ParkingLotSerializer, ParkingDataSerializer
-from .filters import SpatialFilter
+from .serializers import *
+from .filters import *
 
 
 class GeoParkingLotViewSet(viewsets.ReadOnlyModelViewSet):
@@ -17,3 +11,26 @@ class GeoParkingLotViewSet(viewsets.ReadOnlyModelViewSet):
     filter_backends = [SpatialFilter, filters.OrderingFilter, DjangoFilterBackend]
     ordering_fields = ["lot_id", "pool_id", "max_capacity"]
     lookup_field = "lot_id"
+
+
+class ParkingPoolViewSet(viewsets.ReadOnlyModelViewSet):
+    queryset = ParkingPool.objects.all()
+    serializer_class = ParkingPoolSerializer
+    lookup_field = "pool_id"
+
+
+# ----
+
+
+class ParkingLotViewSet(viewsets.ReadOnlyModelViewSet):
+    queryset = ParkingLot.objects.all()
+    serializer_class = ParkingLotSerializer
+    lookup_field = "lot_id"
+
+# ----
+
+
+class ParkingDataViewSet(viewsets.ReadOnlyModelViewSet):
+    queryset = ParkingData.objects.all()
+    serializer_class = ParkingDataSerializer
+
