@@ -4,32 +4,65 @@ This is an attempt to rewrite the [ParkAPI](https://github.com/offenesdresden/Pa
 using [GeoDjango](https://docs.djangoproject.com/en/3.2/ref/contrib/gis/) and
 the [django rest framework](https://www.django-rest-framework.org/).
 
+
 ## Data 
 
-Parking lots are identified by a unique string ID. Cities, states and countries 
-are identified by the 
-[OpenStreetMap ID](https://wiki.openstreetmap.org/wiki/Persistent_Place_Identifier#Element.27s_OSM_ID). 
+Parking lots are identified by a unique string ID. Each one is tied to a *Pool* which 
+represents the source of the parking lot data (a website).
 
-Please check the documentation in 
-[web/park_data/models/_store.py](web/park_data/models/_store.py) for the 
-layout of the data that needs to be supplied by a scraper.
+Example, query all nearby parking lots (100km around lon:6 lat:50):
+```shell script
+$ curl "http://localhost:8000/api/v2/lots/?location=6,50&radius=100"
+{
+  "count": 13,
+  "next": null,
+  "previous": null,
+  "results": [
+    {
+      "pool_id": "apag",
+      "coordinates": [
+        6.076306,
+        50.767823
+      ],
+      "latest_data": {
+        "timestamp": "2021-11-26T10:08:30",
+        "lot_timestamp": null,
+        "status": "open",
+        "num_free": 6,
+        "capacity": 70,
+        "num_occupied": 64,
+        "percent_free": 8.57
+      },
+      "date_created": "2021-11-25T11:44:03.917080",
+      "date_updated": "2021-11-25T16:26:37.914537",
+      "lot_id": "aachen-parkplatz-luisenhospital",
+      "name": "Luisenhospital",
+      "address": "Parkplatz Luisenhospital\nBoxgraben 99\n52064\nAachen",
+      "type": "lot",
+      "max_capacity": 70,
+      "has_live_capacity": false,
+      "public_url": "https://www.apag.de/parkobjekte/parkplatz-luisenhospital",
+      "source_url": "https://www.apag.de/parken-in-aachen"
+    },
+    ...
+  ]
+}
+```
 
+Find the corresponding pool:
 
-### OSM IDs in Nominatim
-
-Cities and larger entities are identified by the `osm_type` and `osm_id`. This
-seems to be the most permanent unique mapping that is currently available 
-by OpenStreetMap. More details 
-[here](https://nominatim.org/release-docs/develop/api/Output/#place_id-is-not-a-persistent-id) 
-and 
-[here](https://wiki.openstreetmap.org/wiki/Persistent_Place_Identifier).
-
-To find the `osm_id` for a specific place you can use the 
-[Nominatim search API](https://nominatim.org/release-docs/develop/api/Search/)
-or use the [web interface](https://nominatim.openstreetmap.org/ui/search.html)
-to search and the [detail page](https://nominatim.openstreetmap.org/ui/details.html)
-to view or validate IDs.
-
+```shell script
+curl "http://localhost:8000/api/v2/pools/apag/" -H "Accept: application/json; indent=2"
+{
+  "date_created": "2021-11-25T11:44:03.868010",
+  "date_updated": "2021-11-25T11:44:03.868027",
+  "pool_id": "apag",
+  "name": "Aachener Parkhaus GmbH",
+  "public_url": "https://www.apag.de",
+  "source_url": null,
+  "license": null
+}
+```
 
 ## Scraping
 
@@ -40,7 +73,7 @@ A prototype is developed in [web/scrapers/builtin/](web/scrapers/builtin/).
 
 ### Clone repo and setup python environment
 
-```
+```shell script
 git clone https://github.com/defgsus/ParkAPI2
 cd ParkAPI2
 
@@ -58,13 +91,13 @@ for installing postgres and the `postgis` extension.
 
 Alternatively, you can run the 
 [postgis docker image](https://github.com/postgis/docker-postgis):
-```
+```shell script
 docker run --name some-postgis -e POSTGRES_PASSWORD=pass -d postgis/postgis
 ```
 
-
-Then 
-```
+Then create and setup database
+ 
+```shell script
 # start psql
 sudo -u postgres psql
 
@@ -82,7 +115,7 @@ ALTER USER "park_api" SUPERUSER;
 
 Then in the `web/` directory call:
 
-```
+```shell script
 # run unittests
 ./manage.py test
 
@@ -90,24 +123,20 @@ Then in the `web/` directory call:
 ./manage.py migrate
 ./manage.py createsuperuser
 
-# start the server
-./manage.py runserver
-# or in debug mode
+# start the server in debug mode
 DJANGO_DEBUG=True ./manage.py runserver
 ```
 
-By default, the admin interface is available at 
-[localhost:8000/admin/](localhost:8000/admin/). 
+By default, the django admin interface is available at 
+[localhost:8000/admin/](localhost:8000/admin/) and the 
+swagger api documentation is at
+[localhost:8000/api/docs/](localhost:8000/api/docs/). 
 
-Right now, the only thing one can do is creating Cities, States and Countries
-and tie them together. E.g.
+To get data into the database call:
 
-- create a new city
-- type `R191645` into the OSM ID field
-- press "Save and continue"
-- press "Query nominatim"
-
-It should populate the name and geo fields. 
+```shell script
+./manage.py pa_scrape
+```
 
 
 ## Docker and CI

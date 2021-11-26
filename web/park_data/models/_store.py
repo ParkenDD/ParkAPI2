@@ -1,233 +1,100 @@
-from typing import List
+from typing import List, Optional
 
 from django.db import transaction
+from django.contrib.gis.geos import Point
 
-from .city import City
-from .country import Country
-from .parking_data import ParkingData, ParkingLotState
+from .parking_pool import ParkingPool
 from .parking_lot import ParkingLot
-from .state import State
+from .parking_data import ParkingData, LatestParkingData
 
 
-class SchemaError(Exception):
-    pass
-
-
-def store_location_data(data: dict) -> List[ParkingLot]:
+def store_snapshot(snapshot: dict, update_infos: bool = True) -> List[ParkingData]:
     """
-    Store a couple of ParkingLot models.
+    Store a snapshot.
 
-    Each ParkingLot has a unique ID and must be associated to a City.
-
-    City, State and Country models are uniquely identified by OpenStreetMap IDs.
-
-    :param data:
-
-        A dict looking like:
-
-            (R) is required
-            ( ) is optional
-
-            {
-                "lots": [
-                    {
-                        "id": str (64),                 # (R) unique persistent ID of parking lot
-                                                        #   typically: "city_street-name" or "city_ID" if
-                                                        #   a persistent ID is known.
-                        "name": str (64),               # ( ) name of the parking lot
-                        "osm_id": int,                  # ( ) OpenStreetMap ID if available
-                        "city_osm_id": int,             # (R) OSM ID of city
-                        "state_osm_id": int,            # ( ) OSM ID of (federal) state
-                        "country_osm_id": int,          # ( ) OSM ID of country
-                        "country_code": str (2),        # ( ) two-letter ISO 3166 country code (will be lower-cased)
-                                                        #   required if 'county_osm_id' is new
-
-                        "address": str (1024),          # ( ) free text address
-                        "lot_type": str (64),           # ( ) type (no naming convention yet but probably burns down to:
-                                                        #       street, garage, underground)
-                        "public_url": str (4096),       # ( ) an informational website
-                    }
-                ]
-            }
-
-        The lot `id` must not repeat in the list.
-
-    :returns List of park_data.models.ParkingLot instances
+    :returns List of park_data.models.ParkingData instances
     """
-    if "lots" not in data:
-        raise SchemaError("Required attribute 'lots' missing")
+    pool = snapshot["pool"]
+    lots = snapshot["lots"]
+    data_models = []
 
-    country_mapping = dict()
-    state_mapping = dict()
-    city_mapping = dict()
-    lot_set = set()
-    lot_models = []
+    kwargs = {key: value for key, value in pool.items() if hasattr(ParkingPool, key)}
+    kwargs["pool_id"] = kwargs.pop("id")
+    try:
+        pool_model = ParkingPool.objects.get(pool_id=pool["id"])
 
-    # put everything into a transaction so that further validation
-    #    errors leave the database unchanged
-    with transaction.atomic():
+        if update_infos:
+            updated = False
+            for key, value in kwargs.items():
+                if value is not None and hasattr(pool_model, key) and getattr(pool_model, key) in (None, ""):
+                    setattr(pool_model, key, value)
+                    updated = True
+            if updated:
+                pool_model.save()
 
-        for i, lot in enumerate(data["lots"]):
-            if not lot.get("id"):
-                raise SchemaError(f"Required attribute 'lots.{i}.id' missing")
-            if not lot.get("city_osm_id"):
-                raise SchemaError(f"Required attribute 'lots.{i}.city_osm_id' missing")
+    except ParkingPool.DoesNotExist:
+        pool_model = ParkingPool.objects.create(**kwargs)
 
-            if lot.get("country_osm_id") and lot["country_osm_id"] not in country_mapping:
-                try:
-                    country = Country.objects.get(osm_id=lot["country_osm_id"])
-                except Country.DoesNotExist:
-                    if not lot.get("country_code"):
-                        raise SchemaError(f"Required attribute 'lots.{i}.country_code' missing")
+    for lot in lots:
 
-                    country = Country.objects.create(
-                        osm_id=lot["country_osm_id"],
-                        iso_code=lot["country_code"].lower(),
-                    )
-                country_mapping[lot["country_osm_id"]] = country
+        kwargs = {key: value for key, value in lot.items() if hasattr(ParkingLot, key)}
+        kwargs["lot_id"] = kwargs.pop("id")
+        kwargs["pool"] = pool_model
+        kwargs["max_capacity"] = max_or_none(lot.get("capacity"), lot.get("num_free"))
+        kwargs["has_live_capacity"] = lot.get("has_live_capacity") or False
+        if not (lot.get("latitude") is None or lot.get("longitude") is None):
+            kwargs["geo_point"] = Point(lot["longitude"], lot["latitude"])
 
-            if lot.get("state_osm_id") and lot["state_osm_id"] not in state_mapping:
-                try:
-                    state = State.objects.get(osm_id=lot["state_osm_id"])
-                except State.DoesNotExist:
-                    state = State.objects.create(
-                        osm_id=lot["state_osm_id"],
-                        country=country_mapping[lot["country_osm_id"]],
-                    )
-                state_mapping[lot["state_osm_id"]] = state
+        try:
+            lot_model = ParkingLot.objects.get(lot_id=lot["id"])
 
-            if lot["city_osm_id"] not in city_mapping:
-                try:
-                    city = City.objects.get(osm_id=lot["city_osm_id"])
-                except City.DoesNotExist:
-                    city = City.objects.create(
-                        osm_id=lot["city_osm_id"],
-                        country=country_mapping.get(lot.get("country_osm_id")),
-                        state=state_mapping[lot["state_osm_id"]] if lot.get("state_osm_id") else None,
-                    )
-                city_mapping[lot["city_osm_id"]] = city
+            updated = False
+            max_capacity = max_or_none(kwargs["max_capacity"], lot_model.max_capacity)
+            if max_capacity != lot_model.max_capacity:
+                lot_model.max_capacity = max_capacity
+                updated = True
 
-            if lot["id"] in lot_set:
-                raise SchemaError(f"Duplicate lot id '{lot['id']}' in 'lots.{i}.id'")
+            if update_infos:
+                kwargs.pop("max_capacity")
+                for key, value in kwargs.items():
+                    if value is not None and hasattr(lot_model, key) and getattr(lot_model, key) in (None, ""):
+                        setattr(lot_model, key, value)
+                        updated = True
 
-            try:
-                lot_model = ParkingLot.objects.get(lot_id=lot["id"])
-            except ParkingLot.DoesNotExist:
-                lot_model = ParkingLot.objects.create(
-                    lot_id=lot["id"],
-                    city=city_mapping[lot["city_osm_id"]],
-                    name=lot.get("name") or None,
-                    address=lot.get("address") or None,
-                )
-            lot_set.add(lot["id"])
-            lot_models.append(lot_model)
+            if updated:
+                lot_model.save()
 
-    return lot_models
+        except ParkingLot.DoesNotExist:
+            lot_model = ParkingLot.objects.create(**kwargs)
+
+        kwargs = {key: value for key, value in lot.items() if hasattr(ParkingData, key)}
+        kwargs.pop("id")
+        kwargs["lot"] = lot_model
+        data_models.append(ParkingData.objects.create(**kwargs))
+
+        # --- update LatestParkingData ---
+
+        kwargs.pop("lot")
+        if not lot_model.latest_data:
+            lot_model.latest_data = LatestParkingData.objects.create(**kwargs)
+            lot_model.save()
+        else:
+            updated = False
+            for key, value in kwargs.items():
+                if value != getattr(lot_model.latest_data, key):
+                    setattr(lot_model.latest_data, key, value)
+                    updated = True
+            if updated:
+                lot_model.latest_data.save()
+
+    return data_models
 
 
-def store_lot_data(data: dict) -> List[ParkingData]:
-    """
-    Store the scraped parking lot data for a couple of lots.
-
-    Each ParkingLot must be created previously.
-
-    :param data:
-
-        A dict with the following layout:
-
-            (R) means 'required'
-
-            {
-                "timestamp": str|datetime,      # (R) timestamp of snapshot
-                "lots": [                       # (R)
-                    {
-                        "id": str (64),         # (R) unique persistent ID of parking lot
-                        "status": str (16),     # (R) see park_data.models.parking_data.ParkingLotStates
-
-                        "num_free": int,        # supply any of these numbers if available
-                        "num_total": int,
-                        "num_occupied": int,
-                    }
-                ]
-            }
-
-        The lot `id` must not repeat in the list and generally there
-        can only be **one** entry per timestamp/lot_id combination.
-
-    :return: list of saved instances of park_data.models.ParkingData
-    """
-    if not data.get("timestamp"):
-        raise SchemaError("Required attribute 'timestamp' missing")
-
-    if "lots" not in data:
-        raise SchemaError("Required attribute 'lots' missing")
-
-    # put everything into a transaction so that further validation
-    #    errors leave the database unchanged
-    with transaction.atomic():
-
-        # --- get all ParkingLot instances ---
-
-        lot_mapping = dict()
-
-        for i, lot_data in enumerate(data["lots"]):
-            if not lot_data.get("id"):
-                raise SchemaError(f"Required attribute 'lots.{i}.id' missing")
-            if not lot_data.get("status"):
-                raise SchemaError(f"Required attribute 'lots.{i}.status' missing")
-
-            if lot_data["id"] not in lot_mapping:
-                try:
-                    lot_model = ParkingLot.objects.get(lot_id=lot_data["id"])
-                except ParkingLot.DoesNotExist:
-                    raise SchemaError(f"'lots.{i}.id' '{lot_data['id']}' is unknown")
-
-            lot_mapping[lot_data["id"]] = lot_model
-
-        # --- store ParkingData instances ---
-
-        parking_data_models = []
-        update_max_num_total = []
-
-        for i, lot_data in enumerate(data["lots"]):
-            num_free = lot_data.get("num_free")
-            num_total = lot_data.get("num_total")
-            num_occupied = lot_data.get("num_occupied")
-            percent_free = None
-
-            # validate and potentially complete the num_xxx values
-            if num_free is not None:
-                if num_total is not None:
-                    if num_occupied is None:
-                        num_occupied = num_total - num_free
-                    else:
-                        if num_occupied != num_total - num_free:
-                            raise SchemaError(
-                                f"Invalid 'lots.{i}.num_occupied', "
-                                f"got free={num_free}, total={num_total}, occupied={num_occupied}"
-                            )
-                    percent_free = num_free * 100 / num_total
-
-            lot_model = lot_mapping[lot_data["id"]]
-
-            parking_data_models.append(
-                ParkingData(
-                    timestamp=data["timestamp"],
-                    lot=lot_model,
-                    status=lot_data["status"],
-                    num_free=num_free,
-                    num_total=num_total,
-                    num_occupied=num_occupied,
-                    percent_free=percent_free,
-                )
-            )
-
-            if num_total is not None:
-                if lot_model.max_num_total is None or num_total > lot_model.max_num_total:
-                    lot_model.max_num_total = num_total
-                    update_max_num_total.append(lot_model)
-
-        if update_max_num_total:
-            ParkingLot.objects.bulk_update(update_max_num_total, ["max_num_total"])
-
-        return ParkingData.objects.bulk_create(parking_data_models)
+def max_or_none(a: Optional[int], b: Optional[int]) -> Optional[int]:
+    if a is None:
+        if b is None:
+            return None
+        return b
+    elif b is None:
+        return a
+    return max(a, b)

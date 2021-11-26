@@ -1,0 +1,29 @@
+{
+  "pool": {
+    "id": "apag",
+    "name": "Aachener Parkhaus GmbH",
+    "timezone": "Europe/Berlin",
+    "public_url": "https://www.apag.de",
+    "source_url": null,
+    "license": null
+  },
+  "lots": [
+    {
+      "id": "aachen-parkplatz-luisenhospital",
+      "name": "Luisenhospital",
+      "type": "lot",
+      "public_url": "https://www.apag.de/parkobjekte/parkplatz-luisenhospital",
+      "source_url": "https://www.apag.de/parken-in-aachen",
+      "address": "Parkplatz Luisenhospital\nBoxgraben 99\n52064\nAachen",
+      "capacity": 70,
+      "has_live_capacity": false,
+      "latitude": 50.767823,
+      "longitude": 6.076306,
+      "timestamp": "2021-11-26T09:58:59",
+      "status": "nodata",
+      "num_free": null,
+      "num_occupied": null,
+      "lot_timestamp": null
+    }
+  ]
+}
