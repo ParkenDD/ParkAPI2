@@ -60,12 +60,15 @@ class FFHParking(ScraperBase):
             sub_table = tds[0].find("table")
             if sub_table:
                 for sub_tr in sub_table.find_all("tr"):
-                    tds = sub_tr.find_all("td")
+                    sub_tds = sub_tr.find_all("td")
 
-                    if "Plätze insgesamt" in tds[0].text:
-                        capacity = int(tds[1].text)
-                    if "Stand:" in tds[0].text:
-                        lot_timestamp = self.to_utc_datetime(tds[1].text.strip()[:17], "%d.%m.%Y, %H:%M")
+                    if "Plätze insgesamt" in sub_tds[0].text:
+                        capacity = int(sub_tds[1].text)
+                    if "Stand:" in sub_tds[0].text:
+                        try:
+                            lot_timestamp = self.to_utc_datetime(sub_tds[1].text.strip()[:17], "%d.%m.%Y, %H:%M")
+                        except ValueError:
+                            pass
 
             num_free_text = tds[1].text.strip()
             if num_free_text == "belegt":
@@ -91,7 +94,6 @@ class FFHParking(ScraperBase):
         return lots
 
     def _get_lot_infos(self, url: str):
-        now = self.now()
         soup = self.request_soup(url)
 
         lots = []
