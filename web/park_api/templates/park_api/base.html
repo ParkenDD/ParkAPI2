@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{html.title}}</title>
+    <meta name="generator" content="{{html.generator}}" />
+    <meta name="description" content="{{html.description}}" />
+    {% for s in html.css %}<link rel="stylesheet" href="{{s}}">{% endfor %}
+    {% for s in html.scripts %}<script type="text/javascript" src="{{s}}"></script>{% endfor %}
+</head>
+<body>
+{% block body %}
+{{html.body}}
+{% endblock %}
+</body>

@@ -1,0 +1,32 @@
+{% extends './base.html' %}
+
+{% block body %}
+
+{% for table in tables %}
+    <h3>{{table.name}}</h3>
+    <table>
+        <tbody>
+            {% for row in table.rows %}
+                <tr>
+                    {% for c in row %}<td>{{c}}</td>{% endfor %}
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endfor %}
+
+<hr>
+
+<ul>
+    {% for pool in pools %}
+        <li>{{pool.name}} <code>({{pool.pool_id}})</code>
+            <ul>
+                {% for lot in pool.lots %}
+                    <li>{{lot.name}} <code>({{lot.lot_id}})</code></li>
+                {% endfor %}
+            </ul>
+        </li>
+    {% endfor %}
+</ul>
+
+{% endblock %}

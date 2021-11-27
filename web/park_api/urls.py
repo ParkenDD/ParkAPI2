@@ -18,7 +18,10 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 
+from .views import stats
+
 urlpatterns = [
+    path("", stats.StatsView.as_view(), name="stats"),
     path("admin/", admin.site.urls),
     path("api/", include('park_api.api_urls')),
 ]
