@@ -10,7 +10,7 @@ class Frankfurt(ScraperBase):
 
     POOL = PoolInfo(
         id="frankfurt-main",
-        name="Aachener Parkhaus GmbH",
+        name="Offene Daten Frankurt",
         public_url="https://offenedaten.frankfurt.de/dataset/parkdaten-dynamisch",
         source_url="https://offenedaten.frankfurt.de/dataset/912fe0ab-8976-4837-b591-57dbf163d6e5/resource/48378186-5732-41f3-9823-9d1938f2695e/download/parkdaten_dyn.xml",
     )
