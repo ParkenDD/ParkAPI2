@@ -1,5 +1,35 @@
 {% extends './base.html' %}
 
+{% block head %}
+{{ block.super }}
+<style>
+    table td {
+        padding-right: 1rem;
+    }
+
+    .lot-data {
+        height: 2rem;
+        width: {{plot_width}}rem;
+        display: flex;
+        flex-wrap: nowrap;
+    }
+
+    .lot-data .lot-data-point {
+        flex-grow: 1;
+        background: #9da8b3;
+    }
+
+    .lot-data .lot-data-point.no-data {
+        background: #ef9f9f;
+    }
+
+    .lot-data .lot-data-value {
+        background: white;
+    }
+
+</style>
+{% endblock %}
+
 {% block body %}
 
 {% for table in tables %}
@@ -16,17 +46,45 @@
 {% endfor %}
 
 <hr>
+<form>
+    hours: <input type="number" name="hours" value="{{param_hours}}">
+    bucket minutes: <input type="number" name="bucket_minutes" value="{{param_bucket_minutes}}">
+    field: <select name="field">
+        {% for field in fields %}<option value="{{field}}" {%if field == param_field%}selected{%endif%}>{{field}}</option>{%endfor%}
+    </select>
+    <input type="submit" value="update">
+</form>
+<hr>
 
-<ul>
-    {% for pool in pools %}
-        <li>{{pool.name}} <code>({{pool.pool_id}})</code>
-            <ul>
-                {% for lot in pool.lots %}
-                    <li>{{lot.name}} <code>({{lot.lot_id}})</code></li>
-                {% endfor %}
-            </ul>
-        </li>
-    {% endfor %}
-</ul>
+{% for pool in pools %}
+<h3>{{pool.name}} <code>(<a href="{% url 'admin:park_data_parkingpool_change' pool.pk %}" title="View in django admin">{{pool.pool_id}}</a>)</code></h3>
+<table>
+    <thead>
+        <tr><th>ID</th><th>city</th><th>state</th><th>name</th><th>{{param_field}}</th></tr>
+    </thead>
+    <tbody>
+        {% for lot in pool.lots %}
+            <tr>
+                <td><code><a href="{% url 'admin:park_data_parkinglot_change' lot.pk %}" title="View in django admin">{{lot.lot_id}}</a></code></td>
+                <td>{%if lot.location__city%}{{lot.location__city}}{%endif%}</td>
+                <td>{%if lot.location__state%}{{lot.location__state}}{%endif%}</td>
+                <td>{%if lot.public_url%}<a href="{{lot.public_url}}" title="Link to public website" target="_blank">{%endif%}{{lot.name}}{%if lot.public_url%}</a>{%endif%}</td>
+                {# <td>{%if lot.address%}{{lot.address}}{%endif%}</td> #}
+                <td>
+                    <div class="lot-data">
+                        {%for num_real, num_norm in lot.data.buckets%}
+                            <div class="lot-data-point {%if num_real < 0%}no-data{%endif%}" title="{{num_real}}">
+                                {% if num_real >= 0 %}
+                                <div class="lot-data-value" style="height: {{num_norm}}%"></div>
+                                {% endif %}
+                            </div>
+                        {%endfor%}
+                    </div>
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endfor %}
 
 {% endblock %}

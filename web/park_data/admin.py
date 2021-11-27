@@ -164,7 +164,7 @@ class ParkingDataAdmin(admin.ModelAdmin):
         "num_occupied",
         "percent_free",
     )
-    search_fields = ("lot__lot_id", )
+    list_filter = ("lot", )
     ordering = ("-timestamp", "lot__lot_id")
 
     def lot_decorator(self, model: ParkingData) -> str:
