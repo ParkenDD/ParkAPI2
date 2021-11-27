@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 import os
 from pathlib import Path
 
+DATETIME_FORMAT = "Y-m-d H:i:s T"
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -157,7 +159,6 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 
 USE_L10N = False
-DATE_FORMAT = "%Y-%m-%d %H:%M:%SZ"
 
 USE_TZ = False
 

@@ -1,9 +1,12 @@
+from typing import Optional
+
 from django.utils.translation import gettext_lazy as _
 from django.contrib import admin, messages
 from django.contrib.admin.decorators import register
 from django.contrib.gis.admin import OSMGeoAdmin
 from django.utils.safestring import mark_safe
 from django.utils.html import format_html
+from django.contrib.gis.geos import Point
 
 from .models import *
 
@@ -16,6 +19,18 @@ def short_link(url: str, max_length=20) -> str:
     return url
 
 
+def location_decorator(point: Optional[Point]):
+    if not point:
+        return "-"
+    lon, lat = point.tuple
+    markup = f"{lon},{lat}"
+    markup += (
+        f""" <a href="https://nominatim.openstreetmap.org/ui/reverse.html"""
+        f"""?lat={lat}&lon={lon}&zoom=16" title="osm nominatim reverse search (street level)" target="_blank">N</a>"""
+    )
+    return mark_safe(markup)
+
+
 @register(ParkingPool)
 class ParkingPoolAdmin(admin.ModelAdmin):
     list_display = (
@@ -26,7 +41,6 @@ class ParkingPoolAdmin(admin.ModelAdmin):
         "date_created",
         "date_updated",
     )
-
 
     def public_url_decorator(self, model: ParkingPool):
         if not model.public_url:
@@ -60,11 +74,12 @@ class ParkingLotAdmin(OSMGeoAdmin):
         "latest_num_free",
         "public_url_decorator",
         "source_url_decorator",
+        "location_decorator",
         "date_created",
         "date_updated",
     )
-
     search_fields = ["lot_id", "name", "address"]
+    ordering = ("lot_id", )
 
     def public_url_decorator(self, model: ParkingLot):
         if not model.public_url:
@@ -105,6 +120,11 @@ class ParkingLotAdmin(OSMGeoAdmin):
     latest_num_free.short_description = _("Latest num_free")
     latest_num_free.admin_order_field = "latest_data__num_free"
 
+    def location_decorator(self, model: ParkingLot) -> str:
+        return location_decorator(model.geo_point)
+    location_decorator.short_description = _("Location")
+    location_decorator.admin_order_field = "geo_point"
+
 
 @register(ParkingData)
 class ParkingDataAdmin(admin.ModelAdmin):
@@ -118,6 +138,8 @@ class ParkingDataAdmin(admin.ModelAdmin):
         "num_occupied",
         "percent_free",
     )
+    search_fields = ("lot__lot_id", )
+    ordering = ("-timestamp", "lot__lot_id")
 
     def lot_decorator(self, model: ParkingData) -> str:
         text = str(model.lot)
@@ -128,3 +150,4 @@ class ParkingDataAdmin(admin.ModelAdmin):
         return text
     lot_decorator.short_description = _("Parking lot")
     lot_decorator.admin_order_field = "lot__id"
+
