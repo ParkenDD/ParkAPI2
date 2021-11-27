@@ -7,6 +7,7 @@ from django.contrib.gis.admin import OSMGeoAdmin
 from django.utils.safestring import mark_safe
 from django.utils.html import format_html
 from django.contrib.gis.geos import Point
+from django.db import models
 
 from .models import *
 
@@ -36,6 +37,7 @@ class ParkingPoolAdmin(admin.ModelAdmin):
     list_display = (
         "pool_id",
         "name",
+        "num_lots_decorator",
         "public_url_decorator",
         "source_url_decorator",
         "date_created",
@@ -60,6 +62,17 @@ class ParkingPoolAdmin(admin.ModelAdmin):
     public_url_decorator.short_description = _("Data website")
     public_url_decorator.admin_order_field = "source_url"
 
+    def num_lots_decorator(self, model: ParkingPool):
+        return model.num_lots
+    num_lots_decorator.short_description = _("Lots count")
+    num_lots_decorator.admin_order_field = "num_lots"
+
+    def get_queryset(self, request):
+        return (
+            super().get_queryset(request)
+            .annotate(num_lots=models.Count("parkinglot"))
+        )
+
 
 @register(ParkingLot)
 class ParkingLotAdmin(OSMGeoAdmin):
@@ -69,6 +82,7 @@ class ParkingLotAdmin(OSMGeoAdmin):
         "name",
         "type",
         "max_capacity",
+        "num_snapshots_decorator",
         "latest_timestamp",
         "latest_status",
         "latest_num_free",
@@ -124,6 +138,17 @@ class ParkingLotAdmin(OSMGeoAdmin):
         return location_decorator(model.geo_point)
     location_decorator.short_description = _("Location")
     location_decorator.admin_order_field = "geo_point"
+
+    def num_snapshots_decorator(self, model: ParkingPool):
+        return model.num_snapshots
+    num_snapshots_decorator.short_description = _("Snapshots count")
+    num_snapshots_decorator.admin_order_field = "num_snapshots"
+
+    def get_queryset(self, request):
+        return (
+            super().get_queryset(request)
+                .annotate(num_snapshots=models.Count("parkingdata"))
+        )
 
 
 @register(ParkingData)
