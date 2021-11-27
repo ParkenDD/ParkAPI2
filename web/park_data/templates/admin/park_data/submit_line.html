@@ -1,9 +1,0 @@
-{% extends 'admin/submit_line.html' %}
-{% load i18n admin_urls %}
-
-{% block submit-row %}
-{% if change %}
-<input type="submit" value="{% trans 'Query nominatim' %}" name="_query_nominatim">
-{% endif %}
-{{ block.super }}
-{% endblock %}

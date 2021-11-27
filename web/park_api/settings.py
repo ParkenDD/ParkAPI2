@@ -68,6 +68,7 @@ INSTALLED_APPS = [
     'drf_yasg',
 
     'park_api',  # include the project itself as app
+    'locations.apps.LocationsConfig',
     'park_data.apps.ParkDataConfig',
 
     'api_v2',

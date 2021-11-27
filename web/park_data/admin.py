@@ -79,6 +79,7 @@ class ParkingLotAdmin(OSMGeoAdmin):
     list_display = (
         "lot_id",
         "pool",
+        "location",
         "name",
         "type",
         "max_capacity",

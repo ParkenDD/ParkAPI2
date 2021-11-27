@@ -82,6 +82,15 @@ class ParkingLot(TimestampedGeoModel):
         db_index=True,
     )
 
+    location = models.ForeignKey(
+        verbose_name=_("Location"),
+        help_text=_("A link to a location description"),
+        to="locations.Location",
+        on_delete=models.SET_NULL,
+        null=True, blank=True,
+        related_name="parking_lots",
+    )
+
     def __str__(self):
         s = self.lot_id
         if self.name:
