@@ -147,10 +147,7 @@ class SnapshotMaker:
                 snapshot["lots"].append(merged_lot)
 
         except Exception as e:
-            snapshot["error"] = {
-                "text": f"{type(e).__name__}: {e}",
-                "stacktrace": traceback.format_exc()
-            }
+            snapshot["error"] = f"""{type(e).__name__}: {e}\n{traceback.format_exc()}"""
         return snapshot
 
 
@@ -224,3 +221,4 @@ def main(
 
 if __name__ == "__main__":
     main(**parse_args())
+

@@ -1,3 +1,4 @@
+import datetime
 from typing import Optional
 
 from django.utils.translation import gettext_lazy as _
@@ -5,7 +6,7 @@ from django.contrib import admin, messages
 from django.contrib.admin.decorators import register
 from django.contrib.gis.admin import OSMGeoAdmin
 from django.utils.safestring import mark_safe
-from django.utils.html import format_html
+from django.utils.html import format_html, escape
 from django.contrib.gis.geos import Point
 from django.db import models
 
@@ -38,6 +39,7 @@ class ParkingPoolAdmin(admin.ModelAdmin):
         "pool_id",
         "name",
         "num_lots_decorator",
+        "num_errors_decorator",
         "public_url_decorator",
         "source_url_decorator",
         "date_created",
@@ -65,6 +67,14 @@ class ParkingPoolAdmin(admin.ModelAdmin):
     def num_lots_decorator(self, model: ParkingPool):
         return model.num_lots
     num_lots_decorator.short_description = _("Lots count")
+    num_lots_decorator.admin_order_field = "num_lots"
+
+    def num_errors_decorator(self, model: ParkingPool):
+        # TODO: would rather move this to .annotate like with 'num_lots'
+        date_boundary = datetime.datetime.utcnow() - datetime.timedelta(days=7)
+        qset = ErrorLog.objects.filter(pool_id=model.pool_id, timestamp__gte=date_boundary)
+        return qset.count()
+    num_lots_decorator.short_description = _("Errors (7 days)")
     num_lots_decorator.admin_order_field = "num_lots"
 
     def get_queryset(self, request):
@@ -177,3 +187,18 @@ class ParkingDataAdmin(admin.ModelAdmin):
     lot_decorator.short_description = _("Parking lot")
     lot_decorator.admin_order_field = "lot__id"
 
+
+@register(ErrorLog)
+class ErrorLogAdmin(admin.ModelAdmin):
+    list_display = (
+        "timestamp",
+        "source",
+        "module_name",
+        "pool_id",
+        "text_decorator",
+    )
+    list_filter = ("module_name", "pool_id",)
+    ordering = ("-timestamp", )
+
+    def text_decorator(self, model: ErrorLog):
+        return mark_safe(format_html("<pre>{}</pre>", model.text))

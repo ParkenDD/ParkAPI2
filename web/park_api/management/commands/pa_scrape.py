@@ -5,6 +5,7 @@ import json
 import inspect
 from pathlib import Path
 import subprocess
+import traceback
 from multiprocessing.pool import ThreadPool
 from typing import List, Dict, Type, Union, Generator
 
@@ -12,7 +13,7 @@ from django.core.management.base import BaseCommand, CommandError
 from django.db import transaction
 from django.conf import settings
 
-from park_data.models import store_snapshot
+from park_data.models import store_snapshot, ErrorLog, ErrorLogSources
 
 
 class Command(BaseCommand):
@@ -71,6 +72,10 @@ class Command(BaseCommand):
 
 
 def iter_scrapers() -> Generator[Path, None, None]:
+    """
+    Yields all found ../module/scraper.py filename
+    :return:
+    """
     scrapers_path = settings.BASE_DIR / "scrapers"
     for scraper_py in glob.glob(str(scrapers_path / "*/scraper.py")):
         yield Path(scraper_py)
@@ -78,21 +83,34 @@ def iter_scrapers() -> Generator[Path, None, None]:
 
 def scrape(pool_filter: List[str], caching: Union[bool, str]):
     for scraper_py in iter_scrapers():
+        module_path = scraper_py.parent
+
         snapshots = run_scraper_process(
-            path=scraper_py.parent, command="scrape", pool_filter=pool_filter, caching=caching
+            path=module_path, command="scrape", pool_filter=pool_filter, caching=caching
         )
-        store_snapshots(snapshots, pool_filter)
+        store_snapshots(module_path.name, snapshots)
 
 
-def store_snapshots(snapshots: Union[list, dict], pool_filter):
+def store_snapshots(module_name: str, snapshots: Union[list, dict]):
     if isinstance(snapshots, dict) and snapshots.get("error"):
-        print(f"\n\nERROR scraping pools {pool_filter}:\n {snapshots['error']}")
-        # TODO: should store errors per scraper module to database
+        print(f"\n\nERROR in module {module_name}:\n {snapshots['error']}")
+
+        ErrorLog.objects.create(
+            source=ErrorLogSources.module,
+            module_name=module_name,
+            text=snapshots["error"],
+        )
     else:
         for snapshot in snapshots:
             if snapshot.get("error"):
-                print(f"\n\nERROR in pool {snapshot['pool']['id']}:\n {snapshot['error']}")
-                # TODO: should store errors per pool to database
+                print(f"\n\nERROR in pool {module_name}.{snapshot['pool']['id']}:\n {snapshot['error']}")
+
+                ErrorLog.objects.create(
+                    source=ErrorLogSources.pool,
+                    module_name=module_name,
+                    pool_id=snapshot["pool"]["id"],
+                    text=snapshot["error"],
+                )
             else:
                 store_snapshot(snapshot)
 
@@ -115,7 +133,7 @@ def scrape_parallel(pool_filter: List[str], caching: Union[bool, str], processes
         scraper_commands,
     )
     for sn, (path, pool_id) in zip(snapshots, scraper_commands):
-        store_snapshots(sn, pool_filter=[pool_id])
+        store_snapshots(path.name, sn)
 
 
 def run_scraper_process(
@@ -125,6 +143,9 @@ def run_scraper_process(
         caching: Union[bool, str],
 ) -> Union[dict, list]:
 
+    if command == "scrape":
+        print(f"module '{path.name}' scraping {pool_filter or 'all pools'}")
+
     args = [Path(sys.executable).resolve(), "scraper.py", command]
     if pool_filter:
         args += ["--pools", *pool_filter]
@@ -133,18 +154,20 @@ def run_scraper_process(
     elif caching:
         args += ["--cache", caching]
 
-    process = subprocess.Popen(
-        args=args,
-        cwd=str(path),
-        stdout=subprocess.PIPE,
-        stderr=subprocess.PIPE,
-    )
     try:
-        output = process.stdout.read()
-        return json.loads(output.decode("utf-8"))
-    except json.JSONDecodeError:
-        return {
-            "error": process.stderr.read()
-        }
+        process = subprocess.Popen(
+            args=args,
+            cwd=str(path),
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+        )
+        try:
+            output = process.stdout.read()
+            return json.loads(output.decode("utf-8"))
+        except json.JSONDecodeError:
+            output = process.stderr.read()
+            return {"error": output.decode("utf-8")}
 
+    except Exception as e:
+        return {"error": f"{type(e).__name__}: {e}\n{traceback.format_exc()}"}
 

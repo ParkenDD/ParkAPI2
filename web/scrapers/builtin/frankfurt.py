@@ -28,7 +28,7 @@ class Frankfurt(ScraperBase):
             lot_total = int(facility.find("totalparkingcapacityshorttermoverride").text)
             # TODO: Need not find out difference between
             #   totalNumberOfOccupiedParkingSpaces and totalNumberOfVacantParkingSpaces
-            #   e.g. first goes to zero oro might disappear when closed while second remains
+            #   e.g. first goes to zero or might disappear when closed while second remains
             try:
                 lot_occupied = int(facility.find("totalnumberofoccupiedparkingspaces").text)
             except:
