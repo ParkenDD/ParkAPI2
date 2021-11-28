@@ -216,13 +216,20 @@ class ScraperBase:
             caching: Optional[Union[bool, str]] = None,
             **kwargs,
     ) -> Union[dict, list]:
-        return self.request(
+        response = self.request(
             url=url, method=method,
             expected_status=expected_status,
             caching=caching,
             headers={"Accept": "application/json"},
             **kwargs,
-        ).json()
+        )
+        try:
+            return response.json()
+        except:
+            print("\n", file=sys.stderr)
+            print("RESPONSE CONTENT:", file=sys.stderr)
+            print(response.content, file=sys.stderr)
+            raise
 
     def request_soup(
             self,
