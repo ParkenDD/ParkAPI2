@@ -92,6 +92,13 @@
         "address": "Ostra-Allee\n01067 Dresden\nKontakt: (03 51) 488 97 97\ntiefbauamt-verkehrstechnik@dresden.de",
         "capacity": 90,
         "has_live_capacity": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.73093,
+          51.05383
+        ]
       }
     },
     {
@@ -165,6 +172,13 @@
         "address": "Freiberger Platz\n01067 Dresden\ntiefbauamt-verkehrstechnik@dresden.de",
         "capacity": 110,
         "has_live_capacity": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.725973,
+          51.049571
+        ]
       }
     },
     {
@@ -198,6 +212,13 @@
         "address": "Löbtauer Straße 21\n01069 Dresden\nDREWAG",
         "capacity": 315,
         "has_live_capacity": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.7190763,
+          51.0530993
+        ]
       }
     },
     {
@@ -211,6 +232,13 @@
         "address": "Ostra-Ufer\n01067 Dresden\ntiefbauamt-verkehrstechnik@dresden.de",
         "capacity": 141,
         "has_live_capacity": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.7285211,
+          51.0608587
+        ]
       }
     },
     {
@@ -284,6 +312,13 @@
         "address": "Budapester Straße\n01069 Dresden\ntiefbauamt-verkehrstechnik@dresden.de",
         "capacity": 127,
         "has_live_capacity": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.7302697,
+          51.0459106
+        ]
       }
     },
     {
@@ -377,6 +412,13 @@
         "address": "Wiener Platz\n01069 Dresden\nEinfahrt von Ammonstraße im Tunnel\nKontakt: 03 51 / 484 53 10\nE-Mail: tg-dd@duerr-liegenschaften.de",
         "capacity": 350,
         "has_live_capacity": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.732423,
+          51.041808
+        ]
       }
     },
     {
@@ -430,6 +472,13 @@
         "address": "Strehlener Straße 27\n01069 Dresden\nKontakt: (03 51) 488 97 97\ntiefbauamt-verkehrstechnik@dresden.de",
         "capacity": 235,
         "has_live_capacity": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.744492,
+          51.0345974
+        ]
       }
     },
     {
@@ -443,6 +492,13 @@
         "address": "Blüherstraße\n01069 Dresden\nKontakt: (03 51) 488 97 97\ntiefbauamt-verkehrstechnik@dresden.de",
         "capacity": 130,
         "has_live_capacity": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.74859,
+          51.04413
+        ]
       }
     },
     {
@@ -476,6 +532,13 @@
         "address": "Lingnerallee\n01069 Dresden\nKontakt: (03 51) 488 97 97\ntiefbauamt-verkehrstechnik@dresden.de",
         "capacity": 350,
         "has_live_capacity": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.75035,
+          51.04379
+        ]
       }
     },
     {
@@ -489,6 +552,13 @@
         "address": "Pirnaische Straße\n01069 Dresden",
         "capacity": 500,
         "has_live_capacity": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.74746,
+          51.04641
+        ]
       }
     },
     {
@@ -522,6 +592,13 @@
         "address": "Straßburger Platz 1\n01307 Dresden\nEinfahrt von Güntzstraße/ Comeniusstraße\nEinfahrtshöhe max. 2,1 m",
         "capacity": 291,
         "has_live_capacity": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.7536965,
+          51.0461396
+        ]
       }
     },
     {
@@ -555,6 +632,13 @@
         "address": "Zinzendorfstraße\n01069 Dresden\nKontakt: OD@parkraumservice.de",
         "capacity": 250,
         "has_live_capacity": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.74466,
+          51.04458
+        ]
       }
     },
     {
@@ -568,6 +652,13 @@
         "address": "Schlesischer Platz\n01097 Dresden\nKontakt:  (03 51) 488 97 97\ntiefbauamt-verkehrstechnik@dresden.de",
         "capacity": 40,
         "has_live_capacity": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.74196,
+          51.06541
+        ]
       }
     },
     {
@@ -581,6 +672,13 @@
         "address": "Palaisplatz\n01097 Dresden\nKontakt: (03 51) 488 97 97\ntiefbauamt-verkehrstechnik@dresden.de",
         "capacity": 100,
         "has_live_capacity": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.73924,
+          51.06026
+        ]
       }
     },
     {
@@ -654,6 +752,13 @@
         "address": "Wigardstraße\n01097 Dresden",
         "capacity": 180,
         "has_live_capacity": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.75072,
+          51.05768
+        ]
       }
     },
     {
@@ -667,6 +772,13 @@
         "address": "Fidelio-F.-Finke-Straße\n01326 Dresden\ntiefbauamt-verkehrstechnik@dresden.de",
         "capacity": 105,
         "has_live_capacity": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.814142,
+          51.052804
+        ]
       }
     },
     {
@@ -700,6 +812,13 @@
         "address": "Bautzner Landstraße\n Dresden\ntiefbauamt-verkehrstechnik@dresden.de",
         "capacity": 9,
         "has_live_capacity": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.8454591,
+          51.0614832
+        ]
       }
     },
     {
@@ -713,6 +832,13 @@
         "address": "Bahnhofstraße Cossebaude\n01462 Dresden",
         "capacity": 38,
         "has_live_capacity": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.63258,
+          51.08521
+        ]
       }
     },
     {
@@ -726,6 +852,13 @@
         "address": "Gompitzer Höhe\n01156 Dresden",
         "capacity": 46,
         "has_live_capacity": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.627012,
+          51.040645
+        ]
       }
     },
     {
@@ -739,6 +872,13 @@
         "address": "Grenzstraße 3\n01109 Dresden\ntiefbauamt-verkehrstechnik@dresden.de",
         "capacity": 38,
         "has_live_capacity": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.776568,
+          51.127956
+        ]
       }
     },
     {
@@ -772,6 +912,13 @@
         "address": "Zur Neuen Brücke\n01109 Dresden\ntiefbauamt-verkehrstechnik@dresden.de",
         "capacity": 36,
         "has_live_capacity": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.789429,
+          51.115716
+        ]
       }
     },
     {
@@ -785,6 +932,13 @@
         "address": "Güterbahnhofstraße Langebrück\n01465 Dresden",
         "capacity": 50,
         "has_live_capacity": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.84038,
+          51.12714
+        ]
       }
     },
     {
@@ -798,6 +952,13 @@
         "address": "Oskar-Maune-Straße\n01156 Dresden",
         "capacity": 50,
         "has_live_capacity": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.62639,
+          51.0405
+        ]
       }
     },
     {
@@ -831,6 +992,13 @@
         "address": "Lohrmannstraße\n01237 Dresden\ntiefbauamt-verkehrstechnik@dresden.de",
         "capacity": 19,
         "has_live_capacity": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.79023,
+          51.020982
+        ]
       }
     },
     {
@@ -844,6 +1012,13 @@
         "address": "Bautzner Landstraße\n01328 Dresden",
         "capacity": 33,
         "has_live_capacity": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.8852734,
+          51.0612682
+        ]
       }
     },
     {
@@ -857,6 +1032,13 @@
         "address": "Platz des Friedens\n01108 Dresden",
         "capacity": 24,
         "has_live_capacity": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.8012814,
+          51.1401712
+        ]
       }
     },
     {
@@ -896,6 +1078,13 @@
         "address": "Terrassenufer\n01067 Dresden\ntiefbauamt-verkehrstechnik@dresden.de",
         "capacity": 22,
         "has_live_capacity": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.75051,
+          51.05229
+        ]
       }
     }
   ]
