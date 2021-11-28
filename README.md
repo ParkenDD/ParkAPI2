@@ -129,14 +129,19 @@ DJANGO_DEBUG=True ./manage.py runserver
 ```
 
 By default, the django admin interface is available at 
-[localhost:8000/admin/](localhost:8000/admin/) and the 
+[localhost:8000/admin/](http://localhost:8000/admin/) and the 
 swagger api documentation is at
-[localhost:8000/api/docs/](localhost:8000/api/docs/). 
+[localhost:8000/api/docs/](http://localhost:8000/api/docs/) and
+a simple overview page at [localhost:8000](http://localhost:8000/). 
+
 
 To get data into the database call:
 
 ```shell script
 ./manage.py pa_scrape scrape
+
+# attach city names to new lots
+./manage.py pa_find_locations
 ```
 
 

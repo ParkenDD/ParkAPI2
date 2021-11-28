@@ -82,7 +82,7 @@ class StatsView(views.View):
             # get mean per bucket
             buckets = [b[1] / b[0] if b[0] > 0 else -1 for b in buckets]
             # normalize
-            max_v = max(buckets)
+            max_v = max(max(buckets), ParkingLot.objects.get(lot_id=lot_id).max_capacity or 0)
             if max_v >= 0:
                 lot_bucket_map[lot_id] = {
                     "buckets": [[b, round(100 - b * 100 / max_v, 2) if max_v else b] for b in buckets],
