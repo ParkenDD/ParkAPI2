@@ -115,7 +115,7 @@ class ParkingData(ParkingDataBase):
     )
 
     def __str__(self):
-        return f"{self.lot.lot_id}@{self.timestamp}"
+        return f"{self.timestamp}/{self.lot.lot_id}"
 
 
 class LatestParkingData(ParkingDataBase):

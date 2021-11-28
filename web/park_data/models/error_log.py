@@ -56,5 +56,8 @@ class ErrorLog(models.Model):
     )
 
     def __str__(self):
-        return f"{self.module_name}@{self.timestamp}"
+        n = f"{self.timestamp.replace(microsecond=0)}/{self.module_name}"
+        if self.pool_id:
+            n = f"{n}/{self.pool_id}"
+        return n
 
