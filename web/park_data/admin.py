@@ -71,11 +71,11 @@ class ParkingPoolAdmin(admin.ModelAdmin):
 
     def num_errors_decorator(self, model: ParkingPool):
         # TODO: would rather move this to .annotate like with 'num_lots'
+        #   but have to probably join ParkingPool and ErrorLog "by hand"
         date_boundary = datetime.datetime.utcnow() - datetime.timedelta(days=7)
         qset = ErrorLog.objects.filter(pool_id=model.pool_id, timestamp__gte=date_boundary)
         return qset.count()
-    num_lots_decorator.short_description = _("Errors (7 days)")
-    num_lots_decorator.admin_order_field = "num_lots"
+    num_errors_decorator.short_description = _("Errors (7 days)")
 
     def get_queryset(self, request):
         return (
