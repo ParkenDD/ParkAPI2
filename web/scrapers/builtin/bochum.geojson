@@ -1,0 +1,245 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "bochum-1",
+        "name": "P1 Husemannplatz",
+        "type": "underground",
+        "public_url": "https://www.parken-in-bochum.de/parkhaeuser/parkhaus/p1-husemannplatz/",
+        "source_url": "https://www.parken-in-bochum.de/parkhaeuser/",
+        "address": "Bochumer Innenstadt, zwischen Kortumstraße (Fußgängerzone) und Junggesellenstraße",
+        "capacity": 475,
+        "has_live_capacity": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.21582,
+          51.48043
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "bochum-2",
+        "name": "P2 Dr.-Ruer-Platz",
+        "type": "underground",
+        "public_url": "https://www.parken-in-bochum.de/parkhaeuser/parkhaus/p2-dr-ruer-platz/",
+        "source_url": "https://www.parken-in-bochum.de/parkhaeuser/",
+        "address": "Bochumer Innenstadt, Dr.-Ruer-Platz",
+        "capacity": 375,
+        "has_live_capacity": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.2191238,
+          51.4793414
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "bochum-4",
+        "name": "PH Massenbergstraße",
+        "type": "garage",
+        "public_url": "https://www.parken-in-bochum.de/parkhaeuser/parkhaus/ph-massenbergstrasse/",
+        "source_url": "https://www.parken-in-bochum.de/parkhaeuser/",
+        "address": "Bochumer Innenstadt, Bongard-Boulevard",
+        "capacity": 85,
+        "has_live_capacity": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.2221661,
+          51.4802484
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "bochum-10",
+        "name": "PH Bochumer Fenster",
+        "type": "garage",
+        "public_url": "https://www.parken-in-bochum.de/parkhaeuser/parkhaus/ph-bochumer-fenster/",
+        "source_url": "https://www.parken-in-bochum.de/parkhaeuser/",
+        "address": "Bochumer Innenstadt, Bongard-Boulevard, unter dem Bochumer Fenster",
+        "capacity": 240,
+        "has_live_capacity": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.2231557,
+          51.4800232
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "bochum-3",
+        "name": "P3 Rathaus (BVZ)",
+        "type": "underground",
+        "public_url": "https://www.parken-in-bochum.de/parkhaeuser/parkhaus/p3-rathaus-bvz/",
+        "source_url": "https://www.parken-in-bochum.de/parkhaeuser/",
+        "address": "Bochumer Innenstadt, zwischen Westring und Hans-Böckler-Straße, hinter dem historischen Rathaus.",
+        "capacity": 422,
+        "has_live_capacity": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.2131105,
+          51.4825952
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "bochum-5",
+        "name": "P5 Brückstraße",
+        "type": "underground",
+        "public_url": "https://www.parken-in-bochum.de/parkhaeuser/parkhaus/p5-brueckstrasse/",
+        "source_url": "https://www.parken-in-bochum.de/parkhaeuser/",
+        "address": "Bochumer Innenstadt, Brückviertel",
+        "capacity": 700,
+        "has_live_capacity": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.2184916,
+          51.4828418
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "bochum-6",
+        "name": "P6 Hauptbahnhof (Buddenbergplatz)",
+        "type": "underground",
+        "public_url": "https://www.parken-in-bochum.de/parkhaeuser/parkhaus/p6-hauptbahnhof-buddenbergplatz/",
+        "source_url": "https://www.parken-in-bochum.de/parkhaeuser/",
+        "address": "Bochumer Innenstadt, Buddenbergplatz Südausgang Hauptbahnhof",
+        "capacity": 480,
+        "has_live_capacity": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.2246976,
+          51.4779551
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "bochum-8",
+        "name": "P8 Konrad-Adenauer-Platz / Bermuda3Eck",
+        "type": "underground",
+        "public_url": "https://www.parken-in-bochum.de/parkhaeuser/parkhaus/p8-konrad-adenauer-platz-bermuda3eck/",
+        "source_url": "https://www.parken-in-bochum.de/parkhaeuser/",
+        "address": "Inmitten des Bermuda3Ecks, Konrad-Adenauer-Platz",
+        "capacity": 543,
+        "has_live_capacity": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.2162057,
+          51.4756973
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "bochum-9",
+        "name": "P9 Schauspielhaus",
+        "type": "underground",
+        "public_url": "https://www.parken-in-bochum.de/parkhaeuser/parkhaus/p9-schauspielhaus/",
+        "source_url": "https://www.parken-in-bochum.de/parkhaeuser/",
+        "address": "Königsallee / Shakespeareplatz gegenüber dem Schauspielhaus Bochum",
+        "capacity": 265,
+        "has_live_capacity": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.2160649,
+          51.471854
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "bochum-11",
+        "name": "PH Stadionring",
+        "type": "garage",
+        "public_url": "https://www.parken-in-bochum.de/parkhaeuser/parkhaus/ph-stadionring/",
+        "source_url": "https://www.parken-in-bochum.de/parkhaeuser/",
+        "address": "Direkt an der A40 - Ausfahrt Nr. 36 \"Stadion\"  Besucherparken Starlight-Express / RuhrCongress / Fußballstadion / St. Josef-Hospital",
+        "capacity": 2000,
+        "has_live_capacity": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.23289,
+          51.49308
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "bochum-12",
+        "name": "PH Westpark / Jahrhunderthalle",
+        "type": "garage",
+        "public_url": "https://www.parken-in-bochum.de/parkhaeuser/parkhaus/ph-westpark-jahrhunderthalle/",
+        "source_url": "https://www.parken-in-bochum.de/parkhaeuser/",
+        "address": "Im Westpark am Fuß der Jahrhunderthalle Bochum",
+        "capacity": 339,
+        "has_live_capacity": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.196631,
+          51.4793775
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "bochum-13",
+        "name": "PH Alter Markt (Wattenscheid)",
+        "type": "garage",
+        "public_url": "https://www.parken-in-bochum.de/parkhaeuser/parkhaus/ph-alter-markt-wattenscheid/",
+        "source_url": "https://www.parken-in-bochum.de/parkhaeuser/",
+        "address": "südlich des Stadtteilzentrums Wattenscheid",
+        "capacity": 241,
+        "has_live_capacity": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.1328085,
+          51.4804338
+        ]
+      }
+    }
+  ]
+}
