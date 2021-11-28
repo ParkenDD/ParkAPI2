@@ -24,26 +24,6 @@
     {
       "type": "Feature",
       "properties": {
-        "id": "db-103086",
-        "name": "Tiefgarage Viktoria-Passage / Hauptbahnhof",
-        "type": "underground",
-        "public_url": "https://www.dbbahnpark.de/standorte/karte/#parkraum=103086",
-        "source_url": "https://api.deutschebahn.com/bahnpark/v1/spaces/occupancies",
-        "address": "Augsburg\n86150\nViktoriastraße 2",
-        "capacity": 197,
-        "has_live_capacity": true
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          10.887592,
-          48.366185
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
         "id": "db-100022",
         "name": "Parkhaus Berlin Hauptbahnhof",
         "type": "underground",
@@ -204,66 +184,6 @@
     {
       "type": "Feature",
       "properties": {
-        "id": "db-103119",
-        "name": "Parkplatz Bahnhof Coburg Rückseite",
-        "type": "lot",
-        "public_url": "https://www.dbbahnpark.de/standorte/karte/#parkraum=103119",
-        "source_url": "https://api.deutschebahn.com/bahnpark/v1/spaces/occupancies",
-        "address": "Coburg\n96450\nAdamistraße",
-        "capacity": 64,
-        "has_live_capacity": true
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          10.956355,
-          50.264252
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id": "db-100066",
-        "name": "Parkhaus Duisburg Hbf / UCI",
-        "type": "garage",
-        "public_url": "https://www.dbbahnpark.de/standorte/karte/#parkraum=100066",
-        "source_url": "https://api.deutschebahn.com/bahnpark/v1/spaces/occupancies",
-        "address": "Duisburg\n47057\nNeudorfer Straße",
-        "capacity": 398,
-        "has_live_capacity": true
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.778361,
-          51.43043
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id": "db-103104",
-        "name": "Parkhaus Duisburg Hbf / Duisburger Freiheit",
-        "type": "garage",
-        "public_url": "https://www.dbbahnpark.de/standorte/karte/#parkraum=103104",
-        "source_url": "https://api.deutschebahn.com/bahnpark/v1/spaces/occupancies",
-        "address": "Duisburg\n47051\nWuhanstraße",
-        "capacity": 604,
-        "has_live_capacity": true
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.774287,
-          51.428502
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
         "id": "db-100054",
         "name": "Parkplatz Bahnhof Düren Ludwig-Erhard-Platz",
         "type": "lot",
@@ -298,6 +218,26 @@
         "coordinates": [
           6.793619,
           51.217563
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "db-100066",
+        "name": "Parkhaus Duisburg Hbf / UCI",
+        "type": "garage",
+        "public_url": "https://www.dbbahnpark.de/standorte/karte/#parkraum=100066",
+        "source_url": "https://api.deutschebahn.com/bahnpark/v1/spaces/occupancies",
+        "address": "Duisburg\n47057\nNeudorfer Straße",
+        "capacity": 398,
+        "has_live_capacity": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.778361,
+          51.43043
         ]
       }
     },
@@ -384,26 +324,6 @@
     {
       "type": "Feature",
       "properties": {
-        "id": "db-103130",
-        "name": "Tiefgarage Hauptbahnhof Süd / Karlsruher Straße",
-        "type": "underground",
-        "public_url": "https://www.dbbahnpark.de/standorte/karte/#parkraum=103130",
-        "source_url": "https://api.deutschebahn.com/bahnpark/v1/spaces/occupancies",
-        "address": "Frankfurt am Main\n60329\nKarlsruher Straße",
-        "capacity": 81,
-        "has_live_capacity": true
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          8.662991,
-          50.105083
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
         "id": "db-100090",
         "name": "Tiefgarage am Bahnhof",
         "type": "underground",
@@ -418,66 +338,6 @@
         "coordinates": [
           7.843281,
           47.998862
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id": "db-103129",
-        "name": "Parkplatz Bahnhof Geltendorf Vorderseite Nord",
-        "type": "lot",
-        "public_url": "https://www.dbbahnpark.de/standorte/karte/#parkraum=103129",
-        "source_url": "https://api.deutschebahn.com/bahnpark/v1/spaces/occupancies",
-        "address": "Geltendorf\n82269\nAm Bahnhof",
-        "capacity": 387,
-        "has_live_capacity": true
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          11.034376,
-          48.107016
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id": "db-103238",
-        "name": "Parkhaus Bahnhof Gießen Lahnstraße P2",
-        "type": "garage",
-        "public_url": "https://www.dbbahnpark.de/standorte/karte/#parkraum=103238",
-        "source_url": "https://api.deutschebahn.com/bahnpark/v1/spaces/occupancies",
-        "address": "Gießen\n35398\nLahnstraße",
-        "capacity": 420,
-        "has_live_capacity": true
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          8.662122,
-          50.581309
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id": "db-100111",
-        "name": "Parkhaus am Bahnhof",
-        "type": "garage",
-        "public_url": "https://www.dbbahnpark.de/standorte/karte/#parkraum=100111",
-        "source_url": "https://api.deutschebahn.com/bahnpark/v1/spaces/occupancies",
-        "address": "Gießen\n35390\nBahnhofstraße / An der alten Post",
-        "capacity": 247,
-        "has_live_capacity": true
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          8.66525,
-          50.580024
         ]
       }
     },
@@ -518,6 +378,26 @@
         "coordinates": [
           9.923472,
           51.53533
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "db-100111",
+        "name": "Parkhaus am Bahnhof",
+        "type": "garage",
+        "public_url": "https://www.dbbahnpark.de/standorte/karte/#parkraum=100111",
+        "source_url": "https://api.deutschebahn.com/bahnpark/v1/spaces/occupancies",
+        "address": "Gießen\n35390\nBahnhofstraße / An der alten Post",
+        "capacity": 247,
+        "has_live_capacity": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.66525,
+          50.580024
         ]
       }
     },
@@ -904,26 +784,6 @@
     {
       "type": "Feature",
       "properties": {
-        "id": "db-103486",
-        "name": "Bahnhof Stuttgart-Vaihingen: Reservierbare PKW-Stellplätze",
-        "type": "lot",
-        "public_url": "https://www.dbbahnpark.de/standorte/karte/#parkraum=103486",
-        "source_url": "https://api.deutschebahn.com/bahnpark/v1/spaces/occupancies",
-        "address": "Stuttgart\n70563\nBahnhof (Vaihingen) 1",
-        "capacity": 7,
-        "has_live_capacity": true
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          9.113839,
-          48.727162
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
         "id": "db-100291",
         "name": "Parkplatz Ulm Hauptbahnhof",
         "type": "lot",
@@ -978,6 +838,146 @@
         "coordinates": [
           10.786892,
           52.428503
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "db-103086",
+        "name": "Tiefgarage Viktoria-Passage / Hauptbahnhof",
+        "type": "underground",
+        "public_url": "https://www.dbbahnpark.de/standorte/karte/#parkraum=103086",
+        "source_url": "https://api.deutschebahn.com/bahnpark/v1/spaces/occupancies",
+        "address": "Augsburg\n86150\nViktoriastraße 2",
+        "capacity": 197,
+        "has_live_capacity": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.887592,
+          48.366185
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "db-103104",
+        "name": "Parkhaus Duisburg Hbf / Duisburger Freiheit",
+        "type": "garage",
+        "public_url": "https://www.dbbahnpark.de/standorte/karte/#parkraum=103104",
+        "source_url": "https://api.deutschebahn.com/bahnpark/v1/spaces/occupancies",
+        "address": "Duisburg\n47051\nWuhanstraße",
+        "capacity": 604,
+        "has_live_capacity": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.774287,
+          51.428502
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "db-103119",
+        "name": "Parkplatz Bahnhof Coburg Rückseite",
+        "type": "lot",
+        "public_url": "https://www.dbbahnpark.de/standorte/karte/#parkraum=103119",
+        "source_url": "https://api.deutschebahn.com/bahnpark/v1/spaces/occupancies",
+        "address": "Coburg\n96450\nAdamistraße",
+        "capacity": 64,
+        "has_live_capacity": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.956355,
+          50.264252
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "db-103129",
+        "name": "Parkplatz Bahnhof Geltendorf Vorderseite Nord",
+        "type": "lot",
+        "public_url": "https://www.dbbahnpark.de/standorte/karte/#parkraum=103129",
+        "source_url": "https://api.deutschebahn.com/bahnpark/v1/spaces/occupancies",
+        "address": "Geltendorf\n82269\nAm Bahnhof",
+        "capacity": 387,
+        "has_live_capacity": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.034376,
+          48.107016
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "db-103130",
+        "name": "Tiefgarage Hauptbahnhof Süd / Karlsruher Straße",
+        "type": "underground",
+        "public_url": "https://www.dbbahnpark.de/standorte/karte/#parkraum=103130",
+        "source_url": "https://api.deutschebahn.com/bahnpark/v1/spaces/occupancies",
+        "address": "Frankfurt am Main\n60329\nKarlsruher Straße",
+        "capacity": 81,
+        "has_live_capacity": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.662991,
+          50.105083
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "db-103238",
+        "name": "Parkhaus Bahnhof Gießen Lahnstraße P2",
+        "type": "garage",
+        "public_url": "https://www.dbbahnpark.de/standorte/karte/#parkraum=103238",
+        "source_url": "https://api.deutschebahn.com/bahnpark/v1/spaces/occupancies",
+        "address": "Gießen\n35398\nLahnstraße",
+        "capacity": 420,
+        "has_live_capacity": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.662122,
+          50.581309
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "db-103486",
+        "name": "Bahnhof Stuttgart-Vaihingen: Reservierbare PKW-Stellplätze",
+        "type": "lot",
+        "public_url": "https://www.dbbahnpark.de/standorte/karte/#parkraum=103486",
+        "source_url": "https://api.deutschebahn.com/bahnpark/v1/spaces/occupancies",
+        "address": "Stuttgart\n70563\nBahnhof (Vaihingen) 1",
+        "capacity": 7,
+        "has_live_capacity": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.113839,
+          48.727162
         ]
       }
     }

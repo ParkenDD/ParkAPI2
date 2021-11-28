@@ -24,46 +24,6 @@
     {
       "type": "Feature",
       "properties": {
-        "id": "bochum-2",
-        "name": "P2 Dr.-Ruer-Platz",
-        "type": "underground",
-        "public_url": "https://www.parken-in-bochum.de/parkhaeuser/parkhaus/p2-dr-ruer-platz/",
-        "source_url": "https://www.parken-in-bochum.de/parkhaeuser/",
-        "address": "Bochumer Innenstadt, Dr.-Ruer-Platz",
-        "capacity": 375,
-        "has_live_capacity": false
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          7.2191238,
-          51.4793414
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id": "bochum-4",
-        "name": "PH Massenbergstraße",
-        "type": "garage",
-        "public_url": "https://www.parken-in-bochum.de/parkhaeuser/parkhaus/ph-massenbergstrasse/",
-        "source_url": "https://www.parken-in-bochum.de/parkhaeuser/",
-        "address": "Bochumer Innenstadt, Bongard-Boulevard",
-        "capacity": 85,
-        "has_live_capacity": false
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          7.2221661,
-          51.4802484
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
         "id": "bochum-10",
         "name": "PH Bochumer Fenster",
         "type": "garage",
@@ -84,6 +44,86 @@
     {
       "type": "Feature",
       "properties": {
+        "id": "bochum-11",
+        "name": "PH Stadionring",
+        "type": "garage",
+        "public_url": "https://www.parken-in-bochum.de/parkhaeuser/parkhaus/ph-stadionring/",
+        "source_url": "https://www.parken-in-bochum.de/parkhaeuser/",
+        "address": "Direkt an der A40 - Ausfahrt Nr. 36 \"Stadion\"  Besucherparken Starlight-Express / RuhrCongress / Fußballstadion / St. Josef-Hospital",
+        "capacity": 2000,
+        "has_live_capacity": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.23289,
+          51.49308
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "bochum-12",
+        "name": "PH Westpark / Jahrhunderthalle",
+        "type": "garage",
+        "public_url": "https://www.parken-in-bochum.de/parkhaeuser/parkhaus/ph-westpark-jahrhunderthalle/",
+        "source_url": "https://www.parken-in-bochum.de/parkhaeuser/",
+        "address": "Im Westpark am Fuß der Jahrhunderthalle Bochum",
+        "capacity": 339,
+        "has_live_capacity": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.196631,
+          51.4793775
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "bochum-13",
+        "name": "PH Alter Markt (Wattenscheid)",
+        "type": "garage",
+        "public_url": "https://www.parken-in-bochum.de/parkhaeuser/parkhaus/ph-alter-markt-wattenscheid/",
+        "source_url": "https://www.parken-in-bochum.de/parkhaeuser/",
+        "address": "südlich des Stadtteilzentrums Wattenscheid",
+        "capacity": 241,
+        "has_live_capacity": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.1328085,
+          51.4804338
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "bochum-2",
+        "name": "P2 Dr.-Ruer-Platz",
+        "type": "underground",
+        "public_url": "https://www.parken-in-bochum.de/parkhaeuser/parkhaus/p2-dr-ruer-platz/",
+        "source_url": "https://www.parken-in-bochum.de/parkhaeuser/",
+        "address": "Bochumer Innenstadt, Dr.-Ruer-Platz",
+        "capacity": 375,
+        "has_live_capacity": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.2191238,
+          51.4793414
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "id": "bochum-3",
         "name": "P3 Rathaus (BVZ)",
         "type": "underground",
@@ -98,6 +138,26 @@
         "coordinates": [
           7.2131105,
           51.4825952
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "bochum-4",
+        "name": "PH Massenbergstraße",
+        "type": "garage",
+        "public_url": "https://www.parken-in-bochum.de/parkhaeuser/parkhaus/ph-massenbergstrasse/",
+        "source_url": "https://www.parken-in-bochum.de/parkhaeuser/",
+        "address": "Bochumer Innenstadt, Bongard-Boulevard",
+        "capacity": 85,
+        "has_live_capacity": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.2221661,
+          51.4802484
         ]
       }
     },
@@ -178,66 +238,6 @@
         "coordinates": [
           7.2160649,
           51.471854
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id": "bochum-11",
-        "name": "PH Stadionring",
-        "type": "garage",
-        "public_url": "https://www.parken-in-bochum.de/parkhaeuser/parkhaus/ph-stadionring/",
-        "source_url": "https://www.parken-in-bochum.de/parkhaeuser/",
-        "address": "Direkt an der A40 - Ausfahrt Nr. 36 \"Stadion\"  Besucherparken Starlight-Express / RuhrCongress / Fußballstadion / St. Josef-Hospital",
-        "capacity": 2000,
-        "has_live_capacity": false
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          7.23289,
-          51.49308
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id": "bochum-12",
-        "name": "PH Westpark / Jahrhunderthalle",
-        "type": "garage",
-        "public_url": "https://www.parken-in-bochum.de/parkhaeuser/parkhaus/ph-westpark-jahrhunderthalle/",
-        "source_url": "https://www.parken-in-bochum.de/parkhaeuser/",
-        "address": "Im Westpark am Fuß der Jahrhunderthalle Bochum",
-        "capacity": 339,
-        "has_live_capacity": false
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          7.196631,
-          51.4793775
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id": "bochum-13",
-        "name": "PH Alter Markt (Wattenscheid)",
-        "type": "garage",
-        "public_url": "https://www.parken-in-bochum.de/parkhaeuser/parkhaus/ph-alter-markt-wattenscheid/",
-        "source_url": "https://www.parken-in-bochum.de/parkhaeuser/",
-        "address": "südlich des Stadtteilzentrums Wattenscheid",
-        "capacity": 241,
-        "has_live_capacity": false
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          7.1328085,
-          51.4804338
         ]
       }
     }

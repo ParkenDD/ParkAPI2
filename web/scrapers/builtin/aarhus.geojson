@@ -19,27 +19,7 @@
           10.206229,
           56.149843
         ]
-      }      
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id": "aarhus-kalkvrksvej",
-        "name": "Kalkværksvej",
-        "type": "lot",
-        "public_url": null,
-        "source_url": "https://admin.opendata.dk/api/action/datastore_search?resource_id=2a82a145-0195-4081-a13c-b0e587e9b89c",
-        "address": "Kalkværksvej",
-        "capacity": 210,
-        "has_live_capacity": true
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          10.211539,
-          56.149350
-        ]
-      }      
+      }
     },
     {
       "type": "Feature",
@@ -58,46 +38,6 @@
         "coordinates": [
           10.206103,
           56.155285
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id": "aarhus-salling",
-        "name": "Salling",
-        "type": "lot",
-        "public_url": null,
-        "source_url": "https://admin.opendata.dk/api/action/datastore_search?resource_id=2a82a145-0195-4081-a13c-b0e587e9b89c",
-        "address": "Østergade 25",
-        "capacity": 700,
-        "has_live_capacity": true
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          10.207709,
-          56.153909
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id": "aarhus-nrreport",
-        "name": "Nørreport",
-        "type": "lot",
-        "public_url": null,
-        "source_url": "https://admin.opendata.dk/api/action/datastore_search?resource_id=2a82a145-0195-4081-a13c-b0e587e9b89c",
-        "address": "Nørreport 22",
-        "capacity": 56,
-        "has_live_capacity": true
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          10.212737,
-          56.161859
         ]
       }
     },
@@ -124,6 +64,26 @@
     {
       "type": "Feature",
       "properties": {
+        "id": "aarhus-kalkvrksvej",
+        "name": "Kalkværksvej",
+        "type": "lot",
+        "public_url": null,
+        "source_url": "https://admin.opendata.dk/api/action/datastore_search?resource_id=2a82a145-0195-4081-a13c-b0e587e9b89c",
+        "address": "Kalkværksvej",
+        "capacity": 210,
+        "has_live_capacity": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.211539,
+          56.14935
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "id": "aarhus-magasin",
         "name": "Magasin",
         "type": "lot",
@@ -137,27 +97,7 @@
         "type": "Point",
         "coordinates": [
           10.204983,
-          56.156690
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id": "aarhus-scandinavian-center",
-        "name": "Scandinavian Center",
-        "type": "garage",
-        "public_url": null,
-        "source_url": "https://admin.opendata.dk/api/action/datastore_search?resource_id=2a82a145-0195-4081-a13c-b0e587e9b89c",
-        "address": "Margrethepladsen 2",
-        "capacity": 1240,
-        "has_live_capacity": true
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          10.198423,
-          56.151647
+          56.15669
         ]
       }
     },
@@ -178,6 +118,66 @@
         "coordinates": [
           10.216824,
           56.159878
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "aarhus-nrreport",
+        "name": "Nørreport",
+        "type": "lot",
+        "public_url": null,
+        "source_url": "https://admin.opendata.dk/api/action/datastore_search?resource_id=2a82a145-0195-4081-a13c-b0e587e9b89c",
+        "address": "Nørreport 22",
+        "capacity": 56,
+        "has_live_capacity": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.212737,
+          56.161859
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "aarhus-salling",
+        "name": "Salling",
+        "type": "lot",
+        "public_url": null,
+        "source_url": "https://admin.opendata.dk/api/action/datastore_search?resource_id=2a82a145-0195-4081-a13c-b0e587e9b89c",
+        "address": "Østergade 25",
+        "capacity": 700,
+        "has_live_capacity": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.207709,
+          56.153909
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "aarhus-scandinavian-center",
+        "name": "Scandinavian Center",
+        "type": "garage",
+        "public_url": null,
+        "source_url": "https://admin.opendata.dk/api/action/datastore_search?resource_id=2a82a145-0195-4081-a13c-b0e587e9b89c",
+        "address": "Margrethepladsen 2",
+        "capacity": 1240,
+        "has_live_capacity": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.198423,
+          56.151647
         ]
       }
     }

@@ -4,20 +4,20 @@
     {
       "type": "Feature",
       "properties": {
-        "id": "aachen-parkhaus-rathaus",
-        "name": "Rathaus",
+        "id": "aachen-parkhaus-adalbertsteinweg",
+        "name": "Adalbertsteinweg",
         "type": "garage",
-        "public_url": "https://www.apag.de/parkobjekte/parkhaus-rathaus",
+        "public_url": "https://www.apag.de/parkobjekte/parkhaus-adalbertsteinweg",
         "source_url": "https://www.apag.de/parken-in-aachen",
-        "address": "Parkhaus Rathaus\nMostardstraße 5\n52062\nAachen",
-        "capacity": 316,
+        "address": "Parkhaus Adalbertsteinweg\nAdalbertsteinweg 34\n52070\nAachen",
+        "capacity": 460,
         "has_live_capacity": false
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          6.084305,
-          50.777266
+          6.099715,
+          50.774352
         ]
       }
     },
@@ -64,6 +64,26 @@
     {
       "type": "Feature",
       "properties": {
+        "id": "aachen-parkhaus-eurogress",
+        "name": "Eurogress",
+        "type": "garage",
+        "public_url": "https://www.apag.de/parkobjekte/parkhaus-eurogress",
+        "source_url": "https://www.apag.de/parken-in-aachen",
+        "address": "Parkhaus Eurogress\nMonheimsallee 44\n52062\nAachen",
+        "capacity": 600,
+        "has_live_capacity": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.09267,
+          50.780654
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "id": "aachen-parkhaus-galeria-kaufhof-city",
         "name": "Galeria Kaufhof/City",
         "type": "garage",
@@ -104,46 +124,6 @@
     {
       "type": "Feature",
       "properties": {
-        "id": "aachen-parkhaus-adalbertsteinweg",
-        "name": "Adalbertsteinweg",
-        "type": "garage",
-        "public_url": "https://www.apag.de/parkobjekte/parkhaus-adalbertsteinweg",
-        "source_url": "https://www.apag.de/parken-in-aachen",
-        "address": "Parkhaus Adalbertsteinweg\nAdalbertsteinweg 34\n52070\nAachen",
-        "capacity": 460,
-        "has_live_capacity": false
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.099715,
-          50.774352
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id": "aachen-parkhaus-eurogress",
-        "name": "Eurogress",
-        "type": "garage",
-        "public_url": "https://www.apag.de/parkobjekte/parkhaus-eurogress",
-        "source_url": "https://www.apag.de/parken-in-aachen",
-        "address": "Parkhaus Eurogress\nMonheimsallee 44\n52062\nAachen",
-        "capacity": 600,
-        "has_live_capacity": false
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.09267,
-          50.780654
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
         "id": "aachen-parkhaus-luisenhospital",
         "name": "Luisenhospital",
         "type": "garage",
@@ -164,20 +144,40 @@
     {
       "type": "Feature",
       "properties": {
-        "id": "aachen-parkplatz-luisenhospital",
-        "name": "Luisenhospital",
-        "type": "lot",
-        "public_url": "https://www.apag.de/parkobjekte/parkplatz-luisenhospital",
+        "id": "aachen-parkhaus-rathaus",
+        "name": "Rathaus",
+        "type": "garage",
+        "public_url": "https://www.apag.de/parkobjekte/parkhaus-rathaus",
         "source_url": "https://www.apag.de/parken-in-aachen",
-        "address": "Parkplatz Luisenhospital\nBoxgraben 99\n52064\nAachen",
-        "capacity": 70,
+        "address": "Parkhaus Rathaus\nMostardstraße 5\n52062\nAachen",
+        "capacity": 316,
         "has_live_capacity": false
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          6.076306,
-          50.767823
+          6.084305,
+          50.777266
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "aachen-parkhaus-tivoli",
+        "name": "Tivoli",
+        "type": "garage",
+        "public_url": "https://www.apag.de/parkobjekte/parkhaus-tivoli",
+        "source_url": "https://www.apag.de/parken-in-aachen",
+        "address": "Parkhaus Tivoli\nKrefelderstraße 205\n52070\nAachen",
+        "capacity": 1240,
+        "has_live_capacity": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.096725,
+          50.794143
         ]
       }
     },
@@ -204,20 +204,20 @@
     {
       "type": "Feature",
       "properties": {
-        "id": "aachen-parkhaus-tivoli",
-        "name": "Tivoli",
-        "type": "garage",
-        "public_url": "https://www.apag.de/parkobjekte/parkhaus-tivoli",
+        "id": "aachen-parkplatz-luisenhospital",
+        "name": "Luisenhospital",
+        "type": "lot",
+        "public_url": "https://www.apag.de/parkobjekte/parkplatz-luisenhospital",
         "source_url": "https://www.apag.de/parken-in-aachen",
-        "address": "Parkhaus Tivoli\nKrefelderstraße 205\n52070\nAachen",
-        "capacity": 1240,
+        "address": "Parkplatz Luisenhospital\nBoxgraben 99\n52064\nAachen",
+        "capacity": 70,
         "has_live_capacity": false
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          6.096725,
-          50.794143
+          6.076306,
+          50.767823
         ]
       }
     },

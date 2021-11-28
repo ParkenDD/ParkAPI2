@@ -24,146 +24,6 @@
     {
       "type": "Feature",
       "properties": {
-        "id": "bielefeld-2",
-        "name": "Parkhaus Bahnhofsviertel 1",
-        "type": "garage",
-        "public_url": "https://www.bielefeld.de/de/sv/verkehr/parken/park/",
-        "source_url": null,
-        "address": "Joseph-Massolle-Str. 1",
-        "capacity": 723,
-        "has_live_capacity": true
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          8.532769,
-          52.030301
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id": "bielefeld-3",
-        "name": "Parkhaus Ritterstraße",
-        "type": "garage",
-        "public_url": "https://www.bielefeld.de/de/sv/verkehr/parken/park/",
-        "source_url": null,
-        "address": "Ritterstr. 5",
-        "capacity": 456,
-        "has_live_capacity": true
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          8.52936,
-          52.021745
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id": "bielefeld-4",
-        "name": "Tiefgarage und Parkpalette CineStar",
-        "type": "underground",
-        "public_url": "https://www.bielefeld.de/de/sv/verkehr/parken/park/",
-        "source_url": null,
-        "address": "Feilenstr. 5 bzw. Zimmerstr. 10",
-        "capacity": 400,
-        "has_live_capacity": true
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          8.533797,
-          52.027092
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id": "bielefeld-5",
-        "name": "Parkhaus Centrum",
-        "type": "garage",
-        "public_url": "https://www.bielefeld.de/de/sv/verkehr/parken/park/",
-        "source_url": null,
-        "address": "Herforder Str. 9",
-        "capacity": 325,
-        "has_live_capacity": true
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          8.534289,
-          52.024409
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id": "bielefeld-6",
-        "name": "Parkhaus LOOM",
-        "type": "garage",
-        "public_url": "https://www.bielefeld.de/de/sv/verkehr/parken/park/",
-        "source_url": null,
-        "address": "gegenüber Zimmerstr. 10",
-        "capacity": 529,
-        "has_live_capacity": true
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          8.533457,
-          52.02613
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id": "bielefeld-7",
-        "name": "Parkhaus Am Jahnplatz",
-        "type": "garage",
-        "public_url": "https://www.bielefeld.de/de/sv/verkehr/parken/park/",
-        "source_url": null,
-        "address": "gegenüber Renteistr. 6",
-        "capacity": 77,
-        "has_live_capacity": true
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          8.533236,
-          52.022012
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id": "bielefeld-8",
-        "name": "Parkhaus Karstadt",
-        "type": "garage",
-        "public_url": "https://www.bielefeld.de/de/sv/verkehr/parken/park/",
-        "source_url": null,
-        "address": "Elsa-Brändström-Str. 6",
-        "capacity": 350,
-        "has_live_capacity": true
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          8.529022,
-          52.023937
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
         "id": "bielefeld-10",
         "name": "Parkhaus Stadthalle",
         "type": "garage",
@@ -364,6 +224,26 @@
     {
       "type": "Feature",
       "properties": {
+        "id": "bielefeld-2",
+        "name": "Parkhaus Bahnhofsviertel 1",
+        "type": "garage",
+        "public_url": "https://www.bielefeld.de/de/sv/verkehr/parken/park/",
+        "source_url": null,
+        "address": "Joseph-Massolle-Str. 1",
+        "capacity": 723,
+        "has_live_capacity": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.532769,
+          52.030301
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "id": "bielefeld-20",
         "name": "Parkplatz Hbf",
         "type": "lot",
@@ -418,6 +298,126 @@
         "coordinates": [
           8.52794,
           52.026895
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "bielefeld-3",
+        "name": "Parkhaus Ritterstraße",
+        "type": "garage",
+        "public_url": "https://www.bielefeld.de/de/sv/verkehr/parken/park/",
+        "source_url": null,
+        "address": "Ritterstr. 5",
+        "capacity": 456,
+        "has_live_capacity": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.52936,
+          52.021745
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "bielefeld-4",
+        "name": "Tiefgarage und Parkpalette CineStar",
+        "type": "underground",
+        "public_url": "https://www.bielefeld.de/de/sv/verkehr/parken/park/",
+        "source_url": null,
+        "address": "Feilenstr. 5 bzw. Zimmerstr. 10",
+        "capacity": 400,
+        "has_live_capacity": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.533797,
+          52.027092
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "bielefeld-5",
+        "name": "Parkhaus Centrum",
+        "type": "garage",
+        "public_url": "https://www.bielefeld.de/de/sv/verkehr/parken/park/",
+        "source_url": null,
+        "address": "Herforder Str. 9",
+        "capacity": 325,
+        "has_live_capacity": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.534289,
+          52.024409
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "bielefeld-6",
+        "name": "Parkhaus LOOM",
+        "type": "garage",
+        "public_url": "https://www.bielefeld.de/de/sv/verkehr/parken/park/",
+        "source_url": null,
+        "address": "gegenüber Zimmerstr. 10",
+        "capacity": 529,
+        "has_live_capacity": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.533457,
+          52.02613
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "bielefeld-7",
+        "name": "Parkhaus Am Jahnplatz",
+        "type": "garage",
+        "public_url": "https://www.bielefeld.de/de/sv/verkehr/parken/park/",
+        "source_url": null,
+        "address": "gegenüber Renteistr. 6",
+        "capacity": 77,
+        "has_live_capacity": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.533236,
+          52.022012
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "bielefeld-8",
+        "name": "Parkhaus Karstadt",
+        "type": "garage",
+        "public_url": "https://www.bielefeld.de/de/sv/verkehr/parken/park/",
+        "source_url": null,
+        "address": "Elsa-Brändström-Str. 6",
+        "capacity": 350,
+        "has_live_capacity": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.529022,
+          52.023937
         ]
       }
     }

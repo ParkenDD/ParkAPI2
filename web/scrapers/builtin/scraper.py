@@ -109,6 +109,8 @@ class SnapshotMaker:
                     "coordinates": [lon, lat]
                 }
             ret_data["features"].append(feature)
+
+        ret_data["features"].sort(key=lambda f: f["properties"]["id"])
         return ret_data
 
     def get_snapshot(self, infos_required: bool = True) -> dict:
