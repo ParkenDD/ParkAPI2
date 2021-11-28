@@ -63,7 +63,7 @@ class Frankfurt(ScraperBase):
                 LotInfo(
                     id=f"fam-{facility['id']}",
                     name=facility.find("parkingfacilitydescription").text,
-                    type="lot",  # there's no data
+                    type=LotInfo.Types.unknown,  # there's no data
                     source_url=self.POOL.source_url,
                     latitude=float(facility.find("pointcoordinates").find("latitude").text),
                     longitude=float(facility.find("pointcoordinates").find("longitude").text),
