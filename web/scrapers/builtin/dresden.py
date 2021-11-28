@@ -32,6 +32,7 @@ class Dresden(ScraperBase):
                 continue
             region = table.find("thead").find("tr").find_all("th")[1].find("div").text
 
+            # TODO: Why not include them? They are flagged as lot type 'bus'
             if region == "Busparkplätze":
                 continue
 
