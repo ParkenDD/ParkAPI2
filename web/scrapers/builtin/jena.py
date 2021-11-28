@@ -4,7 +4,7 @@ from typing import List
 from util import *
 
 
-class Frankfurt(ScraperBase):
+class Jena(ScraperBase):
 
     POOL = PoolInfo(
         id="jena",
