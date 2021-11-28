@@ -30,11 +30,13 @@ class Dresden(ScraperBase):
             thead = table.find("thead")
             if not thead:
                 continue
-            region = table.find("thead").find("tr").find_all("th")[1].find("div").text
 
-            # TODO: Why not include them? They are flagged as lot type 'bus'
-            if region == "Busparkplätze":
-                continue
+            # region = table.find("thead").find("tr").find_all("th")[1].find("div").text
+
+            # TODO: They are included in the database and flagged as lot type 'bus'
+            #   and should be excluded from API responses by default
+            #if region == "Busparkplätze":
+            #    continue
 
             for tr in table.find("tbody").find_all("tr"):
                 td = tr.find_all("td")
@@ -71,6 +73,7 @@ class Dresden(ScraperBase):
         return lots
 
     def get_lot_infos(self) -> List[LotInfo]:
+        """This does a good job but many coordinates are not included!"""
         soup = self.request_soup(self.POOL.source_url)
 
         lots = []
@@ -79,7 +82,7 @@ class Dresden(ScraperBase):
             if not thead:
                 continue
 
-            region = table.find("thead").find("tr").find_all("th")[1].find("div").text
+            # region = table.find("thead").find("tr").find_all("th")[1].find("div").text
 
             for tr in table.find("tbody").find_all("tr"):
                 lot_url = urllib.parse.urljoin(self.POOL.source_url, tr.find("a").attrs["href"])
@@ -87,7 +90,7 @@ class Dresden(ScraperBase):
                 try:
                     lots.append(self.get_lot_info_from_page(lot_url))
                 except:
-                    print("IN URL", lot_url)
+                    print("\nERROR IN URL", lot_url)
                     raise
 
         return lots
