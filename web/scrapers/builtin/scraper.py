@@ -8,6 +8,7 @@ import inspect
 from typing import Union, Optional, Tuple, List, Type, Dict
 
 from util import ScraperBase, SnapshotMaker, log
+from util.validate import validate_snapshot
 
 
 MODULE_DIR: Path = Path(__file__).resolve().parent
@@ -30,7 +31,7 @@ def parse_args() -> dict:
 
     parser.add_argument(
         "command", type=str,
-        choices=["list", "scrape", "show-geojson", "write-geojson"],
+        choices=["list", "scrape", "validate", "show-geojson", "write-geojson"],
         help="The command to execute",
     )
     parser.add_argument(
@@ -42,6 +43,10 @@ def parse_args() -> dict:
         help=f"Enable caching of the web-requests. Specify '-c' to enable writing and reading cache"
              f", '-c read' to only read cached files or '-c write' to only write cache files"
              f" but not read them. Cache directory is {ScraperBase.CACHE_DIR}"
+    )
+    parser.add_argument(
+        "-e", "--errors", nargs="?", type=bool, default=False, const=True,
+        help=f"Only display errors when running 'validate' command (skip the warnings)"
     )
 
     return vars(parser.parse_args())
@@ -76,10 +81,38 @@ def get_scrapers(
     return scrapers
 
 
+class JsonPrinter:
+    def __init__(self):
+        self.levels = 0
+        self.first_entry = True
+
+    def print(self, data: Union[list, dict]):
+        if not self.first_entry:
+            print(",")
+        self.first_entry = False
+
+        text = json.dumps(data, indent=2, ensure_ascii=False)
+
+        if self.levels:
+            text = "\n".join("  " * self.levels + line for line in text.splitlines())
+        print(text, end="" if self.levels else "\n")
+
+    def __enter__(self):
+        """Start a list and indent all the following contents"""
+        self.levels += 1
+        print("[")
+        return self
+
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        self.levels -= 1
+        print("\n]")
+
+
 def main(
         command: str,
         cache: Union[bool, str],
         pools: List[str],
+        errors: bool,
 ):
     scrapers = get_scrapers(pool_filter=pools)
     pool_ids = sorted(scrapers)
@@ -89,30 +122,46 @@ def main(
 
     elif command == "scrape":
 
-        print("[")
+        snapshots = []
+
         for pool_id in pool_ids:
             log(f"scraping pool '{pool_id}'")
             scraper = scrapers[pool_id](caching=cache)
-            snapshot = SnapshotMaker(scraper)
-            data = snapshot.get_snapshot(infos_required=False)
+            snapshotter = SnapshotMaker(scraper)
+            snapshot = snapshotter.get_snapshot(infos_required=False)
+            snapshots.append(snapshot)
 
-            comma = "," if pool_id != pool_ids[-1] else ""
-            print(json.dumps(data, indent=2, ensure_ascii=False) + comma)
-        print("]")
+        JsonPrinter().print(snapshots)
+
+    elif command == "validate":
+
+        validations = []
+
+        for pool_id in pool_ids:
+            log(f"scraping pool '{pool_id}'")
+            scraper = scrapers[pool_id](caching=cache)
+            snapshotter = SnapshotMaker(scraper)
+            snapshot = snapshotter.get_snapshot(infos_required=False)
+
+            validation = validate_snapshot(snapshot)
+            if validation["errors"] or (not errors and validation["warnings"]):
+                validations.append({"pool_id": pool_id, "validation": validation})
+
+        JsonPrinter().print(validations)
 
     elif command in ("show-geojson", "write-geojson"):
 
         for pool_id in pool_ids:
             log(f"scraping pool '{pool_id}'")
             scraper = scrapers[pool_id](caching=cache)
-            snapshot = SnapshotMaker(scraper)
-            data = snapshot.info_map_to_geojson(include_unknown=True)
+            snapshotter = SnapshotMaker(scraper)
+            snapshot = snapshotter.info_map_to_geojson(include_unknown=True)
             if command == "write-geojson":
                 filename = Path(inspect.getfile(scraper.__class__)[:-3] + ".geojson")
                 log("writing", filename)
-                filename.write_text(json.dumps(data, indent=2, ensure_ascii=False))
+                filename.write_text(json.dumps(snapshot, indent=2, ensure_ascii=False))
             else:
-                print(json.dumps(data, indent=2, ensure_ascii=False))
+                print(json.dumps(snapshot, indent=2, ensure_ascii=False))
 
 
 if __name__ == "__main__":

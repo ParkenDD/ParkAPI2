@@ -39,7 +39,7 @@ class SnapshotMaker:
                     if lot.id not in info_map:
                         # create a minimal lot info
                         info_map[lot.id] = LotInfo(
-                            id=lot.id, name=lot.id, type=LotInfo.Types.lot,
+                            id=lot.id, name=lot.id, type=LotInfo.Types.unknown,
                         )
 
             if not include_all_infos:
@@ -98,6 +98,11 @@ class SnapshotMaker:
                 for key, value in merged_lot.items():
                     if isinstance(value, datetime.datetime):
                         merged_lot[key] = value.isoformat()
+
+                if not merged_lot["source_url"]:
+                    merged_lot["source_url"] = (
+                        self.scraper.POOL.source_url or self.scraper.POOL.public_url
+                    )
 
                 snapshot["lots"].append(merged_lot)
 

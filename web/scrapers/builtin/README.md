@@ -15,7 +15,7 @@ The idea is to fork the scraper repo which would only contain:
     example.py 
     
     
-Then people can create one or more *pools* by copying and implementing `example.py` 
+Then contributers can create one or more *pools* by copying and implementing `example.py` 
 
 ```python
 from typing import List
@@ -50,20 +50,24 @@ during scraper development. If you have old cache files and want to create new o
 then run with `--cache write` to fire new web requests and write the new files and then
 use `--cache` afterwards.
 
-> Note: `validate` is not available yet.
+The `validate` command validates the resulting snapshot data against the 
+[json schema](schema.json) and prints warnings for fields that *should* be defined.
+Run `validate --errors` to only print errors and hide the warnings. 
 
-### Scraping live data
+
+### Scraping occupancy data
 
 The `get_lot_data` method must provide a list of `LotData` objects which 
-are defined in [util/struct.py](util/struct.py). It's really basic and does not contain
+are defined in [util/structs.py](util/structs.py). It's really basic and does not contain
 any further information about the parking lot, only the status, free spaces and capacity.
+
 
 ### Scraping meta information
 
 Additional lot information is taken from a [geojson](https://geojson.org/) which 
-should have the same name as the scraper file, e.g. `example.geojson`. If the file
-exists, it will be used and it's `properties` must fit the `util/structs/LotInfo` object.
-If it's not existing, the method `get_lot_infos` on your scraper will be called which
+should have the same name as the scraper file, e.g. `example.geojson`. **If the file
+exists**, it will be used and it's `properties` must fit the `util/structs/LotInfo` object.
+**If it's not existing**, the method `get_lot_infos` on your scraper will be called which
 should return all the required information. 
 
 *Some* websites do provide most of the required information and it might be easier to
@@ -80,6 +84,7 @@ python scraper.py write-geojson -p example
 ``` 
 
 The command `show-geojson` will write the contents to stdout for inspection.
+
 
 ### Publishing
 

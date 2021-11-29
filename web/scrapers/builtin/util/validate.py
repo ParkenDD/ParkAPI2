@@ -32,6 +32,12 @@ def validate_snapshot(
         # no need to check further
         return ret_data
 
+    if snapshot.get("error"):
+        ret_data["errors"].append({
+            "path": "errors",
+            "message": snapshot["error"],
+        })
+
     # --- validate "good practice" ---
 
     if not snapshot["pool"]["license"]:

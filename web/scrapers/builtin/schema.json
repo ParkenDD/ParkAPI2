@@ -40,12 +40,12 @@
         "public_url": {
           "type": "string",
           "maxLength": 4096,
-          "pattern": "[a-z]+://.*"
+          "pattern": "[a-z]+://.+"
         },
         "source_url": {
           "type": ["string", "null"],
           "maxLength": 4096,
-          "pattern": "[a-z]+://.*"
+          "pattern": "[a-z]+://.+"
         },
         "timezone": {
           "type": "string",
@@ -82,12 +82,12 @@
         "public_url": {
           "type": ["string", "null"],
           "maxLength": 4096,
-          "pattern": "[a-z]+://.*"
+          "pattern": "[a-z]+://.+"
         },
         "source_url": {
           "type": "string",
           "maxLength": 4096,
-          "pattern": "[a-z]+://.*"
+          "pattern": "[a-z]+://.+"
         },
         "address": {
           "type": ["string", "null"],
@@ -97,7 +97,7 @@
           "type": ["number", "null"]
         },
         "longitude": {
-          "type": ["integer", "null"]
+          "type": ["number", "null"]
         },
         "has_live_capacity": {
           "type": "boolean"
