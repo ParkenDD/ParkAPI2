@@ -1,3 +1,4 @@
+from ._log import log
 from .dt import to_utc_datetime
 from .strings import (
     guess_lot_type,
@@ -6,6 +7,7 @@ from .strings import (
     int_or_none,
     float_or_none,
 )
+from .snapshot import SnapshotMaker
 from .scraper import ScraperBase
 from .soup import get_soup_text
 from .structs import PoolInfo, LotInfo, LotData
