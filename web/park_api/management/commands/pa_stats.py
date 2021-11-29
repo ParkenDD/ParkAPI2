@@ -67,7 +67,7 @@ def dump_stats(time: Optional[str], pools: List[str], verbosity: int):
 
     print("\nPools")
     print("  all:                {:9,d}".format(pool_qset.count()))
-    print("  with license:       {:9,d}".format(pool_qset.exclude(license=None).count()))
+    print("  with license:       {:9,d}".format(pool_qset.exclude(attribution_license=None).count()))
 
     if verbosity > 1:
         print()

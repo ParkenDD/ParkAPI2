@@ -28,7 +28,7 @@ class MyCity(ScraperBase):
         name="My City",
         public_url="https://www.mycity.de/parken/",
         source_url="https://www.mycity.de/parken/auslastung/",
-        license="...",
+        attribution_license="...",
     )
 
     def get_lot_data(self) -> List[LotData]:

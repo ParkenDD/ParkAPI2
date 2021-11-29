@@ -24,7 +24,7 @@ class StatsView(views.View):
                     "name": "Pools",
                     "rows": [
                         ["all", pool_qset.count()],
-                        ["with license", pool_qset.exclude(license=None).count()],
+                        ["with license", pool_qset.exclude(attribution_license=None).count()],
                     ]
                 },
                 {
