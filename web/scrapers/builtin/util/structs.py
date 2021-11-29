@@ -23,14 +23,18 @@ class PoolInfo(Struct):
             public_url: str,
             timezone: str = "Europe/Berlin",
             source_url: Optional[str] = None,
-            license: Optional[str] = None,
+            attribution_license: Optional[str] = None,
+            attribution_url: Optional[str] = None,
+            attribution_contributor: Optional[str] = None,
     ):
         self.id = name_to_id(id)
         self.name = name
         self.public_url = public_url
         self.timezone = timezone
         self.source_url = source_url or None
-        self.license = license or None
+        self.attribution_license = attribution_license or None
+        self.attribution_url = attribution_url or None
+        self.attribution_contributor = attribution_contributor or None
 
 
 class LotInfo(Struct):

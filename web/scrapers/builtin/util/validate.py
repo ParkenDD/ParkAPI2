@@ -40,11 +40,12 @@ def validate_snapshot(
 
     # --- validate "good practice" ---
 
-    if not snapshot["pool"]["license"]:
-        ret_data["warnings"].append({
-            "path": "pool.license",
-            "message": "Pool should have a license"
-        })
+    for key in ("attribution_license", "attribution_contributor", "attribution_url"):
+        if not snapshot["pool"][key]:
+            ret_data["warnings"].append({
+                "path": f"pool.{key}",
+                "message": f"Pool '{snapshot['pool']['id']}' should have '{key}'"
+            })
 
     for i, lot in enumerate(snapshot["lots"]):
         if lot["type"] == LotInfo.Types.unknown:

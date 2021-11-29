@@ -10,7 +10,7 @@ class Bochum(ScraperBase):
         id="bochum",
         name="Buchum",
         public_url="https://www.parken-in-bochum.de/parkhaeuser/",
-        license="WirtschaftsEntwicklungsGesellschaft Bochum mbH",
+        attribution_contributor="WirtschaftsEntwicklungsGesellschaft Bochum mbH",
     )
 
     def get_lot_data(self) -> List[LotData]:

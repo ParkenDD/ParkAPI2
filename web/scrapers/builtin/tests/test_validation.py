@@ -12,7 +12,9 @@ SNAPSHOTS = {
             "public_url": "https://example.com",
             "timezone": "Europe/Berlin",
             "source_url": None,
-            "license": "The City Of Example"
+            "attribution_license": "CC-0",
+            "attribution_contributor": "The City Of Example",
+            "attribution_url": "https://example.com/license"
         },
         "lots": [
             {
@@ -41,7 +43,9 @@ SNAPSHOTS = {
             "public_url": "https://example.com",
             "timezone": "Europe/Berlin",
             "source_url": None,
-            "license": None,                                # missing license
+            "attribution_license": None,                    # missing license
+            "attribution_contributor": None,
+            "attribution_url": None,
         },
         "lots": [
             {
@@ -113,7 +117,7 @@ class TestValidation(unittest.TestCase):
         snapshot = deepcopy(SNAPSHOTS["valid"])
         snapshot["pool"]["source_url"] = "www.example.com"
         self.assertEqual(
-            [{"message": "'www.example.com' does not match '[a-z]+://.*'", "path": "pool.source_url"}],
+            [{"message": "'www.example.com' does not match '[a-z]+://.+'", "path": "pool.source_url"}],
             validate_snapshot(snapshot)["errors"]
         )
 
@@ -125,7 +129,9 @@ class TestValidation(unittest.TestCase):
 
         self.assertEqual(
             [
-                {"message": "Pool should have a license", "path": "pool.license"},
+                {"message": "Pool 'pool-2' should have 'attribution_license'", "path": "pool.attribution_license"},
+                {"message": "Pool 'pool-2' should have 'attribution_contributor'", "path": "pool.attribution_contributor"},
+                {"message": "Pool 'pool-2' should have 'attribution_url'", "path": "pool.attribution_url"},
                 {"message": "Lot 'pool-2-lot-1' should have a type other than 'unknown'", "path": "lots.0.type"},
                 {"message": "Lot 'pool-2-lot-1' should have 'latitude'", "path": "lots.0.latitude"},
                 {"message": "Lot 'pool-2-lot-1' should have 'longitude'", "path": "lots.0.longitude"},

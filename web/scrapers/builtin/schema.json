@@ -52,8 +52,16 @@
           "maxLength": 64,
           "description": "This is only used by the scraper to correctly parse datetime strings"
         },
-        "license": {
+        "attribution_license": {
           "type": ["string", "null"]
+        },
+        "attribution_contributor": {
+          "type": ["string", "null"],
+          "maxLength": 128
+        },
+        "attribution_url": {
+          "type": ["string", "null"],
+          "pattern": "[a-z]+://.+"
         }
       }
     },

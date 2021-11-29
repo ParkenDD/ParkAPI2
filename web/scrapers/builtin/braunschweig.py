@@ -13,7 +13,7 @@ class Braunschweig(ScraperBase):
         name="Braunschweig",
         public_url="https://www.braunschweig.de/tourismus/anreise/parken.php",
         source_url="https://www.braunschweig.de/apps/pulp/result/parkhaeuser.geojson",
-        license="Stadt Braunschweig",
+        attribution_contributor="Stadt Braunschweig",
     )
 
     STATUS_MAPPING = {

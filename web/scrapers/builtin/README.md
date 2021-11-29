@@ -15,7 +15,7 @@ The idea is to fork the scraper repo which would only contain:
     example.py 
     
     
-Then contributers can create one or more *pools* by copying and implementing `example.py` 
+Then contributors can create one or more *pools* by copying and implementing `example.py` 
 
 ```python
 from typing import List
@@ -91,7 +91,7 @@ The command `show-geojson` will write the contents to stdout for inspection.
 Once it's ready it can be *git submoduled* into the ParkAPI repo at `web/scrapers/`
 and the main project will import the scrapers from all modules.
 
-The `scraper.py` has a version number and if the schema changes, contributers 
+The `scraper.py` has a version number and if the schema changes, contributors 
 need to merge with the original scraper repo at some point.
 
 The `validate` command could actually validate the scraped data against the live API.

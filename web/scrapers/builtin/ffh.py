@@ -10,7 +10,6 @@ class FFHParking(ScraperBase):
         id="ffh",
         name="HitRadio FFH Parkhaus-Info",
         public_url="https://www.ffh.de/verkehr/parkhaeuser.html",
-        license=None,
         timezone="Europe/Berlin",
     )
 

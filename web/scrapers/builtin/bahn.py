@@ -18,8 +18,9 @@ else:
             name="Deutsche Bahn Parkplätze API",
             public_url="https://data.deutschebahn.com/dataset/api-parkplatz.html",
             source_url="https://api.deutschebahn.com/bahnpark/v1/spaces",
-            license="Creative Commons Attribution 4.0 International (CC BY 4.0)",
             timezone="Europe/Berlin",  # i guess
+            attribution_license="Creative Commons Attribution 4.0 International (CC BY 4.0)",
+            attribution_contributor="DB BahnPark GmbH",
         )
 
         HEADERS = {

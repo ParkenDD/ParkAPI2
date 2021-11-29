@@ -14,6 +14,7 @@ class Dresden(ScraperBase):
         name="Dresden",
         public_url="https://www.dresden.de/parken",
         source_url="https://www.dresden.de/apps_ext/ParkplatzApp/",
+        attribution_contributor="Landeshauptstadt Dresden / tiefbauamt-verkehrstechnik@dresden.de"
     )
 
     def get_lot_data(self) -> List[LotData]:

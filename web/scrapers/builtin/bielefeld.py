@@ -11,7 +11,6 @@ class Bielefeld(ScraperBase):
         id="bielefeld",
         name="Bielefeld",
         public_url="https://www.bielefeld.de/de/sv/verkehr/parken/park/",
-
     )
 
     def get_lot_data(self) -> List[LotData]:
