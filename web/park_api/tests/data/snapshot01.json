@@ -5,7 +5,9 @@
     "timezone": "Europe/Berlin",
     "public_url": "https://www.apag.de",
     "source_url": null,
-    "license": null
+    "attribution_license": null,
+    "attribution_url": null,
+    "attribution_contributor": null
   },
   "lots": [
     {

@@ -7,8 +7,8 @@ from .timestamped import TimestampedGeoModel
 class ParkingLot(TimestampedGeoModel):
 
     class Meta:
-        verbose_name = _("Parking lot")
-        verbose_name_plural = _("Parking lots")
+        verbose_name = _("Lot")
+        verbose_name_plural = _("Lots")
 
     pool = models.ForeignKey(
         verbose_name=_("Pool"),

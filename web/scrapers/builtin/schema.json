@@ -61,6 +61,7 @@
         },
         "attribution_url": {
           "type": ["string", "null"],
+          "maxLength": 4096,
           "pattern": "[a-z]+://.+"
         }
       }

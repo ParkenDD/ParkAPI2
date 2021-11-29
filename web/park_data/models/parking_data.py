@@ -103,8 +103,8 @@ class ParkingDataBase(models.Model):
 class ParkingData(ParkingDataBase):
 
     class Meta:
-        verbose_name = _("Parking data")
-        verbose_name_plural = _("Parking data")
+        verbose_name = _("Data")
+        verbose_name_plural = _("Data")
         unique_together = ("timestamp", "lot")
 
     lot = models.ForeignKey(

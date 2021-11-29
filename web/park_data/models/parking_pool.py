@@ -35,13 +35,25 @@ class ParkingPool(TimestampedModel):
         null=True, blank=True,
     )
 
-    license = models.TextField(
+    attribution_license = models.TextField(
         verbose_name=_("License"),
         null=True, blank=True,
     )
 
+    attribution_contributor = models.CharField(
+        verbose_name=_("Contributor"),
+        null=True, blank=True,
+        max_length=128,
+    )
+
+    attribution_url = models.URLField(
+        verbose_name=_("Attribution url"),
+        null=True, blank=True,
+        max_length=4096,
+    )
+
     def __str__(self):
         s = self.pool_id
-        #if self.name:
-        #    s = f"{s}/{self.name}"
+        # if self.name:
+        #     s = f"{s}/{self.name}"
         return s
