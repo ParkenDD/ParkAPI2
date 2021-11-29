@@ -48,9 +48,9 @@ class LotInfo(Struct):
             self,
             id: str,
             name: str,
+            source_url: str,
             type: Optional[str] = None,
             public_url: Optional[str] = None,
-            source_url: Optional[str] = None,
             address: Optional[str] = None,
             capacity: Optional[int] = None,
             has_live_capacity: bool = False,
@@ -61,7 +61,7 @@ class LotInfo(Struct):
         self.name = name
         self.type = type
         self.public_url = public_url or None
-        self.source_url = source_url or None
+        self.source_url = source_url
         self.address = address or None
         self.capacity = capacity
         self.has_live_capacity = has_live_capacity

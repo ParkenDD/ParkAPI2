@@ -13,15 +13,14 @@ import glob
 import importlib
 import sys
 import inspect
-import unicodedata
 from typing import Union, Optional, Tuple, List, Type, Dict
 
-import dateutil.parser
 import requests
 from bs4 import BeautifulSoup
 
 from .structs import PoolInfo, LotInfo, LotData
 from .dt import to_utc_datetime
+from ._log import log
 
 
 VERSION = (0, 0, 1)
@@ -29,17 +28,16 @@ VERSION = (0, 0, 1)
 MODULE_DIR: Path = Path(__file__).resolve().parent
 
 
-def log(*args, **kwargs):
-    print(datetime.datetime.now(), *args, **kwargs, file=sys.stderr)
-
-
 class ScraperBase:
 
+    # Directory where web requests are cached
     CACHE_DIR = Path(tempfile.gettempdir()) / "parkapi-scraper"
-    REQUESTS_PER_SECOND = 2.
+
+    # Maximum requests allowed per second
+    REQUESTS_PER_SECOND: float = 2.
     # The user agent that is used in web requests
     USER_AGENT = "github.com/defgsus/ParkAPI2"
-    # extra headers that should be added to all request
+    # Extra headers that should be added to all requests
     HEADERS = {}
 
     # A PoolInfo object must be specified for each derived scraper
