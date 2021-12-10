@@ -6,5 +6,6 @@ from . import views
 app_name = "api_v1"
 
 urlpatterns = [
-    path("", views.CityView.as_view(), name="city-view"),
+    path("", views.CityMapView.as_view(), name="city-map-view"),
+    path("<slug:city>", views.CityView.as_view(), name="city-view"),
 ]

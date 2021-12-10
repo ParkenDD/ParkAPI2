@@ -34,3 +34,9 @@ class ParkingDataViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = ParkingData.objects.all()
     serializer_class = ParkingDataSerializer
 
+
+# ---
+
+class ParkingDataViewSet(viewsets.ReadOnlyModelViewSet):
+    queryset = ParkingData.objects.all()
+    serializer_class = ParkingDataSerializer
