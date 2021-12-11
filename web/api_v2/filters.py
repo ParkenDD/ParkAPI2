@@ -4,8 +4,8 @@ from django.contrib.gis.geos import Point
 from django.contrib.gis.measure import Distance
 from django.contrib.gis.db.models import functions as F
 from rest_framework import serializers, viewsets, filters
-from rest_framework.compat import coreapi, coreschema, distinct
-
+import coreapi
+import coreschema
 
 class SpatialFilter(filters.BaseFilterBackend):
 

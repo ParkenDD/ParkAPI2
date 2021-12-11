@@ -3,10 +3,10 @@ import posix
 from copy import deepcopy
 from typing import Dict
 
-from rest_framework.views import APIView
+from rest_framework import views, renderers, generics, parsers
 from rest_framework.response import Response
-from rest_framework.renderers import StaticHTMLRenderer
-
+from rest_framework.request import Request
+from rest_framework.schemas.openapi import AutoSchema
 from locations.models import Location
 from park_data.models import ParkingLot, ParkingPool, ParkingData, ParkingLotState
 
@@ -26,7 +26,7 @@ LOT_TYPE_MAPPING = {
 }
 
 
-class StatusView(APIView):
+class StatusView(views.APIView):
 
     def get(self, request):
         return Response({
@@ -36,10 +36,10 @@ class StatusView(APIView):
         })
 
 
-class CoffeeView(APIView):
-    renderer_classes = (StaticHTMLRenderer, )
+class CoffeeView(views.APIView):
+    renderer_classes = (renderers.StaticHTMLRenderer, renderers.JSONRenderer)
 
-    def get(self, request):
+    def get(self, request: Request):
         return Response("""
         <h1>I'm a teapot</h1>
         <p>This server is a teapot, not a coffee machine.</p><br>
@@ -49,9 +49,9 @@ class CoffeeView(APIView):
          """, status=418)
 
 
-class CityMapView(APIView):
+class CityMapView(views.APIView):
 
-    def get(self, request):
+    def get(self, request: Request):
 
         return Response({
             "api_version": "1.0",
@@ -121,9 +121,9 @@ class CityMapView(APIView):
         return city_map
 
 
-class CityLotsView(APIView):
+class CityLotsView(views.APIView):
 
-    def get(self, request, city):
+    def get(self, request: Request, city: str):
 
         location_qset = Location.objects.filter(city__iexact=CITY_NAME_MAPPING.get(city, city))
         if not location_qset.exists():
@@ -179,3 +179,4 @@ class CityLotsView(APIView):
             "last_updated": last_updated,
             "lots": api_lot_list,
         })
+
