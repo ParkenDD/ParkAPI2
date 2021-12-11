@@ -64,6 +64,35 @@ curl "http://localhost:8000/api/v2/pools/apag/" -H "Accept: application/json; in
 }
 ```
 
+### Original API
+
+```shell script
+curl "http://localhost:8000/api/Jena" -H "Accept: application/json; indent=2"
+{
+  "last_downloaded": "2021-11-29T12:36:00",
+  "last_updated": null,
+  "lots": [
+    {
+      "address": null,
+      "coords": {
+        "lat": 50.927818,
+        "lng": 11.585724
+      },
+      "forecast": false,
+      "free": 36,
+      "id": "jena-city-carree",
+      "lot_type": "Parkplatz",
+      "name": "City Carree",
+      "region": null,
+      "state": "open",
+      "total": 40
+    },
+    ...
+  ]
+}
+```
+
+
 ## Scraping
 
 A prototype is developed in [web/scrapers/builtin/](web/scrapers/builtin/).
@@ -132,7 +161,7 @@ By default, the django admin interface is available at
 [localhost:8000/admin/](http://localhost:8000/admin/) and the 
 swagger api documentation is at
 [localhost:8000/api/docs/](http://localhost:8000/api/docs/) and
-a simple overview page at [localhost:8000](http://localhost:8000/). 
+a simple overview page at [localhost:8000/](http://localhost:8000/). 
 
 
 To get data into the database call:
@@ -162,7 +191,8 @@ docker run -ti --env PARKAPI_RUN_TESTS=1 --net host parkapi-dev
 ```
 
 Running the container with `--net host` will attach to the postgres at localhost. Please
-check the example in the [postgis docker README](https://github.com/postgis/docker-postgis)
+check the example in the 
+[postgis docker README](https://github.com/postgis/docker-postgis#readme)
 how to connect to a different host. 
 
 #### running the server in docker container
