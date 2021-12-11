@@ -1,8 +1,11 @@
+import datetime
+import posix
 from copy import deepcopy
 from typing import Dict
 
 from rest_framework.views import APIView
 from rest_framework.response import Response
+from rest_framework.renderers import StaticHTMLRenderer
 
 from locations.models import Location
 from park_data.models import ParkingLot, ParkingPool, ParkingData, ParkingLotState
@@ -21,6 +24,29 @@ LOT_TYPE_MAPPING = {
     "bus": "Busparkplatz",
     "unknown": "unbekannt",
 }
+
+
+class StatusView(APIView):
+
+    def get(self, request):
+        return Response({
+            "status": "online",
+            "server_time": datetime.datetime.utcnow().replace(microsecond=0),
+            "load": posix.getloadavg()
+        })
+
+
+class CoffeeView(APIView):
+    renderer_classes = (StaticHTMLRenderer, )
+
+    def get(self, request):
+        return Response("""
+        <h1>I'm a teapot</h1>
+        <p>This server is a teapot, not a coffee machine.</p><br>
+        <img src="http://i.imgur.com/xVpIC9N.gif"
+            alt="British porn"
+            title="British porn"/>
+         """, status=418)
 
 
 class CityMapView(APIView):
@@ -95,7 +121,7 @@ class CityMapView(APIView):
         return city_map
 
 
-class CityView(APIView):
+class CityLotsView(APIView):
 
     def get(self, request, city):
 
