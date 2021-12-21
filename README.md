@@ -115,23 +115,32 @@ pip install -r web/scrapers/builtin/requirements.txt
 
 ### Create a postgres database
 
-Follow the 
-[instructions](https://docs.djangoproject.com/en/3.2/ref/contrib/gis/install/postgis/) 
-for installing postgres and the `postgis` extension.
+Please follow the instructions in the 
+[postgis requirements](https://postgis.net/docs/postgis_installation.html#install_requirements)
+to install all necessary packages. 
 
+On debian, setup looks like:
+```sh
+# see https://www.postgresql.org/download/linux/debian/
+apt-get install postgresql-13
+
+# postgis extension utilities 
+apt-get install libpq-dev libgdal-dev libproj-dev libgeos-dev postgresql-13-postgis-3-scripts
+```
+ 
 Alternatively, you can run the 
 [postgis docker image](https://github.com/postgis/docker-postgis):
 ```shell script
-docker run --name some-postgis -e POSTGRES_PASSWORD=pass -d postgis/postgis
+docker run --name some-postgis -e POSTGRES_PASSWORD=<the password> -d postgis/postgis
 ```
 
-Then create and setup database
+#### Create and setup database
  
 ```shell script
 # start psql
 sudo -u postgres psql
 
-CREATE USER "park_api" WITH PASSWORD 'park_api';
+CREATE USER "park_api" WITH PASSWORD '...';
 CREATE DATABASE "parkapi2" ENCODING=UTF8 OWNER="park_api";
 
 # allow park_api user to create the unittest database and 
