@@ -9,10 +9,10 @@ https://docs.djangoproject.com/en/3.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
-import os
 from pathlib import Path
 
-DATETIME_FORMAT = "Y-m-d H:i:s T"
+from decouple import config
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -24,30 +24,23 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # --- CI variables --
 
-POSTGRES_DATABASE = os.environ.get('POSTGRES_DATABASE', 'parkapi2')
-POSTGRES_TEST_DATABASE = os.environ.get('POSTGRES_DATABASE', 'parkapi2_test')
-POSTGRES_HOST = os.environ.get('POSTGRES_HOST', 'localhost')
-POSTGRES_PORT = os.environ.get('POSTGRES_PORT', '5432')
-POSTGRES_USER = os.environ.get('POSTGRES_USER', 'park_api')
-POSTGRES_PASSWORD = os.environ.get('POSTGRES_PASSWORD', 'park_api')
+POSTGRES_DATABASE = config('POSTGRES_DATABASE')
+POSTGRES_TEST_DATABASE = config('POSTGRES_TEST_DATABASE')
+POSTGRES_HOST = config('POSTGRES_HOST', default='localhost')
+POSTGRES_PORT = config('POSTGRES_PORT', default=5432, cast=int)
+POSTGRES_USER = config('POSTGRES_USER')
+POSTGRES_PASSWORD = config('POSTGRES_PASSWORD')
 
-SECRET_KEY = os.environ.get(
-    'DJANGO_SECRET_KEY',
-    'SECURITY WARNING: keep the secret key used in production secret!'
-)
+SECRET_KEY = config("DJANGO_SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True if os.environ.get("DJANGO_DEBUG") == "True" else False
+DEBUG = config("DJANGO_DEBUG", default=False, cast=bool)
 
-if os.environ.get('DJANGO_ALLOWED_HOSTS'):
-    ALLOWED_HOSTS = os.environ['DJANGO_ALLOWED_HOSTS'].split()
-else:
-    ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = config('DJANGO_ALLOWED_HOSTS').split()
 
-if os.environ.get("DJANGO_CSRF_TRUSTED_ORIGINS"):
-    CSRF_TRUSTED_ORIGINS = os.environ["DJANGO_CSRF_TRUSTED_ORIGINS"].split()
+STATIC_ROOT = config("DJANGO_STATIC_PATH", default=BASE_DIR / "static", cast=Path)
 
-STATIC_ROOT = os.environ.get("DJANGO_STATIC_PATH", BASE_DIR / "static")
+# --- end CI variables ---
 
 STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesStorage'
 
@@ -172,6 +165,9 @@ USE_I18N = True
 USE_L10N = False
 
 USE_TZ = False
+
+# make django admin show times flagged with UTC
+DATETIME_FORMAT = "Y-m-d H:i:s T"
 
 
 # Static files (CSS, JavaScript, Images)

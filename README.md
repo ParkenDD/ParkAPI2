@@ -134,29 +134,37 @@ Alternatively, you can run the
 docker run --name some-postgis -e POSTGRES_PASSWORD=<the password> -d postgis/postgis
 ```
 
-#### Create and setup database
+#### Setup and create database
  
-```shell script
+First copy the [web/.env.example](web/.env.example) file to `web/.env` and edit.
+Specifically `POSTGRES_USER` and `POSTGRES_PASSWORD` must be defined.
+
+The create the database execute these commands and replace `<user>` and `<password>`
+with your values: 
+ 
+```sh
 # start psql
 sudo -u postgres psql
 
-CREATE USER "park_api" WITH PASSWORD '...';
-CREATE DATABASE "parkapi2" ENCODING=UTF8 OWNER="park_api";
+CREATE USER "<user>" WITH PASSWORD "<password>";
+CREATE DATABASE "parkapi2" ENCODING=UTF8 OWNER="<user>";
+CREATE DATABASE "parkapi2-test" ENCODING=UTF8 OWNER="<user>";
 
-# allow park_api user to create the unittest database and 
-# enable the postgis extension  
-ALTER USER "park_api" SUPERUSER;
+# connect to each database and enable postgis
+\c parkapi2
+CREATE EXTENSION postgis;
+
+\c parkapi2-test
+CREATE EXTENSION postgis;
 ```
 
-> Note that `ALTER USER "park_api" CREATEDB;` is usually enough for 
-> running the unittests but the `postgis` extension 
-> [can only be enabled by a superuser](https://dba.stackexchange.com/questions/175319/postgresql-enabling-extensions-without-super-user/175469#175469).
+### Run local server and unittests 
 
-Then in the `web/` directory call:
+In the `web/` directory call:
 
 ```shell script
 # run unittests
-./manage.py test
+./manage.py test --keepdb
 
 # init the main database
 ./manage.py migrate
@@ -170,7 +178,7 @@ By default, the django admin interface is available at
 [localhost:8000/admin/](http://localhost:8000/admin/) and the 
 swagger api documentation is at
 [localhost:8000/api/docs/](http://localhost:8000/api/docs/) and
-a simple overview page at [localhost:8000/](http://localhost:8000/). 
+a simple *developmental* overview page at [localhost:8000/](http://localhost:8000/). 
 
 
 To get data into the database call:
@@ -182,33 +190,3 @@ To get data into the database call:
 ./manage.py pa_find_locations
 ```
 
-
-## Docker and CI
-
-The [Dockerfile](Dockerfile) is an Ubuntu based image. It's probably possible
-to switch to Alpine but the postgis libraries are currently not working in 
-my attempts.
-
-```shell script
-docker build --tag parkapi-dev .
-```
-
-#### run unittests in docker container
-
-```shell script
-docker run -ti --env PARKAPI_RUN_TESTS=1 --net host parkapi-dev
-```
-
-Running the container with `--net host` will attach to the postgres at localhost. Please
-check the example in the 
-[postgis docker README](https://github.com/postgis/docker-postgis#readme)
-how to connect to a different host. 
-
-#### running the server in docker container
-
-```shell script
-docker run -ti --env DJANGO_DEBUG=True --net host parkapi-dev
-```
-
-Running in non-DEBUG mode will not deliver static files as this
-requires a webserver like nginx or apache.

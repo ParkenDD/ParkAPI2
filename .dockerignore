@@ -1,4 +1,0 @@
-# exclude localhost related files
-web/park_api/settings_local.py
-web/static/
-*.sqlite3
