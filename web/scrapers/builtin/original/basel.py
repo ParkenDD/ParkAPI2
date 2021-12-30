@@ -45,27 +45,6 @@ class Basel(ScraperBase):
 
         return lots
 
-    def XX_get_lot_infos(self) -> List[LotInfo]:
-        response = self.request(self.POOL.source_url)
-        feed = feedparser.parse(response.text)
-
-        lots = []
-
-        for entry in feed.get("entries", []):
-            url = entry["link"]
-            title = html.unescape(entry["title"].strip())
-
-            lots.append(self.get_lot_info(url, title))
-
-        return lots
-
-    def get_lot_info(self, url: str, title: str) -> LotInfo:
-        soup = self.request_soup(url)
-
-        return LotInfo(
-            id=lot_id,
-        )
-
     @staticmethod
     def parse_summary(summary) -> Tuple[str, Optional[int]]:
         """
@@ -86,18 +65,3 @@ class Basel(ScraperBase):
             status = LotData.Status.nodata
 
         return status, num_free
-
-    @staticmethod
-    def parse_title(title) -> Tuple[str, str]:
-        """
-        Parse a string from the format 'Parkhaus Bad. Bahnhof'
-        """
-        types = ["Parkhaus", "Parkplatz"]
-
-        name = title
-        type = ""
-        if name.split(" ")[0] in types:
-            type = name.split(" ")[0]
-            name = " ".join(name.split(" ")[1:])
-
-        return name, type
