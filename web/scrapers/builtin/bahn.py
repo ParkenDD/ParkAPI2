@@ -71,7 +71,7 @@ else:
 
                 lots.append(
                     LotData(
-                        id="db-%s" % space["id"],
+                        id=name_to_id("db", space["id"]),
                         timestamp=now,
                         lot_timestamp=lot_timestamp,
                         status=status,
@@ -103,7 +103,7 @@ else:
 
                 lots.append(
                     LotInfo(
-                        id="db-%s" % space["id"],
+                        id=name_to_id("db", space["id"]),
                         name=space["name"],
                         # either street or auto-mapping
                         type=LotInfo.Types.street if space["spaceType"] == "Straße" else space["spaceType"],

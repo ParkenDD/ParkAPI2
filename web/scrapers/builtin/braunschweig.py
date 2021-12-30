@@ -32,7 +32,7 @@ class Braunschweig(ScraperBase):
 
             lots.append(
                 LotData(
-                    id=props["name"],
+                    id=name_to_id("braunschweig", props["name"]),
                     timestamp=self.timestamp,
                     lot_timestamp=self.to_utc_datetime(props["timestamp"]) if props.get("timestamp") else None,
                     status=status,
@@ -59,7 +59,7 @@ class Braunschweig(ScraperBase):
 
             lots.append(
                 LotInfo(
-                    id=props["name"],
+                    id=name_to_id("braunschweig", props["name"]),
                     name=props["name"],
                     capacity=props.get("capacity"),
                     address=get_soup_text(address),

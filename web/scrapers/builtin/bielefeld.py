@@ -52,7 +52,7 @@ class Bielefeld(ScraperBase):
                     lots.append(
                         LotData(
                             timestamp=now,
-                            id=f"bielefeld-{lot_id}",
+                            id=name_to_id("bielefeld", lot_id),
                             status=status,
                             num_free=num_free,
                             capacity=capacity,
@@ -94,7 +94,7 @@ class Bielefeld(ScraperBase):
 
                     lots.append(
                         LotInfo(
-                            id=f"bielefeld-{lot_id}",
+                            id=name_to_id("bielefeld", lot_id),
                             name=name,
                             type=guess_lot_type(name) or LotInfo.Types.unknown,
                             public_url=self.POOL.public_url,
