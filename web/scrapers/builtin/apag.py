@@ -54,7 +54,7 @@ class Apag(ScraperBase):
                     lots.append(
                         LotData(
                             timestamp=now,
-                            id=f"{id_prefix}-{parking_name}",
+                            id=name_to_legacy_id(id_prefix, parking_name),
                             num_free=parking_free,
                             status=parking_state,
                         )
@@ -100,7 +100,7 @@ class Apag(ScraperBase):
 
                     lots.append(
                         LotInfo(
-                            id=f"{id_prefix}-{parking_name}",
+                            id=name_to_legacy_id(id_prefix, parking_name),
                             name=name,
                             type=type,
                             public_url=lot_url,
