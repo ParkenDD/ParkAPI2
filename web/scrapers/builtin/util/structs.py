@@ -27,7 +27,7 @@ class PoolInfo(Struct):
             attribution_url: Optional[str] = None,
             attribution_contributor: Optional[str] = None,
     ):
-        self.id = name_to_id(id)
+        self.id = id
         self.name = name
         self.public_url = public_url
         self.timezone = timezone
@@ -61,7 +61,7 @@ class LotInfo(Struct):
             latitude: Optional[Union[str, float]] = None,
             longitude: Optional[Union[str, float]] = None,
     ):
-        self.id = name_to_id(id)
+        self.id = id
         self.name = name
         self.type = type
         self.public_url = public_url or None
@@ -136,7 +136,7 @@ class LotData(Struct):
             capacity: Optional[int] = None,
             lot_timestamp: Optional[datetime.datetime] = None
     ):
-        self.id = name_to_id(id)
+        self.id = id
         self.timestamp = timestamp
         self.status = status
         self.num_free = num_free

@@ -2,7 +2,7 @@ from ._log import log
 from .dt import to_utc_datetime
 from .strings import (
     guess_lot_type,
-    remove_special_chars,
+    name_to_legacy_id,
     name_to_id,
     int_or_none,
     float_or_none,
