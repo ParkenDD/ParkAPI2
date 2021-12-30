@@ -1,10 +1,12 @@
 import json
+import os
 import datetime
 from pathlib import Path
 import argparse
 import glob
 import importlib
 import inspect
+import itertools
 from typing import Union, Optional, Tuple, List, Type, Dict
 
 from util import ScraperBase, SnapshotMaker, log
@@ -57,8 +59,15 @@ def get_scrapers(
 ) -> Dict[str, Type["ScraperBase"]]:
 
     scrapers = dict()
-    for filename in glob.glob(str(MODULE_DIR / "*.py")):
-        module_name = Path(filename).name[:-3]
+    for filename in itertools.chain(
+            glob.glob(str(MODULE_DIR / "*.py")),
+            glob.glob(str(MODULE_DIR / "*" / "*.py"))
+    ):
+        filename = Path(filename)
+        if filename.parent.name in ("tests", "util"):
+            continue
+
+        module_name = str(filename.relative_to(MODULE_DIR))[:-3].replace(os.path.sep, ".")
         if module_name == "scraper":
             continue
 
