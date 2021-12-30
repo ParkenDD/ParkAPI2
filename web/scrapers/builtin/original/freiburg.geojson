@@ -1,0 +1,356 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "freiburgambahnhof",
+        "name": "Am Bahnhof",
+        "type": "unknown",
+        "public_url": "https://www.freiburg.de/pb/,Lde/231383.html",
+        "source_url": null,
+        "address": "P4",
+        "capacity": 158,
+        "has_live_capacity": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.842908834987216,
+          47.998985389852045
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "freiburgbahnhofsgarage",
+        "name": "Bahnhofsgarage",
+        "type": "garage",
+        "public_url": "https://www.freiburg.de/pb/,Lde/231359.html",
+        "source_url": null,
+        "address": "P1",
+        "capacity": 229,
+        "has_live_capacity": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.840827649980254,
+          47.99530427666567
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "freiburgggrafhalle",
+        "name": "G.-Graf-Halle",
+        "type": "unknown",
+        "public_url": "https://www.freiburg.de/pb/,Lde/1475630.html",
+        "source_url": null,
+        "address": null,
+        "capacity": 116,
+        "has_live_capacity": false
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "freiburgkarlsbau",
+        "name": "Karlsbau",
+        "type": "unknown",
+        "public_url": "https://www.freiburg.de/pb/,Lde/231431.html",
+        "source_url": null,
+        "address": "P13",
+        "capacity": 977,
+        "has_live_capacity": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.853839757759242,
+          47.99746077629321
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "freiburgkollegiengebaeude",
+        "name": "Kollegiengebäude",
+        "type": "unknown",
+        "public_url": "https://www.freiburg.de/pb/,Lde/231471.html",
+        "source_url": null,
+        "address": null,
+        "capacity": 206,
+        "has_live_capacity": false
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "freiburgkonzerthaus",
+        "name": "Konzerthaus",
+        "type": "unknown",
+        "public_url": "https://www.freiburg.de/pb/,Lde/231367.html",
+        "source_url": null,
+        "address": "P2",
+        "capacity": 438,
+        "has_live_capacity": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.84141154283007,
+          47.99694656853075
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "freiburglandratsamt",
+        "name": "Landratsamt",
+        "type": "unknown",
+        "public_url": "https://www.freiburg.de/pb/,Lde/231439.html",
+        "source_url": null,
+        "address": "P14",
+        "capacity": 205,
+        "has_live_capacity": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.857073440394663,
+          48.00007397051193
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "freiburgmartinstor",
+        "name": "Martinstor",
+        "type": "unknown",
+        "public_url": "https://www.freiburg.de/pb/,Lde/231463.html",
+        "source_url": null,
+        "address": "P18",
+        "capacity": 139,
+        "has_live_capacity": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.847355875603023,
+          47.99252122643358
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "freiburgmesseparkplatz",
+        "name": "Messe Parkplatz",
+        "type": "unknown",
+        "public_url": null,
+        "source_url": null,
+        "address": null,
+        "capacity": 500,
+        "has_live_capacity": false
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "freiburgpaedhochschule",
+        "name": "Päd. Hochschule",
+        "type": "unknown",
+        "public_url": "https://www.freiburg.de/pb/1695539.html",
+        "source_url": null,
+        "address": null,
+        "capacity": 155,
+        "has_live_capacity": false
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "freiburgrotteck",
+        "name": "Rotteck",
+        "type": "unknown",
+        "public_url": "https://www.freiburg.de/pb/,Lde/231415.html",
+        "source_url": null,
+        "address": "P10",
+        "capacity": 297,
+        "has_live_capacity": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.846289674197204,
+          47.99581563822502
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "freiburgschlossberg",
+        "name": "Schlossberg",
+        "type": "unknown",
+        "public_url": "https://www.freiburg.de/pb/,Lde/231447.html",
+        "source_url": null,
+        "address": "P15",
+        "capacity": 429,
+        "has_live_capacity": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.855133809588589,
+          47.99403157051466
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "freiburgschwabentor",
+        "name": "Schwabentor",
+        "type": "unknown",
+        "public_url": "https://www.freiburg.de/pb/,Lde/231455.html",
+        "source_url": null,
+        "address": "P16",
+        "capacity": 201,
+        "has_live_capacity": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.856301436251751,
+          47.99127875875355
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "freiburgschwarzwaldcity",
+        "name": "Schwarzwald City",
+        "type": "unknown",
+        "public_url": "https://www.freiburg.de/pb/,Lde/231407.html",
+        "source_url": null,
+        "address": "P9",
+        "capacity": 416,
+        "has_live_capacity": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.851110338871799,
+          47.99722128099989
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "freiburgunterlinden",
+        "name": "Unterlinden",
+        "type": "unknown",
+        "public_url": "https://www.freiburg.de/pb/,Lde/231399.html",
+        "source_url": null,
+        "address": "P8",
+        "capacity": 203,
+        "has_live_capacity": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.848858803255791,
+          47.997882818254276
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "freiburgvolksbank",
+        "name": "Volksbank",
+        "type": "unknown",
+        "public_url": "https://www.freiburg.de/pb/,Lde/231375.html",
+        "source_url": null,
+        "address": "P3",
+        "capacity": 186,
+        "has_live_capacity": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.843404280234661,
+          47.99803589052632
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "freiburgwestarkaden",
+        "name": "Westarkaden",
+        "type": "unknown",
+        "public_url": "https://www.freiburg.de/pb/1708134.html",
+        "source_url": null,
+        "address": null,
+        "capacity": 700,
+        "has_live_capacity": false
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "freiburgzaehringertor",
+        "name": "Zähringer Tor",
+        "type": "unknown",
+        "public_url": "https://www.freiburg.de/pb/,Lde/231423.html",
+        "source_url": null,
+        "address": "P12",
+        "capacity": 100,
+        "has_live_capacity": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.85401373813563,
+          47.99897306942212
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "freiburgzentrumoberwiehre",
+        "name": "Zentrum Oberwiehre",
+        "type": "unknown",
+        "public_url": "https://www.freiburg.de/pb/1708057.html",
+        "source_url": null,
+        "address": null,
+        "capacity": 269,
+        "has_live_capacity": false
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "freiburgzurunterfuehrung",
+        "name": "Zur Unterführung",
+        "type": "unknown",
+        "public_url": "https://www.freiburg.de/pb/,Lde/231391.html",
+        "source_url": null,
+        "address": null,
+        "capacity": 100,
+        "has_live_capacity": false
+      }
+    }
+  ]
+}

@@ -303,24 +303,26 @@ class ScraperBase:
 
         for feature in data["features"]:
             props = feature["properties"]
-            if props["type"] == "city":
+            if props.get("type") == "city":
                 continue
 
             lot_type = defaults.get("type")
-            if not lot_type:
+            if not lot_type and props.get("name"):
+                lot_type = guess_lot_type(props["name"])
+            if not lot_type and props.get("type"):
                 lot_type = guess_lot_type(props["type"])
 
-            lots.append(
-                LotInfo(
-                    **defaults,
-                    id=name_to_legacy_id(self.POOL.id, props["name"]),
-                    name=props["name"],
-                    type=lot_type,
-                    capacity=props["total"],
-                    longitude=feature["geometry"]["coordinates"][0],
-                    latitude=feature["geometry"]["coordinates"][1],
-                    address=props.get("address"),
-                )
-            )
+            kwargs = defaults.copy() if defaults else dict()
+            kwargs.update(dict(
+                id=name_to_legacy_id(self.POOL.id, props["name"]),
+                name=props["name"],
+                type=lot_type or LotInfo.Types.unknown,
+                capacity=props.get("total"),
+                longitude=feature["geometry"]["coordinates"][0],
+                latitude=feature["geometry"]["coordinates"][1],
+                address=props.get("address"),
+            ))
+
+            lots.append(LotInfo(**kwargs))
 
         return lots

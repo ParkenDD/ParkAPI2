@@ -27,7 +27,7 @@ def validate_snapshot(
     except jsonschema.ValidationError as e:
         ret_data["errors"].append({
             "path": ".".join(str(p) for p in e.absolute_path),
-            "message": e.message,
+            "message": e.message + f": {e.instance}",
         })
         # no need to check further
         return ret_data
