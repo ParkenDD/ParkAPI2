@@ -12,6 +12,7 @@ The idea is to fork the scraper repo which would only contain:
     schema.json
     scraper.py
     util/*.py
+    test/*.py
     example.py 
     
     
@@ -20,6 +21,7 @@ Then contributors can create one or more *pools* by copying and implementing `ex
 ```python
 from typing import List
 from util import *
+
 
 class MyCity(ScraperBase):
     
@@ -32,9 +34,26 @@ class MyCity(ScraperBase):
     )
 
     def get_lot_data(self) -> List[LotData]:
+        timestamp = self.now()
         soup = self.request_soup(self.POOL.source_url)
-        ...
-        return extracted_data
+        
+        lots = []
+        for div in soup.findall("div", {"class": "special-parking-div"}):
+
+            # ... get info from html dom
+
+            lots.append(
+                LotData(
+                    id=name_to_legacy_id("mycity", lot_id),
+                    timestamp=timestamp,
+                    lot_timestamp=last_updated,
+                    status=state,
+                    num_occupied=lot_occupied,
+                    capacity=lot_total,
+                )
+            )
+
+        return lots
 ```
 
 and then test them via
