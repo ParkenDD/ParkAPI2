@@ -59,6 +59,8 @@ def get_scrapers(
 ) -> Dict[str, Type["ScraperBase"]]:
 
     scrapers = dict()
+    all_scrapers = dict()
+
     for filename in itertools.chain(
             glob.glob(str(MODULE_DIR / "*.py")),
             glob.glob(str(MODULE_DIR / "*" / "*.py"))
@@ -72,20 +74,26 @@ def get_scrapers(
             continue
 
         module = importlib.import_module(module_name)
-        for key, value in vars(module).items():
-            if not inspect.isclass(value) or not getattr(value, "POOL", None):
+        for key, scraper_class in vars(module).items():
+            if not inspect.isclass(scraper_class) or not getattr(scraper_class, "POOL", None):
                 continue
 
-            if value.POOL.id in scrapers:
+            # --- some validation of the POOL info ---
+
+            if scraper_class.POOL.id in all_scrapers:
                 raise ValueError(
-                    f"class {value.__name__}.POOL.id '{value.POOL.id}'"
-                    f" is already used by class {scrapers[value.POOL.id].__name__}"
+                    f"{scraper_class.__name__}.POOL.id '{scraper_class.POOL.id}'"
+                    f" is already used by class {all_scrapers[scraper_class.POOL.id].__name__}"
                 )
 
-            if pool_filter and value.POOL.id not in pool_filter:
+            # --
+
+            all_scrapers[scraper_class.POOL.id] = scraper_class
+
+            if pool_filter and scraper_class.POOL.id not in pool_filter:
                 continue
 
-            scrapers[value.POOL.id] = value
+            scrapers[scraper_class.POOL.id] = scraper_class
 
     return scrapers
 

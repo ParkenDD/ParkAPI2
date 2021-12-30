@@ -21,6 +21,7 @@ from bs4 import BeautifulSoup
 from .structs import PoolInfo, LotInfo, LotData
 from .dt import to_utc_datetime
 from ._log import log
+from .strings import name_to_legacy_id, guess_lot_type
 
 
 VERSION = (0, 0, 1)
@@ -281,3 +282,45 @@ class ScraperBase:
             date_format=date_format,
             timezone=cls.POOL.timezone if timezone is None else timezone,
         )
+
+    def get_v1_lot_infos_from_geojson(self, name: str, defaults: Optional[dict] = None) -> List[LotInfo]:
+        """
+        Transitional helper to download and parse the original ParkAPI geojson file.
+
+        :param name: str, without extension, something like "Dresden"
+        :param defaults: dict, default values for each LotInfo
+        :return: list of LotInfo instances
+        """
+        url = f"https://github.com/offenesdresden/ParkAPI/raw/master/park_api/cities/{name}.geojson"
+        response = self.request(url)
+        assert (
+            response.status_code == 200,
+            f"Did not find original geojson '{url}', status {response.status_code}"
+        )
+
+        data = response.json()
+        lots = []
+
+        for feature in data["features"]:
+            props = feature["properties"]
+            if props["type"] == "city":
+                continue
+
+            lot_type = defaults.get("type")
+            if not lot_type:
+                lot_type = guess_lot_type(props["type"])
+
+            lots.append(
+                LotInfo(
+                    **defaults,
+                    id=name_to_legacy_id(self.POOL.id, props["name"]),
+                    name=props["name"],
+                    type=lot_type,
+                    capacity=props["total"],
+                    longitude=feature["geometry"]["coordinates"][0],
+                    latitude=feature["geometry"]["coordinates"][1],
+                    address=props.get("address"),
+                )
+            )
+
+        return lots
