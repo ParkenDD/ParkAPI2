@@ -1,0 +1,205 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "bonnaltebahnhofgarage",
+        "name": "Alte Bahnhofgarage",
+        "type": "garage",
+        "public_url": "https://bcp-bonn.de/alte-bahnhofgarage/",
+        "source_url": null,
+        "address": "Münsterstraße\n53111 Bonn",
+        "capacity": 89,
+        "has_live_capacity": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.0964073,
+          50.7338542
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "bonnbeethovenparkhaus",
+        "name": "Beethoven-Parkhaus",
+        "type": "garage",
+        "public_url": "https://bcp-bonn.de/beethoven-parkhaus/",
+        "source_url": null,
+        "address": "Engeltalstraße\n53111 Bonn",
+        "capacity": 426,
+        "has_live_capacity": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.1012078,
+          50.738999
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "bonncharlesdegaullestr",
+        "name": "Charles de Gaulle Str.",
+        "type": "lot",
+        "public_url": "https://bcp-bonn.de/parkplatz-charles-de-gaulle-str/",
+        "source_url": null,
+        "address": "Stockenstraße\n53113 Bonn",
+        "capacity": 210,
+        "has_live_capacity": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.1037622,
+          50.7341259
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "bonnfriedensplatzgarage",
+        "name": "Friedensplatzgarage",
+        "type": "garage",
+        "public_url": "https://bcp-bonn.de/friedensplatzgarage/",
+        "source_url": null,
+        "address": "Oxfordstraße",
+        "capacity": 810,
+        "has_live_capacity": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.1025404,
+          50.739808
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "bonnmarktgarage",
+        "name": "Marktgarage",
+        "type": "garage",
+        "public_url": "https://bcp-bonn.de/marktgarage/",
+        "source_url": null,
+        "address": "Stockenstraße\n53113 Bonn",
+        "capacity": 289,
+        "has_live_capacity": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.1025404,
+          50.739808
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "bonnmuensterplatzgarage",
+        "name": "Münsterplatzgarage",
+        "type": "garage",
+        "public_url": "https://bcp-bonn.de/muensterplatzgarage/",
+        "source_url": null,
+        "address": "Budapester Str.\n53111 Bonn",
+        "capacity": 312,
+        "has_live_capacity": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.0937884,
+          50.7359024
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "bonnoperngarage",
+        "name": "Operngarage",
+        "type": "garage",
+        "public_url": "https://bcp-bonn.de/operngarage/",
+        "source_url": null,
+        "address": "Berliner Freiheit\n53111 Bonn",
+        "capacity": 380,
+        "has_live_capacity": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.10666,
+          50.73736
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "bonnparkhaushauptbahnhof",
+        "name": "Parkhaus Hauptbahnhof",
+        "type": "garage",
+        "public_url": "https://bcp-bonn.de/hauptbahnhof-park/",
+        "source_url": null,
+        "address": "Rabinstraße\n53111 Bonn",
+        "capacity": 258,
+        "has_live_capacity": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.0905152,
+          50.733691
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "bonnstadthausgarage",
+        "name": "Stadthausgarage",
+        "type": "garage",
+        "public_url": "https://bcp-bonn.de/stadthausgarage/",
+        "source_url": null,
+        "address": "Weiherstraße\n53111 Bonn",
+        "capacity": null,
+        "has_live_capacity": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.1025404,
+          50.739808
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "bonnunigarage",
+        "name": "Unigarage",
+        "type": "garage",
+        "public_url": "https://bcp-bonn.de/unigarage/",
+        "source_url": null,
+        "address": "Stockenstraße\n53113 Bonn",
+        "capacity": 438,
+        "has_live_capacity": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.1037622,
+          50.7341259
+        ]
+      }
+    }
+  ]
+}

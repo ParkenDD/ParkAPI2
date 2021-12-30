@@ -17,6 +17,7 @@ def guess_lot_type(name: str) -> Optional[str]:
         "tiefgarage": LotInfo.Types.underground,
         "parkdeck": LotInfo.Types.level,
         "parklevel": LotInfo.Types.level,
+        "garage": LotInfo.Types.garage,
     }
 
     name = name.lower()
