@@ -36,10 +36,12 @@ class ScraperBase:
 
     # Maximum requests allowed per second
     REQUESTS_PER_SECOND: float = 2.
+    # Seconds before a web request is cancelled
+    REQUEST_TIMEOUT: int = 10
     # The user agent that is used in web requests
-    USER_AGENT = "github.com/defgsus/ParkAPI2"
+    USER_AGENT: str = "github.com/defgsus/ParkAPI2"
     # Extra headers that should be added to all requests
-    HEADERS = {}
+    HEADERS: Dict[str, str] = {}
 
     # A PoolInfo object must be specified for each derived scraper
     POOL: PoolInfo = None
@@ -172,6 +174,10 @@ class ScraperBase:
                 log(f"loading cache {cache_name}")
                 return pickle.loads(cache_name.read_bytes())
 
+        # -- define timeout --
+
+        kwargs.setdefault("timeout", self.REQUEST_TIMEOUT)
+        
         # -- throttle requests --
 
         passed_time = time.time() - self.__last_request_time
