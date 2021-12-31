@@ -177,7 +177,7 @@ class ScraperBase:
         # -- define timeout --
 
         kwargs.setdefault("timeout", self.REQUEST_TIMEOUT)
-        
+
         # -- throttle requests --
 
         passed_time = time.time() - self.__last_request_time
@@ -185,9 +185,14 @@ class ScraperBase:
             time.sleep(1. / self.REQUESTS_PER_SECOND - passed_time)
         self.__last_request_time = time.time()
 
+        # -- log request --
+
         display_kwargs = kwargs.copy()
         display_kwargs.pop("headers", None)
+        display_kwargs.pop("timeout", None)
         log(f"requesting {method} {url} {display_kwargs or ''}")
+
+        # -- pass to requests lib --
 
         response = self.session.request(
             method=method,
