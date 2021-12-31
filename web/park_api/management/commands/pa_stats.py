@@ -89,10 +89,11 @@ def dump_stats(time: Optional[str], pools: List[str], verbosity: int):
     print("  all:                {:9,d}".format(data_qset.count()))
     print("  with capacity:      {:9,d}".format(data_qset.exclude(capacity=None).count()))
     print("  with num_free:      {:9,d}".format(data_qset.exclude(num_free=None).count()))
-    print("  timestamps:         {} - {}".format(
-        data_qset.order_by("timestamp")[0].timestamp,
-        data_qset.order_by("-timestamp")[0].timestamp,
-    ))
+    if data_qset.exists():
+        print("  timestamps:         {} - {}".format(
+            data_qset.order_by("timestamp")[0].timestamp,
+            data_qset.order_by("-timestamp")[0].timestamp,
+        ))
 
     if verbosity > 1:
         print()
