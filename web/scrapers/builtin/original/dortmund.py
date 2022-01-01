@@ -21,7 +21,7 @@ class Dortmund(ScraperBase):
         attribution_url=None,
     )
 
-    RE_PARKING_SPACES = re.compile(r".*(\d+) Plätze von (\d+) frei.*")
+    RE_PARKING_SPACES = re.compile(r"(\d+) Plätze von (\d+) frei.*")
 
     def get_lot_data(self) -> List[LotData]:
         now = self.now()
@@ -33,7 +33,7 @@ class Dortmund(ScraperBase):
         for parking_lot in soup.find_all('dl'):
             parking_name = parking_lot.find('dt').text
 
-            match = self.RE_PARKING_SPACES.match(parking_lot.find('dd').text)
+            match = self.RE_PARKING_SPACES.match(parking_lot.find('dd').text.strip())
             if match:
                 parking_state = LotData.Status.open
                 parking_numbers = [int(n) for n in match.groups()]
