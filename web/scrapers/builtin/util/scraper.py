@@ -31,8 +31,15 @@ MODULE_DIR: Path = Path(__file__).resolve().parent
 
 class ScraperBase:
 
+    # A PoolInfo object must be specified for each derived scraper
+    POOL: PoolInfo = None
+
+    # ---- general config ----
+
     # Directory where web requests are cached
     CACHE_DIR = Path(tempfile.gettempdir()) / "parkapi-scraper"
+
+    # ---- http request config ----
 
     # Maximum requests allowed per second
     REQUESTS_PER_SECOND: float = 2.
@@ -42,9 +49,9 @@ class ScraperBase:
     USER_AGENT: str = "github.com/defgsus/ParkAPI2"
     # Extra headers that should be added to all requests
     HEADERS: Dict[str, str] = {}
-
-    # A PoolInfo object must be specified for each derived scraper
-    POOL: PoolInfo = None
+    # Set to True to allow any invalid certificate
+    # Set to "expired" to allow expired certificates
+    ALLOW_SSL_FAILURE: Union[bool, str] = False
 
     # ---- internals ----
 
@@ -178,27 +185,23 @@ class ScraperBase:
 
         kwargs.setdefault("timeout", self.REQUEST_TIMEOUT)
 
-        # -- throttle requests --
+        # -- do actual request --
 
-        passed_time = time.time() - self.__last_request_time
-        if passed_time < 1. / self.REQUESTS_PER_SECOND:
-            time.sleep(1. / self.REQUESTS_PER_SECOND - passed_time)
-        self.__last_request_time = time.time()
+        if self.ALLOW_SSL_FAILURE is True:
+            kwargs["verify"] = False
 
-        # -- log request --
+        try:
+            response = self._request(method, url, **kwargs)
+        except requests.exceptions.SSLError as e:
+            if not self.ALLOW_SSL_FAILURE:
+                raise
+            if self.ALLOW_SSL_FAILURE == "expired":
+                if "certificate has expired" not in str(e):
+                    raise
 
-        display_kwargs = kwargs.copy()
-        display_kwargs.pop("headers", None)
-        display_kwargs.pop("timeout", None)
-        log(f"requesting {method} {url} {display_kwargs or ''}")
-
-        # -- pass to requests lib --
-
-        response = self.session.request(
-            method=method,
-            url=url,
-            **kwargs,
-        )
+            log(f"repeating request without certificate validation")
+            kwargs["verify"] = False
+            response = self._request(method, url, **kwargs)
 
         # -- validate status --
 
@@ -257,6 +260,30 @@ class ScraperBase:
             **kwargs,
         )
         return BeautifulSoup(response.text, features=parser)
+
+    def _request(self, method: str, url: str, **kwargs) -> requests.Response:
+
+        # -- throttle requests --
+
+        passed_time = time.time() - self.__last_request_time
+        if passed_time < 1. / self.REQUESTS_PER_SECOND:
+            time.sleep(1. / self.REQUESTS_PER_SECOND - passed_time)
+        self.__last_request_time = time.time()
+
+        # -- log request --
+
+        display_kwargs = kwargs.copy()
+        display_kwargs.pop("headers", None)
+        display_kwargs.pop("timeout", None)
+        log(f"requesting {method} {url} {display_kwargs or ''}")
+
+        # -- pass to requests lib --
+
+        return self.session.request(
+            method=method,
+            url=url,
+            **kwargs,
+        )
 
     @classmethod
     def now(cls) -> datetime.datetime:
@@ -317,7 +344,7 @@ class ScraperBase:
             if props.get("type") == "city":
                 continue
 
-            lot_type = defaults.get("type")
+            lot_type = defaults.get("type") if defaults else None
             if not lot_type and props.get("name"):
                 lot_type = guess_lot_type(props["name"])
             if not lot_type and props.get("type"):
