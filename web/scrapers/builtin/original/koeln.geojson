@@ -1,0 +1,985 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "koeln-d-p001",
+        "name": "Lanxess-Arena P1",
+        "type": "garage",
+        "public_url": null,
+        "source_url": null,
+        "address": "Willy-Brandt-Platz 3",
+        "capacity": 1748,
+        "has_live_capacity": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.98351494,
+          50.93927181
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "koeln-d-p002",
+        "name": "Lanxess-Arena P2",
+        "type": "garage",
+        "public_url": null,
+        "source_url": null,
+        "address": "Willy-Brandt-Platz 3",
+        "capacity": 266,
+        "has_live_capacity": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.97960964,
+          50.93897434
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "koeln-d-p004",
+        "name": "Lanxess-Arena P4",
+        "type": "garage",
+        "public_url": null,
+        "source_url": null,
+        "address": "Willy-Brandt-Platz 3",
+        "capacity": 309,
+        "has_live_capacity": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.98591819,
+          50.93921773
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "koeln-d-p006",
+        "name": "Köln Arcaden",
+        "type": "garage",
+        "public_url": null,
+        "source_url": null,
+        "address": "Kalker Hauptstraße 55",
+        "capacity": 1800,
+        "has_live_capacity": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.9979,
+          50.93791
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "koeln-ph01",
+        "name": "Hauptbahnhof",
+        "type": "garage",
+        "public_url": null,
+        "source_url": null,
+        "address": "Breslauer Platz 1",
+        "capacity": 395,
+        "has_live_capacity": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.95987931,
+          50.94366606
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "koeln-ph02",
+        "name": "Dom",
+        "type": "garage",
+        "public_url": null,
+        "source_url": null,
+        "address": "Kurt Hackenberg Platz 2",
+        "capacity": 420,
+        "has_live_capacity": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.95976,
+          50.94035
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "koeln-ph03",
+        "name": "Groß St. Martin",
+        "type": "garage",
+        "public_url": null,
+        "source_url": null,
+        "address": "Große Neugasse 4",
+        "capacity": 143,
+        "has_live_capacity": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.96019,
+          50.93979
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "koeln-ph04",
+        "name": "Brückenstraße",
+        "type": "garage",
+        "public_url": null,
+        "source_url": null,
+        "address": "Ludwigstraße 1",
+        "capacity": 500,
+        "has_live_capacity": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.95482,
+          50.9375
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "koeln-ph05",
+        "name": "REWE City",
+        "type": "garage",
+        "public_url": null,
+        "source_url": null,
+        "address": "Hohe Str. 30a",
+        "capacity": 216,
+        "has_live_capacity": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.95689,
+          50.9356
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "koeln-ph06",
+        "name": "Maastrichter Straße",
+        "type": "garage",
+        "public_url": null,
+        "source_url": null,
+        "address": "Maastrichter Str. 10",
+        "capacity": 445,
+        "has_live_capacity": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.93787,
+          50.93844
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "koeln-ph07",
+        "name": "Im Klapperhof",
+        "type": "garage",
+        "public_url": null,
+        "source_url": null,
+        "address": "Im Klapperhof 13",
+        "capacity": 280,
+        "has_live_capacity": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.94327,
+          50.94161
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "koeln-ph09",
+        "name": "Philharmonie",
+        "type": "garage",
+        "public_url": null,
+        "source_url": null,
+        "address": "Bischofsgartenstraße 0",
+        "capacity": 247,
+        "has_live_capacity": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.96137062,
+          50.94049548
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "koeln-ph10",
+        "name": "Cäcilienstraße",
+        "type": "garage",
+        "public_url": null,
+        "source_url": null,
+        "address": "Cäcilienstraße 29",
+        "capacity": 189,
+        "has_live_capacity": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.95113531,
+          50.93486362
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "koeln-ph11",
+        "name": "Kaufhof",
+        "type": "garage",
+        "public_url": null,
+        "source_url": null,
+        "address": "Cäcilienstraße 0",
+        "capacity": 860,
+        "has_live_capacity": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.95592037,
+          50.93522197
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "koeln-ph12",
+        "name": "Hohe Straße",
+        "type": "garage",
+        "public_url": null,
+        "source_url": null,
+        "address": "Marspfortengasse 10",
+        "capacity": 227,
+        "has_live_capacity": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.95695,
+          50.93909
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "koeln-ph13",
+        "name": "Schildergasse",
+        "type": "garage",
+        "public_url": null,
+        "source_url": null,
+        "address": "Cäcilienstraße 32",
+        "capacity": 359,
+        "has_live_capacity": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.95102,
+          50.93559
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "koeln-ph14",
+        "name": "Theater-Parkhaus",
+        "type": "garage",
+        "public_url": null,
+        "source_url": null,
+        "address": "Krebsgasse 1",
+        "capacity": 415,
+        "has_live_capacity": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.95,
+          50.93679
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "koeln-ph15",
+        "name": "Opern Passagen",
+        "type": "garage",
+        "public_url": null,
+        "source_url": null,
+        "address": "Schwertnergasse 1",
+        "capacity": 500,
+        "has_live_capacity": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.9523719,
+          50.9386842
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "koeln-ph16",
+        "name": "Maritim",
+        "type": "garage",
+        "public_url": null,
+        "source_url": null,
+        "address": "Heumarkt 20",
+        "capacity": 525,
+        "has_live_capacity": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.96168175,
+          50.9351273
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "koeln-ph17",
+        "name": "Am Neumarkt",
+        "type": "garage",
+        "public_url": null,
+        "source_url": null,
+        "address": "Lungengasse 35",
+        "capacity": 300,
+        "has_live_capacity": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.9472,
+          50.9349
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "koeln-ph18",
+        "name": "Alte Wallgasse",
+        "type": "garage",
+        "public_url": null,
+        "source_url": null,
+        "address": "Alte Wallgasse 31",
+        "capacity": 230,
+        "has_live_capacity": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.94263,
+          50.9399
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "koeln-ph19",
+        "name": "Gürzenich",
+        "type": "garage",
+        "public_url": null,
+        "source_url": null,
+        "address": "Quatermarkt 5",
+        "capacity": 213,
+        "has_live_capacity": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.95801249,
+          50.9370282
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "koeln-ph20",
+        "name": "Karstadt",
+        "type": "garage",
+        "public_url": null,
+        "source_url": null,
+        "address": "Richmodstraße 0",
+        "capacity": 386,
+        "has_live_capacity": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.94783083,
+          50.93840643
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "koeln-ph21",
+        "name": "KSK/ Richmodstr",
+        "type": "garage",
+        "public_url": null,
+        "source_url": null,
+        "address": "Richmodstr 13",
+        "capacity": 233,
+        "has_live_capacity": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.94761625,
+          50.93704072
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "koeln-ph22",
+        "name": "Heumarkt",
+        "type": "garage",
+        "public_url": null,
+        "source_url": null,
+        "address": "Markmannsgasse 3",
+        "capacity": 300,
+        "has_live_capacity": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.9622529,
+          50.9367108
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "koeln-ph23",
+        "name": "BP Lungengasse",
+        "type": "garage",
+        "public_url": null,
+        "source_url": null,
+        "address": "Lungengasse ",
+        "capacity": 170,
+        "has_live_capacity": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.94595,
+          50.93502
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "koeln-ph24",
+        "name": "Wolfsstraße",
+        "type": "garage",
+        "public_url": null,
+        "source_url": null,
+        "address": "Wolfsstraße 6",
+        "capacity": 330,
+        "has_live_capacity": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.9468604,
+          50.9378897
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "koeln-ph25",
+        "name": "Bazaar de Cologne",
+        "type": "garage",
+        "public_url": null,
+        "source_url": null,
+        "address": "Große Brinkgasse 5+11",
+        "capacity": 144,
+        "has_live_capacity": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.94396,
+          50.93759
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "koeln-ph26",
+        "name": "DuMont Carré",
+        "type": "garage",
+        "public_url": null,
+        "source_url": null,
+        "address": "Neven-DuMont Straße 80",
+        "capacity": 588,
+        "has_live_capacity": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.9505371,
+          50.9393076
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "koeln-ph27",
+        "name": "Sparkasse / Schaafenstr.",
+        "type": "garage",
+        "public_url": null,
+        "source_url": null,
+        "address": "Schaafenstraße 56",
+        "capacity": 159,
+        "has_live_capacity": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.9404094,
+          50.9347738
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "koeln-ph28",
+        "name": "P+R Stadion (P2)",
+        "type": "garage",
+        "public_url": null,
+        "source_url": null,
+        "address": "Aachener Str 1003",
+        "capacity": 580,
+        "has_live_capacity": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.87457434,
+          50.93760865
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "koeln-ph29",
+        "name": "Kaiser-Wilhelm-Ring",
+        "type": "garage",
+        "public_url": null,
+        "source_url": null,
+        "address": "Kaiser-Wilhelm-Ring 26",
+        "capacity": 580,
+        "has_live_capacity": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.94199,
+          50.94369
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "koeln-ph30",
+        "name": "Rudolfplatz",
+        "type": "garage",
+        "public_url": null,
+        "source_url": null,
+        "address": "Habsburgerring 9",
+        "capacity": 320,
+        "has_live_capacity": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.93792,
+          50.93599
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "koeln-ph31",
+        "name": "An Farina",
+        "type": "garage",
+        "public_url": null,
+        "source_url": null,
+        "address": "Laurenzplatz 4",
+        "capacity": 170,
+        "has_live_capacity": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.9581,
+          50.93839
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "koeln-ph32",
+        "name": "Zoo",
+        "type": "garage",
+        "public_url": null,
+        "source_url": null,
+        "address": "Riehler Str. 190",
+        "capacity": 272,
+        "has_live_capacity": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.97609,
+          50.9583
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "koeln-ph33",
+        "name": "Mediapark",
+        "type": "garage",
+        "public_url": null,
+        "source_url": null,
+        "address": "Maybachstraße 1",
+        "capacity": 310,
+        "has_live_capacity": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.94505,
+          50.94736
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "koeln-ph35",
+        "name": "Ringkarree",
+        "type": "garage",
+        "public_url": null,
+        "source_url": null,
+        "address": "Im Klapperhof 49",
+        "capacity": 440,
+        "has_live_capacity": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.94092146,
+          50.94139462
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "koeln-ph36",
+        "name": "Marsdorf P+R",
+        "type": "garage",
+        "public_url": null,
+        "source_url": null,
+        "address": "Emmy-Noether-Str 0",
+        "capacity": 621,
+        "has_live_capacity": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.8506756,
+          50.9180513
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "koeln-ph37-1",
+        "name": "Rheinauhafen",
+        "type": "garage",
+        "public_url": null,
+        "source_url": null,
+        "address": "Bayenstraße 2",
+        "capacity": 800,
+        "has_live_capacity": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.96539,
+          50.92534
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "koeln-ph37-2",
+        "name": "Rheinauhafen  Einfahrt Nord/Bayenturm",
+        "type": "garage",
+        "public_url": null,
+        "source_url": null,
+        "address": "Harry-Blum-Platz 2",
+        "capacity": 500,
+        "has_live_capacity": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.96394554,
+          50.9271685
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "koeln-ph37-3",
+        "name": "Rheinauhafen Einfahrt Süd/Oberländer Wall",
+        "type": "garage",
+        "public_url": null,
+        "source_url": null,
+        "address": " 0",
+        "capacity": 500,
+        "has_live_capacity": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.96883014,
+          50.92074378
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "koeln-ph38",
+        "name": "Rhein Triadem",
+        "type": "garage",
+        "public_url": null,
+        "source_url": null,
+        "address": "Am Alten Ufer 35",
+        "capacity": 264,
+        "has_live_capacity": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.96255079,
+          50.94454487
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "koeln-w-p001",
+        "name": "Stadion P1",
+        "type": "garage",
+        "public_url": null,
+        "source_url": null,
+        "address": "Alter Militärring 0",
+        "capacity": 550,
+        "has_live_capacity": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.88433757,
+          50.9397045
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "koeln-w-p003",
+        "name": "Stadion P3",
+        "type": "garage",
+        "public_url": null,
+        "source_url": null,
+        "address": "Willi-Schwarz-Weg 0",
+        "capacity": 1000,
+        "has_live_capacity": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.86697832,
+          50.93854166
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "koeln-w-p004",
+        "name": "Stadion P4",
+        "type": "garage",
+        "public_url": null,
+        "source_url": null,
+        "address": "Walter-Binder-Weg 0",
+        "capacity": 450,
+        "has_live_capacity": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.87300793,
+          50.93904195
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "koeln-w-p006",
+        "name": "Stadion P6",
+        "type": "garage",
+        "public_url": null,
+        "source_url": null,
+        "address": "Salzburger Weg 0",
+        "capacity": 950,
+        "has_live_capacity": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.86760059,
+          50.92722267
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "koeln-w-p007",
+        "name": "Stadion P7",
+        "type": "garage",
+        "public_url": null,
+        "source_url": null,
+        "address": "Salzburger Weg 0",
+        "capacity": 1000,
+        "has_live_capacity": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.86798683,
+          50.92554555
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "koeln-w-p08o",
+        "name": "Stadion P8 Bus",
+        "type": "garage",
+        "public_url": null,
+        "source_url": null,
+        "address": "Salzburger Weg 0",
+        "capacity": 40,
+        "has_live_capacity": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.86854473,
+          50.92378721
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "koeln-w-p08w",
+        "name": "Stadion P8 PKW",
+        "type": "garage",
+        "public_url": null,
+        "source_url": null,
+        "address": "Salzburger Weg 0",
+        "capacity": 650,
+        "has_live_capacity": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.86661354,
+          50.92338143
+        ]
+      }
+    }
+  ]
+}

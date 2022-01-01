@@ -321,12 +321,19 @@ class ScraperBase:
             timezone=cls.POOL.timezone if timezone is None else timezone,
         )
 
-    def get_v1_lot_infos_from_geojson(self, name: str, defaults: Optional[dict] = None) -> List[LotInfo]:
+    def get_v1_lot_infos_from_geojson(
+            self,
+            name: str,
+            defaults: Optional[dict] = None,
+            include_original: bool = False,
+    ) -> List[Union[LotInfo, Tuple[LotInfo, dict]]]:
         """
         Transitional helper to download and parse the original ParkAPI geojson file.
 
         :param name: str, without extension, something like "Dresden"
         :param defaults: dict, default values for each LotInfo
+        :param include_original: bool, If True that the list contains tuples
+            of LotInfo instances and the original data as dict
         :return: list of LotInfo instances
         """
         url = f"https://github.com/offenesdresden/ParkAPI/raw/master/park_api/cities/{name}.geojson"
@@ -361,6 +368,9 @@ class ScraperBase:
                 address=props.get("address"),
             ))
 
-            lots.append(LotInfo(**kwargs))
+            if include_original:
+                lots.append((LotInfo(**kwargs), feature))
+            else:
+                lots.append(LotInfo(**kwargs))
 
         return lots
