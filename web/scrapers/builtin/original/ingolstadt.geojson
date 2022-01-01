@@ -1,0 +1,218 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "ingolstadtcongressgarage",
+        "name": "Congressgarage",
+        "type": "garage",
+        "public_url": null,
+        "source_url": null,
+        "address": "Schloßlände 25",
+        "capacity": 213,
+        "has_live_capacity": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.433302164077759,
+          48.76454144880872
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "ingolstadtfestplatz",
+        "name": "Festplatz",
+        "type": "lot",
+        "public_url": null,
+        "source_url": null,
+        "address": "Dreizehnerstraße",
+        "capacity": 1437,
+        "has_live_capacity": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.423431634902954,
+          48.7706936821076
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "ingolstadthallenbad",
+        "name": "Hallenbad",
+        "type": "lot",
+        "public_url": null,
+        "source_url": null,
+        "address": "Jahnstraße 9",
+        "capacity": 836,
+        "has_live_capacity": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.42030954360962,
+          48.760856819513116
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "ingolstadthauptbahnhofost",
+        "name": "Hauptbahnhof Ost",
+        "type": "garage",
+        "public_url": null,
+        "source_url": null,
+        "address": "Martin-Hemm-Straße 8",
+        "capacity": 240,
+        "has_live_capacity": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.439857482910156,
+          48.744905834783395
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "ingolstadthauptbahnhofwest",
+        "name": "ingolstadthauptbahnhofwest",
+        "type": "unknown",
+        "public_url": null,
+        "source_url": null,
+        "address": null,
+        "capacity": null,
+        "has_live_capacity": false
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "ingolstadtmuenster",
+        "name": "Münster",
+        "type": "underground",
+        "public_url": null,
+        "source_url": null,
+        "address": "Bergbräustraße",
+        "capacity": 384,
+        "has_live_capacity": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.419150829315186,
+          48.764354041367575
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "ingolstadtnordbahnhof",
+        "name": "Nordbahnhof",
+        "type": "lot",
+        "public_url": null,
+        "source_url": null,
+        "address": "Am Nordbahnhof 3",
+        "capacity": 252,
+        "has_live_capacity": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.431505084037779,
+          48.77336648651627
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "ingolstadtreduittilly",
+        "name": "Reduit Tilly",
+        "type": "underground",
+        "public_url": null,
+        "source_url": null,
+        "address": "Regimentstraße",
+        "capacity": 436,
+        "has_live_capacity": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.433484554290771,
+          48.759930315491225
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "ingolstadtschloss",
+        "name": "Schloss",
+        "type": "underground",
+        "public_url": null,
+        "source_url": null,
+        "address": "Esplanade",
+        "capacity": 435,
+        "has_live_capacity": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.43128514289856,
+          48.76627758638221
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "ingolstadttheaterost",
+        "name": "Theater-Ost",
+        "type": "underground",
+        "public_url": null,
+        "source_url": null,
+        "address": "Schloßländle",
+        "capacity": 682,
+        "has_live_capacity": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.430437564849852,
+          48.76376352655507
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "ingolstadttheaterwest",
+        "name": "Theater-West",
+        "type": "underground",
+        "public_url": null,
+        "source_url": null,
+        "address": "Schutterstraße",
+        "capacity": 599,
+        "has_live_capacity": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.427175998687744,
+          48.76281232342508
+        ]
+      }
+    }
+  ]
+}
