@@ -70,7 +70,12 @@ def remove_special_chars(name: str) -> str:
         "/": "",
         "\\": "",
         "\n": "",
-        "\t": ""
+        "\t": "",
+        # TODO: i added these because of lot 'karlsruhezirkel(p&c)'
+        #   which is really a bad filename
+        "&": "",
+        "(": "",
+        ")": "",
     }
     for repl in replacements.keys():
         name = name.replace(repl, replacements[repl])
