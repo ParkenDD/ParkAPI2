@@ -191,7 +191,7 @@ class NominatimApi:
             cache_name = self.CACHE_DIR / f"{cache_name}.json"
         if caching in (True, "read"):
             if cache_name.exists():
-                self.log(f"reading cache '{cache_name}'")
+                self.log(f"reading cache '{cache_name}': original request {url} {kwargs}")
                 return 0, json.loads(cache_name.read_text())
 
         # -- throttle requests --

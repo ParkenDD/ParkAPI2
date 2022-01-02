@@ -24,6 +24,12 @@ class Location(TimestampedGeoModel):
         db_index=True,
     )
 
+    geo_polygon = models.MultiPolygonField(
+        verbose_name=_("Geographic outline"),
+        null=True, blank=True,
+        db_index=True,
+    )
+
     osm_properties = models.JSONField(
         verbose_name=_("Properties from OSM"),
         null=True, blank=True,
