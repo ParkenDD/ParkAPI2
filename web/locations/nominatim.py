@@ -26,6 +26,7 @@ class NominatimApi:
         state = 5
         county = 8
         city = 10
+        village = 12
         suburb = 14
         major_streets = 16
         major_and_minor_streets = 17

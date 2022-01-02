@@ -166,6 +166,9 @@ In the `web/` directory call:
 # run unittests
 ./manage.py test --keepdb
 
+# run unittests using external web APIs, e.g. Nominatim
+PA_TEST_EXTERNAL_API=1 ./manage.py test --keepdb
+
 # init the main database
 ./manage.py migrate
 ./manage.py createsuperuser
