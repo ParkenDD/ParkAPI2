@@ -81,17 +81,26 @@
         ]
       }
     },
+    # TODO: This may be called "Hauptbahnhof" previously but i'm not sure
+    #   In any case, "Hauptbahnhof" disappeared on website and "Hauptbahnhof West" appeared
     {
       "type": "Feature",
       "properties": {
         "id": "ingolstadthauptbahnhofwest",
-        "name": "ingolstadthauptbahnhofwest",
-        "type": "unknown",
+        "name": "Hauptbahnhof West",
+        "type": "garage",
         "public_url": null,
         "source_url": null,
-        "address": null,
-        "capacity": null,
+        "address": "Elisabethstraße 3",
+        "capacity": 812,
         "has_live_capacity": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.437298655509947,
+          48.74315480852817
+        ]
       }
     },
     {

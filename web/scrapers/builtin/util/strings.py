@@ -1,4 +1,5 @@
 import re
+import json
 import unicodedata
 from typing import Union, Optional, Tuple, List, Type, Dict
 
@@ -126,3 +127,18 @@ def float_or_none(x) -> Optional[float]:
         return float(str(x))
     except (ValueError, TypeError):
         return None
+
+
+def parse_geojson(text: str) -> dict:
+    """
+    Simply json parsing but allowing for '#' commands
+    :param text: str
+    :return: dict
+    """
+    lines = [
+        line
+        for line in text.splitlines()
+        if not line.lstrip().startswith("#")
+    ]
+
+    return json.loads("\n".join(lines))

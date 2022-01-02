@@ -21,7 +21,7 @@ from bs4 import BeautifulSoup
 from .structs import PoolInfo, LotInfo, LotData
 from .dt import to_utc_datetime
 from ._log import log
-from .strings import name_to_legacy_id, guess_lot_type
+from .strings import name_to_legacy_id, guess_lot_type, parse_geojson
 
 
 VERSION = (0, 0, 1)
@@ -94,7 +94,7 @@ class ScraperBase:
     def get_lot_infos_from_geojson(self) -> Optional[List[LotInfo]]:
         filename = Path(inspect.getfile(self.__class__)[:-3] + ".geojson")
         if filename.exists():
-            geojson = json.loads(filename.read_text())
+            geojson = parse_geojson(filename.read_text())
             infos = []
             for feature in geojson["features"]:
                 lot_info = feature["properties"].copy()
