@@ -47,8 +47,9 @@ def parse_args() -> dict:
              f" but not read them. Cache directory is {ScraperBase.CACHE_DIR}"
     )
     parser.add_argument(
-        "-e", "--errors", nargs="?", type=bool, default=False, const=True,
-        help=f"Only display errors when running 'validate' command (skip the warnings)"
+        "-mp", "--max-priority", type=int, default=1000,
+        help="Maximum error priority to display in validation [0-4]. 0 = severe, 1 = should really fix that"
+             ", 2 = should fix that at some point, etc.."
     )
 
     return vars(parser.parse_args())
@@ -129,7 +130,7 @@ def main(
         command: str,
         cache: Union[bool, str],
         pools: List[str],
-        errors: bool,
+        max_priority: int,
 ):
     scrapers = get_scrapers(pool_filter=pools)
     pool_ids = sorted(scrapers)
@@ -161,8 +162,9 @@ def main(
             snapshot = snapshotter.get_snapshot(infos_required=False)
 
             validation = validate_snapshot(snapshot)
-            if validation["errors"] or (not errors and validation["warnings"]):
-                validations.append({"pool_id": pool_id, "validation": validation})
+            for message in validation["validations"]:
+                if message["priority"] <= max_priority:
+                    validations.append({"pool_id": pool_id, "validation": message})
 
         JsonPrinter().print(validations)
 
