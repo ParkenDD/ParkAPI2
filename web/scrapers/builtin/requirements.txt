@@ -7,3 +7,7 @@ requests==2.26.0
 
 feedparser==6.0.8
 utm==0.7.0
+
+# for new/
+
+python-decouple==3.5

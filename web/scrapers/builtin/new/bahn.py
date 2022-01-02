@@ -1,13 +1,25 @@
-import os
+"""
+Scraper for Deutsche Bahn parking lots
+
+This scraper is disabled unless you define your API token, either in
+- environment: e.g. `export BAHN_API_TOKEN=xxx` before running the scraper
+- or in a `.env` file in the root of the scraper package containing: `BAHN_API_TOKEN=xxx`
+"""
+
 import warnings
 from typing import List
 
+from decouple import config
+
 from util import *
 
-BAHN_API_TOKEN = os.environ.get("BAHN_API_TOKEN")
+BAHN_API_TOKEN = config("BAHN_API_TOKEN", None)
 
 if not BAHN_API_TOKEN:
-    warnings.warn("Deutsche Bahn Parking API disabled! You need to define BAHN_API_TOKEN in environment")
+    warnings.warn(
+        "Deutsche Bahn Parking API disabled! "
+        "You need to define BAHN_API_TOKEN in environment or in a .env file"
+    )
 
 else:
 
