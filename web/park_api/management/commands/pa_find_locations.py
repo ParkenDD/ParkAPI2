@@ -89,34 +89,7 @@ def create_location_model(
 
     # --- request OSM data ---
 
-    geojson = api.reverse(
-        lon=geo_point.tuple[0],
-        lat=geo_point.tuple[1],
-        zoom=api.Zoom.city,
-        format="geojson",
-        extratags=1,
-        addressdetails=1,
-        namedetails=1,
-        polygon_geojson=0,
-        caching=caching,
-    )
-    # print(json.dumps(geojson, indent=2))
-
-    addr = geojson["features"][0]["properties"]["address"]
-    if "city" not in addr and "state" not in addr:
-        # this fixes problem with "city-states" like Hamburg
-        #   e.g. https://github.com/osm-search/Nominatim/issues/1759
-        geojson = api.reverse(
-            lon=geo_point.tuple[0],
-            lat=geo_point.tuple[1],
-            zoom=api.Zoom.state,
-            format="geojson",
-            extratags=1,
-            addressdetails=1,
-            namedetails=1,
-            polygon_geojson=0,
-            caching=caching,
-        )
+    geojson = nominatim_reverse_search(api=api, lot_model=lot_model, caching=caching)
 
     feature = geojson["features"][0]
     props = feature["properties"]
@@ -169,7 +142,7 @@ def create_location_model(
                 geo_point=geos.Point(*feature["geometry"]["coordinates"]),
                 geo_polygon=polygon,
                 osm_properties=props,
-                city=(addr.get("town") or addr.get("city") or addr["state"])[:64],
+                city=(addr.get("village") or addr.get("town") or addr.get("city") or addr["state"])[:64],
                 state=addr["state"][:64] if addr.get("state") else None,
                 country=addr["country"][:64],
                 country_code=addr["country_code"],
@@ -183,3 +156,66 @@ def create_location_model(
 
     return location_model
 
+
+def nominatim_reverse_search(api: NominatimApi, lot_model: ParkingLot, caching: bool) -> dict:
+    geo_point: geos.Point = lot_model.geo_point
+
+    geojson = api.reverse(
+        lon=geo_point.tuple[0],
+        lat=geo_point.tuple[1],
+        zoom=api.Zoom.city,
+        format="geojson",
+        extratags=1,
+        addressdetails=1,
+        namedetails=1,
+        polygon_geojson=0,
+        caching=caching,
+    )
+    # print(json.dumps(geojson, indent=2))
+
+    addr = geojson["features"][0]["properties"]["address"]
+    if "village" in addr or "town" in addr or "city" in addr or "state" in addr:
+        return geojson
+
+    # If we do not get "city" nor "state" that means
+    #   that either it's a "city-state" like Hamburg
+    #   (e.g. https://github.com/osm-search/Nominatim/issues/1759)
+    #   or it's maybe a town/village
+
+    # try village first
+    geojson = api.reverse(
+        lon=geo_point.tuple[0],
+        lat=geo_point.tuple[1],
+        zoom=api.Zoom.village,
+        format="geojson",
+        extratags=1,
+        addressdetails=1,
+        namedetails=1,
+        polygon_geojson=0,
+        caching=caching,
+    )
+
+    addr = geojson["features"][0]["properties"]["address"]
+    if "village" in addr or "town" in addr or "city" in addr or "state" in addr:
+        return geojson
+
+    # if no village, it's most likely a state
+    geojson = api.reverse(
+        lon=geo_point.tuple[0],
+        lat=geo_point.tuple[1],
+        zoom=api.Zoom.state,
+        format="geojson",
+        extratags=1,
+        addressdetails=1,
+        namedetails=1,
+        polygon_geojson=0,
+        caching=caching,
+    )
+
+    if not ("village" in addr or "town" in addr or "city" in addr or "state" in addr):
+        raise ValueError(
+            f"Nominatim reverse search for lot {lot_model} with coords {geo_point.tuple}"
+            f" did not yield a 'town', 'city' or 'state'"
+        )
+
+    return geojson
