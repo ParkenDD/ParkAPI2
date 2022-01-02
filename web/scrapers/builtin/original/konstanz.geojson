@@ -1,0 +1,185 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "konstanzaltstadt",
+        "name": "Altstadt",
+        "type": "garage",
+        "public_url": null,
+        "source_url": null,
+        "address": "Untere Laube 26\n78462 Konstanz\nTelefon: +49 7531 22675\nMobil: 0171 1917637",
+        "capacity": 359,
+        "has_live_capacity": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.172049760818481,
+          47.663019166809015
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "konstanzaugustinerkarstadt",
+        "name": "Augustiner / Karstadt",
+        "type": "garage",
+        "public_url": null,
+        "source_url": null,
+        "address": "Augustinerplatz 1\n78462 Konstanz\nTelefon: +49 7531 24919",
+        "capacity": 284,
+        "has_live_capacity": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.173318445682526,
+          47.65950913530439
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "konstanzbenediktiner",
+        "name": "Benediktiner",
+        "type": "garage",
+        "public_url": null,
+        "source_url": null,
+        "address": "Benediktinerplatz 7\n78467 Konstanz",
+        "capacity": 143,
+        "has_live_capacity": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.178049862384796,
+          47.66877236211362
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "konstanzbodenseeforum",
+        "name": "Bodenseeforum",
+        "type": "lot",
+        "public_url": null,
+        "source_url": null,
+        "address": null,
+        "capacity": 500,
+        "has_live_capacity": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.164448380470276,
+          47.67286153200742
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "konstanzdoebele",
+        "name": "Döbele",
+        "type": "garage",
+        "public_url": null,
+        "source_url": null,
+        "address": "über Kreisverkehr Grenzbachstraße",
+        "capacity": 335,
+        "has_live_capacity": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.16858971118927,
+          47.65779106680178
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "konstanzfischmarkt",
+        "name": "Fischmarkt",
+        "type": "garage",
+        "public_url": null,
+        "source_url": null,
+        "address": "Salmannsweilergasse 1\n78462 Konstanz",
+        "capacity": 158,
+        "has_live_capacity": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.176258146762848,
+          47.66129940731421
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "konstanzlago",
+        "name": "Lago",
+        "type": "garage",
+        "public_url": null,
+        "source_url": null,
+        "address": "Bodanstraße 1\n78462 Konstanz\nTelefon: +49 7531 691336-0",
+        "capacity": 936,
+        "has_live_capacity": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.176606833934784,
+          47.657483940292856
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "konstanzmarktstaette",
+        "name": "Marktstätte",
+        "type": "garage",
+        "public_url": null,
+        "source_url": null,
+        "address": "Dammgasse 3\n78462 Konstanz\nTelefon: +49 7531 189905",
+        "capacity": 282,
+        "has_live_capacity": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.17631447315216,
+          47.659621142013435
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "konstanzseerheincenter",
+        "name": "Seerheincenter",
+        "type": "garage",
+        "public_url": null,
+        "source_url": null,
+        "address": "Zähringerplatz 9\n78464 Konstanz\nTelefon: +49 7531 510-17",
+        "capacity": 280,
+        "has_live_capacity": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.183433055877686,
+          47.67272065604162
+        ]
+      }
+    }
+  ]
+}
