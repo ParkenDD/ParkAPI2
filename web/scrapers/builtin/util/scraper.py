@@ -338,10 +338,9 @@ class ScraperBase:
         """
         url = f"https://github.com/offenesdresden/ParkAPI/raw/master/park_api/cities/{name}.geojson"
         response = self.request(url)
-        assert (
-            response.status_code == 200,
+        assert \
+            response.status_code == 200, \
             f"Did not find original geojson '{url}', status {response.status_code}"
-        )
 
         data = response.json()
         lots = []
