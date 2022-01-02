@@ -12,9 +12,23 @@ from park_data.models import ParkingLot, ParkingPool, ParkingData, ParkingLotSta
 
 
 # legacy name -> nominatim name
-CITY_NAME_MAPPING = {
-    "Frankfurt": "Frankfurt am Main"
+CITY_NAME_LEGACY_TO_NOMINATIM = {
+    "Frankfurt": "Frankfurt am Main",
+    "Freiburg": "Freiburg im Breisgau",
+    "Koeln": "Köln",
+    "Buchholz": "Buchholz in der Nordheide",  # This one's actually in the Hamburg pool
+    "Limburg": "Limburg an der Lahn",
+
+    # from DB-API
+    "Halle": "Halle (Saale)",
+    "Muenchen": "München"
 }
+
+CITY_NAME_NOMINATIM_TO_LEGACY = {
+    value: key
+    for key, value in CITY_NAME_LEGACY_TO_NOMINATIM.items()
+}
+
 
 LOT_TYPE_MAPPING = {
     "lot": "Parkplatz",
@@ -46,7 +60,7 @@ class CoffeeView(views.APIView):
         <img src="http://i.imgur.com/xVpIC9N.gif"
             alt="British porn"
             title="British porn"/>
-         """, status=418)
+        """, status=418)
 
 
 class CityMapView(views.APIView):
@@ -91,7 +105,8 @@ class CityMapView(views.APIView):
         city_map = dict()
         for loc_pk, pool_pk in lot_qset.values_list("location__pk", "pool__pk"):
             loc = location_map[loc_pk]
-            if loc["city"] not in city_map:
+            city_name = CITY_NAME_NOMINATIM_TO_LEGACY.get(loc["city"], loc["city"])
+            if city_name not in city_map:
 
                 city = deepcopy(pool_map[pool_pk])
                 city["attribution"] = {
@@ -105,14 +120,14 @@ class CityMapView(views.APIView):
                 lng, lat = loc["geo_point"].tuple
                 city.update({
                     "coords": {"lat": lat, "lng": lng},
-                    "name": loc["city"],
+                    "name": city_name,
                     "url": city.pop("public_url"),
                     "source": city.pop("source_url"),
                     # TODO: no db-field yet
                     "active_support": False,
                 })
 
-                city_map[loc["city"]] = city
+                city_map[city_name] = city
 
         city_map = {
             city: city_map[city]
@@ -125,7 +140,7 @@ class CityLotsView(views.APIView):
 
     def get(self, request: Request, city: str):
 
-        location_qset = Location.objects.filter(city__iexact=CITY_NAME_MAPPING.get(city, city))
+        location_qset = Location.objects.filter(city__iexact=CITY_NAME_LEGACY_TO_NOMINATIM.get(city, city))
         if not location_qset.exists():
             return Response({
                 "detail": f"Error 404: Sorry, '{city}' isn't supported at the current time."
