@@ -6,7 +6,6 @@ free numbers but only total capacity (at least, that's what
 i think).
 No "Endstelle Diesdorf", "Milchhof" and "Lange Lake" anymore.
 """
-import urllib.parse
 from typing import List
 
 from util import *
