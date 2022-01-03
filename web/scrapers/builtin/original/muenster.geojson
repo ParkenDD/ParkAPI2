@@ -1,0 +1,305 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "muensterbusparkplatz",
+        "name": "Busparkplatz",
+        "type": "bus",
+        "public_url": "https://www.stadt-muenster.de/tiefbauamt/parkleitsystem/detailseite/parkhaeuser/detailansicht/parkhaus/4",
+        "source_url": null,
+        "address": null,
+        "capacity": 63,
+        "has_live_capacity": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.616792,
+          51.965429
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "muensterphaegidii",
+        "name": "PH Aegidii",
+        "type": "garage",
+        "public_url": "https://www.stadt-muenster.de/tiefbauamt/parkleitsystem/detailseite/parkhaeuser/detailansicht/parkhaus/7",
+        "source_url": null,
+        "address": null,
+        "capacity": 780,
+        "has_live_capacity": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.622396,
+          51.960839
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "muensterphaltersteinweg",
+        "name": "PH Alter Steinweg",
+        "type": "garage",
+        "public_url": "https://www.stadt-muenster.de/tiefbauamt/parkleitsystem/detailseite/parkhaeuser/detailansicht/parkhaus/3",
+        "source_url": null,
+        "address": null,
+        "capacity": 350,
+        "has_live_capacity": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.632326,
+          51.962245
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "muensterphbahnhofstrasse",
+        "name": "PH Bahnhofstraße",
+        "type": "garage",
+        "public_url": "https://www.stadt-muenster.de/tiefbauamt/parkleitsystem/detailseite/parkhaeuser/detailansicht/parkhaus/14",
+        "source_url": null,
+        "address": null,
+        "capacity": 339,
+        "has_live_capacity": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.632764,
+          51.955504
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "muensterphbremerplatz",
+        "name": "PH Bremer Platz",
+        "type": "garage",
+        "public_url": "https://www.stadt-muenster.de/tiefbauamt/parkleitsystem/detailseite/parkhaeuser/detailansicht/parkhaus/12",
+        "source_url": null,
+        "address": null,
+        "capacity": 416,
+        "has_live_capacity": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.637701,
+          51.957459
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "muensterphcineplex",
+        "name": "PH Cineplex",
+        "type": "garage",
+        "public_url": "https://www.stadt-muenster.de/tiefbauamt/parkleitsystem/detailseite/parkhaeuser/detailansicht/parkhaus/15",
+        "source_url": null,
+        "address": null,
+        "capacity": 590,
+        "has_live_capacity": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.635975,
+          51.949828
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "muensterphengelenschanze",
+        "name": "PH Engelenschanze",
+        "type": "garage",
+        "public_url": "https://www.stadt-muenster.de/tiefbauamt/parkleitsystem/detailseite/parkhaeuser/detailansicht/parkhaus/13",
+        "source_url": null,
+        "address": null,
+        "capacity": 480,
+        "has_live_capacity": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.631493,
+          51.955674
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "muensterphkarstadt",
+        "name": "PH Karstadt",
+        "type": "garage",
+        "public_url": "https://www.stadt-muenster.de/tiefbauamt/parkleitsystem/detailseite/parkhaeuser/detailansicht/parkhaus/10",
+        "source_url": null,
+        "address": null,
+        "capacity": 183,
+        "has_live_capacity": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.629907,
+          51.960783
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "muensterphmuensterarkaden",
+        "name": "PH Münster Arkaden",
+        "type": "garage",
+        "public_url": "https://www.stadt-muenster.de/tiefbauamt/parkleitsystem/detailseite/parkhaeuser/detailansicht/parkhaus/9",
+        "source_url": null,
+        "address": null,
+        "capacity": 248,
+        "has_live_capacity": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.626499,
+          51.959854
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "muensterphstubengasse",
+        "name": "PH Stubengasse",
+        "type": "garage",
+        "public_url": "https://www.stadt-muenster.de/tiefbauamt/parkleitsystem/detailseite/parkhaeuser/detailansicht/parkhaus/11",
+        "source_url": null,
+        "address": null,
+        "capacity": 318,
+        "has_live_capacity": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.630287,
+          51.959884
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "muensterphtheater",
+        "name": "PH Theater",
+        "type": "garage",
+        "public_url": "https://www.stadt-muenster.de/tiefbauamt/parkleitsystem/detailseite/parkhaeuser/detailansicht/parkhaus/1",
+        "source_url": null,
+        "address": null,
+        "capacity": 793,
+        "has_live_capacity": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.626454,
+          51.965676
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "muensterppgeorgskommende",
+        "name": "PP Georgskommende",
+        "type": "lot",
+        "public_url": "https://www.stadt-muenster.de/tiefbauamt/parkleitsystem/detailseite/parkhaeuser/detailansicht/parkhaus/8",
+        "source_url": null,
+        "address": null,
+        "capacity": 272,
+        "has_live_capacity": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.619322,
+          51.959491
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "muensterpphoersterplatz",
+        "name": "PP Hörsterplatz",
+        "type": "lot",
+        "public_url": "https://www.stadt-muenster.de/tiefbauamt/parkleitsystem/detailseite/parkhaeuser/detailansicht/parkhaus/2",
+        "source_url": null,
+        "address": null,
+        "capacity": 202,
+        "has_live_capacity": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.632232,
+          51.964237
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "muensterppschlossplatznord",
+        "name": "PP Schlossplatz Nord",
+        "type": "lot",
+        "public_url": "https://www.stadt-muenster.de/tiefbauamt/parkleitsystem/detailseite/parkhaeuser/detailansicht/parkhaus/5",
+        "source_url": null,
+        "address": null,
+        "capacity": 450,
+        "has_live_capacity": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.617017,
+          51.964472
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "muensterppschlossplatzsued",
+        "name": "PP Schlossplatz Süd",
+        "type": "lot",
+        "public_url": "https://www.stadt-muenster.de/tiefbauamt/parkleitsystem/detailseite/parkhaeuser/detailansicht/parkhaus/6",
+        "source_url": null,
+        "address": null,
+        "capacity": 460,
+        "has_live_capacity": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.6167,
+          51.962386
+        ]
+      }
+    }
+  ]
+}
