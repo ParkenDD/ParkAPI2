@@ -1,0 +1,265 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "magdeburgalleecenter",
+        "name": "Allee Center",
+        "type": "underground",
+        "public_url": "https://www.movi.de/parkinfo/mitte/park_mitte_alleecenter.shtml",
+        "source_url": null,
+        "address": "Schleinufer 5",
+        "capacity": 1300,
+        "has_live_capacity": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.641694,
+          52.129007
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "magdeburgcitycarré",
+        "name": "City Carré",
+        "type": "underground",
+        "public_url": "https://www.movi.de/parkinfo/hbf/park_hbf_citycarre.shtml",
+        "source_url": null,
+        "address": "Kantstraße 3",
+        "capacity": 1200,
+        "has_live_capacity": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.628706,
+          11.628706
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "magdeburgdomviertel",
+        "name": "Domviertel",
+        "type": "underground",
+        "public_url": "https://www.movi.de/parkinfo/hassel/park_hassel_domviertel.shtml",
+        "source_url": null,
+        "address": "Arthur-Ruppin-Straße",
+        "capacity": 75,
+        "has_live_capacity": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.634177,
+          52.126461
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "magdeburgelbauenpark",
+        "name": "Elbauenpark",
+        "type": "lot",
+        "public_url": "https://www.movi.de/parkinfo/pur/park_pur_messeparkplatz.shtml",
+        "source_url": null,
+        "address": "Tessenowstraße",
+        "capacity": 1400,
+        "has_live_capacity": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.668728,
+          52.134087
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "magdeburgfriedensplatz",
+        "name": "Friedensplatz",
+        "type": "underground",
+        "public_url": "https://www.movi.de/parkinfo/hassel/park_hassel_frieden.shtml",
+        "source_url": null,
+        "address": "Behringstraße",
+        "capacity": 90,
+        "has_live_capacity": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.629653,
+          52.123135
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "magdeburghotelmaritim",
+        "name": "Hotel Maritim",
+        "type": "underground",
+        "public_url": "https://www.movi.de/parkinfo/hbf/park_hbf_maritim.shtml",
+        "source_url": null,
+        "address": "Otto-von-Guericke-Straße 87",
+        "capacity": 440,
+        "has_live_capacity": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.631327,
+          52.129395
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "magdeburghotelratswaage",
+        "name": "Hotel Ratswaage",
+        "type": "garage",
+        "public_url": "https://www.movi.de/parkinfo/mitte/park_mitte_ratswaage.shtml",
+        "source_url": null,
+        "address": "Ratswaageplatz 1-4",
+        "capacity": 139,
+        "has_live_capacity": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.638355,
+          52.133099
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "magdeburgkarstadt",
+        "name": "Karstadt",
+        "type": "garage",
+        "public_url": "https://www.movi.de/parkinfo/nord/park_nord_centrum.shtml",
+        "source_url": null,
+        "address": "Julius-Bremer-Straße",
+        "capacity": 0,
+        "has_live_capacity": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.636233,
+          52.13311
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "magdeburglistemannstrasse",
+        "name": "Listemannstrasse",
+        "type": "lot",
+        "public_url": "https://www.movi.de/parkinfo/nord/park_nord_listemann.shtml",
+        "source_url": null,
+        "address": "Listemannstraße",
+        "capacity": 184,
+        "has_live_capacity": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.643561,
+          52.137891
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "magdeburgpetrifoerderost",
+        "name": "Petriförder Ost",
+        "type": "lot",
+        "public_url": "https://www.movi.de/parkinfo/mitte/park_mitte_petri_ost.shtml",
+        "source_url": null,
+        "address": "Schleinufer",
+        "capacity": 120,
+        "has_live_capacity": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.647603,
+          52.133571
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "magdeburgpetrifoerderwest",
+        "name": "Petriförder West",
+        "type": "lot",
+        "public_url": "https://www.movi.de/parkinfo/mitte/park_mitte_petri_west.shtml",
+        "source_url": null,
+        "address": "Schleinufer",
+        "capacity": 50,
+        "has_live_capacity": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.646294,
+          52.132814
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "magdeburgulrichshaus",
+        "name": "Ulrichshaus",
+        "type": "underground",
+        "public_url": "https://www.movi.de/parkinfo/hbf/park_hbf_ulrichshaus.shtml",
+        "source_url": null,
+        "address": "Ulrichplatz 1",
+        "capacity": 360,
+        "has_live_capacity": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.634959,
+          52.131069
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "magdeburguniversitaetsplatz",
+        "name": "Universitätsplatz",
+        "type": "underground",
+        "public_url": "https://www.movi.de/parkinfo/nord/park_nord_uniplatz.shtml",
+        "source_url": null,
+        "address": "Am Krökentor",
+        "capacity": 120,
+        "has_live_capacity": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.637294,
+          52.137514
+        ]
+      }
+    }
+  ]
+}

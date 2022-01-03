@@ -79,7 +79,7 @@
         "id": {
           "type": "string",
           "maxLength": 64,
-          "pattern": "^[a-z0-9\\-æø]+$"
+          "pattern": "^[a-z0-9\\-æøé]+$"
         },
         "name": {
           "type": "string",
