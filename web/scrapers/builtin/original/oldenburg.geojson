@@ -5,13 +5,20 @@
       "type": "Feature",
       "properties": {
         "id": "oldenburgaerztehaus",
-        "name": "oldenburgaerztehaus",
-        "type": "unknown",
+        "name": "Ärztehaus",
+        "type": "lot",
         "public_url": null,
         "source_url": null,
-        "address": null,
+        "address": "Brandenburger Straße 21",
         "capacity": null,
         "has_live_capacity": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.21986,
+          53.11142,
+        ]
       }
     },
     {
