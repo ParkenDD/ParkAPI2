@@ -106,7 +106,7 @@
       "properties": {
         "id": "nuernbergparkhausfindelgasse",
         "name": "Parkhaus Findelgasse",
-        "type": "underground",
+        "type": "lot",
         "public_url": null,
         "source_url": null,
         "address": "Findelgasse 4",
