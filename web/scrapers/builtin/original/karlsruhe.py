@@ -53,7 +53,7 @@ class Karlsruhe(ScraperBase):
             timestamp_text = div.parent.find("h3").next_sibling.next_sibling.text.strip()
             try:
                 lot_timestamp = self.to_utc_datetime(
-                    timestamp_text, "Der letzte Stand ist von %m.%d.%Y - %H:%M Uhr"
+                    timestamp_text, "Der letzte Stand ist von %d.%m.%Y - %H:%M Uhr"
                 )
             except ValueError:
                 lot_timestamp = None
