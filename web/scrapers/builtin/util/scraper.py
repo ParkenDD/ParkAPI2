@@ -361,14 +361,18 @@ class ScraperBase:
             if not lot_type and props.get("type"):
                 lot_type = guess_lot_type(props["type"])
 
+            coords = [None, None]
+            if feature.get("geometry") and feature["geometry"].get("coordinates"):
+                coords = feature["geometry"]["coordinates"]
+
             kwargs = defaults.copy() if defaults else dict()
             kwargs.update(dict(
                 id=name_to_legacy_id(self.POOL.id, props["name"]),
                 name=props["name"],
                 type=lot_type or LotInfo.Types.unknown,
                 capacity=props.get("total"),
-                longitude=feature["geometry"]["coordinates"][0],
-                latitude=feature["geometry"]["coordinates"][1],
+                longitude=coords[0],
+                latitude=coords[1],
                 address=props.get("address"),
             ))
 
