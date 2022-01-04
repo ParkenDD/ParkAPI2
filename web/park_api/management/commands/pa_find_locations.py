@@ -1,8 +1,9 @@
 import json
-from typing import List, Dict, Type, Union, Generator
+from typing import List, Dict, Type, Union, Generator, Optional
 
 from django.core.management.base import BaseCommand, CommandError
 from django.contrib.gis import geos
+from django.contrib.gis.db.models import functions as F
 from django.db import transaction
 from django.conf import settings
 
@@ -12,26 +13,35 @@ from locations.nominatim import NominatimApi
 
 
 class Command(BaseCommand):
-    help = 'Scrape all parking websites and store to database'
+    help = 'Use OSM Nominatim for reverse search and create and attach' \
+           ' a Location to each ParkingLot'
 
     def add_arguments(self, parser):
-        pass
+        parser.add_argument(
+            "-p", "--pools", nargs="+", type=str,
+            help="Filter for one or more pool IDs"
+        )
 
-    def handle(self, *args, **options):
-        find_locations(print_to_console=True)
+    def handle(self, *args, pools, **options):
+        find_locations(pools=pools, print_to_console=True)
 
 
 def find_locations(
+        pools: Optional[List[str]],
         caching: Union[bool, str] = True,
         print_to_console: bool = False,
 ):
     api = NominatimApi(verbose=print_to_console)
-    open_lot_ids = list(
+
+    open_lot_qset = (
         ParkingLot.objects
         .filter(location=None)
         .exclude(geo_point=None)
-        .values_list("lot_id", flat=True)
     )
+    if pools:
+        open_lot_qset = open_lot_qset.filter(pool__pool_id__in=pools)
+    open_lot_ids = list(open_lot_qset.values_list("lot_id", flat=True))
+
     if print_to_console:
         if not open_lot_ids:
             print("All locations assigned")
@@ -44,8 +54,12 @@ def find_locations(
 
         # see if we have a Location that already contains
         #   the lot's geo-point
-        existing_location_qset = Location.objects.filter(
-            geo_polygon__contains=lot_model.geo_point
+        existing_location_qset = (
+            Location.objects.filter(geo_polygon__contains=lot_model.geo_point)
+            # this could be used to pick the smallest area
+            #   currently nominatim is queried when more than one
+            #   location exists
+            # .annotate(area=F.Area('geo_polygon'))
         )
 
         if existing_location_qset.exists():
@@ -142,7 +156,10 @@ def create_location_model(
                 geo_point=geos.Point(*feature["geometry"]["coordinates"]),
                 geo_polygon=polygon,
                 osm_properties=props,
-                city=(addr.get("village") or addr.get("town") or addr.get("city") or addr["state"])[:64],
+                city=(
+                    addr.get("village") or addr.get("town") or addr.get("city")
+                    or addr.get("suburb") or addr["state"]
+                )[:64],
                 state=addr["state"][:64] if addr.get("state") else None,
                 country=addr["country"][:64],
                 country_code=addr["country_code"],
@@ -180,7 +197,7 @@ def nominatim_reverse_search(api: NominatimApi, lot_model: ParkingLot, caching: 
     # If we do not get "city" nor "state" that means
     #   that either it's a "city-state" like Hamburg
     #   (e.g. https://github.com/osm-search/Nominatim/issues/1759)
-    #   or it's maybe a town/village
+    #   or it's maybe a town/village/suburb
 
     # try village first
     geojson = api.reverse(
@@ -212,10 +229,26 @@ def nominatim_reverse_search(api: NominatimApi, lot_model: ParkingLot, caching: 
         caching=caching,
     )
 
+    addr = geojson["features"][0]["properties"]["address"]
     if not ("village" in addr or "town" in addr or "city" in addr or "state" in addr):
+        # finally try suburb
+        geojson = api.reverse(
+            lon=geo_point.tuple[0],
+            lat=geo_point.tuple[1],
+            zoom=api.Zoom.suburb,
+            format="geojson",
+            extratags=1,
+            addressdetails=1,
+            namedetails=1,
+            polygon_geojson=0,
+            caching=caching,
+        )
+
+    addr = geojson["features"][0]["properties"]["address"]
+    if not ("suburb" in addr or "village" in addr or "town" in addr or "city" in addr or "state" in addr):
         raise ValueError(
             f"Nominatim reverse search for lot {lot_model} with coords {geo_point.tuple}"
-            f" did not yield a 'town', 'city' or 'state'"
+            f" did not yield a 'suburb', 'town', 'city' or 'state', got: {addr}"
         )
 
     return geojson
