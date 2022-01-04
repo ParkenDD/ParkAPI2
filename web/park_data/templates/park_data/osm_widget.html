@@ -1,0 +1,9 @@
+{% extends "gis/admin/osm.html" %}
+
+{% block openlayers %}{{ block.super }}</script>
+
+{% if is_point %}
+    <pre>{{wkt}}</pre>
+{% endif %}
+
+<script>{% endblock %}

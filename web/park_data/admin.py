@@ -13,6 +13,12 @@ from django.db import models
 from .models import *
 
 
+class OSMGeoAdmin2(OSMGeoAdmin):
+    map_template = 'park_data/osm_widget.html'
+    map_srid = 4326
+    # debug = True
+
+
 def short_link(url: str, max_length=20) -> str:
     if "//" in url:
         url = url.split("//")[1]
@@ -85,7 +91,7 @@ class ParkingPoolAdmin(admin.ModelAdmin):
 
 
 @register(ParkingLot)
-class ParkingLotAdmin(OSMGeoAdmin):
+class ParkingLotAdmin(OSMGeoAdmin2):
     list_display = (
         "lot_id",
         "pool",
