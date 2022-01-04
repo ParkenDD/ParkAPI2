@@ -251,6 +251,7 @@ class ScraperBase:
             expected_status: Optional[int] = None,
             caching: Optional[Union[bool, str]] = None,
             parser: str = "html.parser",
+            encoding: Optional[str] = None,
             **kwargs,
     ) -> BeautifulSoup:
         response = self.request(
@@ -259,7 +260,11 @@ class ScraperBase:
             caching=caching,
             **kwargs,
         )
-        return BeautifulSoup(response.text, features=parser)
+        if encoding:
+            text = response.content.decode(encoding)
+        else:
+            text = response.text
+        return BeautifulSoup(text, features=parser)
 
     def _request(self, method: str, url: str, **kwargs) -> requests.Response:
 
