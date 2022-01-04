@@ -8,9 +8,15 @@ from .parking_lot import ParkingLot
 from .parking_data import ParkingData, LatestParkingData
 
 
-def store_snapshot(snapshot: dict, update_infos: bool = True) -> List[ParkingData]:
+def store_snapshot(
+        snapshot: dict,
+        update_infos: bool = True,
+) -> List[ParkingData]:
     """
     Store a snapshot.
+
+    :param update_infos: bool, Update any fields of ParkingPool and ParkingLot
+        if meta-information changed
 
     :returns List of park_data.models.ParkingData instances
     """
@@ -26,7 +32,7 @@ def store_snapshot(snapshot: dict, update_infos: bool = True) -> List[ParkingDat
         if update_infos:
             updated = False
             for key, value in kwargs.items():
-                if value is not None and hasattr(pool_model, key) and getattr(pool_model, key) in (None, ""):
+                if value is not None and hasattr(pool_model, key) and getattr(pool_model, key) != value:
                     setattr(pool_model, key, value)
                     updated = True
             if updated:
@@ -57,7 +63,7 @@ def store_snapshot(snapshot: dict, update_infos: bool = True) -> List[ParkingDat
             if update_infos:
                 kwargs.pop("max_capacity")
                 for key, value in kwargs.items():
-                    if value is not None and hasattr(lot_model, key) and getattr(lot_model, key) in (None, ""):
+                    if value is not None and hasattr(lot_model, key) and getattr(lot_model, key) != value:
                         setattr(lot_model, key, value)
                         updated = True
 
