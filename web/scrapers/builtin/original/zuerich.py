@@ -13,7 +13,7 @@ class Zuerich(ScraperBase):
 
     POOL = PoolInfo(
         id="zuerich",
-        name="Zuerich",
+        name="Zürich",
         public_url="https://data.stadt-zuerich.ch/dataset/parkleitsystem",
         source_url="https://www.pls-zh.ch/plsFeed/rss",
         timezone="GMT",
