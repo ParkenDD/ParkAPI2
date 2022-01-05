@@ -68,3 +68,11 @@ class TestFindLocations(TestCase):
         location = self.get_location_model(outside_lot_2)
         self.assertEqual("Dahlenburg", location.city)
         self.assertEqual("Niedersachsen", location.state)
+
+    def test_locations_rosenheim(self):
+        lot_1 = self.create_lot_model("lot-1", 12.126827, 47.849683)
+
+        # Actually getting "county" Rosenheim but that's okay..
+        location = self.get_location_model(lot_1)
+        self.assertEqual("Rosenheim", location.city)
+        self.assertEqual("Bayern", location.state)

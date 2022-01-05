@@ -40,7 +40,11 @@ def find_locations(
     )
     if pools:
         open_lot_qset = open_lot_qset.filter(pool__pool_id__in=pools)
-    open_lot_ids = list(open_lot_qset.values_list("lot_id", flat=True))
+    open_lot_ids = list(
+        open_lot_qset
+        .values_list("lot_id", flat=True)
+        .order_by("lot_id", "pool__pool_id")
+    )
 
     if print_to_console:
         if not open_lot_ids:
@@ -48,19 +52,32 @@ def find_locations(
         else:
             print(f"{len(open_lot_ids)} lots to find")
 
+    last_pool_id = None
     for lot_id in open_lot_ids:
         lot_model = ParkingLot.objects.get(lot_id=lot_id)
         location_model = None
 
-        # see if we have a Location that already contains
-        #   the lot's geo-point
-        existing_location_qset = (
-            Location.objects.filter(geo_polygon__contains=lot_model.geo_point)
-            # this could be used to pick the smallest area
-            #   currently nominatim is queried when more than one
-            #   location exists
-            # .annotate(area=F.Area('geo_polygon'))
-        )
+        # keep track of changing pool
+        new_pool = False
+        if lot_model.pool.pool_id != last_pool_id:
+            new_pool = True
+        last_pool_id = lot_model.pool.pool_id
+
+        if new_pool:
+            # when starting to find locations for a new pool
+            #   rather ask nominatim first and do not
+            #   lookup existing polygons
+            existing_location_qset = Location.objects.none()
+        else:
+            # see if we have a Location that already contains
+            #   the lot's geo-point
+            existing_location_qset = (
+                Location.objects.filter(geo_polygon__contains=lot_model.geo_point)
+                # this could be used to pick the smallest area
+                #   currently nominatim is queried when more than one
+                #   location exists
+                # .annotate(area=F.Area('geo_polygon'))
+            )
 
         if existing_location_qset.exists():
             count = existing_location_qset.count()
@@ -157,8 +174,8 @@ def create_location_model(
                 geo_polygon=polygon,
                 osm_properties=props,
                 city=(
-                    addr.get("village") or addr.get("town") or addr.get("city")
-                    or addr.get("suburb") or addr["state"]
+                    addr.get("suburb") or addr.get("village") or addr.get("town")
+                    or addr.get("city") or addr.get("county") or addr["state"]
                 )[:64],
                 state=addr["state"][:64] if addr.get("state") else None,
                 country=addr["country"][:64],
@@ -228,8 +245,8 @@ def nominatim_reverse_search(api: NominatimApi, lot_model: ParkingLot, caching: 
         polygon_geojson=0,
         caching=caching,
     )
-
     addr = geojson["features"][0]["properties"]["address"]
+
     if not ("village" in addr or "town" in addr or "city" in addr or "state" in addr):
         # finally try suburb
         geojson = api.reverse(
