@@ -13,11 +13,15 @@ from park_data.models import ParkingLot, ParkingPool, ParkingData, ParkingLotSta
 
 # legacy name -> nominatim name
 CITY_NAME_LEGACY_TO_NOMINATIM = {
+    "Buchholz": "Buchholz in der Nordheide",  # This one's actually in the Hamburg pool
     "Frankfurt": "Frankfurt am Main",
     "Freiburg": "Freiburg im Breisgau",
     "Koeln": "Köln",
-    "Buchholz": "Buchholz in der Nordheide",  # This one's actually in the Hamburg pool
     "Limburg": "Limburg an der Lahn",
+    "Luebeck": "Lübeck",
+    "Muenster": "Münster",
+    "Nuernberg": "Nürnberg",
+    "Zuerich": "Zürich",
 
     # from DB-API
     "Halle": "Halle (Saale)",
@@ -82,10 +86,14 @@ class CityMapView(views.APIView):
         Uses 3 db queries to build the map of city name to city meta data.
         The first lot location that matches the city name is merged
         with it's pool data to create the v1 city data.
+
+        Note: This currently excludes the DeutscheBahn pool because
+            1. it can mess up another city's attribution
+            2. adds a lot of cities with just one parking lot
         """
         pool_map = {
             pool.pop("pk"): pool
-            for pool in ParkingPool.objects.all().values(
+            for pool in ParkingPool.objects.exclude(pool_id="bahn").values(
                 "pk", "public_url", "source_url",
                 "attribution_license", "attribution_contributor", "attribution_url"
             )
@@ -120,7 +128,7 @@ class CityMapView(views.APIView):
                 lng, lat = loc["geo_point"].tuple
                 city.update({
                     "coords": {"lat": lat, "lng": lng},
-                    "name": city_name,
+                    "name": loc["city"],
                     "url": city.pop("public_url"),
                     "source": city.pop("source_url"),
                     # TODO: no db-field yet
@@ -184,7 +192,9 @@ class CityLotsView(views.APIView):
 
                 if last_downloaded is None or lot.latest_data.timestamp > last_downloaded:
                     last_downloaded = lot.latest_data.timestamp
-                if last_updated is None or lot.latest_data.lot_timestamp > last_updated:
+                if last_updated is None or (
+                        lot.latest_data.lot_timestamp and lot.latest_data.lot_timestamp > last_updated
+                ):
                     last_updated = lot.latest_data.lot_timestamp
 
             api_lot_list.append(api_lot)
