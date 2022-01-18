@@ -12,6 +12,7 @@ The idea is to fork the scraper repo which would only contain:
     schema.json
     scraper.py
     util/*.py
+    test/*.py
     example.py 
     
     
@@ -20,6 +21,7 @@ Then contributors can create one or more *pools* by copying and implementing `ex
 ```python
 from typing import List
 from util import *
+
 
 class MyCity(ScraperBase):
     
@@ -32,9 +34,26 @@ class MyCity(ScraperBase):
     )
 
     def get_lot_data(self) -> List[LotData]:
+        timestamp = self.now()
         soup = self.request_soup(self.POOL.source_url)
-        ...
-        return extracted_data
+        
+        lots = []
+        for div in soup.findall("div", {"class": "special-parking-div"}):
+
+            # ... get info from html dom
+
+            lots.append(
+                LotData(
+                    id=name_to_legacy_id("mycity", lot_id),
+                    timestamp=timestamp,
+                    lot_timestamp=last_updated,
+                    status=state,
+                    num_occupied=lot_occupied,
+                    capacity=lot_total,
+                )
+            )
+
+        return lots
 ```
 
 and then test them via
@@ -52,7 +71,9 @@ use `--cache` afterwards.
 
 The `validate` command validates the resulting snapshot data against the 
 [json schema](schema.json) and prints warnings for fields that *should* be defined.
-Run `validate --errors` to only print errors and hide the warnings. 
+Run `validate --max-priority 0` to only print severe errors and 
+`validate --max-priority 1` to include warnings about missing data in the most
+important fields like `latitude`, `longitude`, `address` and `capacity`. 
 
 
 ### Scraping occupancy data
@@ -72,7 +93,7 @@ should return all the required information.
 
 *Some* websites do provide most of the required information and it might be easier to
 scrape it from the web pages instead of writing the geojson file by hand. However, it
-would not be good practice to scrape this info every other minute. To generate a 
+might not be good practice to scrape this info every other minute. To generate a 
 geojson file from the lot_info data:
 
 ```shell script
@@ -96,4 +117,3 @@ need to merge with the original scraper repo at some point.
 
 The `validate` command could actually validate the scraped data against the live API.
 (e.g. check duplicate IDs and use newest schema, ...)
-

@@ -1,0 +1,225 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "kaiserslauternphaltstadt",
+        "name": "PH Altstadt",
+        "type": "garage",
+        "public_url": "https://www.kaiserslautern.de/sozial_leben_wohnen/verkehr_parken/autos_und_co/parken/parkplatz/021336/index.html.de",
+        "source_url": null,
+        "address": "Rittersberg 2",
+        "capacity": 258,
+        "has_live_capacity": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.7724650502204895,
+          49.446974080950305
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "kaiserslauternphcentral",
+        "name": "PH Central",
+        "type": "garage",
+        "public_url": "https://www.kaiserslautern.de/sozial_leben_wohnen/verkehr_parken/autos_und_co/parken/parkplatz/021338/index.html.de",
+        "source_url": null,
+        "address": "Rosenstraße 12",
+        "capacity": 70,
+        "has_live_capacity": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.766937017440797,
+          49.442239320669785
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "kaiserslauternphcity",
+        "name": "PH City",
+        "type": "garage",
+        "public_url": "https://www.kaiserslautern.de/sozial_leben_wohnen/verkehr_parken/autos_und_co/parken/parkplatz/021339/index.html.de",
+        "source_url": null,
+        "address": "Löwenstraße 5",
+        "capacity": 240,
+        "has_live_capacity": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.767012119293212,
+          49.44309736639787
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "kaiserslauternphhauptbahnhof",
+        "name": "PH Hauptbahnhof",
+        "type": "garage",
+        "public_url": "https://www.kaiserslautern.de/sozial_leben_wohnen/verkehr_parken/autos_und_co/parken/parkplatz/021343/index.html.de",
+        "source_url": null,
+        "address": "Zollamtstraße 6",
+        "capacity": 259,
+        "has_live_capacity": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.770386338233947,
+          49.43580175486678
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "kaiserslauternphkinlautern",
+        "name": "PH K in Lautern",
+        "type": "garage",
+        "public_url": "https://www.kaiserslautern.de/sozial_leben_wohnen/verkehr_parken/autos_und_co/parken/parkplatz/021337/index.html.de",
+        "source_url": null,
+        "address": "Fackelrondell 1",
+        "capacity": 460,
+        "has_live_capacity": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.764659821987151,
+          49.443631021411605
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "kaiserslauternphkreissparkasse",
+        "name": "PH Kreissparkasse",
+        "type": "garage",
+        "public_url": "https://www.kaiserslautern.de/sozial_leben_wohnen/verkehr_parken/autos_und_co/parken/parkplatz/021341/index.html.de",
+        "source_url": null,
+        "address": "Am Altenhof 8",
+        "capacity": 162,
+        "has_live_capacity": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.768429666757583,
+          49.444547464427664
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "kaiserslauternphlutrinastrasse",
+        "name": "PH Lutrinastraße",
+        "type": "garage",
+        "public_url": "https://www.kaiserslautern.de/sozial_leben_wohnen/verkehr_parken/autos_und_co/parken/parkplatz/021340/index.html.de",
+        "source_url": null,
+        "address": "Badstraße 3",
+        "capacity": 67,
+        "has_live_capacity": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.772792279720306,
+          49.44166030571838
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "kaiserslauternphmeuthstrasseangestellte",
+        "name": "PH Meuthstraße Angestellte",
+        "type": "lot",
+        "public_url": "https://www.kaiserslautern.de/sozial_leben_wohnen/verkehr_parken/autos_und_co/parken/parkplatz/021344/index.html.de",
+        "source_url": null,
+        "address": "Meuthstraße",
+        "capacity": 249,
+        "has_live_capacity": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.764085829257964,
+          49.44693746024965
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "kaiserslauternphmeuthstrassebesucher",
+        "name": "PH Meuthstraße Besucher",
+        "type": "lot",
+        "public_url": "https://www.kaiserslautern.de/sozial_leben_wohnen/verkehr_parken/autos_und_co/parken/parkplatz/021342/index.html.de",
+        "source_url": null,
+        "address": "Meuthstraße",
+        "capacity": 79,
+        "has_live_capacity": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.763890027999877,
+          49.44643523073805
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "kaiserslauternphpfalztheater",
+        "name": "PH Pfalztheater",
+        "type": "garage",
+        "public_url": "https://www.kaiserslautern.de/sozial_leben_wohnen/verkehr_parken/autos_und_co/parken/parkplatz/021345/index.html.de",
+        "source_url": null,
+        "address": "Martin-Luther-Straße",
+        "capacity": 178,
+        "has_live_capacity": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.769994735717773,
+          49.446316648019256
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "kaiserslauternphstiftsplatz",
+        "name": "PH Stiftsplatz",
+        "type": "garage",
+        "public_url": "https://www.kaiserslautern.de/sozial_leben_wohnen/verkehr_parken/autos_und_co/parken/parkplatz/021346/index.html.de",
+        "source_url": null,
+        "address": "Stiftsplatz",
+        "capacity": 100,
+        "has_live_capacity": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.77245968580246,
+          49.44463553274022
+        ]
+      }
+    }
+  ]
+}

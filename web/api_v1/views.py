@@ -12,9 +12,27 @@ from park_data.models import ParkingLot, ParkingPool, ParkingData, ParkingLotSta
 
 
 # legacy name -> nominatim name
-CITY_NAME_MAPPING = {
-    "Frankfurt": "Frankfurt am Main"
+CITY_NAME_LEGACY_TO_NOMINATIM = {
+    "Buchholz": "Buchholz in der Nordheide",  # This one's actually in the Hamburg pool
+    "Frankfurt": "Frankfurt am Main",
+    "Freiburg": "Freiburg im Breisgau",
+    "Koeln": "Köln",
+    "Limburg": "Limburg an der Lahn",
+    "Luebeck": "Lübeck",
+    "Muenster": "Münster",
+    "Nuernberg": "Nürnberg",
+    "Zuerich": "Zürich",
+
+    # from DB-API
+    "Halle": "Halle (Saale)",
+    "Muenchen": "München"
 }
+
+CITY_NAME_NOMINATIM_TO_LEGACY = {
+    value: key
+    for key, value in CITY_NAME_LEGACY_TO_NOMINATIM.items()
+}
+
 
 LOT_TYPE_MAPPING = {
     "lot": "Parkplatz",
@@ -46,7 +64,7 @@ class CoffeeView(views.APIView):
         <img src="http://i.imgur.com/xVpIC9N.gif"
             alt="British porn"
             title="British porn"/>
-         """, status=418)
+        """, status=418)
 
 
 class CityMapView(views.APIView):
@@ -68,10 +86,14 @@ class CityMapView(views.APIView):
         Uses 3 db queries to build the map of city name to city meta data.
         The first lot location that matches the city name is merged
         with it's pool data to create the v1 city data.
+
+        Note: This currently excludes the DeutscheBahn pool because
+            1. it can mess up another city's attribution
+            2. adds a lot of cities with just one parking lot
         """
         pool_map = {
             pool.pop("pk"): pool
-            for pool in ParkingPool.objects.all().values(
+            for pool in ParkingPool.objects.exclude(pool_id="bahn").values(
                 "pk", "public_url", "source_url",
                 "attribution_license", "attribution_contributor", "attribution_url"
             )
@@ -91,7 +113,8 @@ class CityMapView(views.APIView):
         city_map = dict()
         for loc_pk, pool_pk in lot_qset.values_list("location__pk", "pool__pk"):
             loc = location_map[loc_pk]
-            if loc["city"] not in city_map:
+            city_name = CITY_NAME_NOMINATIM_TO_LEGACY.get(loc["city"], loc["city"])
+            if city_name not in city_map:
 
                 city = deepcopy(pool_map[pool_pk])
                 city["attribution"] = {
@@ -112,7 +135,7 @@ class CityMapView(views.APIView):
                     "active_support": False,
                 })
 
-                city_map[loc["city"]] = city
+                city_map[city_name] = city
 
         city_map = {
             city: city_map[city]
@@ -125,7 +148,7 @@ class CityLotsView(views.APIView):
 
     def get(self, request: Request, city: str):
 
-        location_qset = Location.objects.filter(city__iexact=CITY_NAME_MAPPING.get(city, city))
+        location_qset = Location.objects.filter(city__iexact=CITY_NAME_LEGACY_TO_NOMINATIM.get(city, city))
         if not location_qset.exists():
             return Response({
                 "detail": f"Error 404: Sorry, '{city}' isn't supported at the current time."
@@ -169,7 +192,9 @@ class CityLotsView(views.APIView):
 
                 if last_downloaded is None or lot.latest_data.timestamp > last_downloaded:
                     last_downloaded = lot.latest_data.timestamp
-                if last_updated is None or lot.latest_data.lot_timestamp > last_updated:
+                if last_updated is None or (
+                        lot.latest_data.lot_timestamp and lot.latest_data.lot_timestamp > last_updated
+                ):
                     last_updated = lot.latest_data.lot_timestamp
 
             api_lot_list.append(api_lot)

@@ -1,10 +1,12 @@
 import json
+import os
 import datetime
 from pathlib import Path
 import argparse
 import glob
 import importlib
 import inspect
+import itertools
 from typing import Union, Optional, Tuple, List, Type, Dict
 
 from util import ScraperBase, SnapshotMaker, log
@@ -45,8 +47,9 @@ def parse_args() -> dict:
              f" but not read them. Cache directory is {ScraperBase.CACHE_DIR}"
     )
     parser.add_argument(
-        "-e", "--errors", nargs="?", type=bool, default=False, const=True,
-        help=f"Only display errors when running 'validate' command (skip the warnings)"
+        "-mp", "--max-priority", type=int, default=1000,
+        help="Maximum error priority to display in validation [0-4]. 0 = severe, 1 = should really fix that"
+             ", 2 = should fix that at some point, etc.."
     )
 
     return vars(parser.parse_args())
@@ -57,26 +60,41 @@ def get_scrapers(
 ) -> Dict[str, Type["ScraperBase"]]:
 
     scrapers = dict()
-    for filename in glob.glob(str(MODULE_DIR / "*.py")):
-        module_name = Path(filename).name[:-3]
+    all_scrapers = dict()
+
+    for filename in itertools.chain(
+            glob.glob(str(MODULE_DIR / "*.py")),
+            glob.glob(str(MODULE_DIR / "*" / "*.py"))
+    ):
+        filename = Path(filename)
+        if filename.parent.name in ("tests", "util"):
+            continue
+
+        module_name = str(filename.relative_to(MODULE_DIR))[:-3].replace(os.path.sep, ".")
         if module_name == "scraper":
             continue
 
         module = importlib.import_module(module_name)
-        for key, value in vars(module).items():
-            if not inspect.isclass(value) or not getattr(value, "POOL", None):
+        for key, scraper_class in vars(module).items():
+            if not inspect.isclass(scraper_class) or not getattr(scraper_class, "POOL", None):
                 continue
 
-            if value.POOL.id in scrapers:
+            # --- some validation of the POOL info ---
+
+            if scraper_class.POOL.id in all_scrapers:
                 raise ValueError(
-                    f"class {value.__name__}.POOL.id '{value.POOL.id}'"
-                    f" is already used by class {scrapers[value.POOL.id].__name__}"
+                    f"{scraper_class.__name__}.POOL.id '{scraper_class.POOL.id}'"
+                    f" is already used by class {all_scrapers[scraper_class.POOL.id].__name__}"
                 )
 
-            if pool_filter and value.POOL.id not in pool_filter:
+            # --
+
+            all_scrapers[scraper_class.POOL.id] = scraper_class
+
+            if pool_filter and scraper_class.POOL.id not in pool_filter:
                 continue
 
-            scrapers[value.POOL.id] = value
+            scrapers[scraper_class.POOL.id] = scraper_class
 
     return scrapers
 
@@ -112,7 +130,7 @@ def main(
         command: str,
         cache: Union[bool, str],
         pools: List[str],
-        errors: bool,
+        max_priority: int,
 ):
     scrapers = get_scrapers(pool_filter=pools)
     pool_ids = sorted(scrapers)
@@ -144,8 +162,9 @@ def main(
             snapshot = snapshotter.get_snapshot(infos_required=False)
 
             validation = validate_snapshot(snapshot)
-            if validation["errors"] or (not errors and validation["warnings"]):
-                validations.append({"pool_id": pool_id, "validation": validation})
+            for message in validation["validations"]:
+                if message["priority"] <= max_priority:
+                    validations.append({"pool_id": pool_id, "validation": message})
 
         JsonPrinter().print(validations)
 

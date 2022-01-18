@@ -1,0 +1,165 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "wiesbadenphcity2",
+        "name": "PH City 2",
+        "type": "garage",
+        "public_url": null,
+        "source_url": "https://geoportal.wiesbaden.de/cgi-bin/mapserv.fcgi?map=d:/openwimap/umn/map/parkleitsystem/parkhaeuser.map&VERSION=1.3.0&service=WMS&request=GetFeatureInfo&version=1.1.1&layers=parkhaeuser&styles=&format=image%2Fpng&transparent=true&continuousWorld=true&tiled=true&info_format=text%2Fhtml&width=664&height=650&srs=EPSG%3A3857&bbox=915667.8257137334%2C6459688.48306598%2C918839.9623875683%2C6462793.737340063&query_layers=parkhaeuser&X=233&Y=484",
+        "address": "Schwalbacher Str. 38-42",
+        "capacity": 240,
+        "has_live_capacity": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.23592,
+          50.0819
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "wiesbadenphcoulinstrasse",
+        "name": "PH Coulinstrasse",
+        "type": "garage",
+        "public_url": null,
+        "source_url": "https://geoportal.wiesbaden.de/cgi-bin/mapserv.fcgi?map=d:/openwimap/umn/map/parkleitsystem/parkhaeuser.map&VERSION=1.3.0&service=WMS&request=GetFeatureInfo&version=1.1.1&layers=parkhaeuser&styles=&format=image%2Fpng&transparent=true&continuousWorld=true&tiled=true&info_format=text%2Fhtml&width=664&height=650&srs=EPSG%3A3857&bbox=915658.2710851978%2C6458475.045241954%2C918830.4077590327%2C6461580.299516035&query_layers=parkhaeuser&X=296&Y=176",
+        "address": "Coulinstraße 5",
+        "capacity": 343,
+        "has_live_capacity": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.23771,
+          50.08324
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "wiesbadenphkarstadt",
+        "name": "PH Karstadt",
+        "type": "garage",
+        "public_url": null,
+        "source_url": "https://geoportal.wiesbaden.de/cgi-bin/mapserv.fcgi?map=d:/openwimap/umn/map/parkleitsystem/parkhaeuser.map&VERSION=1.3.0&service=WMS&request=GetFeatureInfo&version=1.1.1&layers=parkhaeuser&styles=&format=image%2Fpng&transparent=true&continuousWorld=true&tiled=true&info_format=text%2Fhtml&width=664&height=650&srs=EPSG%3A3857&bbox=915667.8257137334%2C6459688.48306598%2C918839.9623875683%2C6462793.737340063&query_layers=parkhaeuser&X=324&Y=505",
+        "address": "Neugasse 5",
+        "capacity": 355,
+        "has_live_capacity": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.23962,
+          50.08114
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "wiesbadenphluisenforum",
+        "name": "PH Luisenforum",
+        "type": "garage",
+        "public_url": null,
+        "source_url": "https://geoportal.wiesbaden.de/cgi-bin/mapserv.fcgi?map=d:/openwimap/umn/map/parkleitsystem/parkhaeuser.map&VERSION=1.3.0&service=WMS&request=GetFeatureInfo&version=1.1.1&layers=parkhaeuser&styles=&format=image%2Fpng&transparent=true&continuousWorld=true&tiled=true&info_format=text%2Fhtml&width=664&height=650&srs=EPSG%3A3857&bbox=915667.8257137334%2C6459688.48306598%2C918839.9623875683%2C6462793.737340063&query_layers=parkhaeuser&X=243&Y=606",
+        "address": "Karlstraße",
+        "capacity": 800,
+        "has_live_capacity": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.23508,
+          50.07839
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "wiesbadenphmauritiusgalerie",
+        "name": "PH Mauritius Galerie",
+        "type": "garage",
+        "public_url": null,
+        "source_url": "https://geoportal.wiesbaden.de/cgi-bin/mapserv.fcgi?map=d:/openwimap/umn/map/parkleitsystem/parkhaeuser.map&VERSION=1.3.0&service=WMS&request=GetFeatureInfo&version=1.1.1&layers=parkhaeuser&styles=&format=image%2Fpng&transparent=true&continuousWorld=true&tiled=true&info_format=text%2Fhtml&width=664&height=650&srs=EPSG%3A3857&bbox=915667.8257137334%2C6459688.48306598%2C918839.9623875683%2C6462793.737340063&query_layers=parkhaeuser&X=253&Y=461",
+        "address": "Schwalbacher Str. 53",
+        "capacity": 563,
+        "has_live_capacity": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.23621,
+          50.08228
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "wiesbadenphtheater",
+        "name": "PH Theater",
+        "type": "garage",
+        "public_url": null,
+        "source_url": "https://geoportal.wiesbaden.de/cgi-bin/mapserv.fcgi?map=d:/openwimap/umn/map/parkleitsystem/parkhaeuser.map&VERSION=1.3.0&service=WMS&request=GetFeatureInfo&version=1.1.1&layers=parkhaeuser&styles=&format=image%2Fpng&transparent=true&continuousWorld=true&tiled=true&info_format=text%2Fhtml&width=664&height=650&srs=EPSG%3A3857&bbox=915658.2710851978%2C6459688.48306598%2C918830.4077590327%2C6462793.737340063&query_layers=parkhaeuser&X=520&Y=430",
+        "address": "Thelemannstraße",
+        "capacity": 320,
+        "has_live_capacity": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.24816,
+          50.08309
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "wiesbadentgluisenplatz",
+        "name": "TG Luisenplatz",
+        "type": "underground",
+        "public_url": null,
+        "source_url": "https://geoportal.wiesbaden.de/cgi-bin/mapserv.fcgi?map=d:/openwimap/umn/map/parkleitsystem/parkhaeuser.map&VERSION=1.3.0&service=WMS&request=GetFeatureInfo&version=1.1.1&layers=parkhaeuser&styles=&format=image%2Fpng&transparent=true&continuousWorld=true&tiled=true&info_format=text%2Fhtml&width=664&height=650&srs=EPSG%3A3857&bbox=915667.8257137334%2C6459688.48306598%2C918839.9623875683%2C6462793.737340063&query_layers=parkhaeuser&X=331&Y=613",
+        "address": "Rheinstrasse/Luisenplatz",
+        "capacity": 292,
+        "has_live_capacity": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.24067,
+          50.07787
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "wiesbadentgmarkt",
+        "name": "TG Markt",
+        "type": "underground",
+        "public_url": null,
+        "source_url": "https://geoportal.wiesbaden.de/cgi-bin/mapserv.fcgi?map=d:/openwimap/umn/map/parkleitsystem/parkhaeuser.map&VERSION=1.3.0&service=WMS&request=GetFeatureInfo&version=1.1.1&layers=parkhaeuser&styles=&format=image%2Fpng&transparent=true&continuousWorld=true&tiled=true&info_format=text%2Fhtml&width=664&height=650&srs=EPSG%3A3857&bbox=915667.8257137334%2C6459688.48306598%2C918839.9623875683%2C6462793.737340063&query_layers=parkhaeuser&X=401&Y=520",
+        "address": "Schillerplatz 2",
+        "capacity": 540,
+        "has_live_capacity": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.24214,
+          50.08006
+        ]
+      }
+    }
+  ]
+}

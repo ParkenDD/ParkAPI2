@@ -1,5 +1,6 @@
 import datetime
 import traceback
+import warnings
 
 from .scraper import ScraperBase
 from .structs import LotInfo, LotData, PoolInfo
@@ -85,10 +86,12 @@ class SnapshotMaker:
                 if lot_data.id in info_map:
                     merged_lot = vars(info_map[lot_data.id])
                 else:
+                    error_message = f"Lot {lot_data.id} is not in lot_infos"
                     if infos_required:
-                        raise ValueError(
-                            f"Lot {lot_data.id} is not in lot_infos"
-                        )
+                        raise ValueError(error_message)
+                    else:
+                        warnings.warn(error_message)
+
                     merged_lot = dict()
 
                 for key, value in vars(lot_data).items():
@@ -99,7 +102,7 @@ class SnapshotMaker:
                     if isinstance(value, datetime.datetime):
                         merged_lot[key] = value.isoformat()
 
-                if not merged_lot["source_url"]:
+                if not merged_lot.get("source_url"):
                     merged_lot["source_url"] = (
                         self.scraper.POOL.source_url or self.scraper.POOL.public_url
                     )

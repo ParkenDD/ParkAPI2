@@ -1,4 +1,5 @@
 import re
+import json
 import unicodedata
 from typing import Union, Optional, Tuple, List, Type, Dict
 
@@ -17,12 +18,39 @@ def guess_lot_type(name: str) -> Optional[str]:
         "tiefgarage": LotInfo.Types.underground,
         "parkdeck": LotInfo.Types.level,
         "parklevel": LotInfo.Types.level,
+        "garage": LotInfo.Types.garage,
     }
 
     name = name.lower()
     for key, type in NAME_TO_LOT_TYPE_MAPPING.items():
         if key in name:
             return type
+
+
+def name_to_legacy_id(city_name: str, lot_name: str) -> str:
+    """
+    Converts city/pool name and lot name to the legacy lot ID
+    identical to the original ParkAPI ID
+
+    :param city_name: str, city or pool prefix
+    :param lot_name: str, name of the lot
+    :return: a normalized string
+    """
+    name = f"{city_name}{lot_name}".lower()
+    return remove_special_chars(name)
+
+
+def name_to_id(city_name: str, lot_name: str) -> str:
+    """
+    Converts city/pool name and lot name to a lot ID
+    with only ascii characters and "-"
+
+    :param city_name: str, city or pool prefix
+    :param lot_name: str, name of the lot
+    :return: a normalized string, maximum length of 64 characters!
+    """
+    name = f"{city_name}-{lot_name}".lower()
+    return remove_special_chars_v2(name)[:64]
 
 
 def remove_special_chars(name: str) -> str:
@@ -43,27 +71,40 @@ def remove_special_chars(name: str) -> str:
         "/": "",
         "\\": "",
         "\n": "",
-        "\t": ""
+        "\t": "",
+        # TODO: i added these because of lot 'karlsruhezirkel(p&c)'
+        #   which is really a bad filename
+        "&": "",
+        "(": "",
+        ")": "",
     }
     for repl in replacements.keys():
         name = name.replace(repl, replacements[repl])
     return name
 
 
-def name_to_id(name: str) -> str:
+def remove_special_chars_v2(name: str) -> str:
     """
     Converts any string to
       - ascii alphanumeric or "-" characters
       - no spaces
       - lowercase
-      - maximal length of 64
     """
+    replacements = {
+        "ä": "ae",
+        "ö": "oe",
+        "ü": "ue",
+        "ß": "ss",
+    }
     id_name = str(name)
+    for old, new in replacements.items():
+        name = name.replace(old, new)
+
     id_name = id_name.replace("ß", "ss")
     id_name = unicodedata.normalize('NFKD', id_name).encode("ascii", "ignore").decode("ascii")
 
     id_name = "".join(
-        c if c.isalnum() or c in " \t" else "-"
+        c if c.isalnum() or c in " \t\n" else "-"
         for c in id_name
     ).replace(" ", "-")
 
@@ -86,3 +127,18 @@ def float_or_none(x) -> Optional[float]:
         return float(str(x))
     except (ValueError, TypeError):
         return None
+
+
+def parse_geojson(text: str) -> dict:
+    """
+    Simply json parsing but allowing for '#' commands
+    :param text: str
+    :return: dict
+    """
+    lines = [
+        line
+        for line in text.splitlines()
+        if not line.lstrip().startswith("#")
+    ]
+
+    return json.loads("\n".join(lines))

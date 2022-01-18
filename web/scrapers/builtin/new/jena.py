@@ -26,7 +26,7 @@ class Jena(ScraperBase):
             if row and row[3] != "nie":
                 lots.append(
                     LotData(
-                        id=f"jena-{row[0]}",
+                        id=name_to_id("jena", row[0]),
                         timestamp=now,
                         status=LotData.Status.open,
                         num_free=int_or_none(row[1]),
@@ -53,7 +53,7 @@ class Jena(ScraperBase):
 
             lots.append(
                 LotInfo(
-                    id=f"jena-{name}",
+                    id=name_to_id("jena", name),
                     name=name,
                     type=LotInfo.Types.unknown,
                     public_url=urllib.parse.urljoin(self.POOL.public_url, content_rows[0][1].find("a")["href"]),

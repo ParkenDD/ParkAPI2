@@ -4,7 +4,7 @@
     {
       "type": "Feature",
       "properties": {
-        "id": "aachen-parkhaus-adalbertsteinweg",
+        "id": "aachenparkhausadalbertsteinweg",
         "name": "Adalbertsteinweg",
         "type": "garage",
         "public_url": "https://www.apag.de/parkobjekte/parkhaus-adalbertsteinweg",
@@ -24,7 +24,7 @@
     {
       "type": "Feature",
       "properties": {
-        "id": "aachen-parkhaus-adalbertstrasse",
+        "id": "aachenparkhausadalbertstrasse",
         "name": "Adalbertstraße",
         "type": "garage",
         "public_url": "https://www.apag.de/parkobjekte/parkhaus-adalbertstra%C3%9Fe",
@@ -44,13 +44,13 @@
     {
       "type": "Feature",
       "properties": {
-        "id": "aachen-parkhaus-couvenstrasse",
+        "id": "aachenparkhauscouvenstrasse",
         "name": "Couvenstraße",
         "type": "garage",
         "public_url": "https://www.apag.de/parkobjekte/parkhaus-couvenstra%C3%9Fe",
         "source_url": "https://www.apag.de/parken-in-aachen",
         "address": "Parkhaus Couvenstraße\nCouvenstraße 4\n52062\nAachen",
-        "capacity": 525,
+        "capacity": 505,
         "has_live_capacity": false
       },
       "geometry": {
@@ -64,7 +64,7 @@
     {
       "type": "Feature",
       "properties": {
-        "id": "aachen-parkhaus-eurogress",
+        "id": "aachenparkhauseurogress",
         "name": "Eurogress",
         "type": "garage",
         "public_url": "https://www.apag.de/parkobjekte/parkhaus-eurogress",
@@ -84,7 +84,7 @@
     {
       "type": "Feature",
       "properties": {
-        "id": "aachen-parkhaus-galeria-kaufhof-city",
+        "id": "aachenparkhausgaleriakaufhofcity",
         "name": "Galeria Kaufhof/City",
         "type": "garage",
         "public_url": "https://www.apag.de/parkobjekte/parkhaus-galeria-kaufhofcity",
@@ -104,7 +104,7 @@
     {
       "type": "Feature",
       "properties": {
-        "id": "aachen-parkhaus-hauptbahnhof",
+        "id": "aachenparkhaushauptbahnhof",
         "name": "Hauptbahnhof",
         "type": "garage",
         "public_url": "https://www.apag.de/parkobjekte/parkhaus-hauptbahnhof",
@@ -124,7 +124,7 @@
     {
       "type": "Feature",
       "properties": {
-        "id": "aachen-parkhaus-luisenhospital",
+        "id": "aachenparkhausluisenhospital",
         "name": "Luisenhospital",
         "type": "garage",
         "public_url": "https://www.apag.de/parkobjekte/parkhaus-luisenhospital",
@@ -144,7 +144,7 @@
     {
       "type": "Feature",
       "properties": {
-        "id": "aachen-parkhaus-rathaus",
+        "id": "aachenparkhausrathaus",
         "name": "Rathaus",
         "type": "garage",
         "public_url": "https://www.apag.de/parkobjekte/parkhaus-rathaus",
@@ -164,7 +164,7 @@
     {
       "type": "Feature",
       "properties": {
-        "id": "aachen-parkhaus-tivoli",
+        "id": "aachenparkhaustivoli",
         "name": "Tivoli",
         "type": "garage",
         "public_url": "https://www.apag.de/parkobjekte/parkhaus-tivoli",
@@ -184,7 +184,7 @@
     {
       "type": "Feature",
       "properties": {
-        "id": "aachen-parkplatz-ludwig-forum",
+        "id": "aachenparkplatzludwigforum",
         "name": "Ludwig Forum",
         "type": "lot",
         "public_url": "https://www.apag.de/parkobjekte/parkplatz-ludwig-forum",
@@ -204,7 +204,7 @@
     {
       "type": "Feature",
       "properties": {
-        "id": "aachen-parkplatz-luisenhospital",
+        "id": "aachenparkplatzluisenhospital",
         "name": "Luisenhospital",
         "type": "lot",
         "public_url": "https://www.apag.de/parkobjekte/parkplatz-luisenhospital",
@@ -224,7 +224,7 @@
     {
       "type": "Feature",
       "properties": {
-        "id": "aachen-parkplatz-pontstrasse",
+        "id": "aachenparkplatzpontstrasse",
         "name": "Pontstraße",
         "type": "lot",
         "public_url": "https://www.apag.de/parkobjekte/parkplatz-pontstra%C3%9Fe",
@@ -244,7 +244,7 @@
     {
       "type": "Feature",
       "properties": {
-        "id": "aachen-parkplatz-uniklinik",
+        "id": "aachenparkplatzuniklinik",
         "name": "Uniklinik",
         "type": "lot",
         "public_url": "https://www.apag.de/parkobjekte/parkplatz-uniklinik",
@@ -264,7 +264,7 @@
     {
       "type": "Feature",
       "properties": {
-        "id": "datteln-parkdeck-stadtgalerie",
+        "id": "dattelnparkdeckstadtgalerie",
         "name": "StadtGalerie",
         "type": "level",
         "public_url": "https://www.apag.de/parkobjekte/parkdeck-stadtgalerie",
@@ -284,7 +284,7 @@
     {
       "type": "Feature",
       "properties": {
-        "id": "datteln-parkhaus-stadtgalerie",
+        "id": "dattelnparkhausstadtgalerie",
         "name": "StadtGalerie",
         "type": "garage",
         "public_url": "https://www.apag.de/parkobjekte/parkhaus-stadtgalerie",

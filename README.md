@@ -118,6 +118,8 @@ pip install -r web/scrapers/builtin/requirements.txt
 Please follow the instructions in the 
 [postgis requirements](https://postgis.net/docs/postgis_installation.html#install_requirements)
 to install all necessary packages. 
+The [GeoDjango installation docs](https://docs.djangoproject.com/en/3.2/ref/contrib/gis/install/) 
+are also helpful.
 
 On debian, setup looks like:
 ```sh
@@ -139,7 +141,7 @@ docker run --name some-postgis -e POSTGRES_PASSWORD=<the password> -d postgis/po
 First copy the [web/.env.example](web/.env.example) file to `web/.env` and edit.
 Specifically `POSTGRES_USER` and `POSTGRES_PASSWORD` must be defined.
 
-The create the database execute these commands and replace `<user>` and `<password>`
+To create the database execute these commands and replace `<user>` and `<password>`
 with your values: 
  
 ```sh
@@ -171,7 +173,8 @@ PA_TEST_EXTERNAL_API=1 ./manage.py test --keepdb
 
 # init the main database
 ./manage.py migrate
-./manage.py createsuperuser
+# can skip this if no admin interface is used
+./manage.py createsuperuser  
 
 # start the server in debug mode
 DJANGO_DEBUG=True ./manage.py runserver
@@ -188,6 +191,11 @@ To get data into the database call:
 
 ```shell script
 ./manage.py pa_scrape scrape
+
+# or scrape with X parallel processes to
+#   make all snapshots at the same time  
+./manage.py pa_scrape scrape -j 100
+
 
 # attach city names to new lots
 ./manage.py pa_find_locations

@@ -42,7 +42,7 @@ class Frankfurt(ScraperBase):
 
             lots.append(
                 LotData(
-                    id=f"fam-{lot_id}",
+                    id=name_to_legacy_id("frankfurt", lot_id),
                     timestamp=now,
                     lot_timestamp=last_updated,
                     status=state,
@@ -61,7 +61,7 @@ class Frankfurt(ScraperBase):
         for facility in soup.find_all("parkingfacility"):
             lots.append(
                 LotInfo(
-                    id=f"fam-{facility['id']}",
+                    id=name_to_legacy_id("frankfurt", facility["id"]),
                     name=facility.find("parkingfacilitydescription").text,
                     type=LotInfo.Types.unknown,  # there's no data
                     source_url=self.POOL.source_url,

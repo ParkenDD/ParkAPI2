@@ -4,7 +4,7 @@
     {
       "type": "Feature",
       "properties": {
-        "id": "aarhus-bruuns-galleri",
+        "id": "aarhusbruunsgalleri",
         "name": "Bruuns Galleri",
         "type": "lot",
         "public_url": null,
@@ -24,7 +24,7 @@
     {
       "type": "Feature",
       "properties": {
-        "id": "aarhus-busgadehuset",
+        "id": "aarhusbusgadehuset",
         "name": "Busgadehuset",
         "type": "underground",
         "public_url": null,
@@ -44,7 +44,7 @@
     {
       "type": "Feature",
       "properties": {
-        "id": "aarhus-dokk1",
+        "id": "aarhusdokk1",
         "name": "Dokk1",
         "type": "underground",
         "public_url": null,
@@ -64,7 +64,7 @@
     {
       "type": "Feature",
       "properties": {
-        "id": "aarhus-kalkvrksvej",
+        "id": "aarhuskalkværksvej",
         "name": "Kalkværksvej",
         "type": "lot",
         "public_url": null,
@@ -84,7 +84,7 @@
     {
       "type": "Feature",
       "properties": {
-        "id": "aarhus-magasin",
+        "id": "aarhusmagasin",
         "name": "Magasin",
         "type": "lot",
         "public_url": null,
@@ -104,7 +104,7 @@
     {
       "type": "Feature",
       "properties": {
-        "id": "aarhus-navitas",
+        "id": "aarhusnavitas",
         "name": "Navitas",
         "type": "underground",
         "public_url": null,
@@ -124,7 +124,7 @@
     {
       "type": "Feature",
       "properties": {
-        "id": "aarhus-nrreport",
+        "id": "aarhusnørreport",
         "name": "Nørreport",
         "type": "lot",
         "public_url": null,
@@ -144,7 +144,7 @@
     {
       "type": "Feature",
       "properties": {
-        "id": "aarhus-salling",
+        "id": "aarhussalling",
         "name": "Salling",
         "type": "lot",
         "public_url": null,
@@ -164,7 +164,7 @@
     {
       "type": "Feature",
       "properties": {
-        "id": "aarhus-scandinavian-center",
+        "id": "aarhusscandinaviancenter",
         "name": "Scandinavian Center",
         "type": "garage",
         "public_url": null,

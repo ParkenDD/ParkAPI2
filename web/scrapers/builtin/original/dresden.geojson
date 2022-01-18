@@ -4,7 +4,7 @@
     {
       "type": "Feature",
       "properties": {
-        "id": "dresden-altmarkt",
+        "id": "dresdenaltmarkt",
         "name": "Altmarkt",
         "type": "underground",
         "public_url": "https://www.dresden.de/apps_ext/ParkplatzApp/detail?id=431",
@@ -24,7 +24,7 @@
     {
       "type": "Feature",
       "properties": {
-        "id": "dresden-altmarkt-galerie",
+        "id": "dresdenaltmarktgalerie",
         "name": "Altmarkt - Galerie",
         "type": "underground",
         "public_url": "https://www.dresden.de/apps_ext/ParkplatzApp/detail?id=409",
@@ -44,7 +44,7 @@
     {
       "type": "Feature",
       "properties": {
-        "id": "dresden-ammonstrasse-bus",
+        "id": "dresdenammonstrassebus",
         "name": "Ammonstraße Bus",
         "type": "bus",
         "public_url": "https://www.dresden.de/apps_ext/ParkplatzApp/detail?id=450",
@@ -57,7 +57,7 @@
     {
       "type": "Feature",
       "properties": {
-        "id": "dresden-an-der-frauenkirche",
+        "id": "dresdenanderfrauenkirche",
         "name": "An der Frauenkirche",
         "type": "underground",
         "public_url": "https://www.dresden.de/apps_ext/ParkplatzApp/detail?id=403",
@@ -77,7 +77,7 @@
     {
       "type": "Feature",
       "properties": {
-        "id": "dresden-bahnhof-neustadt",
+        "id": "dresdenbahnhofneustadt",
         "name": "Bahnhof Neustadt",
         "type": "lot",
         "public_url": "https://www.dresden.de/apps_ext/ParkplatzApp/detail?id=447",
@@ -97,7 +97,7 @@
     {
       "type": "Feature",
       "properties": {
-        "id": "dresden-bluherstrasse",
+        "id": "dresdenblueherstrasse",
         "name": "Blüherstraße",
         "type": "lot",
         "public_url": "https://www.dresden.de/apps_ext/ParkplatzApp/detail?id=443",
@@ -117,7 +117,7 @@
     {
       "type": "Feature",
       "properties": {
-        "id": "dresden-budapester-strasse",
+        "id": "dresdenbudapesterstrasse",
         "name": "Budapester Straße",
         "type": "lot",
         "public_url": "https://www.dresden.de/apps_ext/ParkplatzApp/detail?id=461",
@@ -137,7 +137,7 @@
     {
       "type": "Feature",
       "properties": {
-        "id": "dresden-buhlau",
+        "id": "dresdenbuehlau",
         "name": "Bühlau",
         "type": "lot",
         "public_url": "https://www.dresden.de/apps_ext/ParkplatzApp/detail?id=462",
@@ -157,7 +157,7 @@
     {
       "type": "Feature",
       "properties": {
-        "id": "dresden-centrum-galerie",
+        "id": "dresdencentrumgalerie",
         "name": "Centrum - Galerie",
         "type": "garage",
         "public_url": "https://www.dresden.de/apps_ext/ParkplatzApp/detail?id=438",
@@ -177,7 +177,7 @@
     {
       "type": "Feature",
       "properties": {
-        "id": "dresden-city-center",
+        "id": "dresdencitycenter",
         "name": "City Center",
         "type": "underground",
         "public_url": "https://www.dresden.de/apps_ext/ParkplatzApp/detail?id=406",
@@ -197,7 +197,7 @@
     {
       "type": "Feature",
       "properties": {
-        "id": "dresden-cossebaude",
+        "id": "dresdencossebaude",
         "name": "Cossebaude",
         "type": "lot",
         "public_url": "https://www.dresden.de/apps_ext/ParkplatzApp/detail?id=437",
@@ -217,7 +217,7 @@
     {
       "type": "Feature",
       "properties": {
-        "id": "dresden-ferdinandplatz",
+        "id": "dresdenferdinandplatz",
         "name": "Ferdinandplatz",
         "type": "lot",
         "public_url": "https://www.dresden.de/apps_ext/ParkplatzApp/detail?id=419",
@@ -237,7 +237,7 @@
     {
       "type": "Feature",
       "properties": {
-        "id": "dresden-fidelio-f-finke-strasse",
+        "id": "dresdenfidelioffinkestrasse",
         "name": "Fidelio-F.-Finke-Straße",
         "type": "lot",
         "public_url": "https://www.dresden.de/apps_ext/ParkplatzApp/detail?id=465",
@@ -257,7 +257,7 @@
     {
       "type": "Feature",
       "properties": {
-        "id": "dresden-flutrinne",
+        "id": "dresdenflutrinne",
         "name": "Flutrinne",
         "type": "lot",
         "public_url": "https://www.dresden.de/apps_ext/ParkplatzApp/detail?id=424",
@@ -277,7 +277,7 @@
     {
       "type": "Feature",
       "properties": {
-        "id": "dresden-frauenkirche-neumarkt",
+        "id": "dresdenfrauenkircheneumarkt",
         "name": "Frauenkirche / Neumarkt",
         "type": "underground",
         "public_url": "https://www.dresden.de/apps_ext/ParkplatzApp/detail?id=422",
@@ -297,7 +297,7 @@
     {
       "type": "Feature",
       "properties": {
-        "id": "dresden-freiberger-platz",
+        "id": "dresdenfreibergerplatz",
         "name": "Freiberger Platz",
         "type": "lot",
         "public_url": "https://www.dresden.de/apps_ext/ParkplatzApp/detail?id=455",
@@ -317,7 +317,7 @@
     {
       "type": "Feature",
       "properties": {
-        "id": "dresden-galeria-karstadt-kaufhof",
+        "id": "dresdengaleriakarstadtkaufhof",
         "name": "GALERIA Karstadt Kaufhof",
         "type": "underground",
         "public_url": "https://www.dresden.de/apps_ext/ParkplatzApp/detail?id=404",
@@ -337,7 +337,7 @@
     {
       "type": "Feature",
       "properties": {
-        "id": "dresden-gompitz",
+        "id": "dresdengompitz",
         "name": "Gompitz",
         "type": "lot",
         "public_url": "https://www.dresden.de/apps_ext/ParkplatzApp/detail?id=441",
@@ -357,7 +357,7 @@
     {
       "type": "Feature",
       "properties": {
-        "id": "dresden-grenzstrasse",
+        "id": "dresdengrenzstrasse",
         "name": "Grenzstraße",
         "type": "lot",
         "public_url": "https://www.dresden.de/apps_ext/ParkplatzApp/detail?id=466",
@@ -377,7 +377,7 @@
     {
       "type": "Feature",
       "properties": {
-        "id": "dresden-haus-am-zwinger",
+        "id": "dresdenhausamzwinger",
         "name": "Haus am Zwinger",
         "type": "underground",
         "public_url": "https://www.dresden.de/apps_ext/ParkplatzApp/detail?id=402",
@@ -397,7 +397,7 @@
     {
       "type": "Feature",
       "properties": {
-        "id": "dresden-kaditz",
+        "id": "dresdenkaditz",
         "name": "Kaditz",
         "type": "lot",
         "public_url": "https://www.dresden.de/apps_ext/ParkplatzApp/detail?id=427",
@@ -417,7 +417,7 @@
     {
       "type": "Feature",
       "properties": {
-        "id": "dresden-klotzsche",
+        "id": "dresdenklotzsche",
         "name": "Klotzsche",
         "type": "lot",
         "public_url": "https://www.dresden.de/apps_ext/ParkplatzApp/detail?id=433",
@@ -437,7 +437,7 @@
     {
       "type": "Feature",
       "properties": {
-        "id": "dresden-kongresszentrum",
+        "id": "dresdenkongresszentrum",
         "name": "Kongresszentrum",
         "type": "underground",
         "public_url": "https://www.dresden.de/apps_ext/ParkplatzApp/detail?id=421",
@@ -457,7 +457,7 @@
     {
       "type": "Feature",
       "properties": {
-        "id": "dresden-kraftwerk-mitte",
+        "id": "dresdenkraftwerkmitte",
         "name": "Kraftwerk Mitte",
         "type": "lot",
         "public_url": "https://www.dresden.de/apps_ext/ParkplatzApp/detail?id=456",
@@ -477,7 +477,7 @@
     {
       "type": "Feature",
       "properties": {
-        "id": "dresden-langebruck",
+        "id": "dresdenlangebrueck",
         "name": "Langebrück",
         "type": "lot",
         "public_url": "https://www.dresden.de/apps_ext/ParkplatzApp/detail?id=439",
@@ -497,7 +497,7 @@
     {
       "type": "Feature",
       "properties": {
-        "id": "dresden-lindengasse",
+        "id": "dresdenlindengasse",
         "name": "Lindengasse",
         "type": "lot",
         "public_url": "https://www.dresden.de/apps_ext/ParkplatzApp/detail?id=413",
@@ -517,7 +517,7 @@
     {
       "type": "Feature",
       "properties": {
-        "id": "dresden-lingnerallee",
+        "id": "dresdenlingnerallee",
         "name": "Lingnerallee",
         "type": "lot",
         "public_url": "https://www.dresden.de/apps_ext/ParkplatzApp/detail?id=444",
@@ -537,7 +537,7 @@
     {
       "type": "Feature",
       "properties": {
-        "id": "dresden-ostra-allee",
+        "id": "dresdenostraallee",
         "name": "Ostra-Allee",
         "type": "lot",
         "public_url": "https://www.dresden.de/apps_ext/ParkplatzApp/detail?id=442",
@@ -557,7 +557,7 @@
     {
       "type": "Feature",
       "properties": {
-        "id": "dresden-ostra-ufer",
+        "id": "dresdenostraufer",
         "name": "Ostra-Ufer",
         "type": "lot",
         "public_url": "https://www.dresden.de/apps_ext/ParkplatzApp/detail?id=464",
@@ -577,7 +577,7 @@
     {
       "type": "Feature",
       "properties": {
-        "id": "dresden-palaisplatz",
+        "id": "dresdenpalaisplatz",
         "name": "Palaisplatz",
         "type": "lot",
         "public_url": "https://www.dresden.de/apps_ext/ParkplatzApp/detail?id=448",
@@ -597,7 +597,7 @@
     {
       "type": "Feature",
       "properties": {
-        "id": "dresden-parkhaus-mitte",
+        "id": "dresdenparkhausmitte",
         "name": "Parkhaus Mitte",
         "type": "garage",
         "public_url": "https://www.dresden.de/apps_ext/ParkplatzApp/detail?id=429",
@@ -617,7 +617,7 @@
     {
       "type": "Feature",
       "properties": {
-        "id": "dresden-pennrich",
+        "id": "dresdenpennrich",
         "name": "Pennrich",
         "type": "lot",
         "public_url": "https://www.dresden.de/apps_ext/ParkplatzApp/detail?id=436",
@@ -637,7 +637,7 @@
     {
       "type": "Feature",
       "properties": {
-        "id": "dresden-pieschener-allee-bus",
+        "id": "dresdenpiescheneralleebus",
         "name": "Pieschener Allee Bus",
         "type": "bus",
         "public_url": "https://www.dresden.de/apps_ext/ParkplatzApp/detail?id=454",
@@ -650,7 +650,7 @@
     {
       "type": "Feature",
       "properties": {
-        "id": "dresden-pirnaische-strasse",
+        "id": "dresdenpirnaischestrasse",
         "name": "Pirnaische Straße",
         "type": "lot",
         "public_url": "https://www.dresden.de/apps_ext/ParkplatzApp/detail?id=445",
@@ -670,7 +670,7 @@
     {
       "type": "Feature",
       "properties": {
-        "id": "dresden-pirnaischer-platz",
+        "id": "dresdenpirnaischerplatz",
         "name": "Pirnaischer Platz",
         "type": "lot",
         "public_url": "https://www.dresden.de/apps_ext/ParkplatzApp/detail?id=412",
@@ -690,7 +690,7 @@
     {
       "type": "Feature",
       "properties": {
-        "id": "dresden-prohlis",
+        "id": "dresdenprohlis",
         "name": "Prohlis",
         "type": "lot",
         "public_url": "https://www.dresden.de/apps_ext/ParkplatzApp/detail?id=426",
@@ -710,7 +710,7 @@
     {
       "type": "Feature",
       "properties": {
-        "id": "dresden-reick",
+        "id": "dresdenreick",
         "name": "Reick",
         "type": "lot",
         "public_url": "https://www.dresden.de/apps_ext/ParkplatzApp/detail?id=434",
@@ -730,7 +730,7 @@
     {
       "type": "Feature",
       "properties": {
-        "id": "dresden-reitbahnstrasse",
+        "id": "dresdenreitbahnstrasse",
         "name": "Reitbahnstraße",
         "type": "lot",
         "public_url": "https://www.dresden.de/apps_ext/ParkplatzApp/detail?id=415",
@@ -750,7 +750,7 @@
     {
       "type": "Feature",
       "properties": {
-        "id": "dresden-sarrasanistrasse",
+        "id": "dresdensarrasanistrasse",
         "name": "Sarrasanistraße",
         "type": "lot",
         "public_url": "https://www.dresden.de/apps_ext/ParkplatzApp/detail?id=420",
@@ -770,7 +770,7 @@
     {
       "type": "Feature",
       "properties": {
-        "id": "dresden-schiessgasse",
+        "id": "dresdenschiessgasse",
         "name": "Schießgasse",
         "type": "lot",
         "public_url": "https://www.dresden.de/apps_ext/ParkplatzApp/detail?id=411",
@@ -790,7 +790,7 @@
     {
       "type": "Feature",
       "properties": {
-        "id": "dresden-semperoper",
+        "id": "dresdensemperoper",
         "name": "Semperoper",
         "type": "underground",
         "public_url": "https://www.dresden.de/apps_ext/ParkplatzApp/detail?id=408",
@@ -810,7 +810,7 @@
     {
       "type": "Feature",
       "properties": {
-        "id": "dresden-sp1-strassburger-platz",
+        "id": "dresdensp1strassburgerplatz",
         "name": "SP1 Straßburger Platz",
         "type": "garage",
         "public_url": "https://www.dresden.de/apps_ext/ParkplatzApp/detail?id=452",
@@ -830,7 +830,7 @@
     {
       "type": "Feature",
       "properties": {
-        "id": "dresden-strehlener-strasse",
+        "id": "dresdenstrehlenerstrasse",
         "name": "Strehlener Straße",
         "type": "lot",
         "public_url": "https://www.dresden.de/apps_ext/ParkplatzApp/detail?id=453",
@@ -850,7 +850,7 @@
     {
       "type": "Feature",
       "properties": {
-        "id": "dresden-taschenbergpalais",
+        "id": "dresdentaschenbergpalais",
         "name": "Taschenbergpalais",
         "type": "underground",
         "public_url": "https://www.dresden.de/apps_ext/ParkplatzApp/detail?id=401",
@@ -870,7 +870,7 @@
     {
       "type": "Feature",
       "properties": {
-        "id": "dresden-terrassenufer",
+        "id": "dresdenterrassenufer",
         "name": "Terrassenufer",
         "type": "lot",
         "public_url": "https://www.dresden.de/apps_ext/ParkplatzApp/detail?id=416",
@@ -890,7 +890,7 @@
     {
       "type": "Feature",
       "properties": {
-        "id": "dresden-terrassenufer-bus",
+        "id": "dresdenterrassenuferbus",
         "name": "Terrassenufer Bus",
         "type": "bus",
         "public_url": "https://www.dresden.de/apps_ext/ParkplatzApp/detail?id=430",
@@ -910,7 +910,7 @@
     {
       "type": "Feature",
       "properties": {
-        "id": "dresden-theresienstrasse",
+        "id": "dresdentheresienstrasse",
         "name": "Theresienstraße",
         "type": "lot",
         "public_url": "https://www.dresden.de/apps_ext/ParkplatzApp/detail?id=418",
@@ -930,7 +930,7 @@
     {
       "type": "Feature",
       "properties": {
-        "id": "dresden-weissig",
+        "id": "dresdenweissig",
         "name": "Weißig",
         "type": "lot",
         "public_url": "https://www.dresden.de/apps_ext/ParkplatzApp/detail?id=460",
@@ -950,7 +950,7 @@
     {
       "type": "Feature",
       "properties": {
-        "id": "dresden-weixdorf-bad",
+        "id": "dresdenweixdorfbad",
         "name": "Weixdorf Bad",
         "type": "lot",
         "public_url": "https://www.dresden.de/apps_ext/ParkplatzApp/detail?id=459",
@@ -970,7 +970,7 @@
     {
       "type": "Feature",
       "properties": {
-        "id": "dresden-wiener-platz-hauptbahnhof",
+        "id": "dresdenwienerplatzhauptbahnhof",
         "name": "Wiener Platz / Hauptbahnhof",
         "type": "underground",
         "public_url": "https://www.dresden.de/apps_ext/ParkplatzApp/detail?id=410",
@@ -990,7 +990,7 @@
     {
       "type": "Feature",
       "properties": {
-        "id": "dresden-wiesentorstrasse",
+        "id": "dresdenwiesentorstrasse",
         "name": "Wiesentorstraße",
         "type": "lot",
         "public_url": "https://www.dresden.de/apps_ext/ParkplatzApp/detail?id=417",
@@ -1010,7 +1010,7 @@
     {
       "type": "Feature",
       "properties": {
-        "id": "dresden-wigardstrasse",
+        "id": "dresdenwigardstrasse",
         "name": "Wigardstraße",
         "type": "lot",
         "public_url": "https://www.dresden.de/apps_ext/ParkplatzApp/detail?id=449",
@@ -1030,7 +1030,7 @@
     {
       "type": "Feature",
       "properties": {
-        "id": "dresden-wohrl-florentinum",
+        "id": "dresdenwoehrlflorentinum",
         "name": "Wöhrl / Florentinum",
         "type": "underground",
         "public_url": "https://www.dresden.de/apps_ext/ParkplatzApp/detail?id=405",
@@ -1050,7 +1050,7 @@
     {
       "type": "Feature",
       "properties": {
-        "id": "dresden-world-trade-center",
+        "id": "dresdenworldtradecenter",
         "name": "World Trade Center",
         "type": "underground",
         "public_url": "https://www.dresden.de/apps_ext/ParkplatzApp/detail?id=407",
@@ -1070,7 +1070,7 @@
     {
       "type": "Feature",
       "properties": {
-        "id": "dresden-zinzendorfstrasse",
+        "id": "dresdenzinzendorfstrasse",
         "name": "Zinzendorfstraße",
         "type": "lot",
         "public_url": "https://www.dresden.de/apps_ext/ParkplatzApp/detail?id=446",

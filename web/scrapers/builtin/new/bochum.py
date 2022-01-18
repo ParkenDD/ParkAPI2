@@ -19,7 +19,7 @@ class Bochum(ScraperBase):
 
         lots = []
         for lot_elem in soup.find_all("article", class_="lot"):
-            lot_id = "bochum-" + lot_elem["data-uid"]
+            lot_id = name_to_id("bochum", lot_elem["data-uid"])
 
             num_free = None
             status = LotData.Status.unknown
@@ -58,7 +58,7 @@ class Bochum(ScraperBase):
 
         lots = []
         for lot_elem in soup.find_all("article", class_="lot"):
-            lot_id = "bochum-" + lot_elem["data-uid"]
+            lot_id = name_to_id("bochum", lot_elem["data-uid"])
 
             lot_name = lot_elem.find("h3").text.strip()
             lat, lng = lot_elem["data-lat"], lot_elem["data-lng"]

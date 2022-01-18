@@ -2,3 +2,12 @@ beautifulsoup4==4.10.0
 jsonschema==4.3.2
 python-dateutil==2.8.2
 requests==2.26.0
+
+# for original/
+
+feedparser==6.0.8
+utm==0.7.0
+
+# for new/
+
+python-decouple==3.5

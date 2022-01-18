@@ -50,7 +50,7 @@ class Aarhus(ScraperBase):
                 continue
 
             lot_name = map_json_names[lot_code]
-            lot_id = name_to_id(f"aarhus-{lot_name}")
+            lot_id = name_to_legacy_id("aarhus", lot_name)
 
             existing_lot = None
             for lot in lots:
@@ -73,42 +73,5 @@ class Aarhus(ScraperBase):
                         capacity=capacity,
                     )
                 )
-
-        return lots
-
-    def XX_get_lot_infos(self) -> List[LotInfo]:
-        spaces = []
-
-        offset = 0
-        while True:
-            data = self.request_json(
-                self.POOL.source_url,
-                params={"offset": offset, "limit": 100}
-            )
-            spaces += data["items"]
-            if len(spaces) >= data["totalCount"]:
-                break
-            offset += len(data["items"])
-
-        lots = []
-        for space in spaces:
-            # import json
-            # print(json.dumps(space, indent=2)); exit()
-
-            lots.append(
-                LotInfo(
-                    id="db-%s" % space["id"],
-                    name=space["name"],
-                    # either street or auto-mapping
-                    type=LotInfo.Types.street if space["spaceType"] == "Straße" else space["spaceType"],
-                    public_url=space["url"],
-                    source_url=self.POOL.source_url + "/occupancies",
-                    address="\n".join(space["address"].values()),
-                    capacity=int(space["numberParkingPlaces"]),
-                    has_live_capacity=True,
-                    latitude=space["geoLocation"]["latitude"],
-                    longitude=space["geoLocation"]["longitude"],
-                )
-            )
 
         return lots

@@ -1,0 +1,425 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "karlsruheakademiestrasse",
+        "name": "Akademiestraße",
+        "type": "garage",
+        "public_url": "https://web1.karlsruhe.de/service/Parken/detail.php?id=W02",
+        "source_url": null,
+        "address": "Akademiestraße 51-55\n76133 Karlsruhe\nTelefon: 0721 9204273",
+        "capacity": 110,
+        "has_live_capacity": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.394768,
+          49.010753
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "karlsruheamstaatstheater",
+        "name": "Am Staatstheater",
+        "type": "garage",
+        "public_url": "https://web1.karlsruhe.de/service/Parken/detail.php?id=K04",
+        "source_url": null,
+        "address": "Baumeisterstraße 11\n76137 Karlsruhe",
+        "capacity": 300,
+        "has_live_capacity": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.405123,
+          49.004435
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "karlsruheettlingertor",
+        "name": "Ettlinger Tor",
+        "type": "garage",
+        "public_url": "https://web1.karlsruhe.de/service/Parken/detail.php?id=S07",
+        "source_url": null,
+        "address": "ECE Marketplaces GmbH & Co. KG\nEttlinger Tor Karlsruhe\nKarl-Friedrich-Straße 26\n76133 Karlsruhe\nTelefon: 0721 663679-0\nFax: 0721 663679-999\nE-Mail: info@ettlinger-tor.de",
+        "capacity": 839,
+        "has_live_capacity": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.401754,
+          49.005657
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "karlsruhefriedrichsplatz",
+        "name": "Friedrichsplatz",
+        "type": "garage",
+        "public_url": "https://web1.karlsruhe.de/service/Parken/detail.php?id=S02",
+        "source_url": null,
+        "address": "Friedrichsplatz 7 / Ritterstraße\n76133 Karlsruhe\nTelefon: 0721 920 4293",
+        "capacity": 250,
+        "has_live_capacity": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.400977,
+          49.008497
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "karlsruheherrenstrassezirkel",
+        "name": "Herrenstraße/Zirkel",
+        "type": "garage",
+        "public_url": "https://web1.karlsruhe.de/service/Parken/detail.php?id=N03",
+        "source_url": null,
+        "address": "Herrenstrasse 9\n76133 Karlsruhe",
+        "capacity": 339,
+        "has_live_capacity": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.400492,
+          49.010615
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "karlsruheindustrieundhandelskammer",
+        "name": "Industrie und Handelskammer",
+        "type": "underground",
+        "public_url": "https://web1.karlsruhe.de/service/Parken/detail.php?id=S04",
+        "source_url": null,
+        "address": "Erbprinzenstraße 4\n76133 Karlsruhe\nTelefon: 0175 4335401",
+        "capacity": 160,
+        "has_live_capacity": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.402927,
+          49.007147
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "karlsruhekarstadt",
+        "name": "Karstadt",
+        "type": "garage",
+        "public_url": "https://web1.karlsruhe.de/service/Parken/detail.php?id=S03",
+        "source_url": null,
+        "address": "Zähringerstr. 69\n76133 Karlsruhe\nTelefon: 0541 3312555",
+        "capacity": 260,
+        "has_live_capacity": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4019,
+          49.00903
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "karlsruhekongresszentrumph1",
+        "name": "Kongresszentrum PH1",
+        "type": "garage",
+        "public_url": "https://web1.karlsruhe.de/service/Parken/detail.php?id=K01",
+        "source_url": null,
+        "address": "Hermann-Billing-Straße 1\n76133 Karlsruhe",
+        "capacity": 495,
+        "has_live_capacity": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.400777,
+          49.003899
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "karlsruhekongresszentrumph2",
+        "name": "Kongresszentrum PH2",
+        "type": "underground",
+        "public_url": "https://web1.karlsruhe.de/service/Parken/detail.php?id=K02",
+        "source_url": null,
+        "address": "Beiertheimer Allee 9\n76133 Karlsruhe",
+        "capacity": 495,
+        "has_live_capacity": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.400994,
+          49.004216
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "karlsruhekreuzstrasseca",
+        "name": "Kreuzstraße (C&A)",
+        "type": "garage",
+        "public_url": "https://web1.karlsruhe.de/service/Parken/detail.php?id=N06",
+        "source_url": null,
+        "address": "Kreuzstraße 5\n76133 Karlsruhe\nTelefon: 0721 384 3824",
+        "capacity": 52,
+        "has_live_capacity": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.405249,
+          49.009938
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "karlsruhekronenplatz",
+        "name": "Kronenplatz",
+        "type": "garage",
+        "public_url": "https://web1.karlsruhe.de/service/Parken/detail.php?id=N07",
+        "source_url": null,
+        "address": "Fritz-Erler-Straße\n76133 Karlsruhe\nTelefon: 0721 374105",
+        "capacity": 452,
+        "has_live_capacity": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.410286,
+          49.007415
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "karlsruhelandesbibliothek",
+        "name": "Landesbibliothek",
+        "type": "garage",
+        "public_url": "https://web1.karlsruhe.de/service/Parken/detail.php?id=S01",
+        "source_url": null,
+        "address": "Ritterstr./ Ecke Blumenstr.\n76133 Karlsruhe",
+        "capacity": 86,
+        "has_live_capacity": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.399441,
+          49.007317
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "karlsruheludwigsplatz",
+        "name": "Ludwigsplatz",
+        "type": "garage",
+        "public_url": "https://web1.karlsruhe.de/service/Parken/detail.php?id=W04",
+        "source_url": null,
+        "address": "Amalienstraße 10\n76133 Karlsruhe\nTelefon: 0721 23280",
+        "capacity": 250,
+        "has_live_capacity": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.39582,
+          49.007526
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "karlsruheluisenstrasse",
+        "name": "Luisenstraße",
+        "type": "underground",
+        "public_url": "https://web1.karlsruhe.de/service/Parken/detail.php?id=K03",
+        "source_url": null,
+        "address": "Luisenstraße 2 f\n76137 Karlsruhe\nTelefon: 0721 937 6290",
+        "capacity": 210,
+        "has_live_capacity": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.40357,
+          49.000674
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "karlsruhemarktplatz",
+        "name": "Marktplatz",
+        "type": "garage",
+        "public_url": "https://web1.karlsruhe.de/service/Parken/detail.php?id=S05",
+        "source_url": null,
+        "address": "Kreuzstraße 13 a\n76133 Karlsruhe\nTelefon: 0721 937 6293",
+        "capacity": 230,
+        "has_live_capacity": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.405585,
+          49.008191
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "karlsruhemendelssohnplatzscheckin",
+        "name": "Mendelssohnplatz (Scheck-In)",
+        "type": "garage",
+        "public_url": "https://web1.karlsruhe.de/service/Parken/detail.php?id=S06",
+        "source_url": null,
+        "address": "Rüppurrerstr. 1\n76137 Karlsruhe\nTelefon: 0721 35258 - 10",
+        "capacity": 400,
+        "has_live_capacity": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.412368,
+          49.005801
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "karlsruhepassagehof",
+        "name": "Passagehof",
+        "type": "garage",
+        "public_url": "https://web1.karlsruhe.de/service/Parken/detail.php?id=N02",
+        "source_url": null,
+        "address": "Waldstraße 14 - 18\n76133 Karlsruhe\nTelefon: 921 2266\nHotline: 02234-690765\nE-Mail: service@parkhaus-passagehof.de",
+        "capacity": 258,
+        "has_live_capacity": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.397809,
+          49.011202
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "karlsruhepostgalerie",
+        "name": "Post Galerie",
+        "type": "garage",
+        "public_url": "https://web1.karlsruhe.de/service/Parken/detail.php?id=W03",
+        "source_url": null,
+        "address": "Kaiserstr. 217\n76133 Karlsruhe",
+        "capacity": 252,
+        "has_live_capacity": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.393615,
+          49.008325
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "karlsruheschlossplatz",
+        "name": "Schlossplatz",
+        "type": "underground",
+        "public_url": "https://web1.karlsruhe.de/service/Parken/detail.php?id=N05",
+        "source_url": null,
+        "address": "Am Schlossplatz\n76131 Karlsruhe",
+        "capacity": 766,
+        "has_live_capacity": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.404532,
+          49.01073
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "karlsruhestephanplatz",
+        "name": "Stephanplatz",
+        "type": "garage",
+        "public_url": "https://web1.karlsruhe.de/service/Parken/detail.php?id=W01",
+        "source_url": null,
+        "address": "Amalienstraße 33\n76133 Karlsruhe\nTelefon: 0721 920 - 4273",
+        "capacity": 370,
+        "has_live_capacity": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.39295,
+          49.008396
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "karlsruhezirkelpc",
+        "name": "Zirkel (P&C)",
+        "type": "garage",
+        "public_url": "https://web1.karlsruhe.de/service/Parken/detail.php?id=N04",
+        "source_url": null,
+        "address": "Im Zirkel 25\n76133 Karlsruhe",
+        "capacity": 105,
+        "has_live_capacity": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.402008,
+          49.010431
+        ]
+      }
+    }
+  ]
+}

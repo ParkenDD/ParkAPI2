@@ -21,6 +21,7 @@ from bs4 import BeautifulSoup
 from .structs import PoolInfo, LotInfo, LotData
 from .dt import to_utc_datetime
 from ._log import log
+from .strings import name_to_legacy_id, guess_lot_type, parse_geojson
 
 
 VERSION = (0, 0, 1)
@@ -30,18 +31,27 @@ MODULE_DIR: Path = Path(__file__).resolve().parent
 
 class ScraperBase:
 
+    # A PoolInfo object must be specified for each derived scraper
+    POOL: PoolInfo = None
+
+    # ---- general config ----
+
     # Directory where web requests are cached
     CACHE_DIR = Path(tempfile.gettempdir()) / "parkapi-scraper"
 
+    # ---- http request config ----
+
     # Maximum requests allowed per second
     REQUESTS_PER_SECOND: float = 2.
+    # Seconds before a web request is cancelled
+    REQUEST_TIMEOUT: int = 10
     # The user agent that is used in web requests
-    USER_AGENT = "github.com/defgsus/ParkAPI2"
+    USER_AGENT: str = "github.com/defgsus/ParkAPI2"
     # Extra headers that should be added to all requests
-    HEADERS = {}
-
-    # A PoolInfo object must be specified for each derived scraper
-    POOL: PoolInfo = None
+    HEADERS: Dict[str, str] = {}
+    # Set to True to allow any invalid certificate
+    # Set to "expired" to allow expired certificates
+    ALLOW_SSL_FAILURE: Union[bool, str] = False
 
     # ---- internals ----
 
@@ -84,7 +94,7 @@ class ScraperBase:
     def get_lot_infos_from_geojson(self) -> Optional[List[LotInfo]]:
         filename = Path(inspect.getfile(self.__class__)[:-3] + ".geojson")
         if filename.exists():
-            geojson = json.loads(filename.read_text())
+            geojson = parse_geojson(filename.read_text())
             infos = []
             for feature in geojson["features"]:
                 lot_info = feature["properties"].copy()
@@ -171,22 +181,27 @@ class ScraperBase:
                 log(f"loading cache {cache_name}")
                 return pickle.loads(cache_name.read_bytes())
 
-        # -- throttle requests --
+        # -- define timeout --
 
-        passed_time = time.time() - self.__last_request_time
-        if passed_time < 1. / self.REQUESTS_PER_SECOND:
-            time.sleep(1. / self.REQUESTS_PER_SECOND - passed_time)
-        self.__last_request_time = time.time()
+        kwargs.setdefault("timeout", self.REQUEST_TIMEOUT)
 
-        display_kwargs = kwargs.copy()
-        display_kwargs.pop("headers", None)
-        log(f"requesting {method} {url} {display_kwargs or ''}")
+        # -- do actual request --
 
-        response = self.session.request(
-            method=method,
-            url=url,
-            **kwargs,
-        )
+        if self.ALLOW_SSL_FAILURE is True:
+            kwargs["verify"] = False
+
+        try:
+            response = self._request(method, url, **kwargs)
+        except requests.exceptions.SSLError as e:
+            if not self.ALLOW_SSL_FAILURE:
+                raise
+            if self.ALLOW_SSL_FAILURE == "expired":
+                if "certificate has expired" not in str(e):
+                    raise
+
+            log(f"repeating request without certificate validation")
+            kwargs["verify"] = False
+            response = self._request(method, url, **kwargs)
 
         # -- validate status --
 
@@ -236,6 +251,7 @@ class ScraperBase:
             expected_status: Optional[int] = None,
             caching: Optional[Union[bool, str]] = None,
             parser: str = "html.parser",
+            encoding: Optional[str] = None,
             **kwargs,
     ) -> BeautifulSoup:
         response = self.request(
@@ -244,7 +260,35 @@ class ScraperBase:
             caching=caching,
             **kwargs,
         )
-        return BeautifulSoup(response.text, features=parser)
+        if encoding:
+            text = response.content.decode(encoding)
+        else:
+            text = response.text
+        return BeautifulSoup(text, features=parser)
+
+    def _request(self, method: str, url: str, **kwargs) -> requests.Response:
+
+        # -- throttle requests --
+
+        passed_time = time.time() - self.__last_request_time
+        if passed_time < 1. / self.REQUESTS_PER_SECOND:
+            time.sleep(1. / self.REQUESTS_PER_SECOND - passed_time)
+        self.__last_request_time = time.time()
+
+        # -- log request --
+
+        display_kwargs = kwargs.copy()
+        display_kwargs.pop("headers", None)
+        display_kwargs.pop("timeout", None)
+        log(f"requesting {method} {url} {display_kwargs or ''}")
+
+        # -- pass to requests lib --
+
+        return self.session.request(
+            method=method,
+            url=url,
+            **kwargs,
+        )
 
     @classmethod
     def now(cls) -> datetime.datetime:
@@ -281,3 +325,60 @@ class ScraperBase:
             date_format=date_format,
             timezone=cls.POOL.timezone if timezone is None else timezone,
         )
+
+    def get_v1_lot_infos_from_geojson(
+            self,
+            name: str,
+            defaults: Optional[dict] = None,
+            include_original: bool = False,
+    ) -> List[Union[LotInfo, Tuple[LotInfo, dict]]]:
+        """
+        Transitional helper to download and parse the original ParkAPI geojson file.
+
+        :param name: str, without extension, something like "Dresden"
+        :param defaults: dict, default values for each LotInfo
+        :param include_original: bool, If True that the list contains tuples
+            of LotInfo instances and the original data as dict
+        :return: list of LotInfo instances
+        """
+        url = f"https://github.com/offenesdresden/ParkAPI/raw/master/park_api/cities/{name}.geojson"
+        response = self.request(url)
+        assert \
+            response.status_code == 200, \
+            f"Did not find original geojson '{url}', status {response.status_code}"
+
+        data = response.json()
+        lots = []
+
+        for feature in data["features"]:
+            props = feature["properties"]
+            if props.get("type") == "city":
+                continue
+
+            lot_type = defaults.get("type") if defaults else None
+            if not lot_type and props.get("name"):
+                lot_type = guess_lot_type(props["name"])
+            if not lot_type and props.get("type"):
+                lot_type = guess_lot_type(props["type"])
+
+            coords = [None, None]
+            if feature.get("geometry") and feature["geometry"].get("coordinates"):
+                coords = feature["geometry"]["coordinates"]
+
+            kwargs = defaults.copy() if defaults else dict()
+            kwargs.update(dict(
+                id=name_to_legacy_id(self.POOL.id, props["name"]),
+                name=props["name"],
+                type=lot_type or LotInfo.Types.unknown,
+                capacity=props.get("total"),
+                longitude=coords[0],
+                latitude=coords[1],
+                address=props.get("address"),
+            ))
+
+            if include_original:
+                lots.append((LotInfo(**kwargs), feature))
+            else:
+                lots.append(LotInfo(**kwargs))
+
+        return lots

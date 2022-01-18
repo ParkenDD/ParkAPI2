@@ -1,0 +1,465 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "luebeckamburgtor",
+        "name": "Am Burgtor",
+        "type": "garage",
+        "public_url": "https://www.parken-luebeck.de/detail/ph-am-burgtor/",
+        "source_url": null,
+        "address": "Kanalstraße 1-5\n23552 Lübeck",
+        "capacity": 99,
+        "has_live_capacity": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.692226,
+          53.873013
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "luebeckamfischereihafen",
+        "name": "Am Fischereihafen",
+        "type": "lot",
+        "public_url": "https://www.parken-luebeck.de/detail/pp-am-fischereihafen/",
+        "source_url": null,
+        "address": "Travemünder Landstraße\n23570 Travemünde",
+        "capacity": 358,
+        "has_live_capacity": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.85754,
+          53.95668
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "luebeckamholstentor",
+        "name": "Am Holstentor",
+        "type": "garage",
+        "public_url": "https://www.parken-luebeck.de/detail/ph-am-holstentor/",
+        "source_url": null,
+        "address": "Possehlstraße 1\n23554 Lübeck",
+        "capacity": 380,
+        "has_live_capacity": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.678493,
+          53.864537
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "luebeckbackbord",
+        "name": "Backbord",
+        "type": "lot",
+        "public_url": "https://www.parken-luebeck.de/detail/pp-backbord/",
+        "source_url": null,
+        "address": "Backbord\n23570 Travemünde",
+        "capacity": 135,
+        "has_live_capacity": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.88059,
+          53.97022
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "luebeckcityparkhaushuexstrasse",
+        "name": "Cityparkhaus Hüxstraße",
+        "type": "garage",
+        "public_url": "https://www.parken-luebeck.de/detail/ph-huexstrasse/",
+        "source_url": null,
+        "address": "Hüxterdamm 1-3\n23552 Lübeck",
+        "capacity": 311,
+        "has_live_capacity": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.693786,
+          53.865226
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "luebeckfalkenstrasse",
+        "name": "Falkenstraße",
+        "type": "garage",
+        "public_url": "https://www.parken-luebeck.de/detail/ph-falkenstrasse/",
+        "source_url": null,
+        "address": "Falkenstraße 27\n23564 Lübeck",
+        "capacity": 130,
+        "has_live_capacity": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.698406,
+          53.870015
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "luebeckhaerdercenter",
+        "name": "Haerder-Center",
+        "type": "garage",
+        "public_url": "https://www.parken-luebeck.de/detail/ph-haerder-center/",
+        "source_url": null,
+        "address": "Sandstraße 1-5\n23552 Lübeck",
+        "capacity": 200,
+        "has_live_capacity": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.686425,
+          53.865515
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "luebeckhafenbahnhof",
+        "name": "Hafenbahnhof",
+        "type": "lot",
+        "public_url": "https://www.parken-luebeck.de/detail/pp-hafenbahnhof/",
+        "source_url": null,
+        "address": "Vogteistraße\n23570 Travemünde",
+        "capacity": 57,
+        "has_live_capacity": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.86364,
+          53.95836
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "luebeckkanalstrassep1",
+        "name": "Kanalstraße P1",
+        "type": "lot",
+        "public_url": "https://www.parken-luebeck.de/detail/pp-kanalstrasse-p1/",
+        "source_url": null,
+        "address": "Kanalstraße\n23552 Lübeck",
+        "capacity": 105,
+        "has_live_capacity": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.69512,
+          53.87115
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "luebeckkanalstrassep2",
+        "name": "Kanalstraße P2",
+        "type": "lot",
+        "public_url": "https://www.parken-luebeck.de/detail/pp-kanalstrasse-p2/",
+        "source_url": null,
+        "address": "Kanalstraße\n23552 Lübeck",
+        "capacity": 216,
+        "has_live_capacity": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.69599,
+          53.86942
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "luebeckkanalstrassep3",
+        "name": "Kanalstraße P3",
+        "type": "lot",
+        "public_url": "https://www.parken-luebeck.de/detail/pp-kanalstrasse-p3/",
+        "source_url": null,
+        "address": "Kanalstraße\n23552 Lübeck",
+        "capacity": 160,
+        "has_live_capacity": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.69602,
+          53.86797
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "luebeckkanalstrassep4",
+        "name": "Kanalstraße P4",
+        "type": "lot",
+        "public_url": "https://www.parken-luebeck.de/detail/pp-kanalstrasse-p4/",
+        "source_url": null,
+        "address": "Kanalstraße\n23552 Lübeck",
+        "capacity": 145,
+        "has_live_capacity": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.69551,
+          53.86671
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "luebeckkanalstrassep5",
+        "name": "Kanalstraße P5",
+        "type": "lot",
+        "public_url": "https://www.parken-luebeck.de/detail/pp-kanalstrasse-p5/",
+        "source_url": null,
+        "address": "Kanalstraße\n23560 Lübeck",
+        "capacity": 45,
+        "has_live_capacity": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.694976,
+          53.866092
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "luebeckkowitzberg",
+        "name": "Kowitzberg",
+        "type": "lot",
+        "public_url": "https://www.parken-luebeck.de/detail/pp-kowitzberg/",
+        "source_url": null,
+        "address": "Kowitzberg\n23570 Travemünde",
+        "capacity": 450,
+        "has_live_capacity": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.877606,
+          53.975465
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "luebecklastadiep3",
+        "name": "Lastadie P3",
+        "type": "lot",
+        "public_url": "https://www.parken-luebeck.de/detail/pp-lastadie-p3/",
+        "source_url": null,
+        "address": "Willy-Brandt-Allee\n23554 Lübeck",
+        "capacity": 33,
+        "has_live_capacity": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.68102,
+          53.87229
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "luebecklastadiep5",
+        "name": "Lastadie P5",
+        "type": "lot",
+        "public_url": "https://www.parken-luebeck.de/detail/pp-lastadie-p5/",
+        "source_url": null,
+        "address": "Willy-Brandt-Allee\n23554 Lübeck",
+        "capacity": 254,
+        "has_live_capacity": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.67872,
+          53.87153
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "luebeckleuchtenfeld",
+        "name": "Leuchtenfeld",
+        "type": "lot",
+        "public_url": "https://www.parken-luebeck.de/detail/pp-leuchtenfeld/",
+        "source_url": null,
+        "address": "Trelleborgallee\n23570 Travemünde",
+        "capacity": 528,
+        "has_live_capacity": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.87782,
+          53.96081
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "luebecklindenarcaden",
+        "name": "Linden Arcaden",
+        "type": "garage",
+        "public_url": "https://www.parken-luebeck.de/detail/ph-linden-arcaden/",
+        "source_url": null,
+        "address": "Konrad-Adenauer-Straße 2\n23558 Lübeck",
+        "capacity": 400,
+        "has_live_capacity": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.672845,
+          53.867085
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "luebeckmitte",
+        "name": "Mitte",
+        "type": "garage",
+        "public_url": "https://www.parken-luebeck.de/detail/ph-mitte/",
+        "source_url": null,
+        "address": "Marlesgrube 18-30\n23552 Lübeck",
+        "capacity": 410,
+        "has_live_capacity": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.683367,
+          53.865411
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "luebeckmuk",
+        "name": "MuK",
+        "type": "lot",
+        "public_url": "https://www.parken-luebeck.de/detail/pp-muk/",
+        "source_url": null,
+        "address": "Willy-Brandt-Alle (Nähe 10)\n23554 Lübeck",
+        "capacity": 330,
+        "has_live_capacity": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.677,
+          53.86958
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "luebeckpferdemarkt",
+        "name": "Pferdemarkt",
+        "type": "garage",
+        "public_url": "https://www.parken-luebeck.de/detail/ph-pferdemarkt/",
+        "source_url": null,
+        "address": "Pferdemarkt 6-8\n23552 Lübeck",
+        "capacity": 48,
+        "has_live_capacity": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.684817,
+          53.863888
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "luebeckradissonblu",
+        "name": "Radisson Blu",
+        "type": "lot",
+        "public_url": "https://www.parken-luebeck.de/detail/pp-radisson-blue/",
+        "source_url": null,
+        "address": "Willy-Brandt-Alle (Nähe 8)\n23554 Lübeck",
+        "capacity": 57,
+        "has_live_capacity": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.67781,
+          53.86804
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "luebeckstmarien",
+        "name": "St. Marien",
+        "type": "garage",
+        "public_url": "https://www.parken-luebeck.de/detail/ph-st-marien/",
+        "source_url": null,
+        "address": "Fünfhausen 3-5\n23552 Lübeck",
+        "capacity": 420,
+        "has_live_capacity": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.686069,
+          53.868977
+        ]
+      }
+    }
+  ]
+}

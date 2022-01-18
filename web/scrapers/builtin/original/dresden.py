@@ -64,7 +64,7 @@ class Dresden(ScraperBase):
                     LotData(
                         timestamp=now,
                         lot_timestamp=last_updated,
-                        id=f"dresden-{name}",
+                        id=name_to_legacy_id("dresden", name),
                         status=state,
                         num_free=free,
                         capacity=total,
@@ -124,7 +124,7 @@ class Dresden(ScraperBase):
         short_name = " ".join(name.split()[1:])
 
         return LotInfo(
-            id=f"dresden-{short_name}",
+            id=name_to_legacy_id("dresden", short_name),
             name=short_name,
             type=type,
             capacity=capacity,

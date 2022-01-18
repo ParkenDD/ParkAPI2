@@ -1,0 +1,165 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "limburgaltstadt",
+        "name": "Altstadt",
+        "type": "underground",
+        "public_url": null,
+        "source_url": null,
+        "address": "Sackgasse 11",
+        "capacity": 0,
+        "has_live_capacity": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.063018,
+          50.388892
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "limburgbahnhof",
+        "name": "Bahnhof",
+        "type": "garage",
+        "public_url": null,
+        "source_url": null,
+        "address": "Graupfortstraße 7",
+        "capacity": 0,
+        "has_live_capacity": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.0641,
+          50.385133
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "limburgcity",
+        "name": "City",
+        "type": "garage",
+        "public_url": null,
+        "source_url": null,
+        "address": "Frankfurter Straße 12",
+        "capacity": 0,
+        "has_live_capacity": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.066296,
+          50.386418
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "limburgkarstadt",
+        "name": "Karstadt",
+        "type": "garage",
+        "public_url": null,
+        "source_url": null,
+        "address": "Werner-Senger-Straße 15",
+        "capacity": 0,
+        "has_live_capacity": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.060811,
+          50.38682
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "limburgphmitte",
+        "name": "PH-Mitte",
+        "type": "garage",
+        "public_url": null,
+        "source_url": null,
+        "address": "Grabenstraße 26",
+        "capacity": 0,
+        "has_live_capacity": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.062045,
+          50.388618
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "limburgsparkasse",
+        "name": "Sparkasse",
+        "type": "garage",
+        "public_url": null,
+        "source_url": null,
+        "address": "Schiede 41",
+        "capacity": 0,
+        "has_live_capacity": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.059188,
+          50.387296
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "limburgstadthalle",
+        "name": "Stadthalle",
+        "type": "garage",
+        "public_url": null,
+        "source_url": null,
+        "address": "Diezer Straße 17",
+        "capacity": 0,
+        "has_live_capacity": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.061152,
+          50.387457
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "limburgwerkstadt",
+        "name": "WERKStadt",
+        "type": "lot",
+        "public_url": null,
+        "source_url": null,
+        "address": "Joseph-Schneider-Straße 1",
+        "capacity": 0,
+        "has_live_capacity": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.056576,
+          50.384046
+        ]
+      }
+    }
+  ]
+}
