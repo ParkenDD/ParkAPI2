@@ -52,20 +52,24 @@ class Command(BaseCommand):
             help="Scrape in N parallel processes"
         )
 
-    def handle(self, *args, command: str, pools, cache, processes, **options):
+    def handle(self, *args, command: str, pools, cache, processes, verbosity: int, **options):
         if command == "list":
             scraper_pools = dict()
             for scraper_py in iter_scrapers():
                 scraper_pools[scraper_py.parent.name] = run_scraper_process(
-                    path=scraper_py.parent, command="list", pool_filter=pools, caching=cache
+                    path=scraper_py.parent, command="list", pool_filter=pools,
+                    caching=cache, verbose=verbosity >= 2,
                 )
             print(json.dumps(scraper_pools, indent=2))
 
         elif command == "scrape":
             if processes > 1:
-                scrape_parallel(pool_filter=pools, caching=cache, processes=processes)
+                scrape_parallel(
+                    pool_filter=pools, caching=cache, processes=processes,
+                    verbose=verbosity >= 2,
+                )
             else:
-                scrape(pool_filter=pools, caching=cache)
+                scrape(pool_filter=pools, caching=cache, verbose=verbosity >= 2)
 
         else:
             raise ValueError(f"Invalid command '{command}'")
@@ -81,12 +85,13 @@ def iter_scrapers() -> Generator[Path, None, None]:
         yield Path(scraper_py)
 
 
-def scrape(pool_filter: List[str], caching: Union[bool, str]):
+def scrape(pool_filter: List[str], caching: Union[bool, str], verbose: bool = False):
     for scraper_py in iter_scrapers():
         module_path = scraper_py.parent
 
         snapshots = run_scraper_process(
-            path=module_path, command="scrape", pool_filter=pool_filter, caching=caching
+            path=module_path, command="scrape", pool_filter=pool_filter,
+            caching=caching, verbose=verbose,
         )
         store_snapshots(module_path.name, snapshots)
 
@@ -115,11 +120,12 @@ def store_snapshots(module_name: str, snapshots: Union[list, dict]):
                 store_snapshot(snapshot)
 
 
-def scrape_parallel(pool_filter: List[str], caching: Union[bool, str], processes: int):
+def scrape_parallel(pool_filter: List[str], caching: Union[bool, str], processes: int, verbose: bool = False):
     scraper_commands = []
     for scraper_py in iter_scrapers():
         pool_ids = run_scraper_process(
-            path=scraper_py.parent, command="list", pool_filter=pool_filter, caching=caching
+            path=scraper_py.parent, command="list", pool_filter=pool_filter, caching=caching,
+            verbose=verbose,
         )
         if pool_ids:
             for pool_id in pool_ids:
@@ -129,7 +135,10 @@ def scrape_parallel(pool_filter: List[str], caching: Union[bool, str], processes
         return
 
     snapshots = ThreadPool(processes).map(
-        lambda args: run_scraper_process(path=args[0], command="scrape", pool_filter=[args[1]], caching=caching),
+        lambda args: run_scraper_process(
+            path=args[0], command="scrape", pool_filter=[args[1]], caching=caching,
+            verbose=verbose
+        ),
         scraper_commands,
     )
     for sn, (path, pool_id) in zip(snapshots, scraper_commands):
@@ -141,9 +150,10 @@ def run_scraper_process(
         command: str,
         pool_filter: List[str],
         caching: Union[bool, str],
+        verbose: bool = False,
 ) -> Union[dict, list]:
 
-    if command == "scrape":
+    if command == "scrape" and verbose:
         print(f"module '{path.name}' scraping {pool_filter or 'all pools'}")
 
     args = [Path(sys.executable).resolve(), "scraper.py", command]
@@ -155,6 +165,8 @@ def run_scraper_process(
         args += ["--cache", caching]
 
     try:
+        if verbose:
+            print("running", " ".join(str(a) for a in args), "in directory", path)
         process = subprocess.Popen(
             args=args,
             cwd=str(path),
