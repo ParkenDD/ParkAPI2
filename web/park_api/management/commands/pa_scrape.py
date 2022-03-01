@@ -155,10 +155,10 @@ def run_scraper_process(
         verbose: bool = False,
 ) -> Union[dict, list]:
 
-    if command == "scrape" and verbose:
-        print(f"module '{path.name}' scraping {pool_filter or 'all pools'}")
+    if verbose and command == "scrape":
+        print(f"module '{path.name}' scraping {pool_filter or 'all pools'}", file=sys.stderr)
 
-    args = [Path(sys.executable).resolve(), "scraper.py", command]
+    args = [python_executable(), "scraper.py", command]
     if pool_filter:
         args += ["--pools", *pool_filter]
     if caching is True:
@@ -168,7 +168,7 @@ def run_scraper_process(
 
     try:
         if verbose:
-            print("running", " ".join(str(a) for a in args), "in directory", path)
+            print("running", " ".join(str(a) for a in args), "in directory", path, file=sys.stderr)
         process = subprocess.Popen(
             args=args,
             cwd=str(path),
@@ -185,3 +185,12 @@ def run_scraper_process(
     except Exception as e:
         return {"error": f"{type(e).__name__}: {e}\n{traceback.format_exc()}"}
 
+
+def python_executable() -> str:
+    fn = Path(sys.prefix) / "bin" / "python"
+    if not fn.exists():
+        fn = Path(sys.prefix) / "Scripts" / "python.exe"
+    if not fn.exists():
+        fn = Path(sys.executable)
+
+    return str(fn.resolve())
