@@ -7,7 +7,7 @@ on:
   push:
     branches: ["master", "feature/ghactions-test"]
   pull_request:
-    branches: ["master", "development"]
+    branches: ["master", "feature/ghactions-test"]
 
 jobs:
 
@@ -26,18 +26,6 @@ jobs:
       POSTGRES_TEST_DATABASE: test-db
       POSTGRES_USER: test
       POSTGRES_PASSWORD: test
-
-    services:
-      postgres:
-        image: postgis:10.8
-        env:
-          POSTGRES_USER: test
-          POSTGRES_PASSWORD: test
-          POSTGRES_DB: test
-          POSTGRES_PORT: 5432
-        ports:
-          - 5432:5432
-        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
 
     steps:
       - uses: actions/checkout@v2
