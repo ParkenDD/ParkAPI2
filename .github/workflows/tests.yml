@@ -44,8 +44,9 @@ jobs:
 
       - name: Install packages
         run: |
-          apt-get install libpq-dev libgdal-dev libproj-dev libgeos-dev postgresql-13-postgis-3-scripts
-          
+          sudo apt-get update
+          sudo apt-get install libpq-dev libgdal-dev libproj-dev libgeos-dev postgresql-13-postgis-3-scripts
+
       - name: Install python dependencies
         run: |
           python -m pip install --upgrade pip
