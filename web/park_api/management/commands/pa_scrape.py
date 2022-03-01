@@ -187,6 +187,12 @@ def run_scraper_process(
 
 
 def python_executable() -> str:
+    try:
+        python_path = subprocess.check_output(["sh", "-c", "which python"])
+        return python_path.decode("utf-8").strip()
+    except subprocess.CalledProcessError:
+        pass
+
     fn = Path(sys.prefix) / "bin" / "python"
     if not fn.exists():
         fn = Path(sys.prefix) / "Scripts" / "python.exe"
