@@ -61,6 +61,9 @@ class Command(BaseCommand):
                     caching=cache, verbose=verbosity >= 2,
                 )
             print(json.dumps(scraper_pools, indent=2))
+            for module, pools in scraper_pools.items():
+                if "error" in pools:
+                    exit(1)
 
         elif command == "scrape":
             if processes > 1:
@@ -77,8 +80,7 @@ class Command(BaseCommand):
 
 def iter_scrapers() -> Generator[Path, None, None]:
     """
-    Yields all found ../module/scraper.py filename
-    :return:
+    Yields all found ../<module>/scraper.py filenames
     """
     scrapers_path = settings.BASE_DIR / "scrapers"
     for scraper_py in glob.glob(str(scrapers_path / "*/scraper.py")):
@@ -153,10 +155,10 @@ def run_scraper_process(
         verbose: bool = False,
 ) -> Union[dict, list]:
 
-    if command == "scrape" and verbose:
-        print(f"module '{path.name}' scraping {pool_filter or 'all pools'}")
+    if verbose and command == "scrape":
+        print(f"module '{path.name}' scraping {pool_filter or 'all pools'}", file=sys.stderr)
 
-    args = [Path(sys.executable).resolve(), "scraper.py", command]
+    args = [python_executable(), "scraper.py", command]
     if pool_filter:
         args += ["--pools", *pool_filter]
     if caching is True:
@@ -166,7 +168,7 @@ def run_scraper_process(
 
     try:
         if verbose:
-            print("running", " ".join(str(a) for a in args), "in directory", path)
+            print("running", " ".join(str(a) for a in args), "in directory", path, file=sys.stderr)
         process = subprocess.Popen(
             args=args,
             cwd=str(path),
@@ -183,3 +185,18 @@ def run_scraper_process(
     except Exception as e:
         return {"error": f"{type(e).__name__}: {e}\n{traceback.format_exc()}"}
 
+
+def python_executable() -> str:
+    try:
+        python_path = subprocess.check_output(["sh", "-c", "which python"])
+        return python_path.decode("utf-8").strip()
+    except subprocess.CalledProcessError:
+        pass
+
+    fn = Path(sys.prefix) / "bin" / "python"
+    if not fn.exists():
+        fn = Path(sys.prefix) / "Scripts" / "python.exe"
+    if not fn.exists():
+        fn = Path(sys.executable)
+
+    return str(fn.resolve())
