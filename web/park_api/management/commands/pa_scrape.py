@@ -61,6 +61,9 @@ class Command(BaseCommand):
                     caching=cache, verbose=verbosity >= 2,
                 )
             print(json.dumps(scraper_pools, indent=2))
+            for module, pools in scraper_pools.items():
+                if "error" in pools:
+                    exit(1)
 
         elif command == "scrape":
             if processes > 1:
@@ -77,8 +80,7 @@ class Command(BaseCommand):
 
 def iter_scrapers() -> Generator[Path, None, None]:
     """
-    Yields all found ../module/scraper.py filename
-    :return:
+    Yields all found ../<module>/scraper.py filenames
     """
     scrapers_path = settings.BASE_DIR / "scrapers"
     for scraper_py in glob.glob(str(scrapers_path / "*/scraper.py")):

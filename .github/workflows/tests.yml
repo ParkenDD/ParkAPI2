@@ -16,7 +16,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: ["3.8", "3.9", "3.10"]
+        python-version: ["3.6", "3.9", "3.10"]
 
     env:
       DJANGO_DEBUG: "False"
@@ -60,6 +60,6 @@ jobs:
           source env/bin/activate
           cd web
           # make sure importing all scraper modules works
-          ./manage.py pa_scrape list
+          ./manage.py pa_scrape list -v 2
           ./manage.py test --keepdb
 
