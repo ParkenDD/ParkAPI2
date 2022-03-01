@@ -1,6 +1,9 @@
-# offenesdresden/ParkAPI rewrite in Django
+# ParkAPI2 
 
-This is an attempt to rewrite the [ParkAPI](https://github.com/offenesdresden/ParkAPI/)
+[![test](https://github.com/defgsus/ParkAPI2/actions/workflows/tests.yml/badge.svg)](https://github.com/defgsus/ParkAPI2/actions/workflows/tests.yml)
+
+
+Rewrite of the [ParkAPI](https://github.com/offenesdresden/ParkAPI/)
 using [GeoDjango](https://docs.djangoproject.com/en/3.2/ref/contrib/gis/) and
 the [django rest framework](https://www.django-rest-framework.org/).
 
