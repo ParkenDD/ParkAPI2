@@ -1,6 +1,6 @@
 # ParkAPI2 
 
-[![test](https://github.com/defgsus/ParkAPI2/actions/workflows/tests.yml/badge.svg)](https://github.com/defgsus/ParkAPI2/actions/workflows/tests.yml)
+[![test](https://github.com/parkenDD/ParkAPI2/actions/workflows/tests.yml/badge.svg)](https://github.com/parkenDD/ParkAPI2/actions/workflows/tests.yml)
 
 
 Rewrite of the [ParkAPI](https://github.com/offenesdresden/ParkAPI/)
@@ -106,7 +106,7 @@ A prototype is developed in [web/scrapers/builtin/](web/scrapers/builtin/).
 ### Clone repo and setup python environment
 
 ```shell script
-git clone https://github.com/defgsus/ParkAPI2
+git clone https://github.com/parkenDD/ParkAPI2
 cd ParkAPI2
 
 virtualenv -p python3 env

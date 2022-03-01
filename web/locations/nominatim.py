@@ -36,7 +36,7 @@ class NominatimApi:
         self.verbose = verbose
         self.session = requests.Session()
         self.session.headers = {
-            "User-Agent": "github.com/defgsus/ParkAPI2",
+            "User-Agent": "github.com/parkenDD/ParkAPI2",
             "Accept": "application/json",
         }
 
