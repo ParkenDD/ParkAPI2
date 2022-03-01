@@ -1,0 +1,48 @@
+{
+  "pool": {
+    "id": "dresden",
+    "name": "Dresden",
+    "public_url": "https://www.dresden.de/parken",
+    "timezone": "Europe/Berlin",
+    "source_url": "https://www.dresden.de/apps_ext/ParkplatzApp/",
+    "attribution_license": null,
+    "attribution_url": null,
+    "attribution_contributor": "Landeshauptstadt Dresden / tiefbauamt-verkehrstechnik@dresden.de"
+  },
+  "lots": [
+    {
+      "id": "dresdenaltmarkt",
+      "name": "Altmarkt",
+      "type": "underground",
+      "public_url": "https://www.dresden.de/apps_ext/ParkplatzApp/detail?id=431",
+      "source_url": "https://www.dresden.de/apps_ext/ParkplatzApp/",
+      "address": "Altmarkt 1\n01067 Dresden\nEinfahrt von Wilsdruffer Straße\nEinfahrtshöhe max. 2,00 m\nKontakt: 03 51 / 481 02 74\nservicecenter@q-park.de",
+      "capacity": 400,
+      "has_live_capacity": true,
+      "latitude": 51.0506700789,
+      "longitude": 13.741789104,
+      "timestamp": "2022-03-01T17:23:52",
+      "status": "open",
+      "num_free": 154,
+      "num_occupied": 246,
+      "lot_timestamp": "2022-03-01T17:23:36"
+    },
+    {
+      "id": "dresdenanderfrauenkirche",
+      "name": "An der Frauenkirche",
+      "type": "underground",
+      "public_url": "https://www.dresden.de/apps_ext/ParkplatzApp/detail?id=403",
+      "source_url": "https://www.dresden.de/apps_ext/ParkplatzApp/",
+      "address": "An der Frauenkirche 12a\n01067 Dresden\nEinfahrt von Schießgasse\nKontakt: 03 51 / 496 06 03\ntiefgarage-frauenkirche.dresden@gmx.de",
+      "capacity": 120,
+      "has_live_capacity": true,
+      "latitude": 51.051415072,
+      "longitude": 13.7441934672,
+      "timestamp": "2022-03-01T17:23:52",
+      "status": "closed",
+      "num_free": null,
+      "num_occupied": null,
+      "lot_timestamp": "2022-03-01T17:23:36"
+    }
+  ]
+}

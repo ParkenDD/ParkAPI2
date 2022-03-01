@@ -1,0 +1,18 @@
+[
+  {
+    "osm_id": "R191645",
+    "geo_point": [13.7381437, 51.0493286],
+    "city": "Dresden",
+    "state": "Sachsen",
+    "country": "Deutschland",
+    "country_code": "de"
+  },
+  {
+    "osm_id": "R63509",
+    "geo_point": [7.3393014, 51.6512192],
+    "city": "Datteln",
+    "state": "Nordrhein-Westfalen",
+    "country": "Deutschland",
+    "country_code": "de"
+  }
+]
