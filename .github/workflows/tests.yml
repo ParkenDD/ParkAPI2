@@ -8,7 +8,7 @@ on:
     branches: ["master", "feature/ghactions-test"]
   pull_request:
     branches: ["master", "development"]
---
+
 jobs:
 
   test-ubuntu:
