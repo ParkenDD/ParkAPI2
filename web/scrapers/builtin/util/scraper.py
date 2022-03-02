@@ -46,7 +46,7 @@ class ScraperBase:
     # Seconds before a web request is cancelled
     REQUEST_TIMEOUT: int = 10
     # The user agent that is used in web requests
-    USER_AGENT: str = "github.com/parkenDD/ParkAPI2"
+    USER_AGENT: str = "github.com/ParkenDD/ParkAPI2"
     # Extra headers that should be added to all requests
     HEADERS: Dict[str, str] = {}
     # Set to True to allow any invalid certificate

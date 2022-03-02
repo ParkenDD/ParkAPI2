@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://github.com/parkenDD/ParkAPI2/raw/master/web/scrapers/builtin/schema.json",
+  "$id": "https://github.com/ParkenDD/ParkAPI2/raw/master/web/scrapers/builtin/schema.json",
 
   "title": "ParkAPI2 scraper snapshot layout",
   "description": "The JSON that is digested by the ParkAPI database",
