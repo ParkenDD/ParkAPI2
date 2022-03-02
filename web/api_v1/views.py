@@ -7,8 +7,13 @@ from rest_framework import views, renderers, generics, parsers
 from rest_framework.response import Response
 from rest_framework.request import Request
 from rest_framework.schemas.openapi import AutoSchema
+
+from park_api.version import get_commit_hash
 from locations.models import Location
 from park_data.models import ParkingLot, ParkingPool, ParkingData, ParkingLotState
+
+
+COMMIT_HASH = get_commit_hash()
 
 
 # legacy name -> nominatim name
@@ -73,8 +78,8 @@ class CityMapView(views.APIView):
 
         return Response({
             "api_version": "1.0",
-            "server_version": "0.3.666",
-            "reference": "https://github.com/offenesdresden/ParkAPI",
+            "server_version": "0.1.%s" % COMMIT_HASH[:8],
+            "reference": "https://github.com/ParkenDD/ParkAPI2",
             "cities": self.city_mapping(),
         })
 
