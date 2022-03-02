@@ -23,7 +23,7 @@ class TestApiV1(TestBase):
         response = self.client.get(reverse("api_v1:city-map")).data
 
         self.assertEqual("1.0", response["api_version"])
-        self.assertEqual("https://github.com/offenesdresden/ParkAPI", response["reference"])
+        self.assertEqual("https://github.com/ParkenDD/ParkAPI2", response["reference"])
         self.assertEqual(
             {
                 "Datteln": {
