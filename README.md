@@ -15,7 +15,7 @@ represents the source of the parking lot data (a website).
 
 Example, query all nearby parking lots (100km around lon:6 lat:50):
 ```shell script
-$ curl "http://localhost:8000/api/v2/lots/?location=6,50&radius=100"
+$ curl "http://localhost:8000/api/v2/lots/?location=6,50&radius=100" -H "Accept: application/json; indent=2"
 {
   "count": 13,
   "next": null,
@@ -96,9 +96,17 @@ curl "http://localhost:8000/api/Jena" -H "Accept: application/json; indent=2"
 ```
 
 
-## Scraping
+## Contribution
 
-A prototype is developed in [web/scrapers/builtin/](web/scrapers/builtin/).
+If you have questions or feedback about the **API** and the data format,
+feel free to [open an issue](https://github.com/ParkenDD/ParkAPI2/issues)
+in the [ParkAPI2](https://github.com/ParkenDD/ParkAPI2/) repository. 
+
+If you want to suggest a new parking website to be added to the 
+data-sources or report/fix an error regarding a parking lot, please
+visit the [ParkAPI2-sources](https://github.com/ParkenDD/ParkAPI2-sources/)
+repository and [open an issue](https://github.com/ParkenDD/ParkAPI2-sources/issues)
+there.
 
 
 ## Setup for development
@@ -106,14 +114,21 @@ A prototype is developed in [web/scrapers/builtin/](web/scrapers/builtin/).
 ### Clone repo and setup python environment
 
 ```shell script
+# clone the repo
 git clone https://github.com/ParkenDD/ParkAPI2
 cd ParkAPI2
 
+# clone the data-source repo
+git submodule init
+git submodule update
+
+# create a virtual python environment
 virtualenv -p python3 env
 source env/bin/activate
 
+# install python dependencies 
 pip install -r requirements.txt
-pip install -r web/scrapers/builtin/requirements.txt
+pip install -r web/scrapers/ParkAPI2_sources/requirements.txt
 ```
 
 ### Create a postgres database
@@ -203,4 +218,3 @@ To get data into the database call:
 # attach city names to new lots
 ./manage.py pa_find_locations
 ```
-
