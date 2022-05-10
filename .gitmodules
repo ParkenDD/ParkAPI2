@@ -1,0 +1,5 @@
+[submodule "web/scrapers/ParkAPI2_sources"]
+	path = web/scrapers/ParkAPI2_sources
+	url = https://github.com/ParkenDD/ParkAPI2-sources
+	branch = master
+
