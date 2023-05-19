@@ -166,7 +166,7 @@ with your values:
 # start psql
 sudo -u postgres psql
 
-CREATE USER "<user>" WITH PASSWORD "<password>";
+CREATE USER "<user>" WITH PASSWORD '<password>';
 CREATE DATABASE "parkapi2" ENCODING=UTF8 OWNER="<user>";
 CREATE DATABASE "parkapi2-test" ENCODING=UTF8 OWNER="<user>";
 
