@@ -131,11 +131,13 @@ class CityMapView(views.APIView):
                     city["attribution"] = None
 
                 lng, lat = loc["geo_point"].tuple
+                source_url = city.pop("source_url")
+                public_url = city.pop("public_url")
                 city.update({
                     "coords": {"lat": lat, "lng": lng},
                     "name": loc["city"],
-                    "url": city.pop("public_url"),
-                    "source": city.pop("source_url"),
+                    "url": public_url,
+                    "source": source_url if source_url else public_url,
                     # TODO: no db-field yet
                     "active_support": False,
                 })
