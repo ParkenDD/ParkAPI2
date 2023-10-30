@@ -74,7 +74,8 @@ class TestApiV1(TestBase):
                         'address': 'An der Frauenkirche 12a\n01067 Dresden\nEinfahrt von Schießgasse\nKontakt: 03 51 / 496 06 03\ntiefgarage-frauenkirche.dresden@gmx.de',
                         'coords': {'lat': 51.051415072, 'lng': 13.7441934672},
                         'forecast': False,
-                        'free': None,
+                        # Don't return free, if not available (to stay backward compatible with ParkAPIv1)
+                        # 'free': None,
                         'id': 'dresdenanderfrauenkirche',
                         'lot_type': 'Tiefgarage',
                         'name': 'An der Frauenkirche',
