@@ -179,7 +179,7 @@ class CityLotsView(views.APIView):
                 "address": lot.address,
                 "coords": coords,
                 "forecast": False,  # TODO
-                "free": None,
+                # "free": None, if free is unkown, we don't return it
                 "id": lot.lot_id,
                 "lot_type": LOT_TYPE_MAPPING.get(lot.type, "unbekannt"),
                 "name": lot.name,
@@ -189,9 +189,10 @@ class CityLotsView(views.APIView):
             }
             if lot.latest_data:
                 api_lot.update({
-                    "free": lot.latest_data.num_free,
                     "state": lot.latest_data.status,
                 })
+                if lot.latest_data.num_free is not None:
+                    api_lot["free"] = lot.latest_data.num_free
                 if lot.latest_data.capacity is not None:
                     api_lot["total"] = lot.latest_data.capacity
 
