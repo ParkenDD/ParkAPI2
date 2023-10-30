@@ -1,6 +1,7 @@
 FROM python:3.11
 LABEL maintainer="Holger Bruch <hb@mfdz.de>"
 
+ENV RUN_MIGRATION=false
 
 RUN apt-get install 
 RUN apt-get update && apt-get install -y \

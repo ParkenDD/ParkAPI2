@@ -26,6 +26,8 @@ services:
     ports:
       - 8000:8000
     env_file: .env
+    environment:
+      - RUN_MIGRATION=1
   scraper:
     build:
       context: .
