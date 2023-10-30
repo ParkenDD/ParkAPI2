@@ -17,13 +17,18 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
+from django.views.generic.base import RedirectView
 
 from .views import stats
 
 urlpatterns = [
-    path("", stats.StatsView.as_view(), name="stats"),
+    path("stats/", stats.StatsView.as_view(), name="stats"),
     path("admin/", admin.site.urls),
     path("api/", include('park_api.api_urls')),
+    # Maintain API v1 compatibility by redirecting former URLs to new locations
+    path("", RedirectView.as_view(url='api/')),
+    path("<city>", RedirectView.as_view(url='api/%(city)s')),
+    path("<city>/<lot_id>/timespan", RedirectView.as_view(url='api/v1/%(city)s/%(lot_id)s/timespan')),
 ]
 
 if settings.DEBUG is True:
