@@ -31,7 +31,8 @@ class TestApiV1(TestBase):
                     "coords": {"lat": 51.6512192, "lng": 7.3393014},
                     "name": "Datteln",
                     "url": "https://www.apag.de",
-                    "source": None,
+                    # Return url as source url, if no explicit source url was defined
+                    "source": "https://www.apag.de",
                     "active_support": False,
                 },
                 "Dresden": {
