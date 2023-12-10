@@ -28,6 +28,8 @@ services:
     env_file: .env
     environment:
       - RUN_MIGRATION=1
+      - ASSIGN_LOCATIONS=1
+
   scraper:
     build:
       context: .
