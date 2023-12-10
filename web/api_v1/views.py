@@ -187,7 +187,8 @@ class CityLotsView(views.APIView):
                 "name": lot.name,
                 "region": None,  # TODO
                 "state": None,
-                "total": lot.max_capacity,
+                # ParkAPI v1 requires total, so we return 0 if unknown
+                "total": lot.max_capacity if lot.max_capacity else 0,
             }
             if lot.latest_data:
                 api_lot.update({
@@ -209,7 +210,9 @@ class CityLotsView(views.APIView):
 
         return Response({
             "last_downloaded": last_downloaded,
-            "last_updated": last_updated,
+            # v1 schema requires last_updated to be set. If it's not available, 
+            # we fall back to (somewhat misleading) last_downloaded
+            "last_updated": last_updated if last_updated else last_downloaded,
             "lots": api_lot_list,
         })
 
