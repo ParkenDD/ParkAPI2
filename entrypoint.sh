@@ -5,6 +5,10 @@ if [ "$RUN_MIGRATION" != "false" ]; then
 	./manage.py migrate
 fi
 
+if [ "$ASSING_LOCATIONS" != "false" ]; then
+	./manage.py pa_find_locations
+fi
+
 # don't create an admin interface per default
 #./manage.py createsuperuser  
 
