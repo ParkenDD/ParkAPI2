@@ -1,21 +1,34 @@
-FROM python:3.11
+FROM ghcr.io/osgeo/gdal:alpine-small-3.9.2 AS builder
 LABEL maintainer="Holger Bruch <hb@mfdz.de>"
 
-ENV RUN_MIGRATION=false
+RUN apk add --no-cache build-base python3-dev py3-pip postgresql-client libpq-dev geos-dev
 
-RUN apt-get install 
-RUN apt-get update && apt-get install -y \
-  libpq-dev libgdal-dev libproj-dev libgeos-dev \
-  && rm -rf /var/lib/apt/lists/*
+
+RUN python -m venv /opt/venv
+ENV PATH="/opt/venv/bin:$PATH"
 
 WORKDIR /app
-COPY requirements.txt /app/
-COPY web/scrapers/ParkAPI2_sources/requirements.txt /app/web/scrapers/ParkAPI2_sources/
+COPY requirements.txt .
+COPY web/scrapers/ParkAPI2_sources/requirements.txt ./ParkAPI2_sources_requirements.txt
 
-RUN pip install -r requirements.txt -r web/scrapers/ParkAPI2_sources/requirements.txt
+RUN pip install -r requirements.txt -r ParkAPI2_sources_requirements.txt
 
-COPY . /app
+# Operational stage
+FROM ghcr.io/osgeo/gdal:alpine-small-3.9.2
+LABEL maintainer="Holger Bruch <hb@mfdz.de>"
+
+RUN apk add --no-cache bash git python3 py3-pip postgresql-client geos
+
+COPY --from=builder /opt/venv /opt/venv
+ENV RUN_MIGRATION=0 \
+    CREATE_SUPERUSER=0 \
+    ASSIGN_LOCATIONS=0 \
+    PYTHONBUFFERED=1 \
+    PATH="/opt/venv/bin:$PATH"
+
+WORKDIR /app
+COPY . /app/
 
 EXPOSE 8000
-ENTRYPOINT ["sh", "/app/entrypoint.sh"]
+ENTRYPOINT ["/bin/bash", "/app/entrypoint.sh"]
 CMD runserver 0.0.0.0:8000
