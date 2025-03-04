@@ -1,6 +1,10 @@
+.dockerignore
+.gitignore
+.env
+docker-compose.yml
+Dockerfile
 env/
 venv/
-.env*
 
 cache/
 /web/static/
